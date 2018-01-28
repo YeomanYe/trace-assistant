@@ -1,0 +1,38 @@
+{
+   // "background": {
+   //    "page": "JieCao.html"
+   // },
+   "browser_action": {
+      "default_icon": "images/icon/logo.png",
+      "default_popup": "popup.html",
+      "default_title": "__MSG_ext_name__"
+   },
+   // "content_scripts": [ {
+   //    "js": [ "js/chrome.js", "js/loader.js" ],
+   //    "matches": [ "http://*/*", "https://*/*" ],
+   //    "run_at": "document_start"
+   // } ],
+   // "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.manshenqi.com; object-src 'self'",
+   // "debug": false,
+   // "default_locale": "zh_CN",
+   // "description": "__MSG_ext_description__",
+   // "dev": false,
+   // "homepage_url": "http://www.manshenqi.com/",
+   // "icons": {
+   //    "128": "images/icon/icon128.png",
+   //    "16": "images/icon/icon16.png",
+   //    "19": "images/icon/icon19.png",
+   //    "32": "images/icon/icon19.png",
+   //    "48": "images/icon/icon48.png"
+   // },
+   // "incognito": "spanning",
+   "manifest_version": 2,
+   // "minimum_chrome_version": "21",
+   "name": "漫画助手",
+   "options_page": "popup.html",
+   // "permissions": [ "http://*/*", "https://*/*", "notifications", "tabs", "activeTab", "storage", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "cookies", "downloads" ],
+   // "short_name": "__MSG_ext_short_name__",
+   // "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "0.1"
+   // "web_accessible_resources": [ "remote/*", "lib/jquery.js", "test/js/test.js", "manifest.json", "images/*", "_locales/*" ]
+}
