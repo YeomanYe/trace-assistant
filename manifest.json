@@ -1,19 +1,19 @@
 {
-   // "background": {
-   //    "page": "JieCao.html"
-   // },
+   "background": {
+      "page": "background.html"
+   },
    "browser_action": {
       "default_icon": "images/icon/logo.png",
       "default_popup": "popup.html",
       "default_title": "__MSG_ext_name__"
    },
    "content_scripts": [ {
-      "js": [ "js/content.js" ],
+      "js": [ "lib/jquery.min.js","lib/underscore-min.js","js/content.js" ],
       "css":["css/content.css"],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_end"
    } ],
-   // "content_security_policy": "script-src 'self' 'unsafe-eval' https://www.manshenqi.com; object-src 'self'",
+   "content_security_policy": "script-src 'self'; object-src 'self'",
    // "debug": false,
    // "default_locale": "zh_CN",
    // "description": "__MSG_ext_description__",
@@ -35,6 +35,6 @@
    "permissions": [ "http://*/*", "https://*/*", "notifications", "tabs", "activeTab", "storage", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "cookies", "downloads" ],
    // "short_name": "__MSG_ext_short_name__",
    // "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.1"
-   // "web_accessible_resources": [ "remote/*", "lib/jquery.js", "test/js/test.js", "manifest.json", "images/*", "_locales/*" ]
+   "version": "0.1",
+   "web_accessible_resources": [ "remote/*", "lib/jquery.js", "test/js/test.js", "manifest.json", "images/*", "_locales/*" ]
 }
