@@ -8,7 +8,7 @@
       "default_title": "__MSG_ext_name__"
    },
    "content_scripts": [ {
-      "js": [ "lib/jquery.min.js","lib/underscore-min.js","js/content.js" ],
+      "js": [ "lib/jquery.min.js","js/content.js" ],
       "css":["css/content.css"],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_end"
