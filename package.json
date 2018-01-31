@@ -1,0 +1,31 @@
+{
+  "name": "comic-assistant",
+  "version": "1.0.0",
+  "description": "动漫助手",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YeomanYe/comic-assistant.git"
+  },
+  "keywords": [
+    "chrome-extension"
+  ],
+  "author": "Ming Ye",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YeomanYe/comic-assistant/issues"
+  },
+  "homepage": "https://github.com/YeomanYe/comic-assistant#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-jshint": "^2.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
+  }
+}
