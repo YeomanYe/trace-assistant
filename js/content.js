@@ -30,6 +30,7 @@ function fetchUserCol(){
             storDatas.push({
                 imgUrl:data.cover_image_url,
                 url:'http://www.kuaikanmanhua.com/web/topic/'+data.id,
+                latestChapter:data.latest_comic_title,
                 title:data.title
             });
         });
