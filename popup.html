@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>漫画助手</title>
+    <link rel="stylesheet" href="css/popup.css"/>
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
 </head>
 <body>
-    <ul>
+    <ul class="list">
+        
+    </ul>
+    <template id="listItemTemplate">
         <li>
             <div class="left"><img src="images/comic.png" class="cover"></div>
             <div class="right">
-                <h3>
-                    <div class="news"></div>
-                    <div class="current"></div>
-                </h3>
+                <h3 class="tiltle"></h3>
+                <div><a class="news"></a></div>
+                <div><a class="current"></a></div>
             </div>
         </li>
-    </ul>
+    </template>
 </body>
 </html>

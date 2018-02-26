@@ -1,0 +1,10 @@
+.left img{
+    float: left;
+    width: 67px;
+    height: 92px;
+}
+
+li{
+    width: 300px;
+    overflow: hidden;
+}
