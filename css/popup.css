@@ -1,7 +1,27 @@
-.left img{
+.left div{
     float: left;
     width: 67px;
     height: 92px;
+}
+
+h3 a{
+    text-decoration: none;
+    color: black;
+}
+
+h3 a:active{
+    text-decoration: none;
+    color: black;
+}
+
+h3 a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+h3 a:hover{
+    color: black;
+    text-decoration: none;
 }
 
 li{

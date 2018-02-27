@@ -5,15 +5,33 @@ storSync.get('kukuCol',function(resObj){
     resObj = resObj.kukuCol;
     var baseImg = resObj.baseImg,
         baseIndex = resObj.baseIndex,
+        baseChapter = resObj.baseChapter,
         cols = resObj.cols;
     log(baseImg,baseIndex);
     cols.forEach(function(obj){
         liTempStr = $('#listItemTemplate').html();
         $liInstance = $(liTempStr);
-        $liInstance.find('img')[0].src = baseImg + obj.imgUrl;
-        $liInstance.find('.right h3').text(obj.title);
-        $liInstance.find('.right .news').text(obj.latestChapter);
-        // $liInstance.find('.right .current').text(obj.latestChapter);
+        $liInstance.find('.left div').css({
+            'background-image':'url('+baseImg + obj.imgUrl+')',
+            'background-size':'cover',
+            'background-repeat':'no-repeat'
+        });
+        $liInstance.find('.left').attr({
+            href:baseIndex + obj.indexUrl,
+            target:'_blank'
+        });
+        $liInstance.find('.right h3 a').text(obj.title).attr({
+           href:baseIndex + obj.indexUrl,
+           target:'_blank' 
+        });
+        $liInstance.find('.right .news').text(obj.newChapter).attr({
+           href:baseChapter + obj.indexUrl,
+           target:'_blank'  
+        });
+        $liInstance.find('.right .current').text(obj.curChapter).attr({
+           href:baseChapter + obj.indexUrl,
+           target:'_blank'  
+        });
         log($liInstance);
         $('.list').append($liInstance);
     });
