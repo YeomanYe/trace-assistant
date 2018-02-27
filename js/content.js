@@ -50,11 +50,11 @@ function fetchUserCol() {
                 curA = $as.get($as.length - 1);
             storDatas.push({
                 imgUrl: data.cover_image_url.replace(baseImgUrl, ''),
-                indexUrl: indexUrl,
-                newUrl: newA.href, //最新章节地址
-                curUrl: curA.href, //当前章节地址
+                indexUrl: '/' + data.id,
+                newUrl: newA.href.replace(origin,''), //最新章节地址
+                curUrl: curA.href.replace(origin,''), //当前章节地址
                 newChapter: data.latest_comic_title, //最新章节名称
-                curChapter: curA.innerText,
+                curChapter: curA.innerText.replace(/\s/g,''),
                 title: data.title
             });
         });

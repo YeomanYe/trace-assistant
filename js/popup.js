@@ -25,11 +25,11 @@ storSync.get('kukuCol',function(resObj){
            target:'_blank' 
         });
         $liInstance.find('.right .news').text(obj.newChapter).attr({
-           href:baseChapter + obj.indexUrl,
+           href:baseChapter + obj.newUrl,
            target:'_blank'  
         });
         $liInstance.find('.right .current').text(obj.curChapter).attr({
-           href:baseChapter + obj.indexUrl,
+           href:baseChapter + obj.curUrl,
            target:'_blank'  
         });
         log($liInstance);
