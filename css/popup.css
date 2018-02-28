@@ -1,7 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 430px;
+    height: 500px;
+}
+
+.list{
+    height: 500px;
+    overflow: auto;
+}
+
 .left div{
     float: left;
     width: 67px;
     height: 92px;
+    border-radius: 8px;
+    margin:5px 20px;
+}
+
+.middle{
+    display: inline-block;
+    width:50%;
+}
+
+.right{
+    float: right;
+    margin:0 15px;
+}
+
+li{
+    width: 100%;
+    overflow: hidden;
+    margin-top:10px;
+}
+
+.delBtn{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contBtn{
+    color:white;
+    background: black;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 5px 8px;
+}
+
+.contBtn{
+    text-decoration: none;
+    color: white;
+}
+
+.contBtn:active{
+    text-decoration: none;
+    color: white;
+}
+
+.contBtn:visited{
+    text-decoration: none;
+    color: white;
+}
+
+.contBtn:hover{
+    color: white;
+    text-decoration: none;
+}
+
+div{
+    margin-top: 10px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+div a{
+    text-decoration: none;
+    color: blue;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+div a:active{
+    text-decoration: none;
+    color: blue;
+}
+
+div a:visited{
+    text-decoration: none;
+    color: blue;
+}
+
+div a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+.source{
+    text-decoration: none;
+    color: grey;
+}
+
+.source:active{
+    text-decoration: none;
+    color: grey;
+}
+
+.source:visited{
+    text-decoration: none;
+    color: grey;
+}
+
+.source:hover{
+    text-decoration: none;
+    color: grey;
 }
 
 h3 a{
@@ -24,7 +138,3 @@ h3 a:hover{
     text-decoration: none;
 }
 
-li{
-    width: 300px;
-    overflow: hidden;
-}

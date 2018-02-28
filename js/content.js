@@ -19,7 +19,7 @@ var storSync = chrome.storage.sync;
 
 function fetchUserCol() {
     var href = location.href;
-    var origin = 'http://www.kuaikanmanhua.com',
+    var origin = location.origin,
         baseUrl = origin + '/web/fav/topics',
         pageNum = 1,
         baseImgUrl = '',
@@ -35,7 +35,7 @@ function fetchUserCol() {
         if (!baseImgUrl) {
             //获取url中相同的部分
             if (datas.length > 1)
-                baseImgUrl = getBaseUrl(datas[0].cover_image_url, datas[1].cover_image_url);
+                baseImgUrl = getBaseUrl(datas[0].vertical_image_url, datas[1].vertical_image_url);
         }
         datas.forEach(function(data) {
             var indexUrl = baseIndexUrl + '/' + data.id;
@@ -49,7 +49,7 @@ function fetchUserCol() {
             var newA = $as.get(0),
                 curA = $as.get($as.length - 1);
             storDatas.push({
-                imgUrl: data.cover_image_url.replace(baseImgUrl, ''),
+                imgUrl: data.vertical_image_url.replace(baseImgUrl, ''),
                 indexUrl: '/' + data.id,
                 newUrl: newA.href.replace(origin,''), //最新章节地址
                 curUrl: curA.href.replace(origin,''), //当前章节地址
@@ -71,8 +71,9 @@ function fetchUserCol() {
                 baseImg: baseImgUrl,
                 baseIndex: baseIndexUrl,
                 baseChapter: origin,
+                origin:origin,
                 cols: cols,
-                domain: 'kuaikan',
+                site: 'kuaikan',
             };
             log('storObj',storObj);
             storSync.set({

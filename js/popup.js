@@ -6,6 +6,7 @@ storSync.get('kukuCol',function(resObj){
     var baseImg = resObj.baseImg,
         baseIndex = resObj.baseIndex,
         baseChapter = resObj.baseChapter,
+        origin = resObj.origin,
         cols = resObj.cols;
     log(baseImg,baseIndex);
     cols.forEach(function(obj){
@@ -20,21 +21,36 @@ storSync.get('kukuCol',function(resObj){
             href:baseIndex + obj.indexUrl,
             target:'_blank'
         });
-        $liInstance.find('.right h3 a').text(obj.title).attr({
+        $liInstance.find('.middle h3 a').text(obj.title).attr({
            href:baseIndex + obj.indexUrl,
            target:'_blank' 
         });
-        $liInstance.find('.right .news').text(obj.newChapter).attr({
+        $liInstance.find('.middle .news').text('最新：'+obj.newChapter).attr({
            href:baseChapter + obj.newUrl,
            target:'_blank'  
         });
-        $liInstance.find('.right .current').text(obj.curChapter).attr({
+        $liInstance.find('.middle .current').text('看到：'+obj.curChapter).attr({
            href:baseChapter + obj.curUrl,
            target:'_blank'  
+        });
+        $liInstance.find('.right .source').text(getSiteName(origin)).attr({
+            href:origin,
+            target:'_blank'
+        });
+        $liInstance.find('.right .delBtn').text('删除');
+        $liInstance.find('.right .contBtn').text('继续阅读').attr({
+            href:baseChapter + obj.curUrl,
+            target:'_blank'
         });
         log($liInstance);
         $('.list').append($liInstance);
     });
-        
-
 });
+
+function getSiteName(site){
+    var name;
+    if(site.indexOf('kuaikan') >= 0){
+        name = '快看漫画';
+    }
+    return name;
+}
