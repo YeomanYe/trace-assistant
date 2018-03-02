@@ -1,15 +1,20 @@
 var storSync = chrome.storage.sync;
 var log = console.log;
-var colObjs;
-storSync.get('kukuCol',function(resObj){
+var colArr;
+storSync.get('allFavs',function(resObj){
     log(resObj);
-    resObj = resObj.kukuCol;
-    colObjs = resObj;
-    var baseImg = resObj.baseImg,
-        baseIndex = resObj.baseIndex,
-        baseChapter = resObj.baseChapter,
-        origin = resObj.origin,
-        cols = resObj.cols;
+    colArr = resObj.allFavs;
+    colArr.forEach(resolveColItem);
+});
+/**
+ * 处理每一个网站收藏的漫画
+ */
+function resolveColItem(colItem){
+    var baseImg = colItem.baseImg,
+        baseIndex = colItem.baseIndex,
+        baseChapter = colItem.baseChapter,
+        origin = colItem.origin,
+        cols = colItem.cols;
     log(baseImg,baseIndex);
     cols.forEach(function(obj,index){
         liTempStr = $('#listItemTemplate').html();
@@ -47,7 +52,7 @@ storSync.get('kukuCol',function(resObj){
         log($liInstance);
         $('.list').append($liInstance);
     });
-});
+}
 /**
  * 删除收藏的漫画
  */
@@ -59,7 +64,7 @@ function delCollect(e){
     colObjs.cols.splice(index,1);
     log('colObjs',colObjs);
     storSync.set({
-      'kukuCol':colObjs
+      'cols':colObjs
     });
 }
 /**

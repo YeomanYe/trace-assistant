@@ -3,17 +3,9 @@ img.setAttribute('style','position:fixed;bottom:20px;width:80px;right:20px;z-ind
 document.body.appendChild(img);*/
 var log = console.log;
 $(function() {
-    var $img = $('<img>');
-    $img.get(0).src = chrome.runtime.getURL('images/comic.png');
-    $img.css({
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        width: '80px',
-        'z-index': 999
-    });
-    $('body').append($img);
-    $img.on('click', fetchUserCol);
+    $_imgAss.on('click', fetchUserCol);
+    //等待本地收藏的集合获取到
+    setTimeout(updateCol,1000);
 });
 var storSync = chrome.storage.sync;
 
@@ -54,7 +46,7 @@ function fetchUserCol() {
                 newUrl: newA.href.replace(origin,''), //最新章节地址
                 curUrl: curA.href.replace(origin,''), //当前章节地址
                 newChapter: data.latest_comic_title, //最新章节名称
-                curChapter: curA.innerText.replace(/\s/g,''),
+                curChapter: curA.innerText.replace(/\s/g,''), //当前章节名称
                 title: data.title
             });
         });
@@ -76,10 +68,13 @@ function fetchUserCol() {
                 site: 'kuaikan',
             };
             log('storObj',storObj);
+            _allFavs = (_allFavs && _allFavs.length > 0) ? _allFavs : [];
+            log('_allFavs',_allFavs);
+            _allFavs.push(storObj);
             storSync.set({
-                'kukuCol':storObj
+                'allFavs':_allFavs
             });
-            storSync.get('kukuCol', function(array) {
+            storSync.get('allFavs', function(array) {
                 log(array);
             });
         }
@@ -87,4 +82,36 @@ function fetchUserCol() {
     $.ajax(baseUrl + '?page=' + pageNum + '&size=' + size, {
         success: successCallback
     });
+}
+
+/**
+ * 更新收藏的漫画
+ */
+function updateCol(){
+    log('_allFavs',_allFavs);
+    var href = location.href;
+    if(href.indexOf('kuaikan')<0)return;
+    var $as = $('#main h2 .ico a');
+    if($as.length<1)return;
+    var aElm = $as.get(1);
+    var kuaikanFavs,baseChapter;
+    for(var i=0,len=_allFavs.length;i<len;i++){
+        var item = _allFavs[i];
+        if(item.origin.indexOf('kuaikan')>=0){
+            baseChapter = item.baseChapter;
+            kuaikanFavs = item.cols;
+            break;
+        }
+    }
+    if(!kuaikanFavs || kuaikanFavs.length == 0) return;
+    var curHref = location.href;
+    var index = arrInStr(kuaikanFavs,aElm.href,'indexUrl');
+    var curItem = kuaikanFavs[index];
+    var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/,'').trim();
+    curItem.curChapter = curChapter;
+    curItem.curUrl = curHref.replace(baseChapter,'');
+    storSync.set({
+      'allFavs':_allFavs
+    });
+    log('href',aElm.href);
 }
