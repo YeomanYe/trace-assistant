@@ -47,7 +47,8 @@ function fetchUserCol() {
                 curUrl: curA.href.replace(origin,''), //当前章节地址
                 newChapter: data.latest_comic_title, //最新章节名称
                 curChapter: curA.innerText.replace(/\s/g,''), //当前章节名称
-                title: data.title
+                title: data.title,
+                isUpdate:false
             });
         });
         cols = cols.concat(storDatas);
