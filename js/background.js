@@ -16,6 +16,13 @@ chrome.runtime.onMessage.addListener(function(msg){
         case 'updateNumChange':updateBadge();break;
     }
 });
+
+//点击提醒打开链接
+chrome.notifications.onClicked.addListener(function(url){
+    log('url',url);
+    window.open(url);
+});
+
 /**
  * 更新徽章数
  */
@@ -37,14 +44,6 @@ function setBadge(num){
     chrome.browserAction.setBadgeText({text:''+num});
     chrome.browserAction.setBadgeBackgroundColor({color: 'red'})
 }
-
-/**
- * 点击提醒打开链接
- */
-chrome.notifications.onClicked.addListener(function(url){
-    log('url',url);
-    window.open(url);
-});
 
 /**
  * 创建提醒
@@ -72,6 +71,7 @@ function kuaikanQuery(){
             }
         }
     }
+    setTimeout(kuaikanQuery,1000 * 10 * 60);
     if(!kuaikanFavs) return;
 
     var baseIndex = kuaikanFavs.baseIndex;
@@ -100,7 +100,6 @@ function kuaikanQuery(){
             async:false
         });
     }
-    setTimeout(kuaikanQuery,1000 * 10 * 60);
     storLocal.set({
         allFavs:_allFavs,
         updateNum:updateNum
