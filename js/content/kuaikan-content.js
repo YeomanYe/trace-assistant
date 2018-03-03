@@ -14,7 +14,7 @@ function fetchUserCol() {
     var origin = location.origin,
         baseUrl = origin + '/web/fav/topics',
         pageNum = 1,
-        baseImgUrl = '',
+        baseImgUrl = 'https://i1s.kkmh.com/image',
         baseIndexUrl = origin + '/web/topic',
         size = 16;
     if (href.search('kuaikan') < 0) return;

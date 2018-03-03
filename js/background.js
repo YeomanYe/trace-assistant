@@ -5,6 +5,7 @@ var _allFavs;
 var kuaikanFavs;
 storSync.get('allFavs',function(resObj){
     _allFavs = resObj.allFavs;
+    kuaikanQuery();
 });
 
 /**
@@ -43,26 +44,27 @@ function kuaikanQuery(){
     }
     var baseIndex = kuaikanFavs.baseIndex;
     var baseImage = kuaikanFavs.baseImg;
+    var baseChapter = kuaikanFavs.baseChapter;
     var favs = kuaikanFavs.cols;
     var sucCall = function(data){
         var $html = $(data);
-        var aElm = $html.find('#main table .tit a').get(0);
-        var newChapter = aElm.innerText;
+        var aElm = $html.find('table .tit a').get(0);
+        var newChapter = aElm.title;
         var newUrl = aElm.href;
         if(col.newChapter != newChapter){
             col.newChapter = newChapter;
             col.newUrl = newUrl;
             col.isUpdate = true;
-            createNotify(col.title,baseImage + col.imgUrl,'更新到: '+newChapter,newUrl);
+            createNotify(col.title,baseImage + col.imgUrl,'更新到: '+newChapter,baseChapter+newUrl);
         }
     };
     for(var i=0,len=favs.length;i<len;i++){
         var col = favs[i];
-        indexUrl = col.indexUrl;
+        var indexUrl = col.indexUrl;
         $.ajax(baseIndex+indexUrl,{
-            success:sucCall
+            success:sucCall,
+            async:false
         });
     }
+    setTimeout(kuaikanQuery,1000 * 10 * 60);
 }
-
-setInterval(kuaikanQuery,1000);
