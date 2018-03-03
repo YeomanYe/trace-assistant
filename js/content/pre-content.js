@@ -2,9 +2,14 @@ var _allFavs; //全部收藏的漫画集合
 var _includeArr = ['kuaikan']; //当URL匹配字符串时才调用
 var storLocal = chrome.storage.local;
 var $_imgAss;
+var _updateNum = 0;
 //获取收藏的漫画集合
 storLocal.get('allFavs',function(storObj){
     _allFavs = storObj.allFavs;
+});
+//获取更新的漫画数量
+storLocal.get('updateNum',function(storObj){
+    _updateNum = storObj.updateNum;
 });
 $(function() {
     var origin = location.origin;

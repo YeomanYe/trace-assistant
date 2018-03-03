@@ -97,6 +97,7 @@ function updateCol(){
     var $as = $('#main h2 .ico a');
     if($as.length<1)return;
     var aElm = $as.get(1);
+    //获取快看收藏的漫画集合
     var kuaikanFavs,baseChapter;
     for(var i=0,len=_allFavs.length;i<len;i++){
         var item = _allFavs[i];
@@ -107,12 +108,21 @@ function updateCol(){
         }
     }
     if(!kuaikanFavs || kuaikanFavs.length == 0) return;
+    //解析当前页面并更新阅读记录
     var curHref = location.href;
     var index = arrInStr(kuaikanFavs,aElm.href,'indexUrl');
     var curItem = kuaikanFavs[index];
     var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/,'').trim();
     curItem.curChapter = curChapter;
     curItem.curUrl = curHref.replace(baseChapter,'');
+    if(curItem.isUpdate){
+        curItem.isUpdate = false;
+        --_updateNum;
+        storLocal.set({
+            updateNum:_updateNum
+        });
+        chrome.runtime.sendMessage(null,'updateNumChange');
+    }
     storLocal.set({
       'allFavs':_allFavs
     });

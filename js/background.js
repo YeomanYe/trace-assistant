@@ -7,13 +7,27 @@ var updateNum;
 storLocal.get('allFavs',function(resObj){
     _allFavs = resObj.allFavs;
     //初始化更新数
+    updateBadge(kuaikanQuery);
+});
+
+//监听消息
+chrome.runtime.onMessage.addListener(function(msg){
+    switch(msg){
+        case 'updateNumChange':updateBadge();break;
+    }
+});
+/**
+ * 更新徽章数
+ */
+function updateBadge(callback){
     storLocal.get('updateNum',function(resObj){
         updateNum = resObj.updateNum;
         updateNum = updateNum ? updateNum : 0;
         setBadge(updateNum);
-        kuaikanQuery();
+        if(callback)callback();
     });
-});
+}
+
 
 /**
  * 设置徽章
@@ -50,7 +64,7 @@ function createNotify(title,iconUrl,message,newUrl){
  */
 function kuaikanQuery(){
     //第一次调用时获取保存的漫画记录
-    if(!kuaikanFavs){
+    if(!kuaikanFavs && _allFavs){
         for(var i=0,len=_allFavs.length;i<len;i++){
             var item = _allFavs[i];
             if(item.origin.indexOf('kuaikan')>=0){
@@ -58,6 +72,8 @@ function kuaikanQuery(){
             }
         }
     }
+    if(!kuaikanFavs) return;
+
     var baseIndex = kuaikanFavs.baseIndex;
     var baseImage = kuaikanFavs.baseImg;
     var baseChapter = kuaikanFavs.baseChapter;
@@ -86,6 +102,7 @@ function kuaikanQuery(){
     }
     setTimeout(kuaikanQuery,1000 * 10 * 60);
     storLocal.set({
-        allFavs:_allFavs
+        allFavs:_allFavs,
+        updateNum:updateNum
     });
 }
