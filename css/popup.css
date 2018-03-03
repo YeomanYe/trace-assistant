@@ -138,3 +138,27 @@ h3 a:hover{
     text-decoration: none;
 }
 
+.news-badge{
+    display:none;
+    color: white;
+    background: red;
+    margin-left: 10px;
+    border-radius: 5px;
+    font-weight: normal;
+    padding: 3px;
+    font-size: 12px;
+}
+.news-badge:active{
+    text-decoration: none;
+    color: white;
+}
+
+.news-badge:visited{
+    text-decoration: none;
+    color: white;
+}
+
+.news-badge:hover{
+    color: white;
+    text-decoration: none;
+}

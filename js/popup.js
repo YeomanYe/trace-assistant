@@ -28,7 +28,7 @@ function resolveColItem(colItem){
             href:baseIndex + obj.indexUrl,
             target:'_blank'
         });
-        $liInstance.find('.middle h3 a').text(obj.title).attr({
+        $liInstance.find('.middle h3 .titleName').text(obj.title).attr({
            href:baseIndex + obj.indexUrl,
            target:'_blank' 
         });
@@ -49,6 +49,14 @@ function resolveColItem(colItem){
             href:baseChapter + obj.curUrl,
             target:'_blank'
         });
+        //添加最新按钮
+        if(obj.isUpdate){
+            $liInstance.find('.middle .news-badge').css('display','inline-block').attr({
+                href:baseChapter + obj.newUrl,
+                target:'_blank'  
+            });
+        }
+        
         log($liInstance);
         $('.list').append($liInstance);
     });
