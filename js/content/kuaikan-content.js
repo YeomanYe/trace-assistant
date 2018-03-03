@@ -3,13 +3,15 @@ img.setAttribute('style','position:fixed;bottom:20px;width:80px;right:20px;z-ind
 document.body.appendChild(img);*/
 var log = console.log;
 $(function() {
-    $_imgAss.on('click', fetchUserCol);
+    $_imgAss.on('click', exportUserCol);
     //等待本地收藏的集合获取到
     setTimeout(updateCol,1000);
 });
 var storSync = chrome.storage.sync;
-
-function fetchUserCol() {
+/**
+ * 导出用户的收藏
+ */
+function exportUserCol() {
     var href = location.href;
     var origin = location.origin,
         baseUrl = origin + '/web/fav/topics',
