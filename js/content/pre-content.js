@@ -1,9 +1,9 @@
 var _allFavs; //全部收藏的漫画集合
 var _includeArr = ['kuaikan']; //当URL匹配字符串时才调用
-var storSync = chrome.storage.sync;
+var storLocal = chrome.storage.local;
 var $_imgAss;
 //获取收藏的漫画集合
-storSync.get('allFavs',function(storObj){
+storLocal.get('allFavs',function(storObj){
     _allFavs = storObj.allFavs;
 });
 $(function() {

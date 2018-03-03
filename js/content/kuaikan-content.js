@@ -7,7 +7,6 @@ $(function() {
     //等待本地收藏的集合获取到
     setTimeout(updateCol,1000);
 });
-var storSync = chrome.storage.sync;
 /**
  * 导出用户的收藏
  */
@@ -17,6 +16,7 @@ function exportUserCol() {
         baseUrl = origin + '/web/fav/topics',
         pageNum = 1,
         baseImgUrl = 'https://i1s.kkmh.com/image',
+        baseChapterUrl = origin+'/web/comic/',
         baseIndexUrl = origin + '/web/topic',
         size = 16;
     if (href.search('kuaikan') < 0) return;
@@ -45,8 +45,8 @@ function exportUserCol() {
             storDatas.push({
                 imgUrl: data.vertical_image_url.replace(baseImgUrl, ''),
                 indexUrl: '/' + data.id,
-                newUrl: newA.href.replace(origin,''), //最新章节地址
-                curUrl: curA.href.replace(origin,''), //当前章节地址
+                newUrl: newA.href.replace(baseChapterUrl,''), //最新章节地址
+                curUrl: curA.href.replace(baseChapterUrl,''), //当前章节地址
                 newChapter: data.latest_comic_title, //最新章节名称
                 curChapter: curA.innerText.replace(/\s/g,''), //当前章节名称
                 title: data.title,
@@ -65,7 +65,7 @@ function exportUserCol() {
             var storObj = {
                 baseImg: baseImgUrl,
                 baseIndex: baseIndexUrl,
-                baseChapter: origin,
+                baseChapter: baseChapterUrl,
                 origin:origin,
                 cols: cols,
                 site: 'kuaikan',
@@ -74,10 +74,10 @@ function exportUserCol() {
             _allFavs = (_allFavs && _allFavs.length > 0) ? _allFavs : [];
             log('_allFavs',_allFavs);
             _allFavs.push(storObj);
-            storSync.set({
+            storLocal.set({
                 'allFavs':_allFavs
             });
-            storSync.get('allFavs', function(array) {
+            storLocal.get('allFavs', function(array) {
                 log(array);
             });
         }
@@ -113,7 +113,7 @@ function updateCol(){
     var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/,'').trim();
     curItem.curChapter = curChapter;
     curItem.curUrl = curHref.replace(baseChapter,'');
-    storSync.set({
+    storLocal.set({
       'allFavs':_allFavs
     });
     log('href',aElm.href);

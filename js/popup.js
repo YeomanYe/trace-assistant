@@ -1,7 +1,7 @@
-var storSync = chrome.storage.sync;
+var storLocal = chrome.storage.local;
 var log = console.log;
 var colArr;
-storSync.get('allFavs',function(resObj){
+storLocal.get('allFavs',function(resObj){
     log(resObj);
     colArr = resObj.allFavs;
     colArr.forEach(resolveColItem);
@@ -71,7 +71,7 @@ function delCollect(e){
     var index = $(this).data('index');
     colObjs.cols.splice(index,1);
     log('colObjs',colObjs);
-    storSync.set({
+    storLocal.set({
       'cols':colObjs
     });
 }

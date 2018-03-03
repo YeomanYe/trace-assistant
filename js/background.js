@@ -1,17 +1,17 @@
 var chrNotify = chrome.notifications;
-var storSync = chrome.storage.sync;
+var storLocal = chrome.storage.local;
 var log = console.log;
 var _allFavs;
 var kuaikanFavs;
 var updateNum;
-storSync.get('allFavs',function(resObj){
+storLocal.get('allFavs',function(resObj){
     _allFavs = resObj.allFavs;
-    kuaikanQuery();
     //初始化更新数
-    storSync.get('updateNum',function(resObj){
+    storLocal.get('updateNum',function(resObj){
         updateNum = resObj.updateNum;
         updateNum = updateNum ? updateNum : 0;
         setBadge(updateNum);
+        kuaikanQuery();
     });
 });
 
@@ -66,15 +66,13 @@ function kuaikanQuery(){
         var $html = $(data);
         var aElm = $html.find('table .tit a').get(0);
         var newChapter = aElm.title;
-        var newUrl = aElm.href;
+        var tmpArr = aElm.href.split('/');
+        var newUrl =tmpArr[tmpArr.length - 2];
         if(col.newChapter != newChapter){
             col.newChapter = newChapter;
             col.newUrl = newUrl;
             col.isUpdate = true;
             createNotify(col.title,baseImage + col.imgUrl,'更新到: '+newChapter,baseChapter+newUrl);
-            storSync.set({
-                allFavs:_allFavs
-            });
             setBadge(++updateNum);
         }
     };
@@ -87,4 +85,7 @@ function kuaikanQuery(){
         });
     }
     setTimeout(kuaikanQuery,1000 * 10 * 60);
+    storLocal.set({
+        allFavs:_allFavs
+    });
 }
