@@ -19,7 +19,9 @@ $(function() {
     $ul.addClass('img-list');
     _$imgExport = addImgToUL($ul,'images/comic.png');
     _$imgToggle = addImgToUL($ul,'images/comic.png');
-    _$imgAss = addImgToUL($ul,'images/comic.png');
+    _$imgAss = addImgToUL($ul,'images/comic.png',toggleImg);
+    _$imgExport.toggle();
+    _$imgToggle.toggle();
     $('body').append($ul);
 });
 //给ul列表中加入一个图片
@@ -33,3 +35,7 @@ function addImgToUL($ul,srcStr,clickHandler){
     $ul.append($li);
     return $img;
 }
+
+function toggleImg(){
+    _$imgExport.toggle();
+    _$imgToggle.toggle();}
