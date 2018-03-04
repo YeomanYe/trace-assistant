@@ -3,7 +3,8 @@ img.setAttribute('style','position:fixed;bottom:20px;width:80px;right:20px;z-ind
 document.body.appendChild(img);*/
 var log = console.log;
 $(function() {
-    $_imgAss.on('click', exportUserCol);
+    _$imgExport.on('click', exportUserCol);
+    _$imgToggle.on('click',toggleFavBtnHandler);
     //等待本地收藏的集合获取到
     setTimeout(updateCol, 1000);
 });

@@ -1,7 +1,7 @@
 var _allFavs; //全部收藏的漫画集合
 var _includeArr = ['kuaikan']; //当URL匹配字符串时才调用
 var storLocal = chrome.storage.local;
-var $_imgAss;
+var _$imgAss,_$imgExport,_$imgToggle;
 var _updateNum = 0;
 var log = console.log;
 //获取收藏的漫画集合
@@ -15,8 +15,21 @@ storLocal.get('updateNum',function(storObj){
 $(function() {
     var origin = location.origin;
     if(arrInStr(_includeArr,origin)<0) return;
-    $_imgAss = $('<img>');
-    $_imgAss.addClass('fab-img');
-    $_imgAss.get(0).src = chrome.runtime.getURL('images/comic.png');
-    $('body').append($_imgAss);
+    $ul = $('<ul>');
+    $ul.addClass('img-list');
+    _$imgExport = addImgToUL($ul,'images/comic.png');
+    _$imgToggle = addImgToUL($ul,'images/comic.png');
+    _$imgAss = addImgToUL($ul,'images/comic.png');
+    $('body').append($ul);
 });
+//给ul列表中加入一个图片
+function addImgToUL($ul,srcStr,clickHandler){
+    $li = $('<li>');
+    $img = $('<img>');
+    $img.addClass('fab-img');
+    $img.get(0).src = chrome.runtime.getURL(srcStr);
+    if(clickHandler) $img.on('click',clickHandler);
+    $li.append($img);
+    $ul.append($li);
+    return $img;
+}

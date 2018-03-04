@@ -3,9 +3,12 @@
 }
 
 .fab-img {
+    width: 80px;
+}
+
+.img-list{
+    z-index: 999;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 80px;
-    z-index: 999;
 }
