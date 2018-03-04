@@ -162,3 +162,18 @@ h3 a:hover{
     color: white;
     text-decoration: none;
 }
+
+nav span{
+    display: inline-block;
+    background: rgb(78,144,232);
+    color: white;
+    margin: 0;
+    padding: 10px 88px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+nav span:nth-of-type(2){
+    color: black;
+    background: white;
+}

@@ -38,4 +38,5 @@ function addImgToUL($ul,srcStr,clickHandler){
 
 function toggleImg(){
     _$imgExport.toggle();
-    _$imgToggle.toggle();}
+    _$imgToggle.toggle();
+}
