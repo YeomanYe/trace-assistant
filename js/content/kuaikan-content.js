@@ -3,7 +3,7 @@ img.setAttribute('style','position:fixed;bottom:20px;width:80px;right:20px;z-ind
 document.body.appendChild(img);*/
 var log = console.log;
 $(function() {
-    $_imgAss.on('click', toggleFavBtnHandler);
+    $_imgAss.on('click', exportUserCol);
     //等待本地收藏的集合获取到
     setTimeout(updateCol, 1000);
 });
@@ -31,7 +31,7 @@ function exportUserCol() {
         baseUrl = origin + '/web/fav/topics',
         size = 16;
     if (href.search('kuaikan') < 0) return;
-    var cols = []; //表示收藏的集合
+    var cols = getKuaikanFavs(); //表示收藏的集合
     //递归遍历，获取所有的收藏结果
     var successCallback = function(resData) {
         log('resData', resData);
@@ -43,8 +43,8 @@ function exportUserCol() {
                 baseImgUrl = getBaseUrl(datas[0].vertical_image_url, datas[1].vertical_image_url);
         }
         datas.forEach(function(data) {
-            var indexUrl = baseIndexUrl + '/' + data.id;
-            var resText = $.ajax(indexUrl, {
+            var indexCompleteUrl = baseIndexUrl + '/' + data.id;
+            var resText = $.ajax(indexCompleteUrl, {
                 async: false
             }).responseText;
             // log('resText',resText);
@@ -53,18 +53,22 @@ function exportUserCol() {
             log('$as', $as);
             var newA = $as.get(0),
                 curA = $as.get($as.length - 1);
+            //如果数组中有标题和目录链接则说明已经存在该漫画了
+            var title = data.title,indexUrl = '/' + data.id;
+            if(arrInStr(cols,title,'title') >= 0 && arrInStr(cols,indexUrl,'indexUrl') >= 0) return;
             storDatas.push({
                 imgUrl: data.vertical_image_url.replace(baseImgUrl, ''),
-                indexUrl: '/' + data.id,
+                indexUrl: indexUrl,
                 newUrl: newA.href.replace(baseChapterUrl, ''), //最新章节地址
                 curUrl: curA.href.replace(baseChapterUrl, ''), //当前章节地址
                 newChapter: data.latest_comic_title, //最新章节名称
                 curChapter: curA.innerText.replace(/\s/g, ''), //当前章节名称
-                title: data.title,
+                title: title,
                 isUpdate: false
             });
         });
         cols = cols.concat(storDatas);
+        log('storDatas',storDatas);
         if (datas.length === size) {
             ++pageNum;
             var url = baseUrl + '?page=' + pageNum + '&size=' + size;
@@ -75,9 +79,7 @@ function exportUserCol() {
         } else {
             storObj.cols = cols;
             log('storObj', storObj);
-            _allFavs = (_allFavs && _allFavs.length > 0) ? _allFavs : [];
             log('_allFavs', _allFavs);
-            _allFavs.push(storObj);
             storLocal.set({
                 'allFavs': _allFavs
             });
