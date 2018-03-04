@@ -97,13 +97,14 @@ function exportUserCol() {
 function updateCol() {
     log('_allFavs', _allFavs);
     var href = location.href;
-    if (href.indexOf('kuaikan') < 0) return;
+    if (href.indexOf('comic') < 0) return;
     var $as = $('#main h2 .ico a');
     if ($as.length < 1) return;
     var aElm = $as.get(1);
     var kuaikanFavs = getKuaikanFavs();    
     //解析当前页面并更新阅读记录
     var index = arrInStr(kuaikanFavs, aElm.href, 'indexUrl');
+    if(index < 0) return;
     var curItem = kuaikanFavs[index];
     var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/, '').trim();
     curItem.curChapter = curChapter;
@@ -113,12 +114,12 @@ function updateCol() {
         --_updateNum;
         storLocal.set({
             updateNum: _updateNum,
-            'allFavs': _allFavs
+            allFavs: _allFavs
         });
         chrome.runtime.sendMessage(null, 'updateNumChange');
     } else {
         storLocal.set({
-            'allFavs': _allFavs
+            allFavs: _allFavs
         });
     }
 }
@@ -144,11 +145,17 @@ function toggleFavBtnHandler(){
 /**
  * 添加或取消收藏
  */
-function toggleFav(name,indexUrl,curChapter,curUrl){
+function toggleFav(title,indexUrl,curChapter,curUrl){
     var kuaikanFavs = getKuaikanFavs();
     var index = arrInStr(kuaikanFavs,indexUrl,'indexUrl');
     //当前漫画已经在收藏的目录中，取消收藏
-    if(index >= 0) kuaikanFavs.splice(index,1);
+    if(index >= 0) {
+        kuaikanFavs.splice(index,1);
+        storLocal.set({
+            allFavs:_allFavs
+        });
+        return;
+    }
     //当前漫画不在收藏目录中，收藏进该漫画
     var favItem;
     var indexSuccess = function(text){
@@ -157,14 +164,14 @@ function toggleFav(name,indexUrl,curChapter,curUrl){
         var newA = $as.get(0);
         var curA = $as.get($as.length - 1);
         curChapter = curChapter ? curChapter : curA.title;
-        curUrl = curUrl ? curUrl : curUrl.href;
+        curUrl = curUrl ? curUrl : curA.href;
         favItem = {
             indexUrl:indexUrl.replace(baseIndexUrl,''),
             newUrl:newA.href.replace(baseChapterUrl,''),
             curUrl:curUrl.replace(baseChapterUrl,''),
             newChapter:newA.title,
             curChapter:curChapter,
-            title:name,
+            title:title,
             isUpdate:false,
         };
     };
@@ -177,6 +184,8 @@ function toggleFav(name,indexUrl,curChapter,curUrl){
         var $img = $html.find('.search-result .clearfix .comic-img .kk-img');
         var imgUrl = $img.get(0).src
         favItem.imgUrl = imgUrl.replace(baseImgUrl,'');
+        kuaikanFavs.push(favItem);
+        log('allFavs',_allFavs);
         storLocal.set({
             allFavs:_allFavs
         });
@@ -186,7 +195,7 @@ function toggleFav(name,indexUrl,curChapter,curUrl){
         success:querySuccess,
         type:'POST',
         data:{
-            keyword:'怪奇实录',
+            keyword:title,
             button:'搜索'
         },
     });
@@ -196,10 +205,13 @@ function toggleFav(name,indexUrl,curChapter,curUrl){
  * 获取kuaikan漫画网收藏的集合
  */
 function getKuaikanFavs(){
-    for (var i = 0, len = _allFavs.length; i < len; i++) {
-        var item = _allFavs[i];
-        if (item.origin.indexOf('kuaikan') >= 0) {
-            return item.cols;
-        }
+    var index = arrInStr(_allFavs,'kuaikan','site');
+    var cols = [];
+    if(index < 0){
+        storObj.cols = cols;
+        _allFavs.push(storObj);
+    }else{
+        cols = _allFavs[index].cols;
     }
+    return cols;
 }

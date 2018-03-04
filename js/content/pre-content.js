@@ -6,7 +6,7 @@ var _updateNum = 0;
 var log = console.log;
 //获取收藏的漫画集合
 storLocal.get('allFavs',function(storObj){
-    _allFavs = storObj.allFavs;
+    _allFavs = storObj.allFavs ? storObj.allFavs : [];
 });
 //获取更新的漫画数量
 storLocal.get('updateNum',function(storObj){

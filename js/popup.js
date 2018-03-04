@@ -1,15 +1,15 @@
 var storLocal = chrome.storage.local;
 var log = console.log;
-var colArr;
+var _allFavs;
 storLocal.get('allFavs',function(resObj){
     log(resObj);
-    colArr = resObj.allFavs;
-    colArr.forEach(resolveColItem);
+    _allFavs = resObj.allFavs;
+    _allFavs.forEach(resolveColItem);
 });
 /**
  * 处理每一个网站收藏的漫画
  */
-function resolveColItem(colItem){
+function resolveColItem(colItem,colIndex){
     var baseImg = colItem.baseImg,
         baseIndex = colItem.baseIndex,
         baseChapter = colItem.baseChapter,
@@ -44,7 +44,7 @@ function resolveColItem(colItem){
             href:origin,
             target:'_blank'
         });
-        $liInstance.find('.right .delBtn').text('删除').attr('data-index',''+index).on('click',delCollect);
+        $liInstance.find('.right .delBtn').text('删除').attr('data-index',colIndex+','+index).on('click',delCollect);
         $liInstance.find('.right .contBtn').text('继续阅读').attr({
             href:baseChapter + obj.curUrl,
             target:'_blank'
@@ -68,11 +68,11 @@ function delCollect(e){
     //删除UI
     $(this).parents('li').remove();
     //从本地存储中删除
-    var index = $(this).data('index');
-    colObjs.cols.splice(index,1);
-    log('colObjs',colObjs);
+    var indexArr = $(this).data('index').split(',');
+    _allFavs[indexArr[0]].cols.splice(indexArr[1],1);
+    log('_allFavs',_allFavs);
     storLocal.set({
-      'cols':colObjs
+      allFavs:_allFavs
     });
 }
 /**
