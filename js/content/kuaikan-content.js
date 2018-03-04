@@ -154,8 +154,19 @@ function toggleFav(name,indexUrl,curChapter,curUrl){
         success:indexSuccess,
         async:false
     });
+    var querySuccess = function(text){
+        var $html = $(text);
+        var $img = $html.find('.search-result .clearfix .comic-img .kk-img');
+        var imgUrl = $img.get(0).src
+        favItem.imgUrl = imgUrl.replace(baseImgUrl,'');
+        storLocal.set({
+            allFavs:_allFavs
+        });
+    };
     $.ajax('http://www.kuaikanmanhua.com/',{
         async:false,
+        success:querySuccess,
+        type:'POST',
         data:{
             keyword:'怪奇实录',
             button:'搜索'
