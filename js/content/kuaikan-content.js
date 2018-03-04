@@ -3,7 +3,7 @@ img.setAttribute('style','position:fixed;bottom:20px;width:80px;right:20px;z-ind
 document.body.appendChild(img);*/
 var log = console.log;
 $(function() {
-    $_imgAss.on('click', exportUserCol);
+    $_imgAss.on('click', toggleFavBtnHandler);
     //等待本地收藏的集合获取到
     setTimeout(updateCol, 1000);
 });
@@ -22,7 +22,6 @@ if (location.href.indexOf('kuaikan') >= 0) {
         site: 'kuaikan'
     };
 }
-
 /**
  * 导出用户的收藏
  */
@@ -124,6 +123,25 @@ function updateCol() {
     }
 }
 /**
+ * 切换收藏
+ */
+function toggleFavBtnHandler(){
+    var title = $('body .article-detail-info .comic-name').text();
+    var href = location.origin + location.pathname;
+    if(href.indexOf('topic') >= 0){
+        toggleFav(title,href);
+    }else{
+        var aElm = $('#main h2 .ico a').get(1);
+        title = aElm.title;
+        var curUrl = href;
+        href = aElm.href;
+        if(href.indexOf('topic') >= 0){
+        var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/, '').trim();
+        toggleFav(title,href,curChapter,curUrl);
+        }
+    }
+}
+/**
  * 添加或取消收藏
  */
 function toggleFav(name,indexUrl,curChapter,curUrl){
@@ -174,16 +192,6 @@ function toggleFav(name,indexUrl,curChapter,curUrl){
     });
 
 }
-/*storDatas.push({
-                imgUrl: data.vertical_image_url.replace(baseImgUrl, ''),
-                indexUrl: '/' + data.id,
-                newUrl: newA.href.replace(baseChapterUrl, ''), //最新章节地址
-                curUrl: curA.href.replace(baseChapterUrl, ''), //当前章节地址
-                newChapter: data.latest_comic_title, //最新章节名称
-                curChapter: curA.innerText.replace(/\s/g, ''), //当前章节名称
-                title: data.title,
-                isUpdate: false
-            });*/
 /**
  * 获取kuaikan漫画网收藏的集合
  */
