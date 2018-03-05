@@ -1,11 +1,13 @@
 var storLocal = chrome.storage.local;
 var log = console.log;
 var _allFavs;
-var $optionTab,$colTab,$comicList,$settingList;
+var $optionTab,$colTab,$comicList,$settingList,$export,$import;
 storLocal.get('allFavs',function(resObj){
     log(resObj);
     $optionTab = $('#optionTab').on('click',optionTabHandler);
     $colTab = $('#colTab').on('click',colTabHandler);
+    $export = $('#export').on('click',exportHandler);
+    $import = $('#import').on('click',importHandler);
     $comicList = $('#comicList');
     $settingList = $('#settingList');
     $settingList.hide();
@@ -85,6 +87,53 @@ function resolveColItem(colItem,colIndex){
         $comicList.append($liInstance);
     });
 }
+
+function exportHandler(){
+    /*chrome.storage.local.get(["MANIFEST", "OPTIONS", "CONFIG", "SITECONF", "CACHE", "LANG"], function(storage) {
+            chrome.runtime.sendMessage({ type: 'db', fun: 'getFavList' }, function(result) {
+                var data = {
+                    storage: storage,
+                    favList: result
+                };
+                var blob = new Blob([JSON.stringify(data)], { type: "text/plain;charset=utf-8" });
+                saveAs(blob, "漫神器.json");
+            });
+        });*/
+    storLocal.get(['allFavs,updateNum'],function(resObj){
+        var blob = new Blob([JSON.stringify(resObj)], { type:'text/plain;charset=utf-8' });
+        saveAs(blob, 'ComicList.json');
+    });
+}
+
+function importHandler(){
+
+}
+
+/* $("#file_import").change(function(e) {
+        var files = this.files;
+        if (files.length) {
+            var file = files[0],
+                reader = new FileReader(); //new一个FileReader实例
+
+            reader.onload = function() {
+                var data = JSON.parse(this.result);
+                chrome.storage.local.set({
+                    "MANIFEST": data.storage.MANIFEST,
+                    "OPTIONS": data.storage.OPTIONS,
+                    "CONFIG": data.storage.CONFIG,
+                    "SITECONF": data.storage.SITECONF,
+                    "CACHE": data.storage.cache,
+                    "LANG": data.storage.LANG
+                });
+                var favList = adapterData(data.favList);
+                for(var i=0,len=favList.length;i<len;i++){
+                    chrome.runtime.sendMessage({ type: 'db', fun: 'addFav', params:favList[i] }, new Function());
+                }
+            };
+            reader.readAsText(file);
+        }
+        chrome.storage.local.set({});
+    });*/
 /**
  * 删除收藏的漫画
  */
