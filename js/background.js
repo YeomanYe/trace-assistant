@@ -40,7 +40,11 @@ function updateBadge(callback){
  * 设置徽章
  */
 function setBadge(num){
-    if(!num) return;
+    if(num<=0) {
+        chrome.browserAction.setBadgeText({text:''});
+        chrome.browserAction.setBadgeBackgroundColor({color:'transparent'});
+        return;
+    }
     chrome.browserAction.setBadgeText({text:''+num});
     chrome.browserAction.setBadgeBackgroundColor({color: 'red'})
 }

@@ -1,11 +1,35 @@
 var storLocal = chrome.storage.local;
 var log = console.log;
 var _allFavs;
+var $optionTab,$colTab,$comicList,$settingList;
 storLocal.get('allFavs',function(resObj){
     log(resObj);
+    $optionTab = $('#optionTab').on('click',optionTabHandler);
+    $colTab = $('#colTab').on('click',colTabHandler);
+    $comicList = $('#comicList');
+    $settingList = $('#settingList');
+    $settingList.hide();
     _allFavs = resObj.allFavs;
     _allFavs.forEach(resolveColItem);
 });
+/**
+ * 点击收藏tab事件
+ */
+function colTabHandler(){
+    $comicList.show();
+    $settingList.hide();
+    $colTab.addClass('curTab');
+    $optionTab.removeClass('curTab');
+}
+/**
+ * 点击设置tab事件
+ */
+function optionTabHandler(){
+    $comicList.hide();
+    $settingList.show();
+    $optionTab.addClass('curTab');
+    $colTab.removeClass('curTab');
+}
 /**
  * 处理每一个网站收藏的漫画
  */
@@ -58,7 +82,7 @@ function resolveColItem(colItem,colIndex){
         }
         
         log($liInstance);
-        $('.list').append($liInstance);
+        $comicList.append($liInstance);
     });
 }
 /**

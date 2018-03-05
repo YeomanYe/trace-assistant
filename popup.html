@@ -11,12 +11,18 @@
 <body>
     <!-- tab栏 -->
     <nav>
-        <span>收藏</span>
-        <span>设置</span>
+        <span id="colTab" class="curTab">收藏</span>
+        <span id="optionTab">设置</span>
     </nav>
     <!-- 收藏的漫画列表 -->
-    <ul class="list">
+    <ul id="comicList" class="list">
         
+    </ul>
+    <!-- 设置列表 -->
+    <ul id="settingList" class="list">
+        <legend><span>阅读设置</span></legend>
+        <li><span>导出配置</span></li>
+        <li><span>导入配置</span></li>
     </ul>
     <template id="listItemTemplate">
         <li>

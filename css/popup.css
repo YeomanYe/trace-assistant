@@ -165,15 +165,35 @@ h3 a:hover{
 
 nav span{
     display: inline-block;
-    background: rgb(78,144,232);
-    color: white;
     margin: 0;
     padding: 10px 88px;
     font-size: 18px;
     cursor: pointer;
-}
-
-nav span:nth-of-type(2){
     color: black;
     background: white;
+}
+
+.curTab{
+    background: rgb(78,144,232);
+    color: white;
+}
+
+#settingList li{
+    text-align:center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+#settingList li span{
+    font-size: 18px;
+    cursor: pointer;
+    color: #999;
+    padding: 10px;
+}
+
+#settingList legend{
+    border-bottom: 2px solid #777;
+    font-size: 18px;
+    color: #123;
+    padding: 10px;
 }
