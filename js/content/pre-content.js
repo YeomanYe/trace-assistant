@@ -1,25 +1,30 @@
 var _allFavs; //全部收藏的漫画集合
-var _includeArr = ['kuaikan']; //当URL匹配字符串时才调用
+var _includeArr = ['kuaikan','dmzj']; //当URL匹配字符串时才调用
 var storLocal = chrome.storage.local;
 var _$imgAss,_$imgExport,_$imgToggle;
 var _updateNum = 0;
 var log = console.log;
-//获取收藏的漫画集合
-storLocal.get('allFavs',function(storObj){
+var cGetUrl = chrome.runtime.getURL;
+var _src = {
+    collect:cGetUrl('images/collect.png'),
+    collectGrey:cGetUrl('images/collect-grey.png'),
+    exportCollect:cGetUrl('images/export-collect.png'),
+    comicGrey:cGetUrl('images/comic-grey.png'),
+    comic:cGetUrl('images/comic.png')
+};
+//初始化存储
+storLocal.get(['allFavs','updateNum'],function(storObj){
     _allFavs = storObj.allFavs ? storObj.allFavs : [];
-});
-//获取更新的漫画数量
-storLocal.get('updateNum',function(storObj){
-    _updateNum = storObj.updateNum;
+    _updateNum = storObj.updateNum ? storObj.updateNum : 0;
 });
 $(function() {
     var origin = location.origin;
     if(arrInStr(_includeArr,origin)<0) return;
     $ul = $('<ul>');
     $ul.addClass('img-list');
-    _$imgExport = addImgToUL($ul,'images/comic.png');
-    _$imgToggle = addImgToUL($ul,'images/comic.png');
-    _$imgAss = addImgToUL($ul,'images/comic.png',toggleImg);
+    _$imgExport = addImgToUL($ul,_src.exportCollect);
+    _$imgToggle = addImgToUL($ul,_src.collectGrey);
+    _$imgAss = addImgToUL($ul,_src.comicGrey,createToggle());
     _$imgExport.toggle();
     _$imgToggle.toggle();
     $('body').append($ul);
@@ -29,14 +34,24 @@ function addImgToUL($ul,srcStr,clickHandler){
     $li = $('<li>');
     $img = $('<img>');
     $img.addClass('fab-img');
-    $img.get(0).src = chrome.runtime.getURL(srcStr);
+    $img.get(0).src = srcStr;
     if(clickHandler) $img.on('click',clickHandler);
     $li.append($img);
     $ul.append($li);
     return $img;
 }
 
-function toggleImg(){
-    _$imgExport.toggle();
-    _$imgToggle.toggle();
+function createToggle(){
+    var _show = false;
+    return function(){
+        if(_show) {
+            _show = false;
+            _$imgAss.get(0).src = _src.comicGrey;
+        }else{
+            _show = true;
+            _$imgAss.get(0).src = _src.comic;
+        }
+        _$imgExport.toggle();
+        _$imgToggle.toggle();    
+    }
 }

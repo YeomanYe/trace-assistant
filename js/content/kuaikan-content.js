@@ -157,6 +157,8 @@ function toggleFav(title,indexUrl,curChapter,curUrl){
         storLocal.set({
             allFavs:_allFavs
         });
+        //设置图标为灰色
+        _$imgToggle.get(0).src = _src.collectGrey;
         return;
     }
     //当前漫画不在收藏目录中，收藏进该漫画
@@ -192,6 +194,7 @@ function toggleFav(title,indexUrl,curChapter,curUrl){
         storLocal.set({
             allFavs:_allFavs
         });
+        _$imgToggle.get(0).src = _src.collect;
     };
     $.ajax('http://www.kuaikanmanhua.com/',{
         async:false,
