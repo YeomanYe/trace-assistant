@@ -5,6 +5,7 @@
     <title>漫画助手</title>
     <link rel="stylesheet" href="css/popup.css"/>
     <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/FileSaver.min.js" ></script>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
 </head>
@@ -24,6 +25,7 @@
         <li><span id="export">导出配置</span></li>
         <li><span id="import">导入配置</span></li>
     </ul>
+    <input type="file" hidden name="fileImport" id="fileImport">
     <template id="listItemTemplate">
         <li>
             <a class="left"><div></div></a>
