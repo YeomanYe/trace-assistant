@@ -17,7 +17,7 @@ function init(){
     $settingList.hide();
     storLocal.get('allFavs', function(resObj) {
         log(resObj);
-        _allFavs = resObj.allFavs;
+        _allFavs = resObj.allFavs ? resObj.allFavs : [];
         _allFavs.forEach(resolveColItems);
     });
 }
