@@ -5,6 +5,7 @@ var _$imgAss,_$imgExport,_$imgToggle;
 var _updateNum = 0;
 var log = console.log;
 var cGetUrl = chrome.runtime.getURL;
+var sendMsg = chrome.runtime.sendMessage;
 var _src = {
     collect:cGetUrl('images/collect.png'),
     collectGrey:cGetUrl('images/collect-grey.png'),
@@ -23,8 +24,8 @@ $(function() {
     $ul = $('<ul>');
     $ul.addClass('img-list');
     _$imgExport = addImgToUL($ul,_src.exportCollect);
-    _$imgToggle = addImgToUL($ul,_src.collectGrey);
-    _$imgAss = addImgToUL($ul,_src.comicGrey,createToggle());
+    _$imgToggle = addImgToUL($ul,_src.collectGrey,toggleFav);
+    _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu);
     _$imgExport.toggle();
     _$imgToggle.toggle();
     $('body').append($ul);
@@ -40,18 +41,27 @@ function addImgToUL($ul,srcStr,clickHandler){
     $ul.append($li);
     return $img;
 }
-
-function createToggle(){
-    var _show = false;
-    return function(){
-        if(_show) {
-            _show = false;
-            _$imgAss.get(0).src = _src.comicGrey;
-        }else{
-            _show = true;
-            _$imgAss.get(0).src = _src.comic;
-        }
-        _$imgExport.toggle();
-        _$imgToggle.toggle();    
+/**
+ * 切换菜单图标
+ */
+function toggleMenu(){
+    var imgElm = _$imgAss.get(0);
+    if(imgElm.src === _src.comicGrey){
+        imgElm.src = _src.comic;
+    }else{
+        imgElm.src = _src.comicGrey;
+    }
+    _$imgExport.toggle();
+    _$imgToggle.toggle();    
+}
+/**
+ * 切换收藏与非收藏图标
+ */
+function toggleFav(){
+    var imgElm = _$imgToggle.get(0);
+    if(imgElm.src === _src.collectGrey){
+        imgElm.src = _src.collect;
+    }else{
+        imgElm.src = _src.collectGrey;
     }
 }

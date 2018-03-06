@@ -3,7 +3,9 @@ img.setAttribute('style','position:fixed;bottom:20px;width:80px;right:20px;z-ind
 document.body.appendChild(img);*/
 var log = console.log;
 $(function() {
-    _$imgExport.on('click', exportUserCol);
+    _$imgExport.on('click', function(){
+        sendMsg(null, 'exportCollect-'+location.origin);
+    });
     _$imgToggle.on('click',toggleFavBtnHandler);
     //等待本地收藏的集合获取到
     setTimeout(updateCol, 1000);
@@ -99,19 +101,25 @@ function exportUserCol() {
  */
 function updateCol() {
     log('_allFavs', _allFavs);
+    updateColIcon();
     var href = location.href;
     if (href.indexOf('comic') < 0) return;
     var $as = $('#main h2 .ico a');
     if ($as.length < 1) return;
     var aElm = $as.get(1);
-    var kuaikanFavs = getKuaikanFavs();    
+    var kuaikanFavs = getKuaikanFavs();
+    var indexUrl = aElm.href,title = aElm.title;    
+    log('title',title,'indexUrl',indexUrl);
     //解析当前页面并更新阅读记录
-    var index = arrInStr(kuaikanFavs, aElm.href, 'indexUrl');
-    if(index < 0) return;
+    var index = arrInStr(kuaikanFavs,title,'title');
+    if(index < 0 ) return;
     var curItem = kuaikanFavs[index];
     var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/, '').trim();
     curItem.curChapter = curChapter;
     curItem.curUrl = href.replace(baseChapterUrl, '');
+    log('updateCol curItem',curItem);
+    log('updateCol curChapter',curChapter);
+    log('updateCol curUrl',href.replace(baseChapterUrl, ''));
     if (curItem.isUpdate) {
         curItem.isUpdate = false;
         --_updateNum;
@@ -119,7 +127,7 @@ function updateCol() {
             updateNum: _updateNum,
             allFavs: _allFavs
         });
-        chrome.runtime.sendMessage(null, 'updateNumChange');
+        sendMsg(null, 'updateNumChange');
     } else {
         storLocal.set({
             allFavs: _allFavs
@@ -146,19 +154,49 @@ function toggleFavBtnHandler(){
     }
 }
 /**
+ * 如果当前漫画已被收藏则图标为黄色否则为灰色
+ */
+function updateColIcon(){
+    var obj = getCurComic();
+    log('getCurComic',obj);
+    var favs = getKuaikanFavs();
+    var index = arrInStr(favs,obj.title,'title');
+    if(index >= 0) _$imgToggle.get(0).src = _src.collect;
+}
+/**
+ * 获取当前页面漫画的名称以及目录地址
+ */
+function getCurComic(){
+    var title = $('body .article-detail-info .comic-name').text();
+    var href = location.origin + location.pathname;
+    var retObj;
+    if(href.indexOf('topic') >= 0){
+        retObj =  {
+            title:title,
+            indexUrl:href
+        };
+    }else{
+        var aElm = $('#main h2 .ico a').get(1);
+        if(aElm)
+        retObj = {
+            title:aElm.title,
+            indexUrl:aElm.href
+        };
+    }
+    return retObj
+}
+/**
  * 添加或取消收藏
  */
 function toggleFav(title,indexUrl,curChapter,curUrl){
     var kuaikanFavs = getKuaikanFavs();
-    var index = arrInStr(kuaikanFavs,indexUrl,'indexUrl');
+    var index = arrInStr(kuaikanFavs,title,'title');
     //当前漫画已经在收藏的目录中，取消收藏
     if(index >= 0) {
         kuaikanFavs.splice(index,1);
         storLocal.set({
             allFavs:_allFavs
         });
-        //设置图标为灰色
-        _$imgToggle.get(0).src = _src.collectGrey;
         return;
     }
     //当前漫画不在收藏目录中，收藏进该漫画
@@ -194,7 +232,6 @@ function toggleFav(title,indexUrl,curChapter,curUrl){
         storLocal.set({
             allFavs:_allFavs
         });
-        _$imgToggle.get(0).src = _src.collect;
     };
     $.ajax('http://www.kuaikanmanhua.com/',{
         async:false,
