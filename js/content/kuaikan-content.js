@@ -164,7 +164,7 @@ function updateColIcon(){
     if(index >= 0) _$imgToggle.get(0).src = _src.collect;
 }
 /**
- * 获取当前页面漫画的名称以及目录地址
+ * 获取当前页面漫画的名称以及目录地址,isIndex代表获取信息是否来自目录页
  */
 function getCurComic(){
     var title = $('body .article-detail-info .comic-name').text();
@@ -173,14 +173,16 @@ function getCurComic(){
     if(href.indexOf('topic') >= 0){
         retObj =  {
             title:title,
-            indexUrl:href
+            indexUrl:href,
+            isIndex:true
         };
     }else{
         var aElm = $('#main h2 .ico a').get(1);
         if(aElm)
         retObj = {
             title:aElm.title,
-            indexUrl:aElm.href
+            indexUrl:aElm.href,
+            isIndex:false
         };
     }
     return retObj

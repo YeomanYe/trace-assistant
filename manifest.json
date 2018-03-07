@@ -4,7 +4,7 @@
       "scripts":["lib/jquery.min.js","js/utils.js","js/background.js"]
    },
    "browser_action": {
-      "default_icon": "images/icon/logo.png",
+      "default_icon": "images/icon/logo16.png",
       "default_popup": "popup.html",
       "default_title": "__MSG_ext_name__"
    },
@@ -15,6 +15,13 @@
       "run_at": "document_end"
    } ],
    "content_security_policy": "script-src 'self'; object-src 'self'",
+   "icons": {
+      "16": "images/icon/logo16.png",
+      "32": "images/icon/logo32.png",
+      "48": "images/icon/logo48.png",
+      "64": "images/icon/logo64.png",
+      "128": "images/icon/logo128.png"
+   },
    // "debug": false,
    // "default_locale": "zh_CN",
    // "description": "__MSG_ext_description__",

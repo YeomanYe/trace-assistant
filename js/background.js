@@ -16,6 +16,7 @@ chrome.runtime.onMessage.addListener(function(msg){
     switch(msgArr[0]){
         case 'updateNumChange':updateBadge();break;
         case 'exportCollect':exportCollect(msgArr[1]);break;
+        case 'reloadStore':break; //重新加载存储
     }
 });
 
@@ -24,6 +25,13 @@ chrome.notifications.onClicked.addListener(function(url){
     log('url',url);
     window.open(url);
 });
+
+function loadData(callback){
+    storLocal.get(['allFavs','updateNum'],function(resObj){
+        _allFavs = resObj.allFavs ? resObj.allFavs : [];
+        updateNum = resObj.updateNum ? resObj.updateNum : 0;
+    });
+}
 
 /**
  * 更新徽章数
@@ -46,7 +54,7 @@ function setBadge(num){
         chrome.browserAction.setBadgeText({text:''});
         chrome.browserAction.setBadgeBackgroundColor({color:'red'});
         storLocal.set({
-            updateNum:updateNum
+            updateNum:0
         });
         return;
     }
@@ -165,11 +173,16 @@ function kuaikanExport(origin) {
             //如果数组中有标题和目录链接则说明已经存在该漫画了
             var title = data.title,indexUrl = '/' + data.id;
             if(arrInStr(cols,title,'title') >= 0 && arrInStr(cols,indexUrl,'indexUrl') >= 0) return;
+            var tmpArr,newUrl,curUrl;
+            tmpArr = newA.href.split('/');
+            newUrl = tmpArr[tmpArr.length-2] + '/';
+            tmpArr = curA.href.split('/');
+            curUrl = tmpArr[tmpArr.length-2] + '/';
             storDatas.push({
                 imgUrl: data.vertical_image_url.replace(baseImgUrl, ''),
                 indexUrl: indexUrl,
-                newUrl: newA.href.replace(baseChapterUrl, ''), //最新章节地址
-                curUrl: curA.href.replace(baseChapterUrl, ''), //当前章节地址
+                newUrl: newUrl, //最新章节地址
+                curUrl: curUrl, //当前章节地址
                 newChapter: data.latest_comic_title, //最新章节名称
                 curChapter: curA.innerText.replace(/\s/g, ''), //当前章节名称
                 title: title,
@@ -205,14 +218,14 @@ function kuaikanExport(origin) {
 /**
  * 获取kuaikan漫画网收藏的集合
  */
-function getKuaikanFavs(){
-    var index = arrInStr(_allFavs,'kuaikan','site');
+function getKuaikanFavs(allFavs){
+    var index = arrInStr(allFavs,'kuaikan','site');
     var cols = [];
     if(index < 0){
         storObj.kuaikan.cols = cols;
-        _allFavs.push(storObj.kuaikan);
+        allFavs.push(storObj.kuaikan);
     }else{
-        cols = _allFavs[index].cols;
+        cols = allFavs[index].cols;
     }
     return cols;
 }

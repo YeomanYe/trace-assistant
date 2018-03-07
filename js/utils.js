@@ -27,3 +27,34 @@ function arrInStr(arr,str,field){
     }
     return -1;
 }
+/**
+ * 获取存储并执行回调函数
+ */
+function getStoreLocal(keys,callback){
+    chrome.storage.local.get(keys,function(resObj){
+        //不是字符串就是数组了
+        if(typeof keys === 'string'){
+            callback(resObj[keys]);
+        }else{
+            var vals = [];
+            for(var i=0,len=keys.length;i<len;i++){
+                vals.push(resObj[keys[i]]);
+            }
+            callback.apply(null,vals);
+        }
+    });
+}
+
+function getFavs(siteName,defaultStore,callback){
+    getStoreLocal('allFavs',function(allFavs){
+        var index = arrInStr(allFavs,siteName,'site');
+        var cols = [];
+        if(index < 0){
+            defaultStore.cols = cols;
+            allFavs.push(defaultStore);
+        }else{
+            cols = allFavs[index].cols;
+        }
+        callback(cols,allFavs);
+    });
+}
