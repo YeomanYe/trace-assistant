@@ -14,9 +14,12 @@ if (location.href.indexOf('ac.qq') >= 0) {
 }
 
 $(function(){
+    if(location.href.indexOf('ac.qq') < 0)return;
     _$imgExport.on('click',exportUserCol);
 });
-
+/**
+ * 导出腾讯动漫用户配置
+ */
 function exportUserCol(){
     $.ajax('http://ac.qq.com/MyPersonalCenter/getUserCollection',{success:function(text){
         var userCols = JSON.parse(text).data;
@@ -29,8 +32,8 @@ function exportUserCol(){
                     var col = {
                         imgUrl: item.coverUrl.replace(baseImgUrl, ''),
                         indexUrl: item.id,
-                        newChapter:'第'+item.nextSeqNo+'话',
-                        curChapter:'第' + item.lateSeqNo + '话',
+                        newChapter:'第'+item.lateSeqNo+'话',
+                        curChapter:'第' + item.nextSeqNo + '话',
                         newUrl: item.id+'/seqno/'+item.lateSeqNo, //最新章节地址
                         curUrl: item.id+'/seqno/'+item.nextSeqNo, //当前章节地址
                         title: item.title,

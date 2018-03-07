@@ -44,7 +44,9 @@ function getStoreLocal(keys,callback){
         }
     });
 }
-
+/**
+ * 获取某站点下所有收藏的漫画
+ */
 function getFavs(siteName,defaultStore,callback){
     getStoreLocal('allFavs',function(allFavs){
         var index = arrInStr(allFavs,siteName,'site');
@@ -57,4 +59,17 @@ function getFavs(siteName,defaultStore,callback){
         }
         callback(cols,allFavs);
     });
+}
+/**
+ * 减少更新的漫画数量，标志
+ */
+function decUpdateNum(item){
+    if(item.isUpdate){
+        item.isUpdate = false;
+        getStoreLocal('updateNum',function(updateNum){
+            --updateNum;
+            storLocal.set({updateNum:updateNum});
+        });
+        chrome.runtime.sendMessage(null, 'updateNumChange');
+    }
 }
