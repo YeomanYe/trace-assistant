@@ -3,6 +3,7 @@ img.setAttribute('style','position:fixed;bottom:20px;width:80px;right:20px;z-ind
 document.body.appendChild(img);*/
 var log = console.log;
 $(function() {
+    if(location.href.indexOf('kuaikan')<0) return;
     _$imgExport.on('click', function() {
         sendMsg(null, 'exportCollect-' + location.origin);
     });

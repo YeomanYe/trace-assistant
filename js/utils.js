@@ -45,11 +45,14 @@ function getStoreLocal(keys,callback){
     });
 }
 /**
- * 获取某站点下所有收藏的漫画
+ * 获取某站点下所有收藏的漫画,以及漫画中更新的数目
  */
 function getFavs(siteName,defaultStore,callback){
-    getStoreLocal('allFavs',function(allFavs){
-        var index = arrInStr(allFavs,siteName,'site');
+    getStoreLocal(['allFavs','updateNum'],function(allFavs,updateNum){
+        allFavs = allFavs ? allFavs : [];
+        updateNum = updateNum ? updateNum : 0;
+        var index = -1;
+        if(allFavs.length) index = arrInStr(allFavs,siteName,'site');
         var cols = [];
         if(index < 0){
             defaultStore.cols = cols;
@@ -57,7 +60,7 @@ function getFavs(siteName,defaultStore,callback){
         }else{
             cols = allFavs[index].cols;
         }
-        callback(cols,allFavs);
+        callback(cols,allFavs,updateNum);
     });
 }
 /**

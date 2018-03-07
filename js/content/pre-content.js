@@ -1,10 +1,9 @@
-var _allFavs; //全部收藏的漫画集合
-var _includeArr = ['kuaikan','dmzj']; //当URL匹配字符串时才调用
-var storLocal = chrome.storage.local;
+var _includeArr = ['kuaikan','dmzj','ac.qq']; //当URL匹配字符串时才调用
 var _$imgAss,_$imgExport,_$imgToggle;
-var _updateNum = 0;
 var log = console.log;
+var curHref = location.origin + location.pathname;
 var cGetUrl = chrome.runtime.getURL;
+var storLocal = chrome.storage.local;
 var sendMsg = chrome.runtime.sendMessage;
 var _src = {
     collect:cGetUrl('images/collect.png'),

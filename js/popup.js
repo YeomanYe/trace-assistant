@@ -148,6 +148,8 @@ function getSiteName(site) {
     var name;
     if (site.indexOf('kuaikan') >= 0) {
         name = '快看漫画';
+    }else if(site.indexOf('ac.qq') >= 0){
+        name = '腾讯动漫';
     }
     return name;
 }
