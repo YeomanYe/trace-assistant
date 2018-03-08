@@ -86,14 +86,8 @@ function createNotify(title, iconUrl, message, newUrl) {
  */
 function allQuery() {
     getFavs('kuaikan', {}, kuaikanQuery());
-    getFavs('ac.qq', {}, qqQuery);
+    getFavs('ac.qq', {}, qqQuery());
     setTimeout(allQuery, 1000 * 60 * 10);
-}
-/**
- * 查询收藏的腾讯漫画是否有更新
- */
-function qqQuery(favs, allFavs, updateNum) {
-
 }
 /**
  * 查询收藏的快看漫画是否有更新
@@ -110,6 +104,33 @@ function kuaikanQuery() {
         var newChapter = aElm.title;
         var tmpArr = aElm.href.split('/');
         var newUrl = tmpArr[tmpArr.length - 2];
+        var resObj = {
+            newUrl: newUrl,
+            newChapter: newChapter
+        };
+        return resObj;
+    };
+    return queryUpdate(baseObj, ajaxCall);
+}
+/**
+ * 查询收藏的腾讯漫画是否有更新
+ */
+function qqQuery() {
+    var baseObj = {
+        baseIndex: 'http://ac.qq.com/Comic/comicInfo/id/',
+        baseImage: 'https://manhua.qpic.cn/vertical/',
+        baseChapter: 'http://ac.qq.com/ComicView/index/id/'
+    };
+    var ajaxCall = function(data) {
+        var $html = $(data);
+        var baseChapter = 'http://ac.qq.com/ComicView/index/id/';
+        var $as = $html.find('.chapter-page-all a');
+        var newA = $as.get($as.length - 1);
+        var tmpArr = newA.title.split('：');
+        var newChapter = tmpArr[1];
+        var newUrl = newA.href;
+        newUrl = replaceOrigin(newUrl,'http://ac.qq.com');
+        newUrl = newUrl.replace(baseChapter,'');
         var resObj = {
             newUrl: newUrl,
             newChapter: newChapter
@@ -155,8 +176,13 @@ function qqExport(args) {
             newChapter = tmpArr[1];
             tmpArr = curA.title.split('：');
             curChapter = tmpArr[1];
+            var newUrl = newA.href,curUrl = curA.href;
+            newUrl = replaceOrigin(newUrl,'http://ac.qq.com').replace(baseChapter,'');
+            curUrl = replaceOrigin(curUrl,'http://ac.qq.com').replace(baseChapter,'');
             item.newChapter = newChapter;
             item.curChapter = curChapter;
+            item.newUrl = newUrl;
+            item.curUrl = curUrl;
         }
     };
     getFavs('ac.qq', storObj, function(cols, allFavs) {
@@ -168,8 +194,8 @@ function qqExport(args) {
                 var col = {
                     imgUrl: item.coverUrl.replace(baseImgUrl, ''),
                     indexUrl: item.id,
-                    newUrl: item.id + '/seqno/' + item.lateSeqNo, //最新章节地址
-                    curUrl: item.id + '/seqno/' + item.nextSeqNo, //当前章节地址
+                    // newUrl: item.id + '/seqno/' + item.lateSeqNo, //最新章节地址
+                    // curUrl: item.id + '/seqno/' + item.nextSeqNo, //当前章节地址
                     title: item.title,
                     isUpdate: false
                 };

@@ -113,9 +113,11 @@ function queryUpdate(baseObj,callback) {
             if (col.newChapter != newChapter) {
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
-                col.isUpdate = true;
                 createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
-                setBadge(++updateNum);
+                if(!col.isUpdate){
+                    col.isUpdate = true;
+                    setBadge(++updateNum);
+                }
             }
         };
         for (var i = 0, len = favs.length; i < len; i++) {
@@ -132,4 +134,14 @@ function queryUpdate(baseObj,callback) {
             updateNum: updateNum
         });
     }
+}
+/**
+ * 替换origin
+ */
+function replaceOrigin(url,newOrigin){
+    var restArgs = newOrigin.split('/');
+    var urlArr = url.split('/');
+    restArgs.unshift(0,3);
+    [].splice.apply(urlArr,restArgs);
+    return urlArr.join('/');
 }
