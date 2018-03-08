@@ -7,9 +7,9 @@ $(function() {
     _$imgExport.on('click', function() {
         sendMsg(null, 'exportCollect-' + location.origin);
     });
-    _$imgToggle.on('click', toggleFavBtnHandler);
+    _$imgToggle.on('click', toggleFavBtnHandlerKk);
     //等待本地收藏的集合获取到
-    setTimeout(update, 1000);
+    setTimeout(updateKk, 1000);
 });
 
 if (location.href.indexOf('kuaikan') >= 0) {
@@ -29,58 +29,38 @@ if (location.href.indexOf('kuaikan') >= 0) {
 /**
  * 更新收藏的漫画的阅读记录
  */
-function updateColRecord(kuaikanFavs,allFavs) {
-    var href = location.href;
-    if (href.indexOf('comic') < 0) return;
-    var $as = $('#main h2 .ico a');
-    if ($as.length < 1) return;
-    var aElm = $as.get(1);
-    var indexUrl = aElm.href,
-        title = aElm.title;
-    log('title', title, 'indexUrl', indexUrl);
+function updateColRecordKk(kuaikanFavs,allFavs) {
+    var curComic = getCurComicKk();
     //解析当前页面并更新阅读记录
-    var index = arrInStr(kuaikanFavs, title, 'title');
+    var index = arrInStr(kuaikanFavs, curComic.title, 'title');
     if (index < 0) return;
+    //更新图标
+    _$imgToggle.get(0).src = _src.collect;
     var curItem = kuaikanFavs[index];
-    var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/, '').trim();
-    curItem.curChapter = curChapter;
-    curItem.curUrl = href.replace(baseChapterUrl, '');
+    if(!curComic.curChapter) return;
+    curItem.curChapter = curComic.curChapter;
+    curItem.curUrl = curComic.curUrl.replace(baseChapterUrl, '');
     decUpdateNum(curItem);
     storLocal.set({allFavs:allFavs});
 }
 /**
  * 更新
  */
-function update() {
-    log('_allFavs', _allFavs);
-    updateFavIcon();
-    getFavs('kuaikan', storObj, updateColRecord);
+function updateKk() {
+    getFavs('kuaikan', storObj, updateColRecordKk);
 }
 /**
  * 切换收藏
  */
-function toggleFavBtnHandler() {
-    var curComic = getCurComic();
-    getFavs('kuaikan',storObj,toggleFav(curComic.title, curComic.indexUrl, curComic.curChapter, curComic.curUrl));
-}
-/**
- * 如果当前漫画已被收藏则图标为黄色否则为灰色
- */
-function updateFavIcon() {
-    // log('getCurComic', obj);
-    // var favs = getKuaikanFavs();
-    getFavs('kuaikan',storObj,function(favs){
-        var obj = getCurComic();
-        var index = arrInStr(favs, obj.title, 'title');
-        if (index >= 0) _$imgToggle.get(0).src = _src.collect;
-    });
-    
+function toggleFavBtnHandlerKk() {
+    var curComic = getCurComicKk();
+    getFavs('kuaikan',storObj,toggleFavKk(curComic.title, curComic.indexUrl, curComic.curChapter, curComic.curUrl));
 }
 /**
  * 漫画页或目录页获取漫画名称及目录地址
  * 如果是漫画页，获取当前章节和URL
  */
-function getCurComic() {
+function getCurComicKk() {
     var title = $('body .article-detail-info .comic-name').text();
     var href = location.origin + location.pathname;
     var retObj;
@@ -106,7 +86,7 @@ function getCurComic() {
 /**
  * 添加或取消收藏
  */
-function toggleFav(title, indexUrl, curChapter, curUrl) {
+function toggleFavKk(title, indexUrl, curChapter, curUrl) {
     return function(kuaikanFavs,allFavs) {
         var index = arrInStr(kuaikanFavs, title, 'title');
         //当前漫画已经在收藏的目录中，取消收藏
