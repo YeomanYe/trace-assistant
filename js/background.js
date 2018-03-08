@@ -166,7 +166,7 @@ function qqExport(args) {
         origin: origin,
         site: 'ac.qq'
     };
-    var indexCall = function(item,curSeqNo){
+    var indexCall = function(item,curSeqNo,baseChapter){
         return function(text){
             $html = $(text);
             var $as = $html.find('.chapter-page-all a');
@@ -200,7 +200,7 @@ function qqExport(args) {
                     isUpdate: false
                 };
                 $.ajax(baseIndexUrl+col.indexUrl,{
-                    success:indexCall(col,item.nextSeqNo),
+                    success:indexCall(col,item.nextSeqNo,storObj.baseChapter),
                     async:false
                 });
                 cols.push(col);
