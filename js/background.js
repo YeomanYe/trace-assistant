@@ -9,8 +9,8 @@ var updateNum;
     //初始化更新数
     updateBadge(kuaikanQuery);
 });*/
-allQuery();
 updateBadge();
+allQuery();
 //监听消息
 chrome.runtime.onMessage.addListener(function(msg) {
     var msgArr = msg.split('-');
@@ -85,13 +85,20 @@ function createNotify(title, iconUrl, message, newUrl) {
  * 查询是否有更新
  */
 function allQuery() {
-    getFavs('kuaikan',{},kuaikanQuery);
+    getFavs('kuaikan',{},kuaikanQuery());
+    getFavs('ac.qq',{},qqQuery);
     setTimeout(allQuery,1000 * 60 * 10);
+}
+/**
+ * 查询收藏的腾讯漫画是否有更新
+ */
+function qqQuery(favs,allFavs,updateNum){
+
 }
 /**
  * 查询收藏的快看漫画是否有更新
  */
-function kuaikanQuery(favs,allFavs,updateNum) {
+/*function kuaikanQuery(favs,allFavs,updateNum) {
     var baseIndex = 'http://www.kuaikanmanhua.com/web/topic/';
     var baseImage = 'https://i1s.kkmh.com/image';
     var baseChapter = 'http://www.kuaikanmanhua.com/web/comic/';
@@ -122,7 +129,26 @@ function kuaikanQuery(favs,allFavs,updateNum) {
             async: false
         });
     }
-    
+}*/
+function kuaikanQuery() {
+    var baseObj = {
+        baseIndex :'http://www.kuaikanmanhua.com/web/topic',
+        baseImage: 'https://i1s.kkmh.com/image',
+        baseChapter :'http://www.kuaikanmanhua.com/web/comic/'
+    };
+    var ajaxCall = function(data) {
+        var $html = $(data);
+        var aElm = $html.find('table .tit a').get(0);
+        var newChapter = aElm.title;
+        var tmpArr = aElm.href.split('/');
+        var newUrl = tmpArr[tmpArr.length - 2];
+        var resObj = {
+            newUrl:newUrl,
+            newChapter:newChapter
+        };
+        return resObj;
+    };
+    return queryUpdate(baseObj,ajaxCall);
 }
 
 function exportCollect(origin) {
