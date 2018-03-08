@@ -76,3 +76,23 @@ function decUpdateNum(item){
         chrome.runtime.sendMessage(null, 'updateNumChange');
     }
 }
+/**
+ * 更新阅读记录
+ */
+function updateColRecord(getCurComic) {
+    return function(favs,allFavs){
+        var curComic = getCurComic();
+        //解析当前页面并更新阅读记录
+        var index = arrInStr(favs, curComic.title, 'title');
+        if (index < 0) return;
+        //更新图标
+        _$imgToggle.get(0).src = _src.collect;
+        var curItem = favs[index];
+        if(!curComic.curChapter) return;
+        curItem.curChapter = curComic.curChapter;
+        curItem.curUrl = curComic.curUrl.replace(baseChapterUrl, '');
+        //更新，当前更新的漫画数量
+        decUpdateNum(curItem);
+        storLocal.set({allFavs:allFavs});
+    }
+}

@@ -18,6 +18,7 @@ $(function(){
     log('ac.qq');
     _$imgExport.on('click',exportUserColQq);
     _$imgToggle.on('click',toggleFavHandlerQq);
+    updateQq();
 });
 /**
  * 导出腾讯动漫用户配置
@@ -78,12 +79,22 @@ function getCurComicQq(){
     }
     return retObj;
 }
-
+/**
+ * 更新收藏
+ */
+function updateQq(){
+    getFavs('ac.qq',storObj,updateColRecord(getCurComicQq));
+}
+/**
+ * 切换收藏按钮点击处理函数
+ */
 function toggleFavHandlerQq(){
     var obj = getCurComicQq();
     getFavs('ac.qq',storObj,toggleFavQq(obj.title,obj.indexUrl,obj.curChapter,obj.curUrl));
 }
-
+/**
+ * 切换收藏
+ */
 function toggleFavQq(title,indexUrl,curChapter,curUrl){
     return function(qqFavs,allFavs){
         var index = arrInStr(qqFavs,title,'title');

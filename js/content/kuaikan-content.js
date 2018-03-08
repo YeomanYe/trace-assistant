@@ -8,8 +8,7 @@ $(function() {
         sendMsg(null, 'exportCollect-' + location.origin);
     });
     _$imgToggle.on('click', toggleFavBtnHandlerKk);
-    //等待本地收藏的集合获取到
-    setTimeout(updateKk, 1000);
+    updateKk();
 });
 
 if (location.href.indexOf('kuaikan') >= 0) {
@@ -47,7 +46,7 @@ function updateColRecordKk(kuaikanFavs,allFavs) {
  * 更新
  */
 function updateKk() {
-    getFavs('kuaikan', storObj, updateColRecordKk);
+    getFavs('kuaikan', storObj, updateColRecord(getCurComicKk));
 }
 /**
  * 切换收藏
