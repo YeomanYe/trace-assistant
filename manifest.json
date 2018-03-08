@@ -9,7 +9,7 @@
       "default_title": "__MSG_ext_name__"
    },
    "content_scripts": [ {
-      "js": [ "lib/jquery.min.js","js/utils.js","js/content/pre-content.js","js/content/kuaikan-content.js","js/content/qq-content.js" ],
+      "js": [ "lib/jquery.min.js","js/utils.js","js/content/pre-content.js","js/content/kuaikan-content.js","js/content/qq-content.js","js/content/dmzj-content.js" ],
       "css":["css/content.css"],
       "matches": [ "http://*/*", "https://*/*" ],
       "run_at": "document_end"

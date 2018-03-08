@@ -55,7 +55,7 @@ function getFavs(siteName, defaultStore, callback) {
         var cols = [];
         if (index < 0) {
             defaultStore.cols = cols;
-            allFavs.push(defaultStore);
+            allFavs.unshift(defaultStore);
         } else {
             cols = allFavs[index].cols;
         }

@@ -120,7 +120,7 @@ function toggleFavKk(title, indexUrl, curChapter, curUrl) {
             var $img = $html.find('.search-result .clearfix .comic-img .kk-img');
             var imgUrl = $img.get(0).src
             favItem.imgUrl = imgUrl.replace(baseImgUrl, '');
-            kuaikanFavs.push(favItem);
+            kuaikanFavs.unshift(favItem);
             log('allFavs', allFavs);
             storLocal.set({
                 allFavs: allFavs

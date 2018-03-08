@@ -107,7 +107,7 @@ function toggleFavQq(title,indexUrl,curChapter,curUrl){
                 title: title,
                 isUpdate: false
             };
-            qqFavs.push(col);
+            qqFavs.unshift(col);
             storLocal.set({allFavs:allFavs});
         };
         $.ajax(indexUrl,{success:sucCall});
