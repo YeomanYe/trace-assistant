@@ -3,10 +3,11 @@ var log = console.log;
 var _allFavs;
 var $optionTab, $colTab, $comicList, $settingList, $export, $import, $fileImport;
 
-$(function(){
+$(function() {
     init();
 });
-function init(){
+
+function init() {
     $optionTab = $('#optionTab').on('click', optionTabHandler);
     $colTab = $('#colTab').on('click', colTabHandler);
     $export = $('#export').on('click', exportHandler);
@@ -43,6 +44,7 @@ function optionTabHandler() {
  * 处理每一个网站收藏的漫画
  */
 function resolveColItems(colItem, colIndex) {
+    // $comicList.empty();
     var baseImg = colItem.baseImg,
         baseIndex = colItem.baseIndex,
         baseChapter = colItem.baseChapter,
@@ -111,7 +113,9 @@ function exportHandler() {
 function importHandler() {
     $fileImport.get(0).click();
 }
-
+/**
+ * 解析文件并导入数据
+ */
 function fileImportChangeHandler(e) {
     var files = this.files;
     if (files.length) {
@@ -119,9 +123,9 @@ function fileImportChangeHandler(e) {
             reader = new FileReader(); //new一个FileReader实例
         reader.onload = function() {
             var data = JSON.parse(this.result);
-            _allFavs = data.allFavs;
-            _allFavs.forEach(resolveColItems);
+            var allFavs = data.allFavs;
             storLocal.set(data);
+            allFavs.forEach(resolveColItems);
         };
         reader.readAsText(file);
     }
@@ -148,7 +152,7 @@ function getSiteName(site) {
     var name;
     if (site.indexOf('kuaikan') >= 0) {
         name = '快看漫画';
-    }else if(site.indexOf('ac.qq') >= 0){
+    } else if (site.indexOf('ac.qq') >= 0) {
         name = '腾讯动漫';
     }
     return name;

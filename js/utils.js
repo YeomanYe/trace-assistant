@@ -102,22 +102,28 @@ function updateColRecord(getCurComic) {
 /**
  * 查询是否有更新的通用函数
  */
-function queryUpdate(baseObj,callback) {
+function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImage;
     var baseChapter = baseObj.baseChapter;
     return function(favs, allFavs, updateNum) {
         var sucCall = function(data) {
             var resObj = callback(data);
-            var newUrl = resObj.newUrl,newChapter = resObj.newChapter;
+            var newUrl = resObj.newUrl,
+                newChapter = resObj.newChapter;
             if (col.newChapter != newChapter) {
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
                 createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
-                if(!col.isUpdate){
+                if (!col.isUpdate) {
                     col.isUpdate = true;
                     setBadge(++updateNum);
                 }
+                //更新收藏
+                chrome.storage.local.set({
+                    allFavs: allFavs,
+                    updateNum: updateNum
+                });
             }
         };
         for (var i = 0, len = favs.length; i < len; i++) {
@@ -128,20 +134,15 @@ function queryUpdate(baseObj,callback) {
                 async: false
             });
         }
-        //更新收藏
-        storLocal.set({
-            allFavs: allFavs,
-            updateNum: updateNum
-        });
     }
 }
 /**
  * 替换origin
  */
-function replaceOrigin(url,newOrigin){
+function replaceOrigin(url, newOrigin) {
     var restArgs = newOrigin.split('/');
     var urlArr = url.split('/');
-    restArgs.unshift(0,3);
-    [].splice.apply(urlArr,restArgs);
+    restArgs.unshift(0, 3);
+    [].splice.apply(urlArr, restArgs);
     return urlArr.join('/');
 }

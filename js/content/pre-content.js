@@ -12,11 +12,6 @@ var _src = {
     comicGrey:cGetUrl('images/comic-grey.png'),
     comic:cGetUrl('images/comic.png')
 };
-//初始化存储
-storLocal.get(['allFavs','updateNum'],function(storObj){
-    _allFavs = storObj.allFavs ? storObj.allFavs : [];
-    _updateNum = storObj.updateNum ? storObj.updateNum : 0;
-});
 $(function() {
     var origin = location.origin;
     if(arrInStr(_includeArr,origin)<0) return;
@@ -39,6 +34,21 @@ function addImgToUL($ul,srcStr,clickHandler){
     $li.append($img);
     $ul.append($li);
     return $img;
+}
+/**
+ * 设置元素可拖动
+ */
+function setDraggable($elm){
+    var dragging = false;
+    $elm.on('mousedown',function(evt){
+        dragging = true;
+    });
+    $elm.on('mousemove',function(evt){
+        if(!dragging) return;
+    });
+    $elm.on('mouseup',function(evt){
+        dragging = false;
+    });
 }
 /**
  * 切换菜单图标
