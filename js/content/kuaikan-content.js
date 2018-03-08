@@ -5,7 +5,7 @@ var log = console.log;
 $(function() {
     if(location.href.indexOf('kuaikan')<0) return;
     _$imgExport.on('click', function() {
-        sendMsg(null, 'exportCollect-' + location.origin);
+        sendMsg(null, 'exportCollect@-@' + location.origin);
     });
     _$imgToggle.on('click', toggleFavBtnHandlerKk);
     updateKk();
