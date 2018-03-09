@@ -69,8 +69,31 @@ function updateQq(){
  * 切换收藏按钮点击处理函数
  */
 function toggleFavHandlerQq(){
-    var obj = getCurComicQq();
-    getFavs('ac.qq',storObj,toggleFavQq(obj.title,obj.indexUrl,obj.curChapter,obj.curUrl));
+    // var obj = getCurComicQq();
+    var getChapterInfo = function(text){
+        var $html = $(text);
+        var imgUrl = $html.find('.works-cover img').get(0).src;
+        var $as = $html.find('.chapter-page-all a');
+        var newA = $as.get($as.length - 1),curA = $as.get(0);
+        var tmpArr = newA.title.split('：');
+        var newChapter,newUrl;
+        newChapter = tmpArr[1];
+        newUrl = newA.href;
+        tmpArr = curA.title.split('：');
+        curChapter = tmpArr[1];
+        curUrl = curA.href;
+        var retObj = {
+            curUrl:curUrl,
+            curChapter:curChapter,
+            newUrl:newUrl,
+            newChapter:newChapter,
+            imgUrl:imgUrl
+        };
+        return retObj;
+    };
+    // toggleFav(storObj,getCurComicQq,)
+    // getFavs('ac.qq',storObj,toggleFavQq(obj.title,obj.indexUrl,obj.curChapter,obj.curUrl));
+    getFavs('ac.qq',storObj,toggleFav(storObj,getCurComicQq,getChapterInfo));
 }
 /**
  * 切换收藏
