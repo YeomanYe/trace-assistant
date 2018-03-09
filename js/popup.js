@@ -154,6 +154,8 @@ function getSiteName(site) {
         name = '快看漫画';
     } else if (site.indexOf('ac.qq') >= 0) {
         name = '腾讯动漫';
+    }else if(site.indexOf('www.dmzj')>=0 || site.indexOf('manhua.dmzj')>=0){
+        name = '动漫之家';
     }
     return name;
 }

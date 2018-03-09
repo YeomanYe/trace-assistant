@@ -106,7 +106,6 @@ function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImage;
     var baseChapter = baseObj.baseChapter;
-    var hasUpdate = false;
     return function(favs, allFavs, updateNum) {
         var sucCall = function(data) {
             var resObj = callback(data);
@@ -116,11 +115,14 @@ function queryUpdate(baseObj, callback) {
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
                 createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
-                hasUpdate = true;
                 if (!col.isUpdate) {
                     col.isUpdate = true;
                     setBadge(++updateNum);
                 }
+                storeDebounce({
+                    updateNum:updateNum,
+                    allFavs:allFavs
+                });
             }
         };
         for (var i = 0, len = favs.length; i < len; i++) {
@@ -131,12 +133,6 @@ function queryUpdate(baseObj, callback) {
                 async: false
             });
         }
-        //如果存在更新才更新存储
-        if(hasUpdate)
-            chrome.storage.local.set({
-                allFavs: allFavs,
-                updateNum: updateNum
-            });
     }
 }
 /**
@@ -205,4 +201,16 @@ function createNotify(title, iconUrl, message, newUrl) {
         message: message
     };
     chrome.notifications.create(newUrl, options);
+}
+/**
+ * 存储消抖函数
+ */
+var storeDebounceTimeout;
+function storeDebounce(obj) {
+    if(storeDebounceTimeout){
+        clearTimeout(storeDebounceTimeout);
+    }
+    storeDebounceTimeout = setTimeout(function() {
+        chrome.storage.local.set(obj);
+    },1000 * 1);
 }

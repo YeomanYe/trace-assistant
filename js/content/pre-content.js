@@ -14,14 +14,16 @@ var _src = {
 };
 $(function() {
     var origin = location.origin;
-    if(arrInStr(_includeArr,origin)<0) return;
+    // if(arrInStr(_includeArr,origin)<0) return;
     $ul = $('<ul>');
     $ul.addClass('img-list');
+    $ul.attr({draggable:true});
     _$imgExport = addImgToUL($ul,_src.exportCollect);
     _$imgToggle = addImgToUL($ul,_src.collectGrey,toggleFavIcon);
     _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu);
     _$imgExport.toggle();
     _$imgToggle.toggle();
+    // setDraggable($ul);
     $('body').append($ul);
 });
 //给ul列表中加入一个图片
@@ -45,6 +47,17 @@ function setDraggable($elm){
     });
     $elm.on('mousemove',function(evt){
         if(!dragging) return;
+        var clientX = evt.clientX,clientY = evt.clientY;
+        var offsetX = evt.offsetX,offsetY = evt.offsetY;
+        var elmWidth =$(this).width(),elmHeight = $(this).height();
+        var winX = $(window).width(),winY = $(window).height();
+        log('elmWidth',elmWidth,'elmHeight',elmHeight);
+        log('offsetX',offsetX,'offsetY',offsetY);
+        $(this).css({
+            bottom:winY - clientY - elmHeight / 2,
+            right:winX - clientX - elmWidth / 2,
+        });
+        log('move',evt);
     });
     $elm.on('mouseup',function(evt){
         dragging = false;

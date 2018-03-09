@@ -1,26 +1,27 @@
-$(function(){
-    if(location.href.indexOf('www.dmzj') >= 0){
+$(function() {
+    if (location.href.indexOf('www.dmzj') >= 0) {
         log('www.dmzj');
-        // _$imgExport.on('click',exportUserColQq);
-        _$imgToggle.on('click',toggleFavHandlerW3dmzj);
+        _$imgToggle.on('click', toggleFavHandlerW3dmzj);
         updateW3dmzj();
-    }else if(location.href.indexOf('manhua.dmzj') >= 0){
-        _$imgToggle.on('click',toggleFavHandlerMhdmzj);
+    } else if (location.href.indexOf('manhua.dmzj') >= 0) {
+        _$imgToggle.on('click', toggleFavHandlerMhdmzj);
         updateMhdmzj();
+    } else if (location.href.indexOf('i.dmzj') >= 0) {
+        _$imgExport.on('click', exportUserColDmzj);
     }
-    
+
 });
 /**
  * 更新收藏
  */
-function updateMhdmzj(){
-    getFavs('manhua.dmzj',storObj,updateColRecord(getCurComicMhdmzj));
+function updateMhdmzj() {
+    getFavs('manhua.dmzj', storObj, updateColRecord(getCurComicMhdmzj));
 }
 /**
  * 更新收藏
  */
-function updateW3dmzj(){
-    getFavs('www.dmzj',storObj,updateColRecord(getCurComicW3dmzj));
+function updateW3dmzj() {
+    getFavs('www.dmzj', storObj, updateColRecord(getCurComicW3dmzj));
 }
 if (location.href.indexOf('www.dmzj') >= 0) {
     var origin = location.origin,
@@ -54,26 +55,26 @@ if (location.href.indexOf('manhua.dmzj') >= 0) {
 /**
  * 获取当前页面漫画名称、目录地址、章节名称、章节链接
  */
-function getCurComicW3dmzj(){
+function getCurComicW3dmzj() {
     var href = location.origin + location.pathname;
     var title = $('.comic_deCon h1 a').text();
     var retObj;
-    if(title){
+    if (title) {
         retObj = {
-            title:title,
-            indexUrl:href
+            title: title,
+            indexUrl: href
         };
-    }else{
+    } else {
         var curUrl = href;
         var curChapter = $('.head_title h2').text();
-        if(curChapter){
+        if (curChapter) {
             var indexA = $('.head_wz a').get(1);
             title = indexA.innerText;
             retObj = {
-                title:title,
-                indexUrl:indexA.href,
-                curUrl:curUrl,
-                curChapter:curChapter
+                title: title,
+                indexUrl: indexA.href,
+                curUrl: curUrl,
+                curChapter: curChapter
             };
         }
     }
@@ -82,26 +83,26 @@ function getCurComicW3dmzj(){
 /**
  * 获取当前页面漫画名称、目录地址、章节名称、章节链接
  */
-function getCurComicMhdmzj(){
+function getCurComicMhdmzj() {
     var href = location.origin + location.pathname;
     var title = $('.anim_title_text h1').text();
     var retObj;
-    if(title){
+    if (title) {
         retObj = {
-            title:title,
-            indexUrl:href
+            title: title,
+            indexUrl: href
         };
-    }else{
+    } else {
         var curUrl = href;
         var curChapter = $('.display_middle span.redhotl').text();
-        if(curChapter){
+        if (curChapter) {
             var indexA = $('.display_middle a.redhotl').get(0);
             title = indexA.innerText;
             retObj = {
-                title:title,
-                indexUrl:indexA.href,
-                curUrl:curUrl,
-                curChapter:curChapter
+                title: title,
+                indexUrl: indexA.href,
+                curUrl: curUrl,
+                curChapter: curChapter
             };
         }
     }
@@ -110,50 +111,64 @@ function getCurComicMhdmzj(){
 /**
  * 切换收藏按钮点击处理函数
  */
-function toggleFavHandlerW3dmzj(){
-    var getChapterInfo = function(text){
+function toggleFavHandlerW3dmzj() {
+    var getChapterInfo = function(text) {
         var $html = $(text);
         var imgUrl = $html.find('.comic_i_img img').get(0).src;
         var $as = $html.find('.tab-content-selected .list_con_li a');
-        var newA = $as.get(0),curA = $as.get($as.length - 1);
-        var newChapter,newUrl;
+        var newA = $as.get(0),
+            curA = $as.get($as.length - 1);
+        var newChapter, newUrl;
         newChapter = newA.innerText;
         newUrl = newA.href;
         var retObj = {
-            newChapter:newChapter,
-            newUrl:newUrl,
-            curChapter:curA.innerText,
-            curUrl:curA.href,
-            imgUrl:imgUrl
+            newChapter: newChapter,
+            newUrl: newUrl,
+            curChapter: curA.innerText,
+            curUrl: curA.href,
+            imgUrl: imgUrl
         };
         return retObj;
     }
-    getFavs('www.dmzj',storObj,toggleFav(storObj,getCurComicW3dmzj,getChapterInfo));
+    getFavs('www.dmzj', storObj, toggleFav(storObj, getCurComicW3dmzj, getChapterInfo));
 
 }
 
 /**
  * 切换收藏按钮点击处理函数
  */
-function toggleFavHandlerMhdmzj(){
+function toggleFavHandlerMhdmzj() {
     // var obj = getCurComicMhdmzj();
-    var getChapterInfo = function(text){
+    var getChapterInfo = function(text) {
         var $html = $(text);
         var imgUrl = $html.find('.anim_intro_ptext img').get(0).src;
         var $as = $html.find('.cartoon_online_border a');
-        var newA = $as.get($as.length - 1),curA = $as.get(0);
-        var newChapter,newUrl;
-        newChapter = newA.title;
+        var newA = $as.get($as.length - 1),
+            curA = $as.get(0);
+        var newChapter, newUrl;
+        newChapter = newA.innerText;
         newUrl = newA.href;
         var retObj = {
-            curChapter:curA.title,
-            curUrl:curA.href,
-            newChapter:newChapter,
-            newUrl:newUrl,
-            imgUrl:imgUrl
+            curChapter: curA.innerText,
+            curUrl: curA.href,
+            newChapter: newChapter,
+            newUrl: newUrl,
+            imgUrl: imgUrl
         };
         return retObj;
     }
-    getFavs('manhua.dmzj',storObj,toggleFav(storObj,getCurComicMhdmzj,getChapterInfo));
-
+    getFavs('manhua.dmzj', storObj, toggleFav(storObj, getCurComicMhdmzj, getChapterInfo));
+}
+/**
+ * 导出动漫之家的收藏
+ */
+function exportUserColDmzj() {
+    $.ajax('https://i.dmzj.com/ajax/my/subscribe', {
+        success: function(text) {
+            // var userCols = JSON.parse(text).data;
+            sendMsg(null, 'exportCollect@-@' + location.origin + '@-@' + text);
+        },
+        type:'POST',
+        data:'page=1&type_id=1&letter_id=0&read_id=1'
+    });
 }

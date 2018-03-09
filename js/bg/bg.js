@@ -78,5 +78,7 @@ function exportCollect(args) {
         kuaikanExport(origin);
     } else if (origin.indexOf('ac.qq') >= 0) {
         qqExport(args);
+    }else if(origin.indexOf('i.dmzj')){
+        dmzjExport(args);
     }
 }
