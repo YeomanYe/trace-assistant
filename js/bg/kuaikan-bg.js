@@ -46,11 +46,7 @@ function kuaikanExport(origin) {
             log('resData', resData);
             var datas = resData.data.topics;
             var storDatas = [];
-            if (!baseImgUrl) {
-                //获取url中相同的部分
-                if (datas.length > 1)
-                    baseImgUrl = getBaseUrl(datas[0].vertical_image_url, datas[1].vertical_image_url);
-            }
+            
             datas.forEach(function(data) {
                 var indexCompleteUrl = baseIndexUrl + '/' + data.id;
                 var resText = $.ajax(indexCompleteUrl, {

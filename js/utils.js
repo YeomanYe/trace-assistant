@@ -106,12 +106,12 @@ function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImage;
     var baseChapter = baseObj.baseChapter;
+    var hasUpdate = false;
     return function(favs, allFavs, updateNum) {
         var sucCall = function(data) {
             var resObj = callback(data);
             var newUrl = resObj.newUrl,
-                newChapter = resObj.newChapter,
-                hasUpdate = false;
+                newChapter = resObj.newChapter;
             if (col.newChapter != newChapter) {
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
@@ -122,12 +122,6 @@ function queryUpdate(baseObj, callback) {
                     setBadge(++updateNum);
                 }
             }
-            //如果存在更新才更新存储
-            if(hasUpdate)
-                chrome.storage.local.set({
-                    allFavs: allFavs,
-                    updateNum: updateNum
-                });
         };
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
@@ -137,6 +131,12 @@ function queryUpdate(baseObj, callback) {
                 async: false
             });
         }
+        //如果存在更新才更新存储
+        if(hasUpdate)
+            chrome.storage.local.set({
+                allFavs: allFavs,
+                updateNum: updateNum
+            });
     }
 }
 /**
@@ -165,6 +165,8 @@ function toggleFav(storObj,getCurComic,getChapterInfo){
         var index = arrInStr(favs,title,'title');
         //已经收藏，则取消收藏
         if(index >= 0){
+            var item = favs[index];
+            decUpdateNum(item);
             favs.splice(index,1);
             storLocal.set({allFavs:allFavs});
             return;
@@ -190,4 +192,17 @@ function toggleFav(storObj,getCurComic,getChapterInfo){
         };
         $.ajax(indexUrl,{success:sucCall});
     }
+}
+/**
+ * 创建提醒
+ */
+function createNotify(title, iconUrl, message, newUrl) {
+    var options = {
+        type: chrome.notifications.TemplateType.BASIC,
+        title: title,
+        iconUrl: iconUrl,
+        isClickable: true,
+        message: message
+    };
+    chrome.notifications.create(newUrl, options);
 }

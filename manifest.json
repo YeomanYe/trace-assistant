@@ -1,7 +1,7 @@
 {
    "background": {
       // "page": "background.html"
-      "scripts":["lib/jquery.min.js","js/utils.js","js/bg/kuaikan-bg.js","js/bg/qq-bg.js","js/bg/bg.js"]
+      "scripts":["lib/jquery.min.js","js/utils.js","js/bg/kuaikan-bg.js","js/bg/qq-bg.js","js/bg/dmzj-bg.js","js/bg/bg.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",

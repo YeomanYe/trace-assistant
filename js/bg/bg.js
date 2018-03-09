@@ -66,6 +66,8 @@ function setBadge(num) {
 function allQuery() {
     getFavs('kuaikan', {}, kuaikanQuery());
     getFavs('ac.qq', {}, qqQuery());
+    getFavs('manhua.dmzj',{},mhdmzjQuery());
+    getFavs('www.dmzj',{},w3dmzjQuery());
     setTimeout(allQuery, 1000 * 60 * 10);
 }
 
@@ -77,24 +79,4 @@ function exportCollect(args) {
     } else if (origin.indexOf('ac.qq') >= 0) {
         qqExport(args);
     }
-}
-/**
- * 创建提醒
- */
-function createNotify(title, iconUrl, message, newUrl) {
-    var options = {
-        type: chrome.notifications.TemplateType.BASIC,
-        title: title,
-        iconUrl: iconUrl,
-        isClickable: true,
-        message: message
-    };
-    chrome.notifications.create(newUrl, options);
-}
-
-/**
- * 动漫之家导出用户收藏
- */
-function dmzjExport(){
-
 }
