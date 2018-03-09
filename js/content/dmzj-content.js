@@ -111,92 +111,49 @@ function getCurComicMhdmzj(){
  * 切换收藏按钮点击处理函数
  */
 function toggleFavHandlerW3dmzj(){
-    var obj = getCurComicW3dmzj();
-    getFavs('www.dmzj',storObj,toggleFavW3dmzj(obj.title,obj.indexUrl,obj.curChapter,obj.curUrl));
-}
-/**
- * 切换收藏
- */
-function toggleFavW3dmzj(title,indexUrl,curChapter,curUrl){
-    return function(dmzjFavs,allFavs){
-        var index = arrInStr(dmzjFavs,title,'title');
-        //已经收藏，则取消收藏
-        if(index >= 0){
-            dmzjFavs.splice(index,1);
-            storLocal.set({allFavs:allFavs});
-            return;
-        }
-        //未收藏，则收藏
-        var sucCall = function(text){
-            var $html = $(text);
-            var imgUrl = $html.find('.comic_i_img img').get(0).src;
-            var $as = $html.find('.tab-content-selected .list_con_li a');
-            var newA = $as.get(0),curA = $as.get($as.length - 1);
-            var newChapter,newUrl;
-            newChapter = newA.innerText;
-            newUrl = newA.href;
-            curChapter = curChapter ? curChapter : curA.innerText;
-            curUrl = curUrl ? curUrl : curA.href;
-            var col = {
-                imgUrl: imgUrl.replace(baseImgUrl, ''),
-                indexUrl: indexUrl.replace(baseIndexUrl,''),
-                newChapter:newChapter,
-                curChapter:curChapter,
-                newUrl: newUrl.replace(baseChapterUrl,''), //最新章节地址
-                curUrl: curUrl.replace(baseChapterUrl,''), //当前章节地址
-                title: title,
-                isUpdate: false
-            };
-            dmzjFavs.unshift(col);
-            storLocal.set({allFavs:allFavs});
+    var getChapterInfo = function(text){
+        var $html = $(text);
+        var imgUrl = $html.find('.comic_i_img img').get(0).src;
+        var $as = $html.find('.tab-content-selected .list_con_li a');
+        var newA = $as.get(0),curA = $as.get($as.length - 1);
+        var newChapter,newUrl;
+        newChapter = newA.innerText;
+        newUrl = newA.href;
+        var retObj = {
+            newChapter:newChapter,
+            newUrl:newUrl,
+            curChapter:curA.innerText,
+            curUrl:curA.href,
+            imgUrl:imgUrl
         };
-        $.ajax(indexUrl,{success:sucCall});
+        return retObj;
     }
+    getFavs('www.dmzj',storObj,toggleFav(storObj,getCurComicW3dmzj,getChapterInfo));
+
 }
 
 /**
  * 切换收藏按钮点击处理函数
  */
 function toggleFavHandlerMhdmzj(){
-    var obj = getCurComicMhdmzj();
-    getFavs('manhua.dmzj',storObj,toggleFavMhdmzj(obj.title,obj.indexUrl,obj.curChapter,obj.curUrl));
-}
-/**
- * 切换收藏
- */
-function toggleFavMhdmzj(title,indexUrl,curChapter,curUrl){
-    return function(dmzjFavs,allFavs){
-        var index = arrInStr(dmzjFavs,title,'title');
-        //已经收藏，则取消收藏
-        if(index >= 0){
-            dmzjFavs.splice(index,1);
-            storLocal.set({allFavs:allFavs});
-            return;
-        }
-        //未收藏，则收藏
-        var sucCall = function(text){
-            var $html = $(text);
-            var imgUrl = $html.find('.anim_intro_ptext img').get(0).src;
-            var $as = $html.find('.cartoon_online_border a');
-            var newA = $as.get($as.length - 1),curA = $as.get(0);
-            var newChapter,newUrl;
-            newChapter = newA.title;
-            newUrl = newA.href;
-            curChapter = curChapter ? curChapter : curA.title;
-            curUrl = curUrl ? curUrl : curA.href;
-            var col = {
-                imgUrl: imgUrl.replace(baseImgUrl, ''),
-                indexUrl: indexUrl.replace(baseIndexUrl,''),
-                newChapter:newChapter,
-                curChapter:curChapter,
-                newUrl: newUrl.replace(baseChapterUrl,''), //最新章节地址
-                curUrl: curUrl.replace(baseChapterUrl,''), //当前章节地址
-                title: title,
-                isUpdate: false
-            };
-            dmzjFavs.unshift(col);
-            storLocal.set({allFavs:allFavs});
+    // var obj = getCurComicMhdmzj();
+    var getChapterInfo = function(text){
+        var $html = $(text);
+        var imgUrl = $html.find('.anim_intro_ptext img').get(0).src;
+        var $as = $html.find('.cartoon_online_border a');
+        var newA = $as.get($as.length - 1),curA = $as.get(0);
+        var newChapter,newUrl;
+        newChapter = newA.title;
+        newUrl = newA.href;
+        var retObj = {
+            curChapter:curA.title,
+            curUrl:curA.href,
+            newChapter:newChapter,
+            newUrl:newUrl,
+            imgUrl:imgUrl
         };
-        $.ajax(indexUrl,{success:sucCall});
+        return retObj;
     }
+    getFavs('manhua.dmzj',storObj,toggleFav(storObj,getCurComicMhdmzj,getChapterInfo));
+
 }

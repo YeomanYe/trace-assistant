@@ -98,7 +98,7 @@ function toggleFavHandlerQq(){
 /**
  * 切换收藏
  */
-function toggleFavQq(title,indexUrl,curChapter,curUrl){
+/*function toggleFavQq(title,indexUrl,curChapter,curUrl){
     return function(qqFavs,allFavs){
         var index = arrInStr(qqFavs,title,'title');
         //已经收藏，则取消收藏
@@ -135,4 +135,4 @@ function toggleFavQq(title,indexUrl,curChapter,curUrl){
         };
         $.ajax(indexUrl,{success:sucCall});
     }
-}
+}*/

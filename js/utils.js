@@ -110,21 +110,24 @@ function queryUpdate(baseObj, callback) {
         var sucCall = function(data) {
             var resObj = callback(data);
             var newUrl = resObj.newUrl,
-                newChapter = resObj.newChapter;
+                newChapter = resObj.newChapter,
+                hasUpdate = false;
             if (col.newChapter != newChapter) {
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
                 createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
+                hasUpdate = true;
                 if (!col.isUpdate) {
                     col.isUpdate = true;
                     setBadge(++updateNum);
                 }
-                //更新收藏
+            }
+            //如果存在更新才更新存储
+            if(hasUpdate)
                 chrome.storage.local.set({
                     allFavs: allFavs,
                     updateNum: updateNum
                 });
-            }
         };
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
