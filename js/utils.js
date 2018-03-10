@@ -111,7 +111,7 @@ function queryUpdate(baseObj, callback) {
             var resObj = callback(data);
             var newUrl = resObj.newUrl,
                 newChapter = resObj.newChapter;
-            if (col.newChapter != newChapter) {
+            if (col.newChapter !== newChapter) {
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
                 createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
@@ -205,12 +205,15 @@ function createNotify(title, iconUrl, message, newUrl) {
 /**
  * 存储消抖函数
  */
-var storeDebounceTimeout;
-function storeDebounce(obj) {
-    if(storeDebounceTimeout){
-        clearTimeout(storeDebounceTimeout);
+var storeDebounce = function(obj) {
+    var storeDebounceTimeout;
+    storeDebounce = function(){
+        if(storeDebounceTimeout){
+            clearTimeout(storeDebounceTimeout);
+        }
+        storeDebounceTimeout = setTimeout(function() {
+            chrome.storage.local.set(obj);
+        },500);
     }
-    storeDebounceTimeout = setTimeout(function() {
-        chrome.storage.local.set(obj);
-    },1000 * 1);
+    storeDebounce();
 }

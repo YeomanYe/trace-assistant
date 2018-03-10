@@ -153,7 +153,9 @@ function mhdmzjQuery() {
         };
         return resObj;
     };
-    return queryUpdate(baseObj, ajaxCall);
+    return function(){
+        getFavs('manhua.dmzj', {}, queryUpdate(baseObj, ajaxCall));
+    };
 }
 /**
  * 查询收藏的动漫之家漫画是否有更新
@@ -179,5 +181,7 @@ function w3dmzjQuery() {
         };
         return resObj;
     };
-    return queryUpdate(baseObj, ajaxCall);
+    return function(){
+        getFavs('www.dmzj', {}, queryUpdate(baseObj, ajaxCall));
+    };
 }

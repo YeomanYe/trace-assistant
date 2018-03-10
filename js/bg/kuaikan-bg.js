@@ -19,7 +19,9 @@ function kuaikanQuery() {
         };
         return resObj;
     };
-    return queryUpdate(baseObj, ajaxCall);
+    return function(){
+        getFavs('kuaikan', {}, queryUpdate(baseObj, ajaxCall));
+    };
 }
 
 /**

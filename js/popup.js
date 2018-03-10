@@ -16,10 +16,9 @@ function init() {
     $comicList = $('#comicList');
     $settingList = $('#settingList');
     $settingList.hide();
-    storLocal.get('allFavs', function(resObj) {
-        log(resObj);
-        _allFavs = resObj.allFavs ? resObj.allFavs : [];
-        _allFavs.forEach(resolveColItems);
+    getStoreLocal('allFavs',function(allFavs){
+        allFavs = allFavs ? allFavs : [];
+        allFavs.forEach(resolveColItems);
     });
 }
 /**
@@ -138,11 +137,15 @@ function delCollect(e) {
     $(this).parents('li').remove();
     //从本地存储中删除
     var indexArr = $(this).data('index').split(',');
-    _allFavs[indexArr[0]].cols.splice(indexArr[1], 1);
-    log('_allFavs', _allFavs);
-    storLocal.set({
-        allFavs: _allFavs
+    getStoreLocal('allFavs',function(allFavs){
+        var delArr = allFavs[indexArr[0]].cols.splice(indexArr[1], 1);
+        decUpdateNum(delArr[0]);
+        log('allFavs', allFavs);
+        storLocal.set({
+            allFavs: allFavs
+        });
     });
+    
 }
 /**
  * 根据站点url获得网站名称

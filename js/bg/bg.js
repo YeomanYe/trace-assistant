@@ -14,8 +14,6 @@ chrome.runtime.onMessage.addListener(function(msg) {
         case 'exportCollect':
             exportCollect(msgArr);
             break;
-        case 'reloadStore':
-            break; //重新加载存储
     }
 });
 
@@ -64,10 +62,10 @@ function setBadge(num) {
  * 查询是否有更新
  */
 function allQuery() {
-    getFavs('kuaikan', {}, kuaikanQuery());
-    getFavs('ac.qq', {}, qqQuery());
-    getFavs('manhua.dmzj',{},mhdmzjQuery());
-    getFavs('www.dmzj',{},w3dmzjQuery());
+    setTimeout(kuaikanQuery(),1000);
+    setTimeout(qqQuery(),1000 * 4);
+    setTimeout(mhdmzjQuery(),1000 * 8);
+    setTimeout(w3dmzjQuery(),1000 * 16);
     setTimeout(allQuery, 1000 * 60 * 10);
 }
 

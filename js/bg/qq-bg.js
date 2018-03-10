@@ -23,7 +23,9 @@ function qqQuery() {
         };
         return resObj;
     };
-    return queryUpdate(baseObj, ajaxCall);
+    return function(){
+        getFavs('ac.qq', {}, queryUpdate(baseObj, ajaxCall));
+    };
 }
 
 /**
