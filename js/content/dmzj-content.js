@@ -1,12 +1,15 @@
 $(function() {
-    if (location.href.indexOf('www.dmzj') >= 0) {
+    if (curHref.indexOf('dmzj.com/info') >= 0 || curHref.indexOf('dmzj.com/view/') >= 0) {
         log('www.dmzj');
+        createBtn();
         _$imgToggle.on('click', toggleFavHandlerW3dmzj);
         updateW3dmzj();
-    } else if (location.href.indexOf('manhua.dmzj') >= 0) {
+    } else if (curHref.search(/manhua.dmzj.com\/.+/) >= 0) {
+        createBtn();
         _$imgToggle.on('click', toggleFavHandlerMhdmzj);
         updateMhdmzj();
-    } else if (location.href.indexOf('i.dmzj') >= 0) {
+    } else if (curHref.indexOf('i.dmzj') >= 0) {
+        createBtn();
         _$imgExport.on('click', exportUserColDmzj);
     }
 
@@ -23,7 +26,7 @@ function updateMhdmzj() {
 function updateW3dmzj() {
     getFavs('www.dmzj', storObj, updateColRecord(getCurComicW3dmzj));
 }
-if (location.href.indexOf('www.dmzj') >= 0) {
+if (curHref.indexOf('www.dmzj') >= 0) {
     var origin = location.origin,
         baseImgUrl = 'https://images.dmzj.com/img/webpic/',
         baseChapterUrl = origin + '/view/',
@@ -38,7 +41,7 @@ if (location.href.indexOf('www.dmzj') >= 0) {
     };
 }
 
-if (location.href.indexOf('manhua.dmzj') >= 0) {
+if (curHref.indexOf('manhua.dmzj') >= 0) {
     origin = location.origin;
     baseImgUrl = 'https://images.dmzj.com/webpic/';
     baseChapterUrl = origin;

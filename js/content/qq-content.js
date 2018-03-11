@@ -1,4 +1,4 @@
-if (location.href.indexOf('ac.qq') >= 0) {
+if (curHref.indexOf('ac.qq') >= 0) {
     var origin = location.origin,
         baseImgUrl = 'https://manhua.qpic.cn/vertical/',
         baseChapterUrl = origin + '/ComicView/index/id/',
@@ -14,8 +14,9 @@ if (location.href.indexOf('ac.qq') >= 0) {
 }
 
 $(function(){
-    if(location.href.indexOf('ac.qq') < 0)return;
+    if(curHref.indexOf('ac.qq.com/Comic') < 0)return;
     log('ac.qq');
+    createBtn();
     _$imgExport.on('click',exportUserColQq);
     _$imgToggle.on('click',toggleFavHandlerQq);
     updateQq();
@@ -69,7 +70,6 @@ function updateQq(){
  * 切换收藏按钮点击处理函数
  */
 function toggleFavHandlerQq(){
-    // var obj = getCurComicQq();
     var getChapterInfo = function(text){
         var $html = $(text);
         var imgUrl = $html.find('.works-cover img').get(0).src;
@@ -91,48 +91,6 @@ function toggleFavHandlerQq(){
         };
         return retObj;
     };
-    // toggleFav(storObj,getCurComicQq,)
-    // getFavs('ac.qq',storObj,toggleFavQq(obj.title,obj.indexUrl,obj.curChapter,obj.curUrl));
+
     getFavs('ac.qq',storObj,toggleFav(storObj,getCurComicQq,getChapterInfo));
 }
-/**
- * 切换收藏
- */
-/*function toggleFavQq(title,indexUrl,curChapter,curUrl){
-    return function(qqFavs,allFavs){
-        var index = arrInStr(qqFavs,title,'title');
-        //已经收藏，则取消收藏
-        if(index >= 0){
-            qqFavs.splice(index,1);
-            storLocal.set({allFavs:allFavs});
-            return;
-        }
-        //未收藏，则收藏
-        var sucCall = function(text){
-            var $html = $(text);
-            var imgUrl = $html.find('.works-cover img').get(0).src;
-            var $as = $html.find('.chapter-page-all a');
-            var newA = $as.get($as.length - 1),curA = $as.get(0);
-            var tmpArr = newA.title.split('：');
-            var newChapter,newUrl;
-            newChapter = tmpArr[1];
-            newUrl = newA.href;
-            tmpArr = curA.title.split('：');
-            curChapter = curChapter? curChapter : tmpArr[1];
-            curUrl = curUrl ? curUrl : curA.href;
-            var col = {
-                imgUrl: imgUrl.replace(baseImgUrl, ''),
-                indexUrl: indexUrl.replace(baseIndexUrl,''),
-                newChapter:newChapter,
-                curChapter:curChapter,
-                newUrl: newUrl.replace(baseChapterUrl,''), //最新章节地址
-                curUrl: curUrl.replace(baseChapterUrl,''), //当前章节地址
-                title: title,
-                isUpdate: false
-            };
-            qqFavs.unshift(col);
-            storLocal.set({allFavs:allFavs});
-        };
-        $.ajax(indexUrl,{success:sucCall});
-    }
-}*/

@@ -10,26 +10,26 @@ var _src = {
     comicGrey:cGetUrl('images/comic-grey.png'),
     comic:cGetUrl('images/comic.png')
 };
-$(function() {
-    var origin = location.origin;
-    // if(arrInStr(_includeArr,origin)<0) return;
-    $ul = $('<ul>');
+//创建按钮
+function createBtn(){
+    var $ul = $('<ul>');
     $ul.addClass('img-list');
     $ul.attr({draggable:true});
-    _$imgExport = addImgToUL($ul,_src.exportCollect);
-    _$imgToggle = addImgToUL($ul,_src.collectGrey,toggleFavIcon);
-    _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu);
+    _$imgExport = addImgToUL($ul,_src.exportCollect,null,'导出网站中收藏的漫画到插件中');
+    _$imgToggle = addImgToUL($ul,_src.collectGrey,toggleFavIcon,'收藏');
+    _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu,'切换菜单');
     _$imgExport.toggle();
     _$imgToggle.toggle();
-    // setDraggable($ul);
+    setDraggable($ul);
     $('body').append($ul);
-});
+}
 //给ul列表中加入一个图片
-function addImgToUL($ul,srcStr,clickHandler){
+function addImgToUL($ul,srcStr,clickHandler,title){
     $li = $('<li>');
     $img = $('<img>');
     $img.addClass('fab-img');
     $img.get(0).src = srcStr;
+    $img.get(0).title = title;
     if(clickHandler) $img.on('click',clickHandler);
     $li.append($img);
     $ul.append($li);
@@ -81,8 +81,9 @@ function toggleFavIcon(){
     var imgElm = _$imgToggle.get(0);
     if(imgElm.src === _src.collectGrey){
         imgElm.src = _src.collect;
-        showTips('收藏成功罒ω罒')
+        showTips('收藏成功');
     }else{
         imgElm.src = _src.collectGrey;
+        showTips('取消收藏成功');
     }
 }
