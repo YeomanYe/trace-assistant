@@ -1,6 +1,21 @@
-var chrNotify = chrome.notifications;
-var storLocal = chrome.storage.local;
-var log = console.log;
+/**
+ * 查询是否有更新
+ */
+var allQuery = function() {
+    var kuaikanQuery,qqQuery,mhdmzjQuery,w3dmzjQuery;
+    if(!qqQuery){
+        qqQuery = createQqQuery();
+        mhdmzjQuery = createMhdmzjQuery();
+        w3dmzjQuery = createW3dmzjQuery();
+        kuaikanQuery = createKuaikanQuery();
+    }
+    mhdmzjQuery.afterStore(w3dmzjQuery).afterStore(qqQuery).afterStore(kuaikanQuery);
+    allQuery = function(){
+        mhdmzjQuery();
+        setTimeout(allQuery, 1000 * 60);
+    };
+    allQuery();
+}
 
 updateBadge();
 allQuery();
@@ -58,21 +73,7 @@ function setBadge(num) {
         color: 'red'
     })
 }
-var kuaikanQuery,qqQuery,mhdmzjQuery,w3dmzjQuery;
-/**
- * 查询是否有更新
- */
-function allQuery() {
-    if(!qqQuery){
-        qqQuery = createQqQuery();
-        mhdmzjQuery = createMhdmzjQuery();
-        w3dmzjQuery = createW3dmzjQuery();
-        kuaikanQuery = createKuaikanQuery();
-    }
-    mhdmzjQuery.afterStore(w3dmzjQuery).afterStore(qqQuery).afterStore(kuaikanQuery);
-    mhdmzjQuery();
-    setTimeout(allQuery, 1000 * 60 * 10);
-}
+
 
 /**
  * 导出收藏的漫画

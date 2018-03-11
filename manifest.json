@@ -1,19 +1,18 @@
 {
    "background": {
-      // "page": "background.html"
-      "scripts":["lib/jquery.min.js","js/utils.js","js/bg/kuaikan-bg.js","js/bg/qq-bg.js","js/bg/dmzj-bg.js","js/bg/bg.js"]
+      "scripts": ["lib/jquery.min.js", "js/utils.js", "js/bg/kuaikan-bg.js", "js/bg/qq-bg.js", "js/bg/dmzj-bg.js", "js/bg/bg.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",
       "default_popup": "popup.html",
-      "default_title": "__MSG_ext_name__"
+      "default_title": "漫画助手"
    },
-   "content_scripts": [ {
-      "js": [ "lib/jquery.min.js","js/utils.js","js/content/pre-content.js","js/content/kuaikan-content.js","js/content/qq-content.js","js/content/dmzj-content.js" ],
-      "css":["css/content.css"],
-      "matches": [ "http://*/*", "https://*/*" ],
+   "content_scripts": [{
+      "js": ["lib/jquery.min.js", "js/utils.js", "js/content/pre-content.js", "js/content/kuaikan-content.js", "js/content/qq-content.js", "js/content/dmzj-content.js"],
+      "css": ["css/content.css"],
+      "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_end"
-   } ],
+   }],
    "content_security_policy": "script-src 'self'; object-src 'self'",
    "icons": {
       "16": "images/icon/logo16.png",
@@ -22,27 +21,10 @@
       "64": "images/icon/logo64.png",
       "128": "images/icon/logo128.png"
    },
-   // "debug": false,
-   // "default_locale": "zh_CN",
-   // "description": "__MSG_ext_description__",
-   // "dev": false,
-   // "homepage_url": "http://www.manshenqi.com/",
-   // "icons": {
-   //    "128": "images/icon/icon128.png",
-   //    "16": "images/icon/icon16.png",
-   //    "19": "images/icon/icon19.png",
-   //    "32": "images/icon/icon19.png",
-   //    "48": "images/icon/icon48.png"
-   // },
-   // "incognito": "spanning",
    "manifest_version": 2,
-   // "minimum_chrome_version": "21",
    "name": "漫画助手",
    "options_page": "popup.html",
-   // "permissions": [ "http://*/*", "https://*/*", "notifications", "tabs", "activeTab", "storage", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "cookies", "downloads" ],
-   "permissions": [ "http://*/*", "https://*/*", "notifications", "tabs", "activeTab", "storage", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "cookies", "downloads" ],
-   // "short_name": "__MSG_ext_short_name__",
-   // "update_url": "https://clients2.google.com/service/update2/crx",
+   "permissions": ["http://*/*", "https://*/*", "notifications", "tabs", "activeTab", "storage", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "cookies", "downloads"],
    "version": "0.1",
-   "web_accessible_resources": [ "remote/*", "lib/jquery.js", "test/js/test.js", "manifest.json", "images/*", "_locales/*" ]
+   "web_accessible_resources": ["remote/*", "lib/jquery.js", "test/js/test.js", "manifest.json", "images/*", "_locales/*"]
 }
