@@ -1,3 +1,7 @@
+var storLocal = chrome.storage.local;
+var log = console.log;
+var sendMsg = chrome.runtime.sendMessage;
+
 /**
  * 获取两个URL中相同的部分
  */
@@ -106,6 +110,8 @@ function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImage;
     var baseChapter = baseObj.baseChapter;
+    var afterStoreCall = callback._afterStore ? callback._afterStore : function(){};//存储成功之后的回调函数
+    var isUpdate = false;
     return function(favs, allFavs, updateNum) {
         var sucCall = function(data) {
             var resObj = callback(data);
@@ -115,14 +121,15 @@ function queryUpdate(baseObj, callback) {
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
                 createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
+                isUpdate = true;
                 if (!col.isUpdate) {
                     col.isUpdate = true;
                     setBadge(++updateNum);
                 }
-                storeDebounce({
+                storLocal.set({
                     updateNum:updateNum,
                     allFavs:allFavs
-                });
+                },afterStoreCall);
             }
         };
         for (var i = 0, len = favs.length; i < len; i++) {
@@ -133,6 +140,7 @@ function queryUpdate(baseObj, callback) {
                 async: false
             });
         }
+        if(!isUpdate) afterStoreCall();
     }
 }
 /**
@@ -207,7 +215,7 @@ function createNotify(title, iconUrl, message, newUrl) {
  */
 var storeDebounce = function(obj) {
     var storeDebounceTimeout;
-    storeDebounce = function(){
+    storeDebounce = function(obj){
         if(storeDebounceTimeout){
             clearTimeout(storeDebounceTimeout);
         }
@@ -215,5 +223,5 @@ var storeDebounce = function(obj) {
             chrome.storage.local.set(obj);
         },500);
     }
-    storeDebounce();
+    storeDebounce(obj);
 }

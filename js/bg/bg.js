@@ -57,15 +57,19 @@ function setBadge(num) {
         color: 'red'
     })
 }
-
+var kuaikanQuery,qqQuery,mhdmzjQuery,w3dmzjQuery;
 /**
  * 查询是否有更新
  */
 function allQuery() {
-    setTimeout(kuaikanQuery(),1000);
-    setTimeout(qqQuery(),1000 * 4);
-    setTimeout(mhdmzjQuery(),1000 * 8);
-    setTimeout(w3dmzjQuery(),1000 * 16);
+    if(!qqQuery){
+        qqQuery = createQqQuery();
+        mhdmzjQuery = createMhdmzjQuery();
+        w3dmzjQuery = createW3dmzjQuery();
+        kuaikanQuery = createKuaikanQuery();
+    }
+    mhdmzjQuery.afterStore(w3dmzjQuery).afterStore(qqQuery).afterStore(kuaikanQuery);
+    mhdmzjQuery();
     setTimeout(allQuery, 1000 * 60 * 10);
 }
 

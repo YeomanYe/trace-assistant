@@ -1,7 +1,7 @@
 /**
  * 查询收藏的快看漫画是否有更新
  */
-function kuaikanQuery() {
+var createKuaikanQuery = function() {
     var baseObj = {
         baseIndex: 'http://www.kuaikanmanhua.com/web/topic',
         baseImage: 'https://i1s.kkmh.com/image',
@@ -19,9 +19,15 @@ function kuaikanQuery() {
         };
         return resObj;
     };
-    return function(){
+    var afterStore = function(callback){
+        ajaxCall._afterStore = callback;
+        return callback;
+    };
+    kuaikanQuery = function(){
         getFavs('kuaikan', {}, queryUpdate(baseObj, ajaxCall));
     };
+    kuaikanQuery.afterStore = afterStore;
+    return kuaikanQuery;
 }
 
 /**

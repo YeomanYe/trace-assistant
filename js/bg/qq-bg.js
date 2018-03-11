@@ -1,7 +1,7 @@
 /**
  * 查询收藏的腾讯漫画是否有更新
  */
-function qqQuery() {
+var createQqQuery = function() {
     var baseObj = {
         baseIndex: 'http://ac.qq.com/Comic/comicInfo/id/',
         baseImage: 'https://manhua.qpic.cn/vertical/',
@@ -23,9 +23,15 @@ function qqQuery() {
         };
         return resObj;
     };
-    return function(){
+    var afterStore = function(callback){
+        ajaxCall._afterStore = callback;
+        return callback;
+    };
+    qqQuery = function(){
         getFavs('ac.qq', {}, queryUpdate(baseObj, ajaxCall));
     };
+    qqQuery.afterStore = afterStore;
+    return qqQuery;
 }
 
 /**

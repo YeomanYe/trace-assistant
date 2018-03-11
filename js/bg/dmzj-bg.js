@@ -131,7 +131,7 @@ function dmzjExport(args) {
 /**
  * 查询收藏的动漫之家漫画是否有更新
  */
-function mhdmzjQuery() {
+var createMhdmzjQuery = function() {
     var baseObj = {
         baseIndex: 'https://manhua.dmzj.com',
         baseImage: 'https://images.dmzj.com/webpic/',
@@ -153,14 +153,20 @@ function mhdmzjQuery() {
         };
         return resObj;
     };
-    return function(){
+    var afterStore = function(callback){
+        ajaxCall._afterStore = callback;
+        return callback;
+    };
+    mhdmzjQuery = function(){
         getFavs('manhua.dmzj', {}, queryUpdate(baseObj, ajaxCall));
     };
+    mhdmzjQuery.afterStore = afterStore;
+    return mhdmzjQuery;
 }
 /**
  * 查询收藏的动漫之家漫画是否有更新
  */
-function w3dmzjQuery() {
+var createW3dmzjQuery = function() {
     var baseObj = {
         baseIndex: 'https://www.dmzj.com/info/',
         baseImage: 'https://images.dmzj.com/img/webpic/',
@@ -181,7 +187,13 @@ function w3dmzjQuery() {
         };
         return resObj;
     };
-    return function(){
-        getFavs('www.dmzj', {}, queryUpdate(baseObj, ajaxCall));
+    var afterStore = function(callback){
+        ajaxCall._afterStore = callback;
+        return callback;
     };
+    w3dmzjQuery = function(){
+        getFavs('www.dmzj', {}, queryUpdate(baseObj, ajaxCall));
+    }
+    w3dmzjQuery.afterStore = afterStore;
+    return w3dmzjQuery;
 }

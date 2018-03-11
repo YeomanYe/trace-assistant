@@ -1,6 +1,3 @@
-var storLocal = chrome.storage.local;
-var log = console.log;
-var _allFavs;
 var $optionTab, $colTab, $comicList, $settingList, $export, $import, $fileImport;
 
 $(function() {
@@ -125,6 +122,7 @@ function fileImportChangeHandler(e) {
             var allFavs = data.allFavs;
             storLocal.set(data);
             allFavs.forEach(resolveColItems);
+            sendMsg(null,'updateNumChange');
         };
         reader.readAsText(file);
     }
