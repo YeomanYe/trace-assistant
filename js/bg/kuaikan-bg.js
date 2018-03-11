@@ -33,7 +33,7 @@ var createKuaikanQuery = function() {
 /**
  * 快看漫画导出用户的收藏
  */
-function kuaikanExport(origin) {
+function kuaikanExport(origin,resSend) {
     var baseImgUrl = 'https://i1s.kkmh.com/image',
         baseChapterUrl = origin + '/web/comic/',
         baseIndexUrl = origin + '/web/topic';
@@ -52,6 +52,11 @@ function kuaikanExport(origin) {
         //递归遍历，获取所有的收藏结果
         var successCallback = function(resData) {
             log('resData', resData);
+            var status = resData.status_code;
+            if(status === 401){
+                resSend({status:1});//未登录
+                return;
+            }
             var datas = resData.data.topics;
             var storDatas = [];
             
@@ -102,6 +107,7 @@ function kuaikanExport(origin) {
                 storLocal.set({
                     'allFavs': allFavs
                 });
+                resSend({status:0});//导出成功
             }
         };
         $.ajax(baseUrl + '?page=' + pageNum + '&size=' + size, {

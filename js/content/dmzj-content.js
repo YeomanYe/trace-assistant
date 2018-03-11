@@ -8,7 +8,7 @@ $(function() {
         createBtn();
         _$imgToggle.on('click', toggleFavHandlerMhdmzj);
         updateMhdmzj();
-    } else if (curHref.indexOf('i.dmzj') >= 0) {
+    } else if (curHref.indexOf('i.dmzj') >= 0 && curHref.indexOf('login') < 0) {
         createBtn();
         _$imgExport.on('click', exportUserColDmzj);
     }
@@ -169,7 +169,7 @@ function exportUserColDmzj() {
     $.ajax('https://i.dmzj.com/ajax/my/subscribe', {
         success: function(text) {
             // var userCols = JSON.parse(text).data;
-            sendMsg(null, 'exportCollect@-@' + location.origin + '@-@' + text);
+            sendMsg(null, 'exportCollect@-@' + location.origin + '@-@' + text,handleResData);
         },
         type:'POST',
         data:'page=1&type_id=1&letter_id=0&read_id=1'

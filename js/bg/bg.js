@@ -5,16 +5,17 @@ var log = console.log;
 updateBadge();
 allQuery();
 //监听消息
-chrome.runtime.onMessage.addListener(function(msg) {
+chrome.runtime.onMessage.addListener(function(msg,msgSenderObj,resSend) {
     var msgArr = msg.split('@-@');
     switch (msgArr[0]) {
         case 'updateNumChange':
             updateBadge();
             break;
         case 'exportCollect':
-            exportCollect(msgArr);
+            exportCollect(msgArr,resSend);
             break;
     }
+    return true;
 });
 
 //点击提醒打开链接
@@ -73,14 +74,16 @@ function allQuery() {
     setTimeout(allQuery, 1000 * 60 * 10);
 }
 
-
-function exportCollect(args) {
+/**
+ * 导出收藏的漫画
+ */
+function exportCollect(args,resSend) {
     var origin = args[1];
     if (origin.indexOf('kuaikan') >= 0) {
-        kuaikanExport(origin);
+        kuaikanExport(origin,resSend);
     } else if (origin.indexOf('ac.qq') >= 0) {
-        qqExport(args);
+        qqExport(args,resSend);
     }else if(origin.indexOf('i.dmzj')){
-        dmzjExport(args);
+        dmzjExport(args,resSend);
     }
 }

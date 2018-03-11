@@ -20,7 +20,7 @@ function createBtn(){
     _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu,'切换菜单');
     _$imgExport.toggle();
     _$imgToggle.toggle();
-    setDraggable($ul);
+    // setDraggable($ul);
     $('body').append($ul);
 }
 //给ul列表中加入一个图片
@@ -81,9 +81,7 @@ function toggleFavIcon(){
     var imgElm = _$imgToggle.get(0);
     if(imgElm.src === _src.collectGrey){
         imgElm.src = _src.collect;
-        showTips('收藏成功');
     }else{
         imgElm.src = _src.collectGrey;
-        showTips('取消收藏成功');
     }
 }

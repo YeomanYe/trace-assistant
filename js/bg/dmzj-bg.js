@@ -1,7 +1,7 @@
 /**
  * 动漫之家导出用户收藏
  */
-function dmzjExport(args) {
+function dmzjExport(args,resSend) {
     var htmlText = args[2];
 
     var origin = 'https://www.dmzj.com',
@@ -124,6 +124,7 @@ function dmzjExport(args) {
                     });
                 }
             }
+            resSend({status:0});
         });
     });
 }

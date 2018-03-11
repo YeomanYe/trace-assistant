@@ -37,8 +37,13 @@ var createQqQuery = function() {
 /**
  * 腾讯动漫导出用户的收藏
  */
-function qqExport(args) {
+function qqExport(args,resSend) {
     var dataStr = args[2];
+    var status = JSON.parse(dataStr).status;
+    if(status === "-99"){
+        resSend({status:1});
+        return;
+    }
     var userCols = JSON.parse(dataStr).data;
     var origin = args[1],
         baseImgUrl = 'https://manhua.qpic.cn/vertical/',
@@ -92,6 +97,7 @@ function qqExport(args) {
             storLocal.set({
                 allFavs: allFavs
             });
+            resSend({status:0});
         }
     });
 }

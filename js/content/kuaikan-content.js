@@ -6,7 +6,7 @@ $(function() {
     if(curHref.indexOf('kuaikanmanhua.com/web')<0) return;
     createBtn();
     _$imgExport.on('click', function() {
-        sendMsg(null, 'exportCollect@-@' + location.origin);
+        sendMsg(null, 'exportCollect@-@' + location.origin,handleResData);
     });
     _$imgToggle.on('click', toggleFavBtnHandlerKk);
     updateKk();
@@ -25,23 +25,6 @@ if (curHref.indexOf('kuaikan') >= 0) {
         origin: origin,
         site: 'kuaikan'
     };
-}
-/**
- * 更新收藏的漫画的阅读记录
- */
-function updateColRecordKk(kuaikanFavs,allFavs) {
-    var curComic = getCurComicKk();
-    //解析当前页面并更新阅读记录
-    var index = arrInStr(kuaikanFavs, curComic.title, 'title');
-    if (index < 0) return;
-    //更新图标
-    _$imgToggle.get(0).src = _src.collect;
-    var curItem = kuaikanFavs[index];
-    if(!curComic.curChapter) return;
-    curItem.curChapter = curComic.curChapter;
-    curItem.curUrl = curComic.curUrl.replace(baseChapterUrl, '');
-    decUpdateNum(curItem);
-    storLocal.set({allFavs:allFavs});
 }
 /**
  * 更新
@@ -95,6 +78,7 @@ function toggleFavKk(title, indexUrl, curChapter, curUrl) {
             storLocal.set({
                 allFavs: allFavs
             });
+            showTips('取消收藏成功');
             return;
         }
         //当前漫画不在收藏目录中，收藏进该漫画
@@ -126,6 +110,7 @@ function toggleFavKk(title, indexUrl, curChapter, curUrl) {
             storLocal.set({
                 allFavs: allFavs
             });
+            showTips('取消收藏成功');
         };
         $.ajax(indexUrl, {
             success: indexSuccess,

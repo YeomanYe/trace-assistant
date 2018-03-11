@@ -173,6 +173,7 @@ function toggleFav(storObj,getCurComic,getChapterInfo){
             decUpdateNum(item);
             favs.splice(index,1);
             storLocal.set({allFavs:allFavs});
+            showTips('取消收藏成功');
             return;
         }
         //未收藏，则收藏
@@ -193,6 +194,7 @@ function toggleFav(storObj,getCurComic,getChapterInfo){
             };
             favs.unshift(col);
             chrome.storage.local.set({allFavs:allFavs});
+            showTips('收藏成功');
         };
         $.ajax(indexUrl,{success:sucCall});
     }
@@ -230,6 +232,18 @@ function showTips(msg){
     setTimeout(function(){
         $div.remove();
     },1000);
+}
+/**
+ * 处理响应数据
+ */
+function handleResData(data){
+    log('handleResData',data);
+    var status = data.status;
+    if(!status){
+        showTips('操作成功');
+    }else if(status === 1){
+        showTips('请先登录');
+    }
 }
 
 /**

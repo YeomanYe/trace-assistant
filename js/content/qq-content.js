@@ -27,7 +27,7 @@ $(function(){
 function exportUserColQq(){
     $.ajax('http://ac.qq.com/MyPersonalCenter/getUserCollection',{success:function(text){
         // var userCols = JSON.parse(text).data;
-        sendMsg(null, 'exportCollect@-@' + location.origin+'@-@'+text);
+        sendMsg(null, 'exportCollect@-@' + location.origin+'@-@'+text,handleResData);
     }});
 }
 /**
