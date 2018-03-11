@@ -81,6 +81,7 @@ function toggleFavIcon(){
     var imgElm = _$imgToggle.get(0);
     if(imgElm.src === _src.collectGrey){
         imgElm.src = _src.collect;
+        showTips('收藏成功罒ω罒')
     }else{
         imgElm.src = _src.collectGrey;
     }

@@ -211,6 +211,28 @@ function createNotify(title, iconUrl, message, newUrl) {
     chrome.notifications.create(newUrl, options);
 }
 /**
+ * 创建toast提醒
+ */
+function showTips(msg){
+    var $div = $('<div>');
+    $div.text(msg);
+    var width = $(window).width(),height = $(window).height();
+    $div.css({
+        position:'fixed',
+        padding:'20px',
+        top:height/2 - 40,
+        left:width/2 - 40,
+        'font-size':'18px',
+        background:'black',
+        color:'white'
+    });
+    $('body').append($div);
+    setTimeout(function(){
+        $div.remove();
+    },1000);
+}
+
+/**
  * 存储消抖函数
  */
 var storeDebounce = function(obj) {
