@@ -1,5 +1,5 @@
 var _allBaseStoreObj = {};
-function getBaseStore(name){
+function getBaseStoreObj(name){
     var keys = Object.keys(_allBaseStoreObj);
     var origin;
     //说明name是origin

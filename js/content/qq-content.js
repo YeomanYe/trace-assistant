@@ -1,17 +1,3 @@
-if (curHref.indexOf('ac.qq') >= 0) {
-    var origin = location.origin,
-        baseImgUrl = 'https://manhua.qpic.cn/vertical/',
-        baseChapterUrl = origin + '/ComicView/index/id/',
-        baseIndexUrl = origin + '/Comic/comicInfo/id/';
-
-    var storObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'ac.qq'
-    };
-}
 
 $(function(){
     if(curHref.indexOf('ac.qq.com/Comic') < 0)return;

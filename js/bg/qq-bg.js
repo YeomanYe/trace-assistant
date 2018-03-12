@@ -2,21 +2,16 @@
  * 查询收藏的腾讯漫画是否有更新
  */
 var createQqQuery = function() {
-    var baseObj = {
-        baseIndex: 'http://ac.qq.com/Comic/comicInfo/id/',
-        baseImage: 'https://manhua.qpic.cn/vertical/',
-        baseChapter: 'http://ac.qq.com/ComicView/index/id/'
-    };
+    var baseObj = getBaseStoreObj('ac.qq');
     var ajaxCall = function(data) {
         var $html = $(data);
-        var baseChapter = 'http://ac.qq.com/ComicView/index/id/';
+        var baseChapter = baseObj.baseChapter;
         var $as = $html.find('.chapter-page-all a');
         var newA = $as.get($as.length - 1);
         var tmpArr = newA.title.split('：');
         var newChapter = tmpArr[1];
         var newUrl = newA.href;
-        newUrl = replaceOrigin(newUrl,'http://ac.qq.com');
-        newUrl = newUrl.replace(baseChapter,'');
+        newUrl = replaceOrigin(newUrl,baseObj.origin).replace(baseChapter,'');
         var resObj = {
             newUrl: newUrl,
             newChapter: newChapter
@@ -28,7 +23,7 @@ var createQqQuery = function() {
         return callback;
     };
     qqQuery = function(){
-        getFavs('ac.qq', {}, queryUpdate(baseObj, ajaxCall));
+        getFavs('ac.qq', baseObj, queryUpdate(baseObj, ajaxCall));
     };
     qqQuery.afterStore = afterStore;
     return qqQuery;
@@ -45,18 +40,11 @@ function qqExport(args,resSend) {
         return;
     }
     var userCols = JSON.parse(dataStr).data;
-    var origin = args[1],
-        baseImgUrl = 'https://manhua.qpic.cn/vertical/',
-        baseChapterUrl = origin + '/ComicView/index/id/',
-        baseIndexUrl = origin + '/Comic/comicInfo/id/';
+    var origin = args[1];
 
-    var storObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'ac.qq'
-    };
+    var storObj = getBaseStoreObj(origin),
+        baseImgUrl = storObj.baseImg,
+        baseIndexUrl = storObj.baseIndex;
     var indexCall = function(item,curSeqNo,baseChapter){
         return function(text){
             $html = $(text);
@@ -68,8 +56,8 @@ function qqExport(args,resSend) {
             tmpArr = curA.title.split('：');
             curChapter = tmpArr[1];
             var newUrl = newA.href,curUrl = curA.href;
-            newUrl = replaceOrigin(newUrl,'http://ac.qq.com').replace(baseChapter,'');
-            curUrl = replaceOrigin(curUrl,'http://ac.qq.com').replace(baseChapter,'');
+            newUrl = replaceOrigin(newUrl,storObj.origin).replace(baseChapter,'');
+            curUrl = replaceOrigin(curUrl,storObj.origin).replace(baseChapter,'');
             item.newChapter = newChapter;
             item.curChapter = curChapter;
             item.newUrl = newUrl;

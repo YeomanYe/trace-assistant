@@ -26,35 +26,6 @@ function updateMhdmzj() {
 function updateW3dmzj() {
     getFavs('www.dmzj', storObj, updateColRecord(getCurComicW3dmzj));
 }
-if (curHref.indexOf('www.dmzj') >= 0) {
-    var origin = location.origin,
-        baseImgUrl = 'https://images.dmzj.com/img/webpic/',
-        baseChapterUrl = origin + '/view/',
-        baseIndexUrl = origin + '/info/';
-
-    var storObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'www.dmzj'
-    };
-}
-
-if (curHref.indexOf('manhua.dmzj') >= 0) {
-    origin = location.origin;
-    baseImgUrl = 'https://images.dmzj.com/webpic/';
-    baseChapterUrl = origin;
-    baseIndexUrl = origin;
-
-    storObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'manhua.dmzj'
-    };
-}
 /**
  * 获取当前页面漫画名称、目录地址、章节名称、章节链接
  */

@@ -2,11 +2,7 @@
  * 查询收藏的快看漫画是否有更新
  */
 var createKuaikanQuery = function() {
-    var baseObj = {
-        baseIndex: 'http://www.kuaikanmanhua.com/web/topic',
-        baseImage: 'https://i1s.kkmh.com/image',
-        baseChapter: 'http://www.kuaikanmanhua.com/web/comic/'
-    };
+    var baseObj = getBaseStoreObj('kuaikan');
     var ajaxCall = function(data) {
         var $html = $(data);
         var aElm = $html.find('table .tit a').get(0);
@@ -24,7 +20,7 @@ var createKuaikanQuery = function() {
         return callback;
     };
     kuaikanQuery = function(){
-        getFavs('kuaikan', {}, queryUpdate(baseObj, ajaxCall));
+        getFavs('kuaikan', baseObj, queryUpdate(baseObj, ajaxCall));
     };
     kuaikanQuery.afterStore = afterStore;
     return kuaikanQuery;
@@ -34,17 +30,9 @@ var createKuaikanQuery = function() {
  * 快看漫画导出用户的收藏
  */
 function kuaikanExport(origin,resSend) {
-    var baseImgUrl = 'https://i1s.kkmh.com/image',
-        baseChapterUrl = origin + '/web/comic/',
-        baseIndexUrl = origin + '/web/topic';
-
-    var kuaikanStorObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'kuaikan'
-    };
+    var kuaikanStorObj = getBaseStoreObj('kuaikan'),
+        baseImgUrl = kuaikanStorObj.baseImg,
+        baseIndexUrl = kuaikanStorObj.baseIndex;
     var pageNum = 1,
         baseUrl = origin + '/web/fav/topics',
         size = 16;

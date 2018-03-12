@@ -10,6 +10,12 @@ var _src = {
     comicGrey:cGetUrl('images/comic-grey.png'),
     comic:cGetUrl('images/comic.png')
 };
+//获取基本信息
+var origin = location.origin,
+    storObj = getBaseStoreObj(origin),
+    baseImgUrl = storObj.baseImg,
+    baseChapterUrl = storObj.baseChapter,
+    baseIndexUrl = storObj.baseIndex;
 //创建按钮
 function createBtn(){
     var $ul = $('<ul>');

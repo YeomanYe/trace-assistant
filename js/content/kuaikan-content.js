@@ -12,20 +12,6 @@ $(function() {
     updateKk();
 });
 
-if (curHref.indexOf('kuaikan') >= 0) {
-    var origin = location.origin,
-        baseImgUrl = 'https://i1s.kkmh.com/image',
-        baseChapterUrl = origin + '/web/comic/',
-        baseIndexUrl = origin + '/web/topic';
-
-    var storObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'kuaikan'
-    };
-}
 /**
  * 更新
  */
@@ -110,7 +96,7 @@ function toggleFavKk(title, indexUrl, curChapter, curUrl) {
             storLocal.set({
                 allFavs: allFavs
             });
-            showTips('取消收藏成功');
+            showTips('收藏成功');
         };
         $.ajax(indexUrl, {
             success: indexSuccess,

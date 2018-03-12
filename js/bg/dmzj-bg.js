@@ -3,32 +3,8 @@
  */
 function dmzjExport(args,resSend) {
     var htmlText = args[2];
-
-    var origin = 'https://www.dmzj.com',
-        baseImgUrl = 'https://images.dmzj.com/img/webpic/',
-        baseChapterUrl = origin + '/view/',
-        baseIndexUrl = origin + '/info/';
-
-    var w3dmzjStorObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'www.dmzj'
-    };
-
-    origin = 'https://manhua.dmzj.com';
-    baseImgUrl = 'https://images.dmzj.com/webpic/';
-    baseChapterUrl = origin;
-    baseIndexUrl = origin;
-
-    var mhdmzjStorObj = {
-        baseImg: baseImgUrl,
-        baseIndex: baseIndexUrl,
-        baseChapter: baseChapterUrl,
-        origin: origin,
-        site: 'manhua.dmzj'
-    };
+    var w3dmzjStorObj = getBaseStoreObj('www.dmzj');
+    var mhdmzjStorObj = getBaseStoreObj('manhua.dmzj');
 
     var w3dmzjIndexCall = function(indexUrl, storObj, favs, allFavs) {
         return function(text) {
@@ -40,7 +16,7 @@ function dmzjExport(args,resSend) {
             var imgUrl = $html.find('.comic_i_img img').get(0).src;
             var baseChapter = storObj.baseChapter,
                 baseImg = storObj.baseImg,
-                baseIndex = storObj.baseIndex;
+                baseIndex = 'http://www.dmzj.com';
             var newA = $as.get(0),
                 curA = $as.get($as.length - 1);
             var newChapter, newUrl, curUrl, curChapter;
@@ -75,7 +51,7 @@ function dmzjExport(args,resSend) {
             var imgUrl = $html.find('.anim_intro_ptext img').get(0).src;
             var baseChapter = storObj.baseChapter,
                 baseImg = storObj.baseImg,
-                baseIndex = storObj.baseIndex;
+                baseIndex = 'http://manhua.dmzj.com';
             var newA = $as.get($as.length - 1),
                 curA = $as.get(0);
             var newChapter, newUrl, curUrl, curChapter;
@@ -133,14 +109,10 @@ function dmzjExport(args,resSend) {
  * 查询收藏的动漫之家漫画是否有更新
  */
 var createMhdmzjQuery = function() {
-    var baseObj = {
-        baseIndex: 'https://manhua.dmzj.com',
-        baseImage: 'https://images.dmzj.com/webpic/',
-        baseChapter: 'https://manhua.dmzj.com'
-    };
+    var baseObj = getBaseStoreObj('manhua.dmzj');
     var ajaxCall = function(data) {
         var $html = $(data);
-        var origin = 'https://manhua.dmzj.com';
+        var origin = baseObj.origin;
         var baseChapter = origin;
         var $as = $html.find('.cartoon_online_border li a');
         var newA = $as.get($as.length - 1);
@@ -159,7 +131,7 @@ var createMhdmzjQuery = function() {
         return callback;
     };
     mhdmzjQuery = function(){
-        getFavs('manhua.dmzj', {}, queryUpdate(baseObj, ajaxCall));
+        getFavs('manhua.dmzj', baseObj, queryUpdate(baseObj, ajaxCall));
     };
     mhdmzjQuery.afterStore = afterStore;
     return mhdmzjQuery;
@@ -168,20 +140,16 @@ var createMhdmzjQuery = function() {
  * 查询收藏的动漫之家漫画是否有更新
  */
 var createW3dmzjQuery = function() {
-    var baseObj = {
-        baseIndex: 'https://www.dmzj.com/info/',
-        baseImage: 'https://images.dmzj.com/img/webpic/',
-        baseChapter: 'https://www.dmzj.com/view/'
-    };
+    var baseObj = getBaseStoreObj('www.dmzj');
     var ajaxCall = function(text) {
         var $html = $(text);
         var $as = $html.find('.tab-content-selected .list_con_li a');
-        var baseChapter = 'https://www.dmzj.com/view/';
+        var baseChapter = baseObj.baseChapter;
         var newA = $as.get(0);
         var newChapter, newUrl;
         newChapter = newA.innerText;
         newUrl = newA.href;
-        newUrl = replaceOrigin(newUrl, 'https://www.dmzj.com').replace(baseChapter, '');
+        newUrl = replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');
         var resObj = {
             newUrl: newUrl,
             newChapter: newChapter
@@ -193,7 +161,7 @@ var createW3dmzjQuery = function() {
         return callback;
     };
     w3dmzjQuery = function(){
-        getFavs('www.dmzj', {}, queryUpdate(baseObj, ajaxCall));
+        getFavs('www.dmzj', baseObj, queryUpdate(baseObj, ajaxCall));
     }
     w3dmzjQuery.afterStore = afterStore;
     return w3dmzjQuery;

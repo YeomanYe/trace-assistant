@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": ["lib/jquery.min.js", "js/utils.js", "js/bg/kuaikan-bg.js", "js/bg/qq-bg.js", "js/bg/dmzj-bg.js", "js/bg/bg.js"]
+      "scripts": ["lib/jquery.min.js", "js/utils.js","js/baseStoreObj.js", "js/bg/kuaikan-bg.js", "js/bg/qq-bg.js", "js/bg/dmzj-bg.js", "js/bg/bg.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",
@@ -8,7 +8,7 @@
       "default_title": "漫管佳"
    },
    "content_scripts": [{
-      "js": ["lib/jquery.min.js", "js/utils.js", "js/content/pre-content.js", "js/content/kuaikan-content.js", "js/content/qq-content.js", "js/content/dmzj-content.js"],
+      "js": ["lib/jquery.min.js", "js/utils.js","js/baseStoreObj.js", "js/content/pre-content.js", "js/content/kuaikan-content.js", "js/content/qq-content.js", "js/content/dmzj-content.js"],
       "css": ["css/content.css"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_end"

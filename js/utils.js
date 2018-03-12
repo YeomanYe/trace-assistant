@@ -110,7 +110,7 @@ function updateColRecord(getCurComic) {
  */
 function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
-    var baseImage = baseObj.baseImage;
+    var baseImage = baseObj.baseImg;
     var baseChapter = baseObj.baseChapter;
     var afterStoreCall = callback._afterStore ? callback._afterStore : function(){};//存储成功之后的回调函数
     var isUpdate = false;
