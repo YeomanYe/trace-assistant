@@ -8,10 +8,14 @@ var rename = require('gulp-rename');
 
 // 合并，压缩content页脚本
 gulp.task('default', function() {
-    gulp.src(['./lib/jquery.min.js','./lib/underscore-min.js','./js/content.js'])
+    gulp.src(['./js/content/pre-content.js','./js/content/dmzj-content.js','./js/content/kuaikan-content.js','./js/content/qq-content.js'])
         .pipe(concat('content.js'))
-        .pipe(gulp.dest('./dist'))
         .pipe(rename('content.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./build/js'));
+    gulp.src(['./js/bg/dmzj-bg.js','./js/bg/kuaikan-bg.js','./js/bg/qq-bg.js','./js/bg/bg.js'])
+        .pipe(concat('bg.js'))
+        .pipe(rename('bg.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./build/js'));
 });
