@@ -78,11 +78,7 @@ function setBadge(num) {
  */
 function exportCollect(args,resSend) {
     var origin = args[1];
-    if (origin.indexOf('kuaikan') >= 0) {
-        kuaikanExport(origin,resSend);
-    } else if (origin.indexOf('ac.qq') >= 0) {
-        qqExport(args,resSend);
-    }else if(origin.indexOf('i.dmzj')){
-        dmzjExport(args,resSend);
-    }
+    var keys = Object.keys(_exportFunObj);
+    var index = arrInStr(keys,origin);
+    _exportFunObj[keys[index]](args,resSend);
 }

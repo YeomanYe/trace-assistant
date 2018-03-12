@@ -1,7 +1,7 @@
 /**
  * 动漫之家导出用户收藏
  */
-function dmzjExport(args,resSend) {
+_exportFunObj['dmzj'] = function(args,resSend) {
     var htmlText = args[2];
     var w3dmzjStorObj = getBaseStoreObj('www.dmzj');
     var mhdmzjStorObj = getBaseStoreObj('manhua.dmzj');

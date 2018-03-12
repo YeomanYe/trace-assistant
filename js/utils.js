@@ -2,6 +2,7 @@ var storLocal = chrome.storage.local;
 var log = console.log;
 var sendMsg = chrome.runtime.sendMessage;
 var _createQueryObj = {};
+var _exportFunObj = {};
 
 
 /**

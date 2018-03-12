@@ -29,7 +29,8 @@ _createQueryObj.createKuaikanQuery = function() {
 /**
  * 快看漫画导出用户的收藏
  */
-function kuaikanExport(origin,resSend) {
+_exportFunObj['kuaikan'] = function(args,resSend) {
+    var origin = args[1];
     var kuaikanStorObj = getBaseStoreObj('kuaikan'),
         baseImgUrl = kuaikanStorObj.baseImg,
         baseIndexUrl = kuaikanStorObj.baseIndex;
