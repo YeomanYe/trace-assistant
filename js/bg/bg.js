@@ -2,16 +2,14 @@
  * 查询是否有更新
  */
 var allQuery = function() {
-    var kuaikanQuery,qqQuery,mhdmzjQuery,w3dmzjQuery;
-    if(!qqQuery){
-        qqQuery = createQqQuery();
-        mhdmzjQuery = createMhdmzjQuery();
-        w3dmzjQuery = createW3dmzjQuery();
-        kuaikanQuery = createKuaikanQuery();
+    var keys = Object.keys(_createQueryObj);
+    var firstQuery = _createQueryObj[keys[0]](),nextQuery = firstQuery;
+    //创建查询链
+    for(var i=1,len=keys.length;i<len;i++){
+        nextQuery = nextQuery.afterStore(_createQueryObj[keys[i]]());
     }
-    mhdmzjQuery.afterStore(w3dmzjQuery).afterStore(qqQuery).afterStore(kuaikanQuery);
     allQuery = function(){
-        mhdmzjQuery();
+        firstQuery();
         setTimeout(allQuery, 1000 * 60);
     };
     allQuery();

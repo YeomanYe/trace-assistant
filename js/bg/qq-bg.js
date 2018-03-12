@@ -1,7 +1,7 @@
 /**
  * 查询收藏的腾讯漫画是否有更新
  */
-var createQqQuery = function() {
+_createQueryObj.createQqQuery = function() {
     var baseObj = getBaseStoreObj('ac.qq');
     var ajaxCall = function(data) {
         var $html = $(data);

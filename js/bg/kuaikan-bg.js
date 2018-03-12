@@ -1,7 +1,7 @@
 /**
  * 查询收藏的快看漫画是否有更新
  */
-var createKuaikanQuery = function() {
+_createQueryObj.createKuaikanQuery = function() {
     var baseObj = getBaseStoreObj('kuaikan');
     var ajaxCall = function(data) {
         var $html = $(data);

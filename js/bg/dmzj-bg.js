@@ -108,7 +108,7 @@ function dmzjExport(args,resSend) {
 /**
  * 查询收藏的动漫之家漫画是否有更新
  */
-var createMhdmzjQuery = function() {
+_createQueryObj.createMhdmzjQuery = function() {
     var baseObj = getBaseStoreObj('manhua.dmzj');
     var ajaxCall = function(data) {
         var $html = $(data);
@@ -139,7 +139,7 @@ var createMhdmzjQuery = function() {
 /**
  * 查询收藏的动漫之家漫画是否有更新
  */
-var createW3dmzjQuery = function() {
+_createQueryObj.createW3dmzjQuery = function() {
     var baseObj = getBaseStoreObj('www.dmzj');
     var ajaxCall = function(text) {
         var $html = $(text);
