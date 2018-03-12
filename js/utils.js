@@ -1,6 +1,8 @@
 var storLocal = chrome.storage.local;
 var log = console.log;
 var sendMsg = chrome.runtime.sendMessage;
+var createQueryObj = {};
+
 
 /**
  * 获取两个URL中相同的部分
