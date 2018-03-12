@@ -5,7 +5,7 @@
    "browser_action": {
       "default_icon": "images/icon/logo16.png",
       "default_popup": "popup.html",
-      "default_title": "漫画助手"
+      "default_title": "漫管佳"
    },
    "content_scripts": [{
       "js": ["lib/jquery.min.js", "js/utils.js", "js/content/pre-content.js", "js/content/kuaikan-content.js", "js/content/qq-content.js", "js/content/dmzj-content.js"],
@@ -22,9 +22,9 @@
       "128": "images/icon/logo128.png"
    },
    "manifest_version": 2,
-   "name": "漫画助手",
+   "name": "漫管佳",
    "options_page": "popup.html",
-   "permissions": ["http://*/*", "https://*/*", "notifications", "tabs", "activeTab", "storage", "webRequest", "webRequestBlocking", "webNavigation", "unlimitedStorage", "cookies", "downloads"],
-   "version": "0.1",
-   "web_accessible_resources": ["remote/*", "lib/jquery.js", "test/js/test.js", "manifest.json", "images/*", "_locales/*"]
+   "permissions": ["http://*/*", "https://*/*", "notifications", "storage", "unlimitedStorage"],
+   "version": "1",
+   "web_accessible_resources": ["remote/*", "lib/jquery.js", "manifest.json", "images/*", "_locales/*"]
 }
