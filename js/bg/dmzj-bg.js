@@ -126,14 +126,10 @@ _createQueryObj.createMhdmzjQuery = function() {
         };
         return resObj;
     };
-    var afterStore = function(callback){
-        ajaxCall._afterStore = callback;
-        return callback;
-    };
-    mhdmzjQuery = function(){
+    var mhdmzjQuery = function(){
         getFavs('manhua.dmzj', baseObj, queryUpdate(baseObj, ajaxCall));
     };
-    mhdmzjQuery.afterStore = afterStore;
+    this.setAfterStore(mhdmzjQuery,ajaxCall);
     return mhdmzjQuery;
 }
 /**
@@ -156,13 +152,11 @@ _createQueryObj.createW3dmzjQuery = function() {
         };
         return resObj;
     };
-    var afterStore = function(callback){
-        ajaxCall._afterStore = callback;
-        return callback;
-    };
-    w3dmzjQuery = function(){
+
+    var w3dmzjQuery = function(){
         getFavs('www.dmzj', baseObj, queryUpdate(baseObj, ajaxCall));
     }
-    w3dmzjQuery.afterStore = afterStore;
+    
+    this.setAfterStore(w3dmzjQuery,ajaxCall);
     return w3dmzjQuery;
 }

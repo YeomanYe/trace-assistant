@@ -15,14 +15,12 @@ _createQueryObj.createKuaikanQuery = function() {
         };
         return resObj;
     };
-    var afterStore = function(callback){
-        ajaxCall._afterStore = callback;
-        return callback;
-    };
-    kuaikanQuery = function(){
+
+    var kuaikanQuery = function(){
         getFavs('kuaikan', baseObj, queryUpdate(baseObj, ajaxCall));
     };
-    kuaikanQuery.afterStore = afterStore;
+    
+    this.setAfterStore(kuaikanQuery,ajaxCall);
     return kuaikanQuery;
 }
 

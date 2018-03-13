@@ -1,9 +1,16 @@
 var storLocal = chrome.storage.local;
 var log = console.log;
 var sendMsg = chrome.runtime.sendMessage;
-var _createQueryObj = {};
+var _createQueryObjProto = {
+    setAfterStore: function(queryFun, hangFun) {
+        queryFun.afterStore = function(callback) {
+            hangFun._afterStore = callback;
+            return callback;
+        };
+    }
+};
+var _createQueryObj = Object.create(_createQueryObjProto);
 var _exportFunObj = {};
-
 
 /**
  * 获取两个URL中相同的部分
@@ -113,7 +120,7 @@ function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImg;
     var baseChapter = baseObj.baseChapter;
-    var afterStoreCall = callback._afterStore ? callback._afterStore : function(){};//存储成功之后的回调函数
+    var afterStoreCall = callback._afterStore ? callback._afterStore : function() {}; //存储成功之后的回调函数
     var isUpdate = false;
     return function(favs, allFavs, updateNum) {
         var sucCall = function(data) {
@@ -130,9 +137,9 @@ function queryUpdate(baseObj, callback) {
                     setBadge(++updateNum);
                 }
                 storLocal.set({
-                    updateNum:updateNum,
-                    allFavs:allFavs
-                },afterStoreCall);
+                    updateNum: updateNum,
+                    allFavs: allFavs
+                }, afterStoreCall);
             }
         };
         for (var i = 0, len = favs.length; i < len; i++) {
@@ -143,7 +150,7 @@ function queryUpdate(baseObj, callback) {
                 async: false
             });
         }
-        if(!isUpdate) afterStoreCall();
+        if (!isUpdate) afterStoreCall();
     }
 }
 /**
@@ -159,47 +166,53 @@ function replaceOrigin(url, newOrigin) {
 /**
  * 收藏或取消收藏
  */
-function toggleFav(storObj,getCurComic,getChapterInfo){
+function toggleFav(storObj, getCurComic, getChapterInfo) {
     var baseImgUrl = storObj.baseImg,
         baseIndex = storObj.baseIndex,
         baseChapter = storObj.baseChapter;
     var tmpObj = getCurComic();
     var title = tmpObj.title,
-        indexUrl =  tmpObj.indexUrl,
+        indexUrl = tmpObj.indexUrl,
         curUrl = tmpObj.curUrl,
         curChapter = tmpObj.curChapter;
-    return function(favs,allFavs){
-        var index = arrInStr(favs,title,'title');
+    return function(favs, allFavs) {
+        var index = arrInStr(favs, title, 'title');
         //已经收藏，则取消收藏
-        if(index >= 0){
+        if (index >= 0) {
             var item = favs[index];
             decUpdateNum(item);
-            favs.splice(index,1);
-            storLocal.set({allFavs:allFavs});
+            favs.splice(index, 1);
+            storLocal.set({
+                allFavs: allFavs
+            });
             showTips('取消收藏成功');
             return;
         }
         //未收藏，则收藏
-        var sucCall = function(text){
+        var sucCall = function(text) {
             //获取章节与图片信息
             var obj = getChapterInfo(text);
             curChapter = curChapter ? curChapter : obj.curChapter;
             curUrl = curUrl ? curUrl : obj.curUrl;
             var col = {
                 imgUrl: obj.imgUrl.replace(baseImgUrl, ''),
-                indexUrl: indexUrl.replace(baseIndexUrl,''),
-                newChapter:obj.newChapter,
-                curChapter:curChapter,
-                newUrl: obj.newUrl.replace(baseChapterUrl,''), //最新章节地址
-                curUrl: curUrl.replace(baseChapterUrl,''), //当前章节地址
+                indexUrl: indexUrl.replace(baseIndexUrl, ''),
+                newChapter: obj.newChapter,
+                curChapter: curChapter,
+                newUrl: obj.newUrl.replace(baseChapterUrl, ''), //最新章节地址
+                curUrl: curUrl.replace(baseChapterUrl, ''), //当前章节地址
                 title: title,
                 isUpdate: false
             };
             favs.unshift(col);
-            chrome.storage.local.set({allFavs:allFavs});
+            chrome.storage.local.set({
+                allFavs: allFavs
+            });
             showTips('收藏成功');
         };
-        $.ajax(indexUrl,{success:sucCall});
+        $.ajax(indexUrl, {
+            success: sucCall
+        });
     }
 }
 /**
@@ -218,33 +231,34 @@ function createNotify(title, iconUrl, message, newUrl) {
 /**
  * 创建toast提醒
  */
-function showTips(msg){
+function showTips(msg) {
     var $div = $('<div>');
     $div.text(msg);
-    var width = $(window).width(),height = $(window).height();
+    var width = $(window).width(),
+        height = $(window).height();
     $div.css({
-        position:'fixed',
-        padding:'20px',
-        top:height/2 - 40,
-        left:width/2 - 40,
-        'font-size':'18px',
-        background:'black',
-        color:'white'
+        position: 'fixed',
+        padding: '20px',
+        top: height / 2 - 40,
+        left: width / 2 - 40,
+        'font-size': '18px',
+        background: 'black',
+        color: 'white'
     });
     $('body').append($div);
-    setTimeout(function(){
+    setTimeout(function() {
         $div.remove();
-    },1000);
+    }, 1000);
 }
 /**
  * 处理响应数据
  */
-function handleResData(data){
-    log('handleResData',data);
+function handleResData(data) {
+    log('handleResData', data);
     var status = data.status;
-    if(!status){
+    if (!status) {
         showTips('操作成功');
-    }else if(status === 1){
+    } else if (status === 1) {
         showTips('请先登录');
     }
 }
@@ -254,13 +268,13 @@ function handleResData(data){
  */
 var storeDebounce = function(obj) {
     var storeDebounceTimeout;
-    storeDebounce = function(obj){
-        if(storeDebounceTimeout){
+    storeDebounce = function(obj) {
+        if (storeDebounceTimeout) {
             clearTimeout(storeDebounceTimeout);
         }
         storeDebounceTimeout = setTimeout(function() {
             chrome.storage.local.set(obj);
-        },500);
+        }, 500);
     }
     storeDebounce(obj);
 }

@@ -11,32 +11,32 @@ _createQueryObj.createQqQuery = function() {
         var tmpArr = newA.title.split('：');
         var newChapter = tmpArr[1];
         var newUrl = newA.href;
-        newUrl = replaceOrigin(newUrl,baseObj.origin).replace(baseChapter,'');
+        newUrl = replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');
         var resObj = {
             newUrl: newUrl,
             newChapter: newChapter
         };
         return resObj;
     };
-    var afterStore = function(callback){
-        ajaxCall._afterStore = callback;
-        return callback;
-    };
-    qqQuery = function(){
+
+    var qqQuery = function() {
         getFavs('ac.qq', baseObj, queryUpdate(baseObj, ajaxCall));
     };
-    qqQuery.afterStore = afterStore;
+    
+    this.setAfterStore(qqQuery, ajaxCall);
     return qqQuery;
 }
 
 /**
  * 腾讯动漫导出用户的收藏
  */
-_exportFunObj['ac.qq'] = function (args,resSend) {
+_exportFunObj['ac.qq'] = function(args, resSend) {
     var dataStr = args[2];
     var status = JSON.parse(dataStr).status;
-    if(status === "-99"){
-        resSend({status:1});
+    if (status === '-99') {
+        resSend({
+            status: 1
+        });
         return;
     }
     var userCols = JSON.parse(dataStr).data;
@@ -45,19 +45,21 @@ _exportFunObj['ac.qq'] = function (args,resSend) {
     var storObj = getBaseStoreObj(origin),
         baseImgUrl = storObj.baseImg,
         baseIndexUrl = storObj.baseIndex;
-    var indexCall = function(item,curSeqNo,baseChapter){
-        return function(text){
+    var indexCall = function(item, curSeqNo, baseChapter) {
+        return function(text) {
             $html = $(text);
             var $as = $html.find('.chapter-page-all a');
-            var newA = $as.get($as.length - 1),curA = $as.get(curSeqNo);
+            var newA = $as.get($as.length - 1),
+                curA = $as.get(curSeqNo);
             var tmpArr = newA.title.split('：');
-            var newChapter,curChapter;
+            var newChapter, curChapter;
             newChapter = tmpArr[1];
             tmpArr = curA.title.split('：');
             curChapter = tmpArr[1];
-            var newUrl = newA.href,curUrl = curA.href;
-            newUrl = replaceOrigin(newUrl,storObj.origin).replace(baseChapter,'');
-            curUrl = replaceOrigin(curUrl,storObj.origin).replace(baseChapter,'');
+            var newUrl = newA.href,
+                curUrl = curA.href;
+            newUrl = replaceOrigin(newUrl, storObj.origin).replace(baseChapter, '');
+            curUrl = replaceOrigin(curUrl, storObj.origin).replace(baseChapter, '');
             item.newChapter = newChapter;
             item.curChapter = curChapter;
             item.newUrl = newUrl;
@@ -76,16 +78,18 @@ _exportFunObj['ac.qq'] = function (args,resSend) {
                     title: item.title,
                     isUpdate: false
                 };
-                $.ajax(baseIndexUrl+col.indexUrl,{
-                    success:indexCall(col,item.nextSeqNo,storObj.baseChapter),
-                    async:false
+                $.ajax(baseIndexUrl + col.indexUrl, {
+                    success: indexCall(col, item.nextSeqNo, storObj.baseChapter),
+                    async: false
                 });
                 cols.push(col);
             }
             storLocal.set({
                 allFavs: allFavs
             });
-            resSend({status:0});
+            resSend({
+                status: 0
+            });
         }
     });
 }
