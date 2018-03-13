@@ -45,6 +45,7 @@ function resolveColItems(colItem, colIndex) {
         baseIndex = colItem.baseIndex,
         baseChapter = colItem.baseChapter,
         origin = colItem.origin,
+        siteName = colItem.siteName,
         cols = colItem.cols;
     log(baseImg, baseIndex);
     cols.forEach(function(obj, index) {
@@ -71,7 +72,7 @@ function resolveColItems(colItem, colIndex) {
             href: baseChapter + obj.curUrl,
             target: '_blank'
         });
-        $liInstance.find('.right .source').text(getSiteName(origin)).attr({
+        $liInstance.find('.right .source').text(siteName).attr({
             href: origin,
             target: '_blank'
         });
@@ -143,20 +144,4 @@ function delCollect(e) {
             allFavs: allFavs
         });
     });
-    
-}
-/**
- * 根据站点url获得网站名称
- * @param  {string} site 站点url
- */
-function getSiteName(site) {
-    var name;
-    if (site.indexOf('kuaikan') >= 0) {
-        name = '快看漫画';
-    } else if (site.indexOf('ac.qq') >= 0) {
-        name = '腾讯动漫';
-    }else if(site.indexOf('www.dmzj')>=0 || site.indexOf('manhua.dmzj')>=0){
-        name = '动漫之家';
-    }
-    return name;
 }

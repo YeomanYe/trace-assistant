@@ -22,7 +22,8 @@ _allBaseStoreObj['kuaikan'] = function(origin){
         baseIndex: baseIndexUrl,
         baseChapter: baseChapterUrl,
         origin: origin,
-        site: 'kuaikan'
+        site: 'kuaikan',
+        siteName:'快看漫画'
     };
     return storObj;
 }
@@ -38,7 +39,8 @@ _allBaseStoreObj['ac.qq'] = function(origin){
         baseIndex: baseIndexUrl,
         baseChapter: baseChapterUrl,
         origin: origin,
-        site: 'ac.qq'
+        site: 'ac.qq',
+        siteName:'腾讯动漫'
     };
     return storObj;
 }
@@ -54,7 +56,8 @@ _allBaseStoreObj['www.dmzj'] = function(origin){
         baseIndex: baseIndexUrl,
         baseChapter: baseChapterUrl,
         origin: origin,
-        site: 'www.dmzj'
+        site: 'www.dmzj',
+        siteName:'动漫之家'
     };
     return storObj;
 }
@@ -70,7 +73,8 @@ _allBaseStoreObj['manhua.dmzj'] = function(origin){
         baseIndex: baseIndexUrl,
         baseChapter: baseChapterUrl,
         origin: origin,
-        site: 'manhua.dmzj'
+        site: 'manhua.dmzj',
+        siteName:'动漫之家'
     };
     return storObj;
 }

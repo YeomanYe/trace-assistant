@@ -124,23 +124,28 @@ function queryUpdate(baseObj, callback) {
     var isUpdate = false;
     return function(favs, allFavs, updateNum) {
         var sucCall = function(data) {
-            var resObj = callback(data);
-            var newUrl = resObj.newUrl,
-                newChapter = resObj.newChapter;
-            if (col.newChapter !== newChapter) {
-                col.newChapter = newChapter;
-                col.newUrl = newUrl;
-                createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
-                isUpdate = true;
-                if (!col.isUpdate) {
-                    col.isUpdate = true;
-                    setBadge(++updateNum);
+            try {
+                var resObj = callback(data);
+                var newUrl = resObj.newUrl,
+                    newChapter = resObj.newChapter;
+                if (col.newChapter !== newChapter) {
+                    col.newChapter = newChapter;
+                    col.newUrl = newUrl;
+                    createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
+                    isUpdate = true;
+                    if (!col.isUpdate) {
+                        col.isUpdate = true;
+                        setBadge(++updateNum);
+                    }
+                    storLocal.set({
+                        updateNum: updateNum,
+                        allFavs: allFavs
+                    }, afterStoreCall);
                 }
-                storLocal.set({
-                    updateNum: updateNum,
-                    allFavs: allFavs
-                }, afterStoreCall);
+            }catch(e){
+                log(e);
             }
+
         };
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
