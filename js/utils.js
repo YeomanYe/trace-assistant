@@ -267,6 +267,61 @@ function handleResData(data) {
         showTips('请先登录');
     }
 }
+/**
+ * 根据决定条件决定是否执行导出函数，如果执行则将导出的漫画存储在本地中
+ * extra需要从datas中带入到handlefun中的数据的字段的名称
+ */
+function pipeExport(site,datas,handleFun,resSend,extra){
+    var storObj = getBaseStoreObj(site),
+        baseImgUrl = storObj.baseImg,
+        baseIndexUrl = storObj.baseIndex,
+        baseChapter = storObj.baseChapter,
+        origin = storObj.origin;
+    var indexSucCall = function(cols,indexUrl,args){
+        return function(text){
+            var colItem = handleFun(text,args);
+            //处理数据格式
+            var newUrl = replaceOrigin(colItem.newUrl, origin).replace(baseChapter, ''),
+
+            curUrl = replaceOrigin(colItem.curUrl, origin).replace(baseChapter, '');
+            colItem.newUrl = newUrl;
+            colItem.curUrl = curUrl;
+            colItem.indexUrl = indexUrl;
+            colItem.imgUrl = colItem.imgUrl.replace(baseImgUrl,'');
+            colItem.isUpdate = false;
+
+            var index = arrInStr(cols,colItem.title,'title');
+            if(index < 0) cols.push(colItem);
+        }
+    }
+    getFavs(site, storObj, function(cols, allFavs) {
+        var args = [resSend];
+        for (var i = 0, len = datas.length; i < len; i++) {
+            var item = datas[i];
+            var index = arrInStr(cols, item.title, 'title');
+            //当收藏中没有该漫画时才添加
+            if (index < 0) {
+                if(typeof extra === 'string'){
+                    args[1] = item[extra];
+                }else if(extra !== null){
+                    for(var j=2,len2=extra.length+2;j<len2;j++){
+                        args[j] = item[extra[j]];
+                    }
+                }
+                $.ajax(baseIndexUrl + item.indexUrl, {
+                    success: indexSucCall(cols,item.indexUrl,args),
+                    async: false
+                });
+            }
+        }
+        storLocal.set({
+            allFavs: allFavs
+        });
+        resSend({
+            status: 0
+        });
+    });
+}
 
 /**
  * 存储消抖函数
