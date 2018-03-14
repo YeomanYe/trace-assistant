@@ -278,21 +278,23 @@ function pipeExport(dataArg,handleFun,resSend){
         baseIndexUrl = storObj.baseIndex,
         baseChapter = storObj.baseChapter,
         origin = storObj.origin;
-    var indexSucCall = function(cols,indexUrl,args){
+    var indexSucCall = function(cols,colItem,args){
         return function(text){
-            var colItem = handleFun(text,resSend,args);
+            var obj = handleFun(text,resSend,args);
             //处理数据格式
-            var newUrl = replaceOrigin(colItem.newUrl, origin).replace(baseChapter, ''),
+            var newUrl = replaceOrigin(obj.newUrl, origin).replace(baseChapter, ''),
 
-            curUrl = replaceOrigin(colItem.curUrl, origin).replace(baseChapter, '');
-            colItem.newUrl = newUrl;
-            colItem.curUrl = curUrl;
-            colItem.indexUrl = indexUrl;
-            colItem.imgUrl = colItem.imgUrl.replace(baseImgUrl,'');
-            colItem.isUpdate = false;
+            curUrl = replaceOrigin(obj.curUrl, origin).replace(baseChapter, '');
+            obj.newUrl = newUrl;
+            obj.curUrl = curUrl;
+            obj.imgUrl = obj.imgUrl.replace(baseImgUrl,'');
+            obj.isUpdate = false;
 
-            var index = arrInStr(cols,colItem.title,'title');
-            if(index < 0) cols.push(colItem);
+            var index = arrInStr(cols,obj.title,'title');
+            if(index < 0) {
+                assignColItem(obj,colItem);
+                cols.push(colItem);
+            }
         }
     }
     getFavs(site, storObj, function(cols, allFavs) {
@@ -301,8 +303,9 @@ function pipeExport(dataArg,handleFun,resSend){
             var index = arrInStr(cols, item.title, 'title');
             //当收藏中没有该漫画时才添加
             if (index < 0) {
+                var colItem = assignColItem(item);
                 $.ajax(baseIndexUrl + item.indexUrl, {
-                    success: indexSucCall(cols,item.indexUrl,item),
+                    success: indexSucCall(cols,colItem,item),
                     async: false
                 });
             }
@@ -314,6 +317,21 @@ function pipeExport(dataArg,handleFun,resSend){
             status: 0
         });
     });
+}
+/**
+ * 将对象中关于收藏的数据更新到收藏对象中
+ */
+function assignColItem(obj,colItem){
+    colItem = colItem ? colItem : {};
+    colItem.isUpdate = obj.isUpdate !== undefined ? obj.isUpdate : colItem.isUpdate;
+    colItem.newUrl = obj.newUrl !== undefined ? obj.newUrl : colItem.newUrl;
+    colItem.curUrl = obj.curUrl !== undefined ? obj.curUrl : colItem.curUrl;
+    colItem.newChapter = obj.newChapter !== undefined ? obj.newChapter : colItem.newChapter;
+    colItem.curChapter = obj.curChapter !== undefined ? obj.curChapter : colItem.curChapter;
+    colItem.imgUrl = obj.imgUrl !== undefined ? obj.imgUrl : colItem.imgUrl;
+    colItem.indexUrl = obj.indexUrl !== undefined? obj.indexUrl : colItem.indexUrl;
+    colItem.title = obj.title !== undefined ? obj.title : colItem.title;
+    return colItem;
 }
 
 /**
