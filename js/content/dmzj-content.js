@@ -3,10 +3,12 @@ $(function() {
         log('www.dmzj');
         createBtn();
         _$imgToggle.on('click', toggleFavHandlerW3dmzj);
+        _$imgExport.on('click', showLoginTips);
         updateW3dmzj();
     } else if (curHref.search(/manhua.dmzj.com\/.+/) >= 0) {
         createBtn();
         _$imgToggle.on('click', toggleFavHandlerMhdmzj);
+        _$imgExport.on('click', showLoginTips);
         updateMhdmzj();
     } else if (curHref.indexOf('i.dmzj') >= 0 && curHref.indexOf('login') < 0) {
         createBtn();
@@ -14,6 +16,12 @@ $(function() {
     }
 
 });
+/**
+ * 显示登录对应页面提示
+ */
+function showLoginTips(){
+    showTips('该网站使用此功能需要进入 https://i.dmzj.com/ 页面');
+}
 /**
  * 更新收藏
  */

@@ -215,9 +215,13 @@ function toggleFav(storObj, getCurComic, getChapterInfo) {
             });
             showTips('收藏成功');
         };
-        $.ajax(indexUrl, {
-            success: sucCall
-        });
+        if(!curUrl){
+            sucCall($('html'));
+        }else{
+            $.ajax(indexUrl, {
+                success: sucCall
+            });
+        }
     }
 }
 /**
