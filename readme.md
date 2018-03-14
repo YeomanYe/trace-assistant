@@ -10,7 +10,7 @@
 ## 截图
 
 - 截图一
-![popup截图](screenshot/screen.png)
+![popup截图](screenshot/popup.png)
 
 - 截图二
 ![content截图](screenshot/content.png)
