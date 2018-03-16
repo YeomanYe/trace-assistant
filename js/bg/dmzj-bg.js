@@ -79,7 +79,7 @@ _exportFunObj['dmzj'] = function(args,resSend) {
     getFavs('www.dmzj', TYPE_COMIC, function(w3dmzjFavs, allFavs) {
         storLocal.set({allFavs:allFavs});
         getFavs('manhua.dmzj', TYPE_COMIC, function(mhdmzjFavs, allFavs) {
-            var index = arrInStr(allFavs,'www.dmzj','site');
+            var index = arrInStr(allFavs,['www.dmzj',TYPE_COMIC],['site','type']);
             w3dmzjFavs = allFavs[index].cols;
             var $html = $(htmlText);
             var $as = $html.find('.dy_img a');

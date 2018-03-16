@@ -29,15 +29,26 @@ function getBaseUrl(url1, url2) {
  * 判断数组中是否有一个字符串在字符串中。并返回序列号。-1代表不存在
  * field代表数组中某个对象的某一字段
  */
-function arrInStr(arr, str, field) {
+function arrInStr(arr, strs, fields) {
+    var flag;
     for (var i = 0, len = arr.length; i < len; i++) {
-        if (!field) {
-            if (str.indexOf(arr[i]) >= 0) return i;
-        } else {
-            var obj = arr[i];
-            if (str.indexOf(obj[field]) >= 0) return i;
+        var obj = arr[i];
+        flag = true;
+        if (!fields) {
+            if (strs.indexOf(obj) >= 0) return i;
+        } else if(typeof fields === 'string'){
+            if (strs.indexOf(obj[fields]) >= 0) return i;
+        } else{
+            //为数组的情况
+            for(var j=0,len2=fields.length;j<len;j++){
+                if(strs[j].indexOf(obj[fields[j]])<0){
+                    flag = false;
+                    break;
+                }
+            }
         }
     }
+    if(flag) return i - 1;
     return -1;
 }
 /**
@@ -53,7 +64,7 @@ function getStoreLocal(keys, callback) {
             for (var i = 0, len = keys.length; i < len; i++) {
                 vals.push(resObj[keys[i]]);
             }
-            callback.apply(null, vals);
+            callback.apply({}, vals);
         }
     });
 }
@@ -66,7 +77,7 @@ function getFavs(siteName, type, callback) {
         allFavs = allFavs ? allFavs : [];
         updateNum = updateNum ? updateNum : 0;
         var index = -1;
-        if (allFavs.length) index = arrInStr(allFavs, siteName, 'site');
+        if (allFavs.length) index = arrInStr(allFavs, [siteName,type], ['site','type']);
         var cols = [];
         if (index < 0) {
             defaultStore.cols = cols;
@@ -76,6 +87,15 @@ function getFavs(siteName, type, callback) {
         }
         callback(cols, allFavs, updateNum);
     });
+}
+/**
+ * 添加数组元素到数组中
+ */
+function addArr(arr1,arr2){
+    for(var i=0,len=arr2.length;i<len;i++){
+        arr1.push(arr2[i]);
+    }
+    return arr1;
 }
 /**
  * 减少更新的漫画数量，标志
@@ -174,8 +194,8 @@ function replaceOrigin(url, newOrigin) {
  */
 function toggleFav(storObj, getCurComic, getChapterInfo) {
     var baseImgUrl = storObj.baseImg,
-        baseIndex = storObj.baseIndex,
-        baseChapter = storObj.baseChapter;
+        baseIndexUrl = storObj.baseIndex,
+        baseChapterUrl = storObj.baseChapter;
     var tmpObj = getCurComic();
     var title = tmpObj.title,
         indexUrl = tmpObj.indexUrl,

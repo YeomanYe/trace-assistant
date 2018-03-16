@@ -83,3 +83,22 @@ _allBaseStoreObj['manhua.dmzj'] = function(origin,type){
     };
     return storObj;
 }
+
+_allBaseStoreObj['qidian'] = function(origin,type){
+    type = type ? type : TYPE_FICTION;
+    origin = origin ? origin : '//www.qidian.com';
+    var baseImgUrl = '//qidian.qpic.cn/qdbimg/',
+        baseChapterUrl = '//read.qidian.com/chapter/',
+        baseIndexUrl = '//book.qidian.com/info/';
+
+    storObj = {
+        baseImg: baseImgUrl,
+        baseIndex: baseIndexUrl,
+        baseChapter: baseChapterUrl,
+        type:type,
+        origin: origin,
+        site: 'qidian',
+        siteName:'起点'
+    };
+    return storObj;
+}

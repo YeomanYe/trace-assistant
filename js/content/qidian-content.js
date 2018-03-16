@@ -1,5 +1,5 @@
 $(function() {
-    if (curHref.indexOf('kuaikanmanhua.com/web') < 0) return;
+    if (curHref.search(/book.qidian.com\/info\/.+/) || curHref.search(/read.qidian.com\/chapter\/.+/) ) return;
     createBtn();
     _$imgExport.on('click', function() {
         sendMsg(null, 'exportCollect@-@' + location.origin, handleResData);
@@ -11,8 +11,8 @@ $(function() {
 /**
  * 更新
  */
-function updateKk() {
-    getFavs('kuaikan', TYPE_COMIC, updateColRecord(getCurComicKk));
+function updateQidian() {
+    getFavs('qidian', TYPE_FICTION, updateColRecord(getCuIndexQidian));
 }
 /**
  * 收藏或取消收藏
@@ -47,29 +47,24 @@ function toggleHandlerKk() {
         });
         return retObj;
     };
-    getFavs('kuaikan', TYPE_COMIC, toggleFav(storObj, getCurComicKk, getChapterInfo));
+    getFavs('ac.qq', TYPE_COMIC, toggleFav(storObj, getCurComicKk, getChapterInfo));
 }
 
-/**
- * 漫画页或目录页获取漫画名称及目录地址
- * 如果是漫画页，获取当前章节和URL
- */
-function getCurComicKk() {
-    var title = $('body .article-detail-info .comic-name').text();
-    var href = location.origin + location.pathname;
+function getCuIndexQidian(){
+    var title = $('.book-info h1 em').text();
     var retObj;
-    if (href.indexOf('topic') >= 0) {
+    if (curHref.indexOf('book.qidian') >= 0) {
         retObj = {
             title: title,
-            indexUrl: href,
+            indexUrl: curHref,
         };
     } else {
-        var aElm = $('#main h2 .ico a').get(1);
-        var curUrl = href;
-        var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/, '').trim();
+        var aElm = $('.crumbs-nav .act').get(1);
+        var curUrl = curHref;
+        var curChapter = $('#j_chapterBox .j_chapterName').text();
         if (aElm)
             retObj = {
-                title: aElm.title,
+                title: aElm.innerText,
                 indexUrl: aElm.href,
                 curUrl: curUrl,
                 curChapter: curChapter

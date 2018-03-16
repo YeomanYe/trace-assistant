@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/baseStoreObj.js" afterPath="$PROJECT_DIR$/js/baseStoreObj.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/bg/dmzj-bg.js" afterPath="$PROJECT_DIR$/js/bg/dmzj-bg.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/bg/kuaikan-bg.js" afterPath="$PROJECT_DIR$/js/bg/kuaikan-bg.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/bg/qq-bg.js" afterPath="$PROJECT_DIR$/js/bg/qq-bg.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/dmzj-content.js" afterPath="$PROJECT_DIR$/js/content/dmzj-content.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/kuaikan-content.js" afterPath="$PROJECT_DIR$/js/content/kuaikan-content.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/qq-content.js" afterPath="$PROJECT_DIR$/js/content/qq-content.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/utils.js" afterPath="$PROJECT_DIR$/js/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manifest.json" afterPath="$PROJECT_DIR$/manifest.json" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,22 +21,94 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="62" column="16" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="16" />
-              <folding />
+            <state relative-caret-position="400">
+              <caret line="78" column="40" lean-forward="true" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+              <folding>
+                <element signature="e#130#323#0" expanded="false" />
+                <element signature="e#179#321#0" expanded="false" />
+                <element signature="e#230#314#0" expanded="false" />
+                <element signature="n#!!doc;n#getBaseUrl#0" expanded="false" />
+                <element signature="n#!!block;n#getBaseUrl#0" expanded="false" />
+                <element signature="e#607#670#0" expanded="false" />
+                <element signature="n#!!doc;n#arrInStr#0" expanded="false" />
+                <element signature="e#2715#2993#0" expanded="false" />
+                <element signature="n#!!block;n#assignColItem#0" expanded="false" />
+                <marker date="1521213893733" expanded="true" signature="809:1367" ph="{...}" />
+                <marker date="1521213893733" expanded="true" signature="2634:2637" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="2638:2661" ph="/** 减少更新的漫画数量，标志 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="2690:2995" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="2803:2985" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="2856:2908" ph="{&quot;updateNum&quot;: updateNum...}" />
+                <marker date="1521213893733" expanded="false" signature="2996:3013" ph="/** 更新阅读记录 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="3052:3630" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="3089:3628" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="3580:3620" ph="{&quot;allFavs&quot;: allFavs...}" />
+                <marker date="1521213893733" expanded="false" signature="3631:3654" ph="/** 查询是否有更新的通用函数 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="3695:5201" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="3988:5199" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="4027:4888" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="4045:4830" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="4239:4816" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="4520:4635" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="4670:4780" ph="{&quot;updateNum&quot;: updateNum...}" />
+                <marker date="1521213893733" expanded="false" signature="4838:4877" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="4947:5152" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="5062:5140" ph="{&quot;success&quot;: sucCall...}" />
+                <marker date="1521213893733" expanded="false" signature="5202:5221" ph="/** 替换origin ...*/" />
+                <marker date="1521213893733" expanded="false" signature="5261:5434" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="5435:5453" ph="/** 收藏或取消收藏 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="5511:7204" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="5844:7202" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="5943:6186" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="6074:6122" ph="{&quot;allFavs&quot;: allFavs...}" />
+                <marker date="1521213893733" expanded="false" signature="6242:7037" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="6452:6877" ph="{&quot;newChapter&quot;: obj.newChapter...}" />
+                <marker date="1521213893733" expanded="false" signature="6947:6995" ph="{&quot;allFavs&quot;: allFavs...}" />
+                <marker date="1521213893733" expanded="false" signature="7058:7101" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="7105:7196" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="7136:7184" ph="{&quot;success&quot;: sucCall...}" />
+                <marker date="1521213893733" expanded="false" signature="7205:7220" ph="/** 创建提醒 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="7276:7511" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="7296:7458" ph="{&quot;type&quot;: chrome.notifications.TemplateType.BASIC...}" />
+                <marker date="1521213893733" expanded="false" signature="7512:7532" ph="/** 创建toast提醒 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="7556:7987" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="7690:7890" ph="{&quot;position&quot;: 'fixed'...}" />
+                <marker date="1521213893733" expanded="false" signature="7947:7977" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="7988:8005" ph="/** 处理响应数据 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="8035:8208" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="8116:8149" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="8173:8206" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="8209:8294" ph="/** 根据决定条件决定是否执行导出函数，如果执行则将导出的漫画存储在本地中 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="8341:9909" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="8641:9270" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="8672:9264" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="9159:9254" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="9325:9905" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="9385:9782" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="9536:9772" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="9642:9756" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="9805:9845" ph="{&quot;allFavs&quot;: allFavs...}" />
+                <marker date="1521213893733" expanded="false" signature="9864:9897" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="9910:9940" ph="/** 将对象中关于收藏的数据更新到收藏对象中 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="10698:10715" ph="/** 存储消抖函数 ...*/" />
+                <marker date="1521213893733" expanded="false" signature="10750:11058" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="10816:11032" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="10852:10911" ph="{...}" />
+                <marker date="1521213893733" expanded="false" signature="10965:11019" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="popup.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/popup.js">
+      <file leaf-file-name="dmzj-bg.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="13" column="37" lean-forward="true" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="37" />
+            <state relative-caret-position="416">
+              <caret line="81" column="25" lean-forward="true" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -49,48 +118,24 @@
         <entry file="file://$PROJECT_DIR$/js/constant.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="70">
-              <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+              <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pre-content.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/content/pre-content.js">
+      <file leaf-file-name="popup.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/popup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2032">
-              <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+            <state relative-caret-position="556">
+              <caret line="131" column="10" lean-forward="true" selection-start-line="131" selection-start-column="10" selection-end-line="131" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="kuaikan-content.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/content/kuaikan-content.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="698">
-              <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-              <caret line="50" column="31" lean-forward="false" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dmzj-content.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/content/dmzj-content.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="725">
-              <caret line="28" column="37" lean-forward="false" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-              <caret line="34" column="34" lean-forward="false" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-              <caret line="114" column="34" lean-forward="false" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
-              <caret line="141" column="37" lean-forward="false" selection-start-line="141" selection-start-column="37" selection-end-line="141" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/bg.js">
+      <file leaf-file-name="qidian-content.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/qidian-content.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -99,12 +144,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qq-content.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/content/qq-content.js">
+      <file leaf-file-name="pre-content.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/pre-content.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="80" column="41" lean-forward="true" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
+            <state relative-caret-position="490">
+              <caret line="31" column="14" lean-forward="true" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kuaikan-content.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/kuaikan-content.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="62" column="25" lean-forward="true" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+              <folding>
+                <marker date="1521209762941" expanded="true" signature="1402:1470" ph="{...}" />
+                <marker date="1521209762941" expanded="true" signature="1472:1522" ph="/** 漫画页或目录页获取漫画名称及目录地址 ...*/" />
+                <marker date="1521209762941" expanded="true" signature="1548:2205" ph="{...}" />
+                <marker date="1521209762941" expanded="true" signature="1721:1812" ph="{...}" />
+                <marker date="1521209762941" expanded="true" signature="1740:1805" ph="{&quot;title&quot;: title...}" />
+                <marker date="1521209762941" expanded="true" signature="1818:2185" ph="{...}" />
+                <marker date="1521209762941" expanded="true" signature="2020:2178" ph="{&quot;title&quot;: aElm.title...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -112,18 +175,37 @@
       <file leaf-file-name="kuaikan-bg.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+            <state relative-caret-position="381">
+              <caret line="65" column="28" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+              <folding>
+                <marker date="1521213950902" expanded="true" signature="764:3647" ph="{...}" />
+                <marker date="1521213950902" expanded="true" signature="1084:3643" ph="{...}" />
+                <marker date="1521213950902" expanded="true" signature="1159:3522" ph="{...}" />
+                <marker date="1521213950902" expanded="true" signature="2980:3224" ph="{...}" />
+                <marker date="1521213950902" expanded="true" signature="3144:3208" ph="{&quot;success&quot;: successCallback...}" />
+                <marker date="1521213950902" expanded="true" signature="3230:3512" ph="{...}" />
+                <marker date="1521213950902" expanded="true" signature="3395:3453" ph="{&quot;allFavs&quot;: allFavs...}" />
+                <marker date="1521213950902" expanded="true" signature="3587:3635" ph="{&quot;success&quot;: successCallback...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qq-content.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/qq-content.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2660">
+              <caret line="76" column="10" lean-forward="true" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qq-bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/qq-bg.js">
+      <file leaf-file-name="baseStoreObj.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/baseStoreObj.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="15" />
+            <state relative-caret-position="-1822">
+              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -136,6 +218,8 @@
       <find>get</find>
       <find>getBaseStoreObj</find>
       <find>getFavs</find>
+      <find>arrInStr</find>
+      <find>resolveColItems</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -149,9 +233,9 @@
         <option value="$PROJECT_DIR$/js/content/qq-content.js" />
         <option value="$PROJECT_DIR$/js/content/kuaikan-content.js" />
         <option value="$PROJECT_DIR$/js/content/dmzj-content.js" />
+        <option value="$PROJECT_DIR$/js/bg/qq-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/dmzj-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/kuaikan-bg.js" />
-        <option value="$PROJECT_DIR$/js/bg/qq-bg.js" />
         <option value="$PROJECT_DIR$/js/utils.js" />
       </list>
     </option>
@@ -172,7 +256,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1609" />
@@ -257,35 +341,36 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1521172591239</updated>
-      <workItem from="1521172593655" duration="1173000" />
+      <workItem from="1521172593655" duration="1776000" />
+      <workItem from="1521205337837" duration="2369000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1173000" />
+    <option name="totallyTimeSpent" value="4145000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -300,51 +385,83 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build/js/baseStoreObj.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/baseStoreObj.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="74" column="4" lean-forward="false" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="78" column="11" lean-forward="false" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/qq-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="2170">
           <caret line="62" column="16" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#130#323#0" expanded="false" />
+            <element signature="e#179#321#0" expanded="false" />
+            <element signature="e#230#314#0" expanded="false" />
+            <element signature="n#!!doc;n#getBaseUrl#0" expanded="false" />
+            <element signature="n#!!block;n#getBaseUrl#0" expanded="false" />
+            <element signature="e#607#670#0" expanded="false" />
+            <element signature="n#!!doc;n#arrInStr#0" expanded="false" />
+            <element signature="e#2715#2993#0" expanded="false" />
+            <element signature="n#!!block;n#assignColItem#0" expanded="false" />
+            <marker date="1521213893733" expanded="true" signature="809:1367" ph="{...}" />
+            <marker date="1521213893733" expanded="true" signature="2634:2637" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="2638:2661" ph="/** 减少更新的漫画数量，标志 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="2690:2995" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="2803:2985" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="2856:2908" ph="{&quot;updateNum&quot;: updateNum...}" />
+            <marker date="1521213893733" expanded="false" signature="2996:3013" ph="/** 更新阅读记录 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="3052:3630" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="3089:3628" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="3580:3620" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="3631:3654" ph="/** 查询是否有更新的通用函数 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="3695:5201" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="3988:5199" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4027:4888" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4045:4830" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4239:4816" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4520:4635" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4670:4780" ph="{&quot;updateNum&quot;: updateNum...}" />
+            <marker date="1521213893733" expanded="false" signature="4838:4877" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4947:5152" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5062:5140" ph="{&quot;success&quot;: sucCall...}" />
+            <marker date="1521213893733" expanded="false" signature="5202:5221" ph="/** 替换origin ...*/" />
+            <marker date="1521213893733" expanded="false" signature="5261:5434" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5435:5453" ph="/** 收藏或取消收藏 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="5511:7204" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5844:7202" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5943:6186" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="6074:6122" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="6242:7037" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="6452:6877" ph="{&quot;newChapter&quot;: obj.newChapter...}" />
+            <marker date="1521213893733" expanded="false" signature="6947:6995" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="7058:7101" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7105:7196" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7136:7184" ph="{&quot;success&quot;: sucCall...}" />
+            <marker date="1521213893733" expanded="false" signature="7205:7220" ph="/** 创建提醒 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="7276:7511" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7296:7458" ph="{&quot;type&quot;: chrome.notifications.TemplateType.BASIC...}" />
+            <marker date="1521213893733" expanded="false" signature="7512:7532" ph="/** 创建toast提醒 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="7556:7987" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7690:7890" ph="{&quot;position&quot;: 'fixed'...}" />
+            <marker date="1521213893733" expanded="false" signature="7947:7977" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7988:8005" ph="/** 处理响应数据 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="8035:8208" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8116:8149" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8173:8206" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8209:8294" ph="/** 根据决定条件决定是否执行导出函数，如果执行则将导出的漫画存储在本地中 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="8341:9909" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8641:9270" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8672:9264" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9159:9254" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9325:9905" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9385:9782" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9536:9772" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9642:9756" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9805:9845" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="9864:9897" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9910:9940" ph="/** 将对象中关于收藏的数据更新到收藏对象中 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="10698:10715" ph="/** 存储消抖函数 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="10750:11058" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="10816:11032" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="10852:10911" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="10965:11019" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -364,6 +481,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/pre-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/kuaikan-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1750">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <caret line="50" column="31" lean-forward="false" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+          <folding>
+            <marker date="1521209762941" expanded="true" signature="1402:1470" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="1472:1522" ph="/** 漫画页或目录页获取漫画名称及目录地址 ...*/" />
+            <marker date="1521209762941" expanded="true" signature="1548:2205" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="1721:1812" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="1740:1805" ph="{&quot;title&quot;: title...}" />
+            <marker date="1521209762941" expanded="true" signature="1818:2185" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="2020:2178" ph="{&quot;title&quot;: aElm.title...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/bg/bg.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -374,36 +516,242 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/content/qq-content.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
+        <state relative-caret-position="2800">
           <caret line="80" column="41" lean-forward="true" selection-start-line="80" selection-start-column="41" selection-end-line="80" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/pre-content.js">
+    <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2032">
-          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
+        <state relative-caret-position="665">
+          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <marker date="1521213950902" expanded="true" signature="764:3647" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="1084:3643" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="1159:3522" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="2980:3224" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="3144:3208" ph="{&quot;success&quot;: successCallback...}" />
+            <marker date="1521213950902" expanded="true" signature="3230:3512" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="3395:3453" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213950902" expanded="true" signature="3587:3635" ph="{&quot;success&quot;: successCallback...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/kuaikan-content.js">
+    <entry file="file://$PROJECT_DIR$/js/bg/qq-bg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-          <caret line="50" column="31" lean-forward="false" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+        <state relative-caret-position="735">
+          <caret line="21" column="15" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/content/dmzj-content.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="28" column="37" lean-forward="false" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-          <caret line="34" column="34" lean-forward="false" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
-          <caret line="114" column="34" lean-forward="false" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
-          <caret line="141" column="37" lean-forward="false" selection-start-line="141" selection-start-column="37" selection-end-line="141" selection-end-column="37" />
+        <state relative-caret-position="4935">
+          <caret line="141" column="53" lean-forward="false" selection-start-line="141" selection-start-column="53" selection-end-line="141" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/js/baseStoreObj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="35">
+          <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="81" column="24" lean-forward="false" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/qq-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/dmzj-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="431">
+          <caret line="149" column="20" lean-forward="true" selection-start-line="149" selection-start-column="20" selection-end-line="149" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/kuaikan-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="62" column="25" lean-forward="true" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+          <folding>
+            <marker date="1521209762941" expanded="true" signature="1402:1470" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="1472:1522" ph="/** 漫画页或目录页获取漫画名称及目录地址 ...*/" />
+            <marker date="1521209762941" expanded="true" signature="1548:2205" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="1721:1812" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="1740:1805" ph="{&quot;title&quot;: title...}" />
+            <marker date="1521209762941" expanded="true" signature="1818:2185" ph="{...}" />
+            <marker date="1521209762941" expanded="true" signature="2020:2178" ph="{&quot;title&quot;: aElm.title...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/pre-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="31" column="14" lean-forward="true" selection-start-line="31" selection-start-column="14" selection-end-line="31" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="65" column="28" lean-forward="true" selection-start-line="65" selection-start-column="28" selection-end-line="65" selection-end-column="28" />
+          <folding>
+            <marker date="1521213950902" expanded="true" signature="764:3647" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="1084:3643" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="1159:3522" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="2980:3224" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="3144:3208" ph="{&quot;success&quot;: successCallback...}" />
+            <marker date="1521213950902" expanded="true" signature="3230:3512" ph="{...}" />
+            <marker date="1521213950902" expanded="true" signature="3395:3453" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213950902" expanded="true" signature="3587:3635" ph="{&quot;success&quot;: successCallback...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="81" column="25" lean-forward="true" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="78" column="40" lean-forward="true" selection-start-line="78" selection-start-column="40" selection-end-line="78" selection-end-column="40" />
+          <folding>
+            <element signature="e#130#323#0" expanded="false" />
+            <element signature="e#179#321#0" expanded="false" />
+            <element signature="e#230#314#0" expanded="false" />
+            <element signature="n#!!doc;n#getBaseUrl#0" expanded="false" />
+            <element signature="n#!!block;n#getBaseUrl#0" expanded="false" />
+            <element signature="e#607#670#0" expanded="false" />
+            <element signature="n#!!doc;n#arrInStr#0" expanded="false" />
+            <element signature="e#2715#2993#0" expanded="false" />
+            <element signature="n#!!block;n#assignColItem#0" expanded="false" />
+            <marker date="1521213893733" expanded="true" signature="809:1367" ph="{...}" />
+            <marker date="1521213893733" expanded="true" signature="2634:2637" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="2638:2661" ph="/** 减少更新的漫画数量，标志 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="2690:2995" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="2803:2985" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="2856:2908" ph="{&quot;updateNum&quot;: updateNum...}" />
+            <marker date="1521213893733" expanded="false" signature="2996:3013" ph="/** 更新阅读记录 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="3052:3630" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="3089:3628" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="3580:3620" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="3631:3654" ph="/** 查询是否有更新的通用函数 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="3695:5201" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="3988:5199" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4027:4888" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4045:4830" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4239:4816" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4520:4635" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4670:4780" ph="{&quot;updateNum&quot;: updateNum...}" />
+            <marker date="1521213893733" expanded="false" signature="4838:4877" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="4947:5152" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5062:5140" ph="{&quot;success&quot;: sucCall...}" />
+            <marker date="1521213893733" expanded="false" signature="5202:5221" ph="/** 替换origin ...*/" />
+            <marker date="1521213893733" expanded="false" signature="5261:5434" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5435:5453" ph="/** 收藏或取消收藏 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="5511:7204" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5844:7202" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="5943:6186" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="6074:6122" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="6242:7037" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="6452:6877" ph="{&quot;newChapter&quot;: obj.newChapter...}" />
+            <marker date="1521213893733" expanded="false" signature="6947:6995" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="7058:7101" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7105:7196" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7136:7184" ph="{&quot;success&quot;: sucCall...}" />
+            <marker date="1521213893733" expanded="false" signature="7205:7220" ph="/** 创建提醒 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="7276:7511" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7296:7458" ph="{&quot;type&quot;: chrome.notifications.TemplateType.BASIC...}" />
+            <marker date="1521213893733" expanded="false" signature="7512:7532" ph="/** 创建toast提醒 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="7556:7987" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7690:7890" ph="{&quot;position&quot;: 'fixed'...}" />
+            <marker date="1521213893733" expanded="false" signature="7947:7977" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="7988:8005" ph="/** 处理响应数据 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="8035:8208" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8116:8149" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8173:8206" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8209:8294" ph="/** 根据决定条件决定是否执行导出函数，如果执行则将导出的漫画存储在本地中 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="8341:9909" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8641:9270" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="8672:9264" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9159:9254" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9325:9905" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9385:9782" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9536:9772" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9642:9756" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9805:9845" ph="{&quot;allFavs&quot;: allFavs...}" />
+            <marker date="1521213893733" expanded="false" signature="9864:9897" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="9910:9940" ph="/** 将对象中关于收藏的数据更新到收藏对象中 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="10698:10715" ph="/** 存储消抖函数 ...*/" />
+            <marker date="1521213893733" expanded="false" signature="10750:11058" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="10816:11032" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="10852:10911" ph="{...}" />
+            <marker date="1521213893733" expanded="false" signature="10965:11019" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/qidian-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/qq-content.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2660">
+          <caret line="76" column="10" lean-forward="true" selection-start-line="76" selection-start-column="10" selection-end-line="76" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/baseStoreObj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1822">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/popup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="131" column="10" lean-forward="true" selection-start-line="131" selection-start-column="10" selection-end-line="131" selection-end-column="10" />
           <folding />
         </state>
       </provider>

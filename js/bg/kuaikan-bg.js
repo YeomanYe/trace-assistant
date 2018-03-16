@@ -61,7 +61,7 @@ _exportFunObj['kuaikan'] = function(args,resSend) {
                 //如果数组中有标题和目录链接则说明已经存在该漫画了
                 var title = data.title,
                     indexUrl = '/' + data.id;
-                if (arrInStr(cols, title, 'title') >= 0 && arrInStr(cols, indexUrl, 'indexUrl') >= 0) return;
+                if (arrInStr(cols, title, 'title') >= 0) return;
                 var tmpArr, newUrl, curUrl;
                 tmpArr = newA.href.split('/');
                 newUrl = tmpArr[tmpArr.length - 2] + '/';
@@ -78,7 +78,7 @@ _exportFunObj['kuaikan'] = function(args,resSend) {
                     isUpdate: false
                 });
             });
-            cols = cols.concat(storDatas);
+            addArr(cols,storDatas);
             log('storDatas', storDatas);
             if (datas.length === size) {
                 ++pageNum;
