@@ -26,13 +26,13 @@ function showLoginTips(){
  * 更新收藏
  */
 function updateMhdmzj() {
-    getFavs('manhua.dmzj', storObj, updateColRecord(getCurComicMhdmzj));
+    getFavs('manhua.dmzj', TYPE_COMIC, updateColRecord(getCurComicMhdmzj));
 }
 /**
  * 更新收藏
  */
 function updateW3dmzj() {
-    getFavs('www.dmzj', storObj, updateColRecord(getCurComicW3dmzj));
+    getFavs('www.dmzj', TYPE_COMIC, updateColRecord(getCurComicW3dmzj));
 }
 /**
  * 获取当前页面漫画名称、目录地址、章节名称、章节链接
@@ -112,7 +112,7 @@ function toggleFavHandlerW3dmzj() {
         };
         return retObj;
     }
-    getFavs('www.dmzj', storObj, toggleFav(storObj, getCurComicW3dmzj, getChapterInfo));
+    getFavs('www.dmzj', TYPE_COMIC, toggleFav(storObj, getCurComicW3dmzj, getChapterInfo));
 
 }
 
@@ -139,7 +139,7 @@ function toggleFavHandlerMhdmzj() {
         };
         return retObj;
     }
-    getFavs('manhua.dmzj', storObj, toggleFav(storObj, getCurComicMhdmzj, getChapterInfo));
+    getFavs('manhua.dmzj', TYPE_COMIC, toggleFav(storObj, getCurComicMhdmzj, getChapterInfo));
 }
 /**
  * 导出动漫之家的收藏

@@ -50,7 +50,7 @@ function getCurComicQq(){
  * 更新收藏
  */
 function updateQq(){
-    getFavs('ac.qq',storObj,updateColRecord(getCurComicQq));
+    getFavs('ac.qq',TYPE_COMIC,updateColRecord(getCurComicQq));
 }
 /**
  * 切换收藏按钮点击处理函数
@@ -78,5 +78,5 @@ function toggleFavHandlerQq(){
         return retObj;
     };
 
-    getFavs('ac.qq',storObj,toggleFav(storObj,getCurComicQq,getChapterInfo));
+    getFavs('ac.qq',TYPE_COMIC,toggleFav(storObj,getCurComicQq,getChapterInfo));
 }

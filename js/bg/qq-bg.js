@@ -19,7 +19,7 @@ _createQueryObj.createQqQuery = function() {
     };
 
     var qqQuery = function() {
-        getFavs('ac.qq', baseObj, queryUpdate(baseObj, ajaxCall));
+        getFavs('ac.qq', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
 
     this.setAfterStore(qqQuery, ajaxCall);
@@ -39,8 +39,6 @@ _exportFunObj['ac.qq'] = function(args, resSend) {
         return;
     }
     var userCols = JSON.parse(dataStr).data;
-    var origin = args[1];
-    var storObj = getBaseStoreObj('ac.qq');
     for (var i = 0, len = userCols.length; i < len; i++) {
         userCols[i].indexUrl = userCols[i].id;
     }

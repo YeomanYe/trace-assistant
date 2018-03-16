@@ -76,9 +76,9 @@ _exportFunObj['dmzj'] = function(args,resSend) {
             storeDebounce({allFavs:allFavs});
         }
     };
-    getFavs('www.dmzj', w3dmzjStorObj, function(w3dmzjFavs, allFavs) {
+    getFavs('www.dmzj', TYPE_COMIC, function(w3dmzjFavs, allFavs) {
         storLocal.set({allFavs:allFavs});
-        getFavs('manhua.dmzj', mhdmzjStorObj, function(mhdmzjFavs, allFavs) {
+        getFavs('manhua.dmzj', TYPE_COMIC, function(mhdmzjFavs, allFavs) {
             var index = arrInStr(allFavs,'www.dmzj','site');
             w3dmzjFavs = allFavs[index].cols;
             var $html = $(htmlText);
@@ -127,7 +127,7 @@ _createQueryObj.createMhdmzjQuery = function() {
         return resObj;
     };
     var mhdmzjQuery = function(){
-        getFavs('manhua.dmzj', baseObj, queryUpdate(baseObj, ajaxCall));
+        getFavs('manhua.dmzj', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
     this.setAfterStore(mhdmzjQuery,ajaxCall);
     return mhdmzjQuery;
@@ -154,7 +154,7 @@ _createQueryObj.createW3dmzjQuery = function() {
     };
 
     var w3dmzjQuery = function(){
-        getFavs('www.dmzj', baseObj, queryUpdate(baseObj, ajaxCall));
+        getFavs('www.dmzj', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     }
     
     this.setAfterStore(w3dmzjQuery,ajaxCall);

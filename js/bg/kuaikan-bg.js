@@ -17,7 +17,7 @@ _createQueryObj.createKuaikanQuery = function() {
     };
 
     var kuaikanQuery = function(){
-        getFavs('kuaikan', baseObj, queryUpdate(baseObj, ajaxCall));
+        getFavs('kuaikan', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
     
     this.setAfterStore(kuaikanQuery,ajaxCall);
@@ -35,7 +35,7 @@ _exportFunObj['kuaikan'] = function(args,resSend) {
     var pageNum = 1,
         baseUrl = origin + '/web/fav/topics',
         size = 16;
-    getFavs('kuaikan', kuaikanStorObj, function(cols, allFavs) {
+    getFavs('kuaikan', TYPE_COMIC, function(cols, allFavs) {
         //递归遍历，获取所有的收藏结果
         var successCallback = function(resData) {
             log('resData', resData);

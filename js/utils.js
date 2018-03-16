@@ -60,7 +60,8 @@ function getStoreLocal(keys, callback) {
 /**
  * 获取某站点下所有收藏的漫画,以及漫画中更新的数目
  */
-function getFavs(siteName, defaultStore, callback) {
+function getFavs(siteName, type, callback) {
+    var defaultStore = getBaseStoreObj(siteName,type);
     getStoreLocal(['allFavs', 'updateNum'], function(allFavs, updateNum) {
         allFavs = allFavs ? allFavs : [];
         updateNum = updateNum ? updateNum : 0;
@@ -301,7 +302,7 @@ function pipeExport(dataArg,handleFun,resSend){
             }
         }
     }
-    getFavs(site, storObj, function(cols, allFavs) {
+    getFavs(site, TYPE_COMIC, function(cols, allFavs) {
         for (var i = 0, len = datas.length; i < len; i++) {
             var item = datas[i];
             var index = arrInStr(cols, item.title, 'title');
