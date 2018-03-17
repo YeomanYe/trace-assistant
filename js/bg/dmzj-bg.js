@@ -100,7 +100,7 @@ _exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
                     });
                 }
             }
-            resSend({status:0});
+            resSend({status:STATUS_OK});
         });
     });
 }

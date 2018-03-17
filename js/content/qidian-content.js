@@ -1,14 +1,38 @@
 $(function() {
-    if (curHref.search(/book.qidian.com\/info\/.+/) < 0 && curHref.search(/read.qidian.com\/chapter\/.+/) < 0 ) return;
-    createBtn();
-    _$imgExport.on('click', function() {
-        var msgArr = ['exportCollect',location.origin,TYPE_FICTION];
-        sendMsg(null, msgArr, handleResData(updateQidian));
-    });
-    _$imgToggle.on('click', toggleHandlerQidian);
-    updateQidian();
+    if (curHref.search(/book.qidian.com\/info\/.+/) >=0 || curHref.search(/read.qidian.com\/chapter\/.+/) >= 0 || curHref.search(/vipreader.qidian.com\/chapter\/.+/) >= 0 ){
+        createBtn();
+        _$imgExport.on('click', function() {
+            showTips('该网站导出功能只能在 https://my.qidian.com/bookcase 网页上使用');
+        });
+        _$imgToggle.on('click', toggleHandlerQidian);
+        updateQidian();
+    }else if(curHref === 'https://my.qidian.com/bookcase'){
+        createBtn();
+        _$imgExport.on('click', exportQidian);
+    }
 });
 
+/**
+ * 导出起点收藏的小说
+ */
+function exportQidian() {
+    var $as = $('#shelfTable .shelf-table-name b a').not('.fen-category');
+    var arr = [];
+    for(var i=0,len=$as.length;i<len;i++){
+        var aElm = $as.get(i);
+        arr.push({
+            title:aElm.innerText,
+            indexUrl:aElm.href.replace(baseIndexUrl,'')
+        });
+    }
+    var extra = {
+        datas:arr,
+        site:SITE_QIDIAN,
+        type:TYPE_FICTION
+    };
+    var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_FICTION,extra];
+    sendMsg(null, msgArr, handleResData(updateQidian));
+}
 /**
  * 更新
  */

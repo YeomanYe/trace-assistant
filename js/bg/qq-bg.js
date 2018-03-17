@@ -34,7 +34,7 @@ _exportFunObj['ac.qq-'+TYPE_COMIC] = function(args, resSend) {
     var status = JSON.parse(dataStr).status;
     if (status === '-99') {
         resSend({
-            status: 1
+            status: STATUS_UNAUTH
         });
         return;
     }
@@ -63,14 +63,13 @@ _exportFunObj['ac.qq-'+TYPE_COMIC] = function(args, resSend) {
             curChapter = tmpArr[1];
             var newUrl = newA.href,
                 curUrl = curA.href;
-            var title = $html.find('.works-intro-title').text();
             var imgUrl = $html.find('.works-cover img').attr('src');
             retObj = {
                 newUrl:newUrl,
                 curUrl:curUrl,
                 newChapter:newChapter,
                 curChapter:curChapter,
-                title:title,
+                title:data.title,
                 imgUrl:imgUrl
             }
         }catch(e){

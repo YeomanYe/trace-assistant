@@ -10,7 +10,7 @@ var allQuery = function() {
     }
     allQuery = function(){
         firstQuery();
-        setTimeout(allQuery, 1000 * 60);
+        setTimeout(allQuery, 1000 * 60 * 45);
     };
     allQuery();
 }
@@ -20,10 +20,10 @@ allQuery();
 //监听消息
 chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
     switch (msgArr[0]) {
-        case 'updateNumChange':
+        case BG_CMD_UPDATE_NUM:
             updateBadge();
             break;
-        case 'exportCollect':
+        case BG_CMD_EXPORT:
             exportCollect(msgArr,resSend);
             break;
     }

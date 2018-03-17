@@ -41,7 +41,7 @@ _exportFunObj['kuaikan-'+TYPE_COMIC] = function(args,resSend) {
             log('resData', resData);
             var status = resData.status_code;
             if(status === 401){
-                resSend({status:1});//未登录
+                resSend({status:STATUS_UNAUTH});//未登录
                 return;
             }
             var datas = resData.data.topics;
@@ -94,7 +94,7 @@ _exportFunObj['kuaikan-'+TYPE_COMIC] = function(args,resSend) {
                 storLocal.set({
                     'allFavs': allFavs
                 });
-                resSend({status:0});//导出成功
+                resSend({status:STATUS_OK});//导出成功
             }
         };
         $.ajax(baseUrl + '?page=' + pageNum + '&size=' + size, {

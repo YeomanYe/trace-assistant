@@ -106,8 +106,9 @@ function decUpdateNum(item) {
             --updateNum;
             storLocal.set({
                 updateNum: updateNum
+            },function () {
+                chrome.runtime.sendMessage(null, ['updateNumChange']);
             });
-            chrome.runtime.sendMessage(null, 'updateNumChange');
         });
     }
 }
@@ -151,7 +152,7 @@ function queryUpdate(baseObj, callback) {
                 if (col.newChapter !== newChapter) {
                     col.newChapter = newChapter;
                     col.newUrl = newUrl;
-                    createNotify(col.title, baseImage + col.imgUrl, '更新到: ' + newChapter, baseChapter + newUrl);
+                    createNotify(col.title, formatHref(col.imgUrl,baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
                     isUpdate = true;
                     if (!col.isUpdate) {
                         col.isUpdate = true;
@@ -287,12 +288,18 @@ function handleResData(sucCall,errCall) {
     return function (data) {
         log('handleResData', data);
         var status = data.status;
-        if (!status) {
+        if (status === STATUS_OK) {
             showTips('操作成功');
             if(sucCall) sucCall(data);
             return ;
-        } else if (status === 1) {
+        } else if (status === STATUS_UNAUTH) {
             showTips('请先登录');
+        }else if(status === STATUS_EXPORT_FAIL){
+            var str = '';
+            for(var i=0,len=data.msg.length;i<len;i++){
+                str += ' 《'+data.msg[i]+'》 ';
+            }
+            showTips('导出失败,请手动添加：'+str);
         }
         if(errCall) errCall(data);
     }
@@ -308,13 +315,25 @@ function pipeExport(dataArg,handleFun,resSend){
         baseIndexUrl = storObj.baseIndex,
         baseChapter = storObj.baseChapter,
         origin = storObj.origin;
+    var resObj = {status:STATUS_OK,msg:[]};
     var indexSucCall = function(cols,colItem,args){
         return function(text){
             var obj = handleFun(text,resSend,args);
+            if(obj.status !== STATUS_OK){
+                resObj.status = STATUS_EXPORT_FAIL;
+                resObj.msg.push(obj.msg);
+                return;
+            }
             //处理数据格式
-            var newUrl = replaceOrigin(obj.newUrl, origin).replace(baseChapter, ''),
+            var newUrl = obj.newUrl,curUrl = obj.curUrl;
+            if(newUrl.search('^https?://') < 0){
+                newUrl = replaceOrigin(newUrl, origin).replace(baseChapter, '');
+                curUrl = replaceOrigin(curUrl, origin).replace(baseChapter, '');
+            }else{
+                newUrl = newUrl.replace(baseChapter,'');
+                curUrl = curUrl.replace(baseChapter,'');
+            }
 
-            curUrl = replaceOrigin(obj.curUrl, origin).replace(baseChapter, '');
             obj.newUrl = newUrl;
             obj.curUrl = curUrl;
             obj.imgUrl = obj.imgUrl.replace(baseImgUrl,'');
@@ -323,7 +342,7 @@ function pipeExport(dataArg,handleFun,resSend){
             var index = arrInStr(cols,{title:obj.title});
             if(index < 0) {
                 assignColItem(obj,colItem);
-                cols.push(colItem);
+                cols.unshift(colItem);
             }
         }
     }
@@ -335,7 +354,7 @@ function pipeExport(dataArg,handleFun,resSend){
             //当收藏中没有该漫画时才添加
             if (index < 0) {
                 var colItem = assignColItem(item);
-                $.ajax(baseIndexUrl + item.indexUrl, {
+                $.ajax(formatHref(item.indexUrl,baseIndexUrl ), {
                     success: indexSucCall(cols,colItem,item),
                     async: false
                 });
@@ -344,9 +363,7 @@ function pipeExport(dataArg,handleFun,resSend){
         storLocal.set({
             allFavs: allFavs
         });
-        resSend({
-            status: 0
-        });
+        resSend(resObj);
     });
 }
 /**
@@ -364,7 +381,27 @@ function assignColItem(obj,colItem){
     colItem.title = obj.title !== undefined ? obj.title : colItem.title;
     return colItem;
 }
-
+/**
+ * 格式化href
+ * @param href
+ */
+function formatHref(href, baseHref) {
+    var retHref;
+    var index = href.search('^https?://');
+    if (index < 0) {
+        //如果href不是http打头，那么应该为 //www.xx.com/dd 这样的形式
+        if (!baseHref) retHref = 'http:' + href;
+        else {
+            href = baseHref + href;
+            index = href.search('^https?://');
+            if (index < 0) retHref = 'http:' + href;
+            else retHref = href;
+        }
+    } else {
+        retHref = href;
+    }
+    return retHref;
+}
 /**
  * 存储消抖函数
  */
