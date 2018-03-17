@@ -6,17 +6,20 @@
     <link rel="stylesheet" href="css/popup.css"/>
     <script type="text/javascript" src="lib/jquery.min.js"></script>
     <script type="text/javascript" src="lib/FileSaver.min.js" ></script>
+    <script type="text/javascript" src="js/constant.js"></script>
+    <script type="text/javascript" src="js/baseStoreObj.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
 </head>
 <body>
-    <!-- tab栏 -->
-    <nav>
-        <span id="colTab" class="curTab">收藏</span>
-        <span id="optionTab">设置</span>
-    </nav>
+    <div id="favToggleWrap">
+        <span class="curTab" id="allFav">全部</span>
+        <span id="comicFav">漫画</span>
+        <span id="fiction">小说</span>
+        <span id="video">视频</span>
+    </div>
     <!-- 收藏的漫画列表 -->
-    <ul id="comicList" class="list">
+    <ul id="favList" class="list">
         
     </ul>
     <!-- 设置列表 -->
@@ -26,6 +29,12 @@
         <li><span title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
     </ul>
     <input type="file" hidden name="fileImport" id="fileImport">
+
+    <!-- tab栏 -->
+    <nav>
+        <span id="colTab" class="curTab">收藏</span>
+        <span id="optionTab">设置</span>
+    </nav>
     <template id="listItemTemplate">
         <li>
             <a class="left"><div></div></a>

@@ -1,4 +1,4 @@
-var $optionTab, $colTab, $comicList, $settingList, $export, $import, $fileImport;
+var $optionTab, $colTab, $favList, $settingList, $export, $import, $fileImport;
 
 $(function () {
     init();
@@ -10,13 +10,13 @@ function init() {
     $export = $('#export').on('click', exportHandler);
     $import = $('#import').on('click', importHandler);
     $fileImport = $('#fileImport').change(fileImportChangeHandler);
-    $comicList = $('#comicList');
+    $favList = $('#favList');
     $settingList = $('#settingList');
     $settingList.hide();
     getStoreLocal('allFavs', function (allFavs) {
         allFavs = allFavs ? allFavs : [];
         log(allFavs);
-        allFavs.forEach(resolveColItems);
+        allFavs.forEach(resolveColItems());
     });
 }
 
@@ -24,7 +24,7 @@ function init() {
  * 点击收藏tab事件
  */
 function colTabHandler() {
-    $comicList.show();
+    $favList.show();
     $settingList.hide();
     $colTab.addClass('curTab');
     $optionTab.removeClass('curTab');
@@ -34,7 +34,7 @@ function colTabHandler() {
  * 点击设置tab事件
  */
 function optionTabHandler() {
-    $comicList.hide();
+    $favList.hide();
     $settingList.show();
     $optionTab.addClass('curTab');
     $colTab.removeClass('curTab');
@@ -43,58 +43,62 @@ function optionTabHandler() {
 /**
  * 处理每一个网站收藏的漫画
  */
-function resolveColItems(colItem, colIndex) {
-    // $comicList.empty();
-    var baseImg = colItem.baseImg,
-        baseIndex = colItem.baseIndex,
-        baseChapter = colItem.baseChapter,
-        origin = colItem.origin,
-        siteName = colItem.siteName,
-        cols = colItem.cols;
-    log(baseImg, baseIndex);
-    cols.forEach(function (obj, index) {
-        liTempStr = $('#listItemTemplate').html();
-        $liInstance = $(liTempStr);
-        $liInstance.find('.left div').css({
-            'background-image': 'url(' + formatHref(obj.imgUrl, baseImg) + ')',
-            'background-size': 'cover',
-            'background-repeat': 'no-repeat'
-        });
-        $liInstance.find('.left').attr({
-            href: formatHref(obj.indexUrl, baseIndex),
-            target: '_blank'
-        });
-        $liInstance.find('.middle h3 .titleName').text(obj.title).attr({
-            href: formatHref(obj.indexUrl, baseIndex),
-            target: '_blank'
-        });
-        $liInstance.find('.middle .news').text('最新：' + obj.newChapter).attr({
-            href: formatHref(obj.newUrl, baseChapter),
-            target: '_blank'
-        });
-        $liInstance.find('.middle .current').text('看到：' + obj.curChapter).attr({
-            href: formatHref(obj.curUrl, baseChapter),
-            target: '_blank'
-        });
-        $liInstance.find('.right .source').text(siteName).attr({
-            href: formatHref(origin),
-            target: '_blank'
-        });
-        $liInstance.find('.right .delBtn').text('删除').attr('data-index', colIndex + ',' + index).on('click', delCollect);
-        $liInstance.find('.right .contBtn').text('继续阅读').attr({
-            href: formatHref(obj.curUrl, baseChapter),
-            target: '_blank'
-        });
-        //添加最新按钮
-        if (obj.isUpdate) {
-            $liInstance.find('.middle .news-badge').css('display', 'inline-block').attr({
+function resolveColItems(type) {
+    return function (colItem, colIndex) {
+        var baseImg = colItem.baseImg,
+            baseIndex = colItem.baseIndex,
+            baseChapter = colItem.baseChapter,
+            origin = colItem.origin,
+            siteName = colItem.siteName,
+            cols = colItem.cols,
+            colType = colItem.type;
+        if(type && type !== colType) return;
+        log(baseImg, baseIndex);
+        cols.forEach(function (obj, index) {
+            liTempStr = $('#listItemTemplate').html();
+            $liInstance = $(liTempStr);
+            $liInstance.find('.left div').css({
+                'background-image': 'url(' + formatHref(obj.imgUrl, baseImg) + ')',
+                'background-size': 'cover',
+                'background-repeat': 'no-repeat'
+            });
+            $liInstance.find('.left').attr({
+                href: formatHref(obj.indexUrl, baseIndex),
+                target: '_blank'
+            });
+            $liInstance.find('.middle h3 .titleName').text(obj.title).attr({
+                href: formatHref(obj.indexUrl, baseIndex),
+                target: '_blank'
+            });
+            $liInstance.find('.middle .news').text('最新：' + obj.newChapter).attr({
                 href: formatHref(obj.newUrl, baseChapter),
                 target: '_blank'
             });
-        }
-        log($liInstance);
-        $comicList.append($liInstance);
-    });
+            $liInstance.find('.middle .current').text('看到：' + obj.curChapter).attr({
+                href: formatHref(obj.curUrl, baseChapter),
+                target: '_blank'
+            });
+            $liInstance.find('.right .source').text(siteName).attr({
+                href: formatHref(origin),
+                target: '_blank'
+            });
+            $liInstance.find('.right .delBtn').text('删除').attr('data-index', colIndex + ',' + index).on('click', delCollect);
+            $liInstance.find('.right .contBtn').text('继续阅读').attr({
+                href: formatHref(obj.curUrl, baseChapter),
+                target: '_blank'
+            });
+            //添加最新按钮
+            if (obj.isUpdate) {
+                $liInstance.find('.middle .news-badge').css('display', 'inline-block').attr({
+                    href: formatHref(obj.newUrl, baseChapter),
+                    target: '_blank'
+                });
+            }
+            log($liInstance);
+            $favList.append($liInstance);
+        });
+    }
+
 }
 
 /**
@@ -106,7 +110,7 @@ function exportHandler() {
         var blob = new Blob([JSON.stringify(resObj)], {
             type: 'text/plain;charset=utf-8'
         });
-        saveAs(blob, 'ComicList.json');
+        saveAs(blob, 'favList.json');
     });
 }
 
@@ -129,7 +133,7 @@ function fileImportChangeHandler(e) {
             var data = JSON.parse(this.result);
             var allFavs = data.allFavs;
             storLocal.set(data);
-            allFavs.forEach(resolveColItems);
+            allFavs.forEach(resolveColItems());
             sendMsg(null, 'updateNumChange');
         };
         reader.readAsText(file);
