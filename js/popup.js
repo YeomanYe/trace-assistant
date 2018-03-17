@@ -1,6 +1,6 @@
 var $optionTab, $colTab, $comicList, $settingList, $export, $import, $fileImport;
 
-$(function() {
+$(function () {
     init();
 });
 
@@ -13,11 +13,13 @@ function init() {
     $comicList = $('#comicList');
     $settingList = $('#settingList');
     $settingList.hide();
-    getStoreLocal('allFavs',function(allFavs){
+    getStoreLocal('allFavs', function (allFavs) {
         allFavs = allFavs ? allFavs : [];
+        log(allFavs);
         allFavs.forEach(resolveColItems);
     });
 }
+
 /**
  * 点击收藏tab事件
  */
@@ -27,6 +29,7 @@ function colTabHandler() {
     $colTab.addClass('curTab');
     $optionTab.removeClass('curTab');
 }
+
 /**
  * 点击设置tab事件
  */
@@ -36,6 +39,7 @@ function optionTabHandler() {
     $optionTab.addClass('curTab');
     $colTab.removeClass('curTab');
 }
+
 /**
  * 处理每一个网站收藏的漫画
  */
@@ -48,43 +52,43 @@ function resolveColItems(colItem, colIndex) {
         siteName = colItem.siteName,
         cols = colItem.cols;
     log(baseImg, baseIndex);
-    cols.forEach(function(obj, index) {
+    cols.forEach(function (obj, index) {
         liTempStr = $('#listItemTemplate').html();
         $liInstance = $(liTempStr);
         $liInstance.find('.left div').css({
-            'background-image': 'url(' + baseImg + obj.imgUrl + ')',
+            'background-image': 'url(' + formatHref(obj.imgUrl, baseImg) + ')',
             'background-size': 'cover',
             'background-repeat': 'no-repeat'
         });
         $liInstance.find('.left').attr({
-            href: baseIndex + obj.indexUrl,
+            href: formatHref(obj.indexUrl, baseIndex),
             target: '_blank'
         });
         $liInstance.find('.middle h3 .titleName').text(obj.title).attr({
-            href: baseIndex + obj.indexUrl,
+            href: formatHref(obj.indexUrl, baseIndex),
             target: '_blank'
         });
         $liInstance.find('.middle .news').text('最新：' + obj.newChapter).attr({
-            href: baseChapter + obj.newUrl,
+            href: formatHref(obj.newUrl, baseChapter),
             target: '_blank'
         });
         $liInstance.find('.middle .current').text('看到：' + obj.curChapter).attr({
-            href: baseChapter + obj.curUrl,
+            href: formatHref(obj.curUrl, baseChapter),
             target: '_blank'
         });
         $liInstance.find('.right .source').text(siteName).attr({
-            href: origin,
+            href: formatHref(origin),
             target: '_blank'
         });
         $liInstance.find('.right .delBtn').text('删除').attr('data-index', colIndex + ',' + index).on('click', delCollect);
         $liInstance.find('.right .contBtn').text('继续阅读').attr({
-            href: baseChapter + obj.curUrl,
+            href: formatHref(obj.curUrl, baseChapter),
             target: '_blank'
         });
         //添加最新按钮
         if (obj.isUpdate) {
             $liInstance.find('.middle .news-badge').css('display', 'inline-block').attr({
-                href: baseChapter + obj.newUrl,
+                href: formatHref(obj.newUrl, baseChapter),
                 target: '_blank'
             });
         }
@@ -92,11 +96,12 @@ function resolveColItems(colItem, colIndex) {
         $comicList.append($liInstance);
     });
 }
+
 /**
  * 导出数据
  */
 function exportHandler() {
-    storLocal.get(['allFavs', 'updateNum'], function(resObj) {
+    storLocal.get(['allFavs', 'updateNum'], function (resObj) {
         log('export obj', resObj);
         var blob = new Blob([JSON.stringify(resObj)], {
             type: 'text/plain;charset=utf-8'
@@ -104,12 +109,14 @@ function exportHandler() {
         saveAs(blob, 'ComicList.json');
     });
 }
+
 /**
  * 导入数据
  */
 function importHandler() {
     $fileImport.get(0).click();
 }
+
 /**
  * 解析文件并导入数据
  */
@@ -118,16 +125,39 @@ function fileImportChangeHandler(e) {
     if (files.length) {
         var file = files[0],
             reader = new FileReader(); //new一个FileReader实例
-        reader.onload = function() {
+        reader.onload = function () {
             var data = JSON.parse(this.result);
             var allFavs = data.allFavs;
             storLocal.set(data);
             allFavs.forEach(resolveColItems);
-            sendMsg(null,'updateNumChange');
+            sendMsg(null, 'updateNumChange');
         };
         reader.readAsText(file);
     }
 }
+
+/**
+ * 格式化href
+ * @param href
+ */
+function formatHref(href, baseHref) {
+    var retHref;
+    var index = href.search('^https?://');
+    if (index < 0) {
+        //如果href不是http打头，那么应该为 //www.xx.com/dd 这样的形式
+        if (!baseHref) retHref = 'http:' + href;
+        else {
+            href = baseHref + href;
+            index = href.search('^https?://');
+            if (index < 0) retHref = 'http:' + href;
+            else retHref = href;
+        }
+    } else {
+        retHref = href;
+    }
+    return retHref;
+}
+
 /**
  * 删除收藏的漫画
  */
@@ -136,7 +166,7 @@ function delCollect(e) {
     $(this).parents('li').remove();
     //从本地存储中删除
     var indexArr = $(this).data('index').split(',');
-    getStoreLocal('allFavs',function(allFavs){
+    getStoreLocal('allFavs', function (allFavs) {
         var delArr = allFavs[indexArr[0]].cols.splice(indexArr[1], 1);
         decUpdateNum(delArr[0]);
         log('allFavs', allFavs);

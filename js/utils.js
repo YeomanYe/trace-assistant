@@ -271,6 +271,7 @@ function showTips(msg) {
         top: height / 2 - 40,
         left: width / 2 - 40,
         'font-size': '18px',
+        'z-index':999,
         background: 'black',
         color: 'white'
     });

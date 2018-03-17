@@ -86,10 +86,10 @@ _allBaseStoreObj['manhua.dmzj'] = function(origin,type){
 
 _allBaseStoreObj['qidian'] = function(origin,type){
     type = type ? type : TYPE_FICTION;
-    origin = origin ? origin : '//www.qidian.com';
+    origin = origin ? origin : 'https://www.qidian.com';
     var baseImgUrl = '//qidian.qpic.cn/qdbimg/',
-        baseChapterUrl = '//read.qidian.com/chapter/',
-        baseIndexUrl = '//book.qidian.com/info/';
+        baseChapterUrl = 'https://read.qidian.com/chapter/',
+        baseIndexUrl = 'https://book.qidian.com/info/';
 
     storObj = {
         baseImg: baseImgUrl,

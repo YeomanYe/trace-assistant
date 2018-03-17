@@ -51,7 +51,7 @@ function getCuIndexQidian(){
             indexUrl: curHref,
         };
     } else {
-        var aElm = $('.crumbs-nav .act').get(1);
+        var aElm = $('.crumbs-nav .act').get(0);
         var curUrl = curHref;
         var curChapter = $('#j_chapterBox .j_chapterName').text();
         if (aElm)
