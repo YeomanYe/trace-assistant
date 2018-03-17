@@ -1,11 +1,12 @@
 $(function() {
-    if (curHref.search(/book.qidian.com\/info\/.+/) || curHref.search(/read.qidian.com\/chapter\/.+/) ) return;
+    if (curHref.search(/book.qidian.com\/info\/.+/) < 0 && curHref.search(/read.qidian.com\/chapter\/.+/) < 0 ) return;
     createBtn();
     _$imgExport.on('click', function() {
-        sendMsg(null, 'exportCollect@-@' + location.origin, handleResData);
+        var msgArr = ['exportCollect',location.origin,TYPE_FICTION];
+        sendMsg(null, msgArr, handleResData(updateQidian));
     });
-    _$imgToggle.on('click', toggleHandlerKk);
-    updateKk();
+    _$imgToggle.on('click', toggleHandlerQidian);
+    updateQidian();
 });
 
 /**
@@ -17,37 +18,28 @@ function updateQidian() {
 /**
  * 收藏或取消收藏
  */
-function toggleHandlerKk() {
-    var getChapterInfo = function(text) {
+function toggleHandlerQidian() {
+    var getChapterInfo = function(text){
         var $html = $(text);
-        var $as = $html.find('table .tit a');
-        var title = $html.find('.comic-name').text();
-        var newA = $as.get(0);
-        var curA = $as.get($as.length - 1);
+        var imgUrl = $html.find('#bookImg img').attr('src');
+        var $as = $html.find('#j-catalogWrap .cf a');
+        var newA = $as.get($as.length - 1),curA = $as.get(0);
+        var newChapter,newUrl;
+        newChapter = newA.innerText;
+        newUrl = newA.href;
+        curChapter = curA.innerText;
+        curUrl = curA.href;
         var retObj = {
-            newUrl: newA.href,
-            curUrl: curA.href,
-            newChapter: newA.title,
-            curChapter: curA.title,
+            curUrl:curUrl,
+            curChapter:curChapter,
+            newUrl:newUrl,
+            newChapter:newChapter,
+            imgUrl:imgUrl
         };
-        var imgQuerySuccess = function(text) {
-            var $html = $(text);
-            var $img = $html.find('.search-result .clearfix .comic-img .kk-img');
-            var imgUrl = $img.get(0).src
-            retObj.imgUrl = imgUrl;
-        };
-        $.ajax('http://www.kuaikanmanhua.com/', {
-            async: false,
-            success: imgQuerySuccess,
-            type: 'POST',
-            data: {
-                keyword: title,
-                button: '搜索'
-            },
-        });
         return retObj;
     };
-    getFavs('ac.qq', TYPE_COMIC, toggleFav(storObj, getCurComicKk, getChapterInfo));
+
+    getFavs(SITE_QIDIAN,TYPE_FICTION,toggleFav(storObj,getCuIndexQidian,getChapterInfo));
 }
 
 function getCuIndexQidian(){

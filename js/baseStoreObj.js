@@ -33,7 +33,7 @@ _allBaseStoreObj['ac.qq'] = function(origin,type){
     origin = origin ? origin : 'http://ac.qq.com';
     var baseImgUrl = 'https://manhua.qpic.cn/vertical/',
         baseChapterUrl = origin + '/ComicView/index/id/',
-        baseIndexUrl = origin + '/Comic/comicInfo/id/';
+        baseIndexUrl = origin + '/Comic/ComicInfo/id/';
 
     var storObj = {
         baseImg: baseImgUrl,

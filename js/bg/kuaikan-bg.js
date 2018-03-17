@@ -27,7 +27,7 @@ _createQueryObj.createKuaikanQuery = function() {
 /**
  * 快看漫画导出用户的收藏
  */
-_exportFunObj['kuaikan'] = function(args,resSend) {
+_exportFunObj['kuaikan-'+TYPE_COMIC] = function(args,resSend) {
     var origin = args[1];
     var kuaikanStorObj = getBaseStoreObj('kuaikan'),
         baseImgUrl = kuaikanStorObj.baseImg,
@@ -61,7 +61,7 @@ _exportFunObj['kuaikan'] = function(args,resSend) {
                 //如果数组中有标题和目录链接则说明已经存在该漫画了
                 var title = data.title,
                     indexUrl = '/' + data.id;
-                if (arrInStr(cols, title, 'title') >= 0) return;
+                if (arrInStr(cols, {title:title}) >= 0) return;
                 var tmpArr, newUrl, curUrl;
                 tmpArr = newA.href.split('/');
                 newUrl = tmpArr[tmpArr.length - 2] + '/';

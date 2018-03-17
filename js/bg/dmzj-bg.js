@@ -1,8 +1,8 @@
 /**
- * 动漫之家导出用户收藏
+ * 动漫之家导出用户收藏的漫画
  */
-_exportFunObj['dmzj'] = function(args,resSend) {
-    var htmlText = args[2];
+_exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
+    var htmlText = args[3];
     var w3dmzjStorObj = getBaseStoreObj('www.dmzj');
     var mhdmzjStorObj = getBaseStoreObj('manhua.dmzj');
 
@@ -11,12 +11,12 @@ _exportFunObj['dmzj'] = function(args,resSend) {
             $html = $(text);
             var $as = $html.find('.tab-content-selected .list_con_li a');
             var title = $html.find('.comic_deCon h1 a').text();
-            var index = arrInStr(favs, title, 'title');
+            var index = arrInStr(favs, {title:title});
             if (index > 0) return;
             var imgUrl = $html.find('.comic_i_img img').get(0).src;
             var baseChapter = storObj.baseChapter,
                 baseImg = storObj.baseImg,
-                baseIndex = 'http://www.dmzj.com';
+                baseIndex = 'http://www.dmzj.com/info/';
             var newA = $as.get(0),
                 curA = $as.get($as.length - 1);
             var newChapter, newUrl, curUrl, curChapter;
@@ -46,7 +46,7 @@ _exportFunObj['dmzj'] = function(args,resSend) {
             $html = $(text);
             var $as = $html.find('.cartoon_online_border li a');
             var title = $html.find('.odd_anim_title_m h1').text();
-            var index = arrInStr(favs, title, 'title');
+            var index = arrInStr(favs, {title:title});
             if (index > 0) return;
             var imgUrl = $html.find('.anim_intro_ptext img').get(0).src;
             var baseChapter = storObj.baseChapter,
@@ -79,7 +79,7 @@ _exportFunObj['dmzj'] = function(args,resSend) {
     getFavs('www.dmzj', TYPE_COMIC, function(w3dmzjFavs, allFavs) {
         storLocal.set({allFavs:allFavs});
         getFavs('manhua.dmzj', TYPE_COMIC, function(mhdmzjFavs, allFavs) {
-            var index = arrInStr(allFavs,['www.dmzj',TYPE_COMIC],['site','type']);
+            var index = arrInStr(allFavs,{site:'www.dmzj',type:TYPE_COMIC});
             w3dmzjFavs = allFavs[index].cols;
             var $html = $(htmlText);
             var $as = $html.find('.dy_img a');

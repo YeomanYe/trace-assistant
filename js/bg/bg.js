@@ -18,8 +18,7 @@ var allQuery = function() {
 updateBadge();
 allQuery();
 //监听消息
-chrome.runtime.onMessage.addListener(function(msg,msgSenderObj,resSend) {
-    var msgArr = msg.split('@-@');
+chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
     switch (msgArr[0]) {
         case 'updateNumChange':
             updateBadge();
@@ -74,11 +73,17 @@ function setBadge(num) {
 
 
 /**
- * 导出收藏的漫画
+ * 导出收藏
  */
 function exportCollect(args,resSend) {
     var origin = args[1];
+    var type = args[2];
     var keys = Object.keys(_exportFunObj);
-    var index = arrInStr(keys,origin);
-    _exportFunObj[keys[index]](args,resSend);
+    var siteArr = [];
+    for(var i=0,len=keys.length;i<len;i++){
+        var tmpArr = keys[i].split('-');
+        siteArr.push(tmpArr[0]);
+    }
+    var index = arrInStr(siteArr,origin);
+    _exportFunObj[siteArr[index]+'-'+type](args,resSend);
 }

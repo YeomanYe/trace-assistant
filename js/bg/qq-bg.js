@@ -29,8 +29,8 @@ _createQueryObj.createQqQuery = function() {
 /**
  * 腾讯动漫导出用户的收藏
  */
-_exportFunObj['ac.qq'] = function(args, resSend) {
-    var dataStr = args[2];
+_exportFunObj['ac.qq-'+TYPE_COMIC] = function(args, resSend) {
+    var dataStr = args[3];
     var status = JSON.parse(dataStr).status;
     if (status === '-99') {
         resSend({
@@ -44,8 +44,10 @@ _exportFunObj['ac.qq'] = function(args, resSend) {
     }
     var dataArg = {
         datas:userCols,
+        type:TYPE_COMIC,
         site:'ac.qq'
     };
+    log('dataArg',dataArg);
     var handleData = function(text, resSend,data) {
         var curSeqNo = data.nextSeqNo;
         var retObj;

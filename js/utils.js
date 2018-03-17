@@ -34,21 +34,20 @@ function arrInStr(arr, strs, fields) {
     for (var i = 0, len = arr.length; i < len; i++) {
         var obj = arr[i];
         flag = true;
-        if (!fields) {
-            if (strs.indexOf(obj) >= 0) return i;
-        } else if(typeof fields === 'string'){
-            if (strs.indexOf(obj[fields]) >= 0) return i;
-        } else{
+        if (typeof strs === 'object') {
+            var keys = Object.keys(strs);
             //为数组的情况
-            for(var j=0,len2=fields.length;j<len;j++){
-                if(strs[j].indexOf(obj[fields[j]])<0){
+            for(var j=0,len2=keys.length;j<len2;j++){
+                if(strs[keys[j]].indexOf(obj[keys[j]])<0){
                     flag = false;
                     break;
                 }
             }
+            if(flag) return i;
+        } else  if (strs.indexOf(obj) >= 0){
+            return i;
         }
     }
-    if(flag) return i - 1;
     return -1;
 }
 /**
@@ -77,7 +76,7 @@ function getFavs(siteName, type, callback) {
         allFavs = allFavs ? allFavs : [];
         updateNum = updateNum ? updateNum : 0;
         var index = -1;
-        if (allFavs.length) index = arrInStr(allFavs, [siteName,type], ['site','type']);
+        if (allFavs.length) index = arrInStr(allFavs, {site:siteName,type:type});
         var cols = [];
         if (index < 0) {
             defaultStore.cols = cols;
@@ -117,16 +116,16 @@ function decUpdateNum(item) {
  */
 function updateColRecord(getCurComic) {
     return function(favs, allFavs) {
-        var curComic = getCurComic();
+        var curIndex = getCurComic();
         //解析当前页面并更新阅读记录
-        var index = arrInStr(favs, curComic.title, 'title');
+        var index = arrInStr(favs, {title:curIndex.title});
         if (index < 0) return;
         //更新图标
         _$imgToggle.get(0).src = _src.collect;
         var curItem = favs[index];
-        if (!curComic.curChapter) return;
-        curItem.curChapter = curComic.curChapter;
-        curItem.curUrl = curComic.curUrl.replace(baseChapterUrl, '');
+        if (!curIndex.curChapter) return;
+        curItem.curChapter = curIndex.curChapter;
+        curItem.curUrl = curIndex.curUrl.replace(baseChapterUrl, '');
         //更新，当前更新的漫画数量
         decUpdateNum(curItem);
         storLocal.set({
@@ -202,7 +201,7 @@ function toggleFav(storObj, getCurComic, getChapterInfo) {
         curUrl = tmpObj.curUrl,
         curChapter = tmpObj.curChapter;
     return function(favs, allFavs) {
-        var index = arrInStr(favs, title, 'title');
+        var index = arrInStr(favs, {title:title});
         //已经收藏，则取消收藏
         if (index >= 0) {
             var item = favs[index];
@@ -283,13 +282,18 @@ function showTips(msg) {
 /**
  * 处理响应数据
  */
-function handleResData(data) {
-    log('handleResData', data);
-    var status = data.status;
-    if (!status) {
-        showTips('操作成功');
-    } else if (status === 1) {
-        showTips('请先登录');
+function handleResData(sucCall,errCall) {
+    return function (data) {
+        log('handleResData', data);
+        var status = data.status;
+        if (!status) {
+            showTips('操作成功');
+            if(sucCall) sucCall(data);
+            return ;
+        } else if (status === 1) {
+            showTips('请先登录');
+        }
+        if(errCall) errCall(data);
     }
 }
 /**
@@ -297,7 +301,7 @@ function handleResData(data) {
  * extra需要从datas中带入到handlefun中的数据的字段的名称
  */
 function pipeExport(dataArg,handleFun,resSend){
-    var site = dataArg.site,datas = dataArg.datas;
+    var site = dataArg.site,datas = dataArg.datas,type = dataArg.type;
     var storObj = getBaseStoreObj(site),
         baseImgUrl = storObj.baseImg,
         baseIndexUrl = storObj.baseIndex,
@@ -315,17 +319,18 @@ function pipeExport(dataArg,handleFun,resSend){
             obj.imgUrl = obj.imgUrl.replace(baseImgUrl,'');
             obj.isUpdate = false;
 
-            var index = arrInStr(cols,obj.title,'title');
+            var index = arrInStr(cols,{title:obj.title});
             if(index < 0) {
                 assignColItem(obj,colItem);
                 cols.push(colItem);
             }
         }
     }
-    getFavs(site, TYPE_COMIC, function(cols, allFavs) {
+    getFavs(site, type, function(cols, allFavs) {
+        log('datas',datas);
         for (var i = 0, len = datas.length; i < len; i++) {
             var item = datas[i];
-            var index = arrInStr(cols, item.title, 'title');
+            var index = arrInStr(cols, {title:item.title});
             //当收藏中没有该漫画时才添加
             if (index < 0) {
                 var colItem = assignColItem(item);
