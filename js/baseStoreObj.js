@@ -66,7 +66,6 @@ _allBaseStoreObj['www.dmzj'] = function(origin,type){
 }
 
 _allBaseStoreObj['manhua.dmzj'] = function(origin,type){
-    type = type ? type : TYPE_COMIC;
     origin = origin ? origin : 'https://manhua.dmzj.com';
     var baseImgUrl = 'https://images.dmzj.com/webpic/',
         baseChapterUrl = origin,
@@ -84,8 +83,7 @@ _allBaseStoreObj['manhua.dmzj'] = function(origin,type){
     return storObj;
 }
 
-_allBaseStoreObj['qidian'] = function(origin,type){
-    type = type ? type : TYPE_FICTION;
+_allBaseStoreObj[SITE_QIDIAN] = function(origin,type){
     origin = origin ? origin : 'https://www.qidian.com';
     var baseImgUrl = '//qidian.qpic.cn/qdbimg/',
         baseChapterUrl = 'https://read.qidian.com/chapter/',
@@ -97,7 +95,7 @@ _allBaseStoreObj['qidian'] = function(origin,type){
         baseChapter: baseChapterUrl,
         type:type,
         origin: origin,
-        site: 'qidian',
+        site: SITE_QIDIAN,
         siteName:'起点'
     };
     return storObj;

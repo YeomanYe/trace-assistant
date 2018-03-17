@@ -8,7 +8,7 @@
       "default_title": "追综饭"
    },
    "content_scripts": [{
-      "js": ["lib/jquery.min.js","js/constant.js", "js/utils.js","js/baseStoreObj.js", "js/content/pre-content.js", "js/content/kuaikan-content.js", "js/content/qq-content.js", "js/content/dmzj-content.js","js/content/qidian-content.js"],
+      "js": ["lib/jquery.min.js","js/constant.js", "js/utils.js","js/baseStoreObj.js", "js/content/pre-cnt.js", "js/content/kuaikan-cnt.js", "js/content/qq-cnt.js", "js/content/dmzj-cnt.js","js/content/qidian-cnt.js"],
       "css": ["css/content.css"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_end"

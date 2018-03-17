@@ -5,50 +5,58 @@
     <title>漫画助手</title>
     <link rel="stylesheet" href="css/popup.css"/>
     <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/FileSaver.min.js" ></script>
+    <script type="text/javascript" src="lib/FileSaver.min.js"></script>
     <script type="text/javascript" src="js/constant.js"></script>
     <script type="text/javascript" src="js/baseStoreObj.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
     <script type="text/javascript" src="js/popup.js"></script>
 </head>
 <body>
-    <div id="favToggleWrap">
-        <span class="curFav" id="allFav">全部</span>
-        <span id="comicFav">漫画</span>
-        <span id="fictionFav">小说</span>
-        <span id="videoFav">视频</span>
-    </div>
-    <!-- 收藏的漫画列表 -->
-    <ul id="favList" class="list">
-        
-    </ul>
-    <!-- 设置列表 -->
-    <ul id="settingList" class="list">
-        <legend><span>全部设置</span></legend>
-        <li><span id="export">导出收藏</span></li>
-        <li><span title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
-    </ul>
-    <input type="file" hidden name="fileImport" id="fileImport">
+<div id="contentWrap">
+    <div id="contentFavWrap">
+        <!--切换收藏类型的按钮-->
+        <div id="favToggleWrap">
+            <span class="curFav" id="allFav">全部</span>
+            <span id="comicFav">漫画</span>
+            <span id="fictionFav">小说</span>
+            <span id="videoFav">视频</span>
+        </div>
+        <!-- 收藏的漫画列表 -->
+        <ul id="favList" class="list">
 
-    <!-- tab栏 -->
-    <nav>
-        <span id="colTab" class="curTab">收藏</span>
-        <span id="optionTab">设置</span>
-    </nav>
-    <template id="listItemTemplate">
-        <li>
-            <a class="left"><div></div></a>
-            <div class="middle">
-                <h3 class="tiltle"><a class="titleName"></a><a class="news-badge">news</a></h3>
-                <div><a class="current"></a></div>
-                <div><a class="news"></a></div>
-            </div>
-            <div class="right">
-                <div><a class="source"></a></div>
-                <div class="delBtn"></div>
-                <div><a class="contBtn"></a></div>
-            </div>
-        </li>
-    </template>
+        </ul>
+    </div>
+    <div>
+        <!-- 设置列表 -->
+        <ul id="settingList" class="list">
+            <legend><span>全部设置</span></legend>
+            <li><span id="export">导出收藏</span></li>
+            <li><span title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
+        </ul>
+        <input type="file" hidden name="fileImport" id="fileImport">
+    </div>
+</div>
+<!-- tab栏 -->
+<nav>
+    <span id="colTab" class="curTab">收藏</span>
+    <span id="optionTab">设置</span>
+</nav>
+<template id="listItemTemplate">
+    <li>
+        <a class="left">
+            <div></div>
+        </a>
+        <div class="middle">
+            <h3 class="tiltle"><a class="titleName"></a><a class="news-badge">news</a></h3>
+            <div><a class="current"></a></div>
+            <div><a class="news"></a></div>
+        </div>
+        <div class="right">
+            <div><a class="source"></a></div>
+            <div class="delBtn"></div>
+            <div><a class="contBtn"></a></div>
+        </div>
+    </li>
+</template>
 </body>
 </html>
