@@ -8,7 +8,7 @@ _exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
 
     var w3dmzjIndexCall = function(indexUrl, storObj, favs, allFavs) {
         return function(text) {
-            $html = $(text);
+            var $html = $(text);
             var $as = $html.find('.tab-content-selected .list_con_li a');
             var title = $html.find('.comic_deCon h1 a').text();
             var index = arrInStr(favs, {title:title});
@@ -43,7 +43,7 @@ _exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
     };
     var mhdmzjIndexCall = function(indexUrl, storObj, favs, allFavs) {
         return function(text) {
-            $html = $(text);
+            var $html = $(text);
             var $as = $html.find('.cartoon_online_border li a');
             var title = $html.find('.odd_anim_title_m h1').text();
             var index = arrInStr(favs, {title:title});

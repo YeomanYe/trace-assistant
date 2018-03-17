@@ -217,7 +217,7 @@ nav span{
     cursor: pointer;
 }
 
-#favToggleWrap .curTab{
+#favToggleWrap .curFav{
     background: rgb(78,144,232);
     color: white;
 }

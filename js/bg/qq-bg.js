@@ -65,6 +65,7 @@ _exportFunObj['ac.qq-'+TYPE_COMIC] = function(args, resSend) {
                 curUrl = curA.href;
             var imgUrl = $html.find('.works-cover img').attr('src');
             retObj = {
+                status:STATUS_OK,
                 newUrl:newUrl,
                 curUrl:curUrl,
                 newChapter:newChapter,
@@ -74,6 +75,10 @@ _exportFunObj['ac.qq-'+TYPE_COMIC] = function(args, resSend) {
             }
         }catch(e){
             log(e);
+            retObj = {
+                status:STATUS_EXPORT_FAIL,
+                msg:data.title
+            }
         }
         return retObj;
     };

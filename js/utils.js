@@ -190,62 +190,6 @@ function replaceOrigin(url, newOrigin) {
     return urlArr.join('/');
 }
 /**
- * 收藏或取消收藏
- */
-function toggleFav(storObj, getCurComic, getChapterInfo) {
-    var baseImgUrl = storObj.baseImg,
-        baseIndexUrl = storObj.baseIndex,
-        baseChapterUrl = storObj.baseChapter;
-    var tmpObj = getCurComic();
-    var title = tmpObj.title,
-        indexUrl = tmpObj.indexUrl,
-        curUrl = tmpObj.curUrl,
-        curChapter = tmpObj.curChapter;
-    return function(favs, allFavs) {
-        var index = arrInStr(favs, {title:title});
-        //已经收藏，则取消收藏
-        if (index >= 0) {
-            var item = favs[index];
-            decUpdateNum(item);
-            favs.splice(index, 1);
-            storLocal.set({
-                allFavs: allFavs
-            });
-            showTips('取消收藏成功');
-            return;
-        }
-        //未收藏，则收藏
-        var sucCall = function(text) {
-            //获取章节与图片信息
-            var obj = getChapterInfo(text);
-            curChapter = curChapter ? curChapter : obj.curChapter;
-            curUrl = curUrl ? curUrl : obj.curUrl;
-            var col = {
-                imgUrl: obj.imgUrl.replace(baseImgUrl, ''),
-                indexUrl: indexUrl.replace(baseIndexUrl, ''),
-                newChapter: obj.newChapter,
-                curChapter: curChapter,
-                newUrl: obj.newUrl.replace(baseChapterUrl, ''), //最新章节地址
-                curUrl: curUrl.replace(baseChapterUrl, ''), //当前章节地址
-                title: title,
-                isUpdate: false
-            };
-            favs.unshift(col);
-            chrome.storage.local.set({
-                allFavs: allFavs
-            });
-            showTips('收藏成功');
-        };
-        if(!curUrl){
-            sucCall($('html'));
-        }else{
-            $.ajax(indexUrl, {
-                success: sucCall
-            });
-        }
-    }
-}
-/**
  * 创建提醒
  */
 function createNotify(title, iconUrl, message, newUrl) {

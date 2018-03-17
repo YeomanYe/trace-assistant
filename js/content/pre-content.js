@@ -22,7 +22,7 @@ function createBtn(){
     $ul.addClass('img-list');
     $ul.attr({draggable:true});
     _$imgExport = addImgToUL($ul,_src.exportCollect,null,'导出网站中收藏的漫画到插件中');
-    _$imgToggle = addImgToUL($ul,_src.collectGrey,toggleFavIcon,'收藏');
+    _$imgToggle = addImgToUL($ul,_src.collectGrey,null,'收藏');
     _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu,'切换菜单');
     _$imgExport.toggle();
     _$imgToggle.toggle();
@@ -81,13 +81,60 @@ function toggleMenu(){
     _$imgToggle.toggle();    
 }
 /**
- * 切换收藏与非收藏图标
+ * 收藏或取消收藏
  */
-function toggleFavIcon(){
-    var imgElm = _$imgToggle.get(0);
-    if(imgElm.src === _src.collectGrey){
-        imgElm.src = _src.collect;
-    }else{
-        imgElm.src = _src.collectGrey;
+function toggleFav(storObj, getCurComic, getChapterInfo) {
+    var baseImgUrl = storObj.baseImg,
+        baseIndexUrl = storObj.baseIndex,
+        baseChapterUrl = storObj.baseChapter;
+    var tmpObj = getCurComic();
+    var title = tmpObj.title,
+        indexUrl = tmpObj.indexUrl,
+        curUrl = tmpObj.curUrl,
+        curChapter = tmpObj.curChapter;
+    return function(favs, allFavs) {
+        var index = arrInStr(favs, {title:title});
+        //已经收藏，则取消收藏
+        if (index >= 0) {
+            var item = favs[index];
+            decUpdateNum(item);
+            favs.splice(index, 1);
+            storLocal.set({
+                allFavs: allFavs
+            });
+            _$imgToggle.attr('src',_src.collectGrey);
+            showTips('取消收藏成功');
+            return;
+        }
+        //未收藏，则收藏
+        var sucCall = function(text) {
+            //获取章节与图片信息
+            var obj = getChapterInfo(text);
+            curChapter = curChapter ? curChapter : obj.curChapter;
+            curUrl = curUrl ? curUrl : obj.curUrl;
+            var col = {
+                imgUrl: obj.imgUrl.replace(baseImgUrl, ''),
+                indexUrl: indexUrl.replace(baseIndexUrl, ''),
+                newChapter: obj.newChapter,
+                curChapter: curChapter,
+                newUrl: obj.newUrl.replace(baseChapterUrl, ''), //最新章节地址
+                curUrl: curUrl.replace(baseChapterUrl, ''), //当前章节地址
+                title: title,
+                isUpdate: false
+            };
+            favs.unshift(col);
+            chrome.storage.local.set({
+                allFavs: allFavs
+            });
+            _$imgToggle.attr('src',_src.collect);
+            showTips('收藏成功');
+        };
+        if(!curUrl){
+            sucCall($('html'));
+        }else{
+            $.ajax(indexUrl, {
+                success: sucCall
+            });
+        }
     }
 }

@@ -1,5 +1,6 @@
 var $optionTab, $colTab, $favList, $settingList, $export, $import, $fileImport;
-
+var $allFav,$comicFav,$fictionFav,$videoFav;
+var favBtnGroups = [];
 $(function () {
     init();
 });
@@ -9,6 +10,12 @@ function init() {
     $colTab = $('#colTab').on('click', colTabHandler);
     $export = $('#export').on('click', exportHandler);
     $import = $('#import').on('click', importHandler);
+    $allFav = $('#allFav').on('click',createFavBtnHandler());
+    $comicFav = $('#comicFav').on('click',createFavBtnHandler(TYPE_COMIC));
+    $fictionFav = $('#fictionFav').on('click',createFavBtnHandler(TYPE_FICTION));
+    $videoFav = $('#videoFav').on('click',createFavBtnHandler(TYPE_VIDEO));
+    favBtnGroups.push($allFav,$comicFav,$fictionFav,$videoFav);
+
     $fileImport = $('#fileImport').change(fileImportChangeHandler);
     $favList = $('#favList');
     $settingList = $('#settingList');
@@ -19,7 +26,20 @@ function init() {
         allFavs.forEach(resolveColItems());
     });
 }
-
+function createFavBtnHandler(type) {
+    return function (e) {
+        var self = this;
+        getStoreLocal('allFavs', function (allFavs) {
+            for(var i=0,len=favBtnGroups.length;i<len;i++){
+                favBtnGroups[i].removeClass('curFav');
+            }
+            $(self).addClass('curFav');
+            $favList.empty();
+            allFavs = allFavs ? allFavs : [];
+            allFavs.forEach(resolveColItems(type));
+        });
+    }
+}
 /**
  * 点击收藏tab事件
  */
