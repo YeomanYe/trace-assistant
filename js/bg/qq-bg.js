@@ -29,7 +29,7 @@ _createQueryObj.createQqQuery = function() {
 /**
  * 腾讯动漫导出用户的收藏
  */
-_exportFunObj['ac.qq-'+TYPE_COMIC] = function(args, resSend) {
+_exportFunObj[SITE_QQ+'-'+TYPE_COMIC] = function(args, resSend) {
     var dataStr = args[3];
     var status = JSON.parse(dataStr).status;
     if (status === '-99') {

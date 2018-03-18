@@ -12,7 +12,7 @@ function getBaseStoreObj(name,type){
         return _allBaseStoreObj[keys[index]](origin,type);
 }
 
-_allBaseStoreObj['kuaikan'] = function(origin,type){
+_allBaseStoreObj[SITE_KUAIKAN] = function(origin,type){
         origin = origin ? origin : 'http://www.kuaikanmanhua.com';
     var baseImgUrl = 'https://i1s.kkmh.com/image',
         baseChapterUrl = origin + '/web/comic/',
@@ -23,13 +23,13 @@ _allBaseStoreObj['kuaikan'] = function(origin,type){
         baseChapter: baseChapterUrl,
         origin: origin,
         type:type,
-        site: 'kuaikan',
+        site: SITE_KUAIKAN,
         siteName:'快看漫画'
     };
     return storObj;
 }
 
-_allBaseStoreObj['ac.qq'] = function(origin,type){
+_allBaseStoreObj[SITE_QQ] = function(origin,type){
     origin = origin ? origin : 'http://ac.qq.com';
     var baseImgUrl = 'https://manhua.qpic.cn/vertical/',
         baseChapterUrl = origin + '/ComicView/index/id/',
@@ -41,13 +41,13 @@ _allBaseStoreObj['ac.qq'] = function(origin,type){
         baseChapter: baseChapterUrl,
         type:type,
         origin: origin,
-        site: 'ac.qq',
+        site: SITE_QQ,
         siteName:'腾讯动漫'
     };
     return storObj;
 }
 
-_allBaseStoreObj['www.dmzj'] = function(origin,type){
+_allBaseStoreObj[SITE_W3_DMZJ] = function(origin,type){
         origin = origin ? origin : 'https://www.dmzj.com';
     var baseImgUrl = 'https://images.dmzj.com/img/webpic/',
         baseChapterUrl = origin + '/view/',
@@ -59,13 +59,13 @@ _allBaseStoreObj['www.dmzj'] = function(origin,type){
         baseChapter: baseChapterUrl,
         type:type,
         origin: origin,
-        site: 'www.dmzj',
+        site: SITE_W3_DMZJ,
         siteName:'动漫之家'
     };
     return storObj;
 }
 
-_allBaseStoreObj['manhua.dmzj'] = function(origin,type){
+_allBaseStoreObj[SITE_MH_DMZJ] = function(origin,type){
     origin = origin ? origin : 'https://manhua.dmzj.com';
     var baseImgUrl = 'https://images.dmzj.com/webpic/',
         baseChapterUrl = origin,
@@ -77,7 +77,7 @@ _allBaseStoreObj['manhua.dmzj'] = function(origin,type){
         baseChapter: baseChapterUrl,
         type:type,
         origin: origin,
-        site: 'manhua.dmzj',
+        site: SITE_MH_DMZJ,
         siteName:'动漫之家'
     };
     return storObj;

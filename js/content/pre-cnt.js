@@ -1,4 +1,3 @@
-var _includeArr = ['kuaikan','dmzj','ac.qq']; //当URL匹配字符串时才调用
 var _$imgAss,_$imgExport,_$imgToggle;
 var curHref = location.origin + location.pathname;
 var cGetUrl = chrome.runtime.getURL;

@@ -1,7 +1,7 @@
 
 $(function(){
     if(curHref.indexOf('ac.qq.com/Comic') < 0)return;
-    log('ac.qq');
+    log(SITE_QQ);
     createBtn();
     _$imgExport.on('click',exportUserColQq);
     _$imgToggle.on('click',toggleFavHandlerQq);
@@ -50,7 +50,7 @@ function getCurComicQq(){
  * 更新收藏
  */
 function updateQq(){
-    getFavs('ac.qq',TYPE_COMIC,updateColRecord(getCurComicQq));
+    getFavs(SITE_QQ,TYPE_COMIC,updateColRecord(getCurComicQq));
 }
 /**
  * 切换收藏按钮点击处理函数
@@ -78,5 +78,5 @@ function toggleFavHandlerQq(){
         return retObj;
     };
 
-    getFavs('ac.qq',TYPE_COMIC,toggleFav(storObj,getCurComicQq,getChapterInfo));
+    getFavs(SITE_QQ,TYPE_COMIC,toggleFav(storObj,getCurComicQq,getChapterInfo));
 }

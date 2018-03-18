@@ -1,10 +1,10 @@
 /**
  * 动漫之家导出用户收藏的漫画
  */
-_exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
+_exportFunObj[SITE_DMZJ+'-'+TYPE_COMIC] = function(args,resSend) {
     var htmlText = args[3];
-    var w3dmzjStorObj = getBaseStoreObj('www.dmzj');
-    var mhdmzjStorObj = getBaseStoreObj('manhua.dmzj');
+    var w3dmzjStorObj = getBaseStoreObj(SITE_W3_DMZJ);
+    var mhdmzjStorObj = getBaseStoreObj(SITE_MH_DMZJ);
 
     var w3dmzjIndexCall = function(indexUrl, storObj, favs, allFavs) {
         return function(text) {
@@ -76,9 +76,9 @@ _exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
             storeDebounce({allFavs:allFavs});
         }
     };
-    getFavs('www.dmzj', TYPE_COMIC, function(w3dmzjFavs, allFavs) {
+    getFavs(SITE_W3_DMZJ, TYPE_COMIC, function(w3dmzjFavs, allFavs) {
         storLocal.set({allFavs:allFavs});
-        getFavs('manhua.dmzj', TYPE_COMIC, function(mhdmzjFavs, allFavs) {
+        getFavs(SITE_MH_DMZJ, TYPE_COMIC, function(mhdmzjFavs, allFavs) {
             var index = arrInStr(allFavs,{site:'www.dmzj',type:TYPE_COMIC});
             w3dmzjFavs = allFavs[index].cols;
             var $html = $(htmlText);
@@ -86,7 +86,7 @@ _exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
             for (var i = 0, len = $as.length; i < len; i++) {
                 var indexUrl = $as.get(i).href;
                 var callback;
-                if (indexUrl.indexOf('www.dmzj') >= 0) {
+                if (indexUrl.indexOf(SITE_W3_DMZJ) >= 0) {
                     callback = w3dmzjIndexCall(indexUrl, w3dmzjStorObj, w3dmzjFavs, allFavs);
                     $.ajax(indexUrl, {
                         success: callback,
@@ -109,7 +109,7 @@ _exportFunObj['dmzj-'+TYPE_COMIC] = function(args,resSend) {
  * 查询收藏的动漫之家漫画是否有更新
  */
 _createQueryObj.createMhdmzjQuery = function() {
-    var baseObj = getBaseStoreObj('manhua.dmzj');
+    var baseObj = getBaseStoreObj(SITE_MH_DMZJ);
     var ajaxCall = function(data) {
         var $html = $(data);
         var origin = baseObj.origin;
@@ -127,7 +127,7 @@ _createQueryObj.createMhdmzjQuery = function() {
         return resObj;
     };
     var mhdmzjQuery = function(){
-        getFavs('manhua.dmzj', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
+        getFavs(SITE_MH_DMZJ, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
     this.setAfterStore(mhdmzjQuery,ajaxCall);
     return mhdmzjQuery;
@@ -136,7 +136,7 @@ _createQueryObj.createMhdmzjQuery = function() {
  * 查询收藏的动漫之家漫画是否有更新
  */
 _createQueryObj.createW3dmzjQuery = function() {
-    var baseObj = getBaseStoreObj('www.dmzj');
+    var baseObj = getBaseStoreObj(SITE_W3_DMZJ);
     var ajaxCall = function(text) {
         var $html = $(text);
         var $as = $html.find('.tab-content-selected .list_con_li a');
@@ -154,7 +154,7 @@ _createQueryObj.createW3dmzjQuery = function() {
     };
 
     var w3dmzjQuery = function(){
-        getFavs('www.dmzj', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
+        getFavs(SITE_W3_DMZJ, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     }
     
     this.setAfterStore(w3dmzjQuery,ajaxCall);

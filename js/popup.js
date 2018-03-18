@@ -162,7 +162,7 @@ function fileImportChangeHandler(e) {
             }
             storLocal.set(data);
             // allFavs.forEach(resolveColItems());
-            sendMsg(null, 'updateNumChange');
+            sendMsg(null, BG_CMD_UPDATE_NUM);
         };
         reader.readAsText(file);
     }

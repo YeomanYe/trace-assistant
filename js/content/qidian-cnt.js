@@ -37,7 +37,7 @@ function exportQidian() {
  * 更新
  */
 function updateQidian() {
-    getFavs('qidian', TYPE_FICTION, updateColRecord(getCuIndexQidian));
+    getFavs(SITE_QIDIAN, TYPE_FICTION, updateColRecord(getCuIndexQidian));
 }
 /**
  * 收藏或取消收藏

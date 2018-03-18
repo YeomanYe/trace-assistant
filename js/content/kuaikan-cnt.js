@@ -13,7 +13,7 @@ $(function() {
  * 更新
  */
 function updateKk() {
-    getFavs('kuaikan', TYPE_COMIC, updateColRecord(getCurComicKk));
+    getFavs(SITE_KUAIKAN, TYPE_COMIC, updateColRecord(getCurComicKk));
 }
 /**
  * 收藏或取消收藏
@@ -48,7 +48,7 @@ function toggleHandlerKk() {
         });
         return retObj;
     };
-    getFavs('kuaikan', TYPE_COMIC, toggleFav(storObj, getCurComicKk, getChapterInfo));
+    getFavs(SITE_KUAIKAN, TYPE_COMIC, toggleFav(storObj, getCurComicKk, getChapterInfo));
 }
 
 /**

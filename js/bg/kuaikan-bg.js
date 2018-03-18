@@ -27,15 +27,15 @@ _createQueryObj.createKuaikanQuery = function() {
 /**
  * 快看漫画导出用户的收藏
  */
-_exportFunObj['kuaikan-'+TYPE_COMIC] = function(args,resSend) {
+_exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
     var origin = args[1];
-    var kuaikanStorObj = getBaseStoreObj('kuaikan'),
+    var kuaikanStorObj = getBaseStoreObj(SITE_KUAIKAN),
         baseImgUrl = kuaikanStorObj.baseImg,
         baseIndexUrl = kuaikanStorObj.baseIndex;
     var pageNum = 1,
         baseUrl = origin + '/web/fav/topics',
         size = 16;
-    getFavs('kuaikan', TYPE_COMIC, function(cols, allFavs) {
+    getFavs(SITE_KUAIKAN, TYPE_COMIC, function(cols, allFavs) {
         //递归遍历，获取所有的收藏结果
         var successCallback = function(resData) {
             log('resData', resData);

@@ -13,3 +13,5 @@ SITE_QIDIAN = 'qidian'; //起点
 SITE_QQ = 'ac.qq';
 SITE_W3_DMZJ = 'www.dmzj';
 SITE_MH_DMZJ = 'manhua.dmzj';
+SITE_DMZJ = 'dmzj';
+SITE_KUAIKAN = 'kuaikan';
