@@ -10,4 +10,6 @@ STATUS_OK = 200; //成功
 STATUS_EXPORT_FAIL = 100;//导出失败
 
 SITE_QIDIAN = 'qidian'; //起点
-SITE_IQIYI = 'iqiyi';//爱奇艺
+SITE_QQ = 'ac.qq';
+SITE_W3_DMZJ = 'www.dmzj';
+SITE_MH_DMZJ = 'manhua.dmzj';

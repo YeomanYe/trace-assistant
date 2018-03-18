@@ -1,5 +1,6 @@
 var $optionTab, $colTab, $favList, $settingList, $export, $import, $fileImport;
 var $allFav,$comicFav,$fictionFav,$videoFav;
+var $contentFav,$contentSetting;
 var favBtnGroups = [];
 $(function () {
     init();
@@ -14,12 +15,14 @@ function init() {
     $comicFav = $('#comicFav').on('click',createFavBtnHandler(TYPE_COMIC));
     $fictionFav = $('#fictionFav').on('click',createFavBtnHandler(TYPE_FICTION));
     $videoFav = $('#videoFav').on('click',createFavBtnHandler(TYPE_VIDEO));
+    $contentFav = $('#contentFavWrap');
+    $contentSetting = $('#contentSettingWrap');
     favBtnGroups.push($allFav,$comicFav,$fictionFav,$videoFav);
 
     $fileImport = $('#fileImport').change(fileImportChangeHandler);
     $favList = $('#favList');
+    $contentSetting.hide();
     $settingList = $('#settingList');
-    $settingList.hide();
     getStoreLocal('allFavs', function (allFavs) {
         allFavs = allFavs ? allFavs : [];
         log(allFavs);
@@ -44,8 +47,8 @@ function createFavBtnHandler(type) {
  * 点击收藏tab事件
  */
 function colTabHandler() {
-    $favList.show();
-    $settingList.hide();
+    $contentFav.show();
+    $contentSetting.hide();
     $colTab.addClass('curTab');
     $optionTab.removeClass('curTab');
 }
@@ -54,8 +57,8 @@ function colTabHandler() {
  * 点击设置tab事件
  */
 function optionTabHandler() {
-    $favList.hide();
-    $settingList.show();
+    $contentFav.hide();
+    $contentSetting.show();
     $optionTab.addClass('curTab');
     $colTab.removeClass('curTab');
 }
@@ -152,8 +155,13 @@ function fileImportChangeHandler(e) {
         reader.onload = function () {
             var data = JSON.parse(this.result);
             var allFavs = data.allFavs;
+            //兼容老版本
+            for(var i=0,len=allFavs.length;i<len;i++){
+                var favItem = allFavs[i];
+                favItem.type = favItem.type ? favItem.type : TYPE_COMIC;
+            }
             storLocal.set(data);
-            allFavs.forEach(resolveColItems());
+            // allFavs.forEach(resolveColItems());
             sendMsg(null, 'updateNumChange');
         };
         reader.readAsText(file);

@@ -13,7 +13,7 @@ gulp.task('default', function() {
         .pipe(rename('content.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./build/js'));
-    gulp.src(['./js/bg/dmzj-bg.js','./js/bg/kuaikan-bg.js','./js/bg/qq-bg.js','./js/bg/bg.js'])
+    gulp.src(['./js/bg/dmzj-bg.js','./js/bg/kuaikan-bg.js','./js/bg/qidian-bg.js','./js/bg/qq-bg.js','./js/bg/bg.js'])
         .pipe(concat('bg.js'))
         .pipe(rename('bg.min.js'))
         .pipe(uglify())

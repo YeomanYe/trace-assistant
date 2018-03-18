@@ -9,7 +9,7 @@ body{
 }
 
 .list{
-    height: 480px;
+    height: 450px;
     overflow: auto;
 }
 
@@ -220,4 +220,8 @@ nav span{
 #favToggleWrap .curFav{
     background: rgb(78,144,232);
     color: white;
+}
+
+#contentWrap{
+    height: 500px;
 }
