@@ -11,10 +11,12 @@ var _src = {
 };
 //获取基本信息
 var origin = location.origin,
-    storObj = getBaseStoreObj(origin),
-    baseImgUrl = storObj.baseImg,
-    baseChapterUrl = storObj.baseChapter,
-    baseIndexUrl = storObj.baseIndex;
+    storObj = getBaseStoreObj(origin);
+if(storObj){
+    var baseImgUrl = storObj.baseImg,
+        baseChapterUrl = storObj.baseChapter,
+        baseIndexUrl = storObj.baseIndex;
+}
 //创建按钮
 function createBtn(){
     var $ul = $('<ul>');
