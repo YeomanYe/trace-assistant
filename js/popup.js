@@ -106,7 +106,9 @@ function resolveColItems(type) {
                 target: '_blank'
             });
             $liInstance.find('.right .delBtn').text('删除').attr('data-index', colIndex + ',' + index).on('click', delCollect);
-            $liInstance.find('.right .contBtn').text('继续阅读').attr({
+            var tmpText = '继续阅读';
+            if(colType === TYPE_VIDEO) tmpText = '继续观看';
+            $liInstance.find('.right .contBtn').text(tmpText).attr({
                 href: formatHref(obj.curUrl, baseChapter),
                 target: '_blank'
             });

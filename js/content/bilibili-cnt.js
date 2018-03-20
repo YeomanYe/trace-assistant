@@ -3,7 +3,7 @@ $(function(){
         log(SITE_BILIBILI);
         createBtn();
         _$imgExport.on('click',function () {
-            showTips('该网站使用此功能需要进入个人空间页面');
+            showTips('该网站使用此功能需要进入用户空间页面(https://space.bilibili.com)');
         });
         _$imgToggle.on('click',toggleFavBilibili);
         updateBilibili();
