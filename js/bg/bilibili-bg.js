@@ -1,8 +1,8 @@
 /**
  * 查询收藏的腾讯漫画是否有更新
  */
-_createQueryObj.createQqQuery = function() {
-    var baseObj = getBaseStoreObj(SITE_QQ);
+_createQueryObj.createBilibiliQuery = function() {
+    var baseObj = getBaseStoreObj('ac.qq');
     var ajaxCall = function(data) {
         var $html = $(data);
         var baseChapter = baseObj.baseChapter;
@@ -19,7 +19,7 @@ _createQueryObj.createQqQuery = function() {
     };
 
     var qqQuery = function() {
-        getFavs(SITE_QQ, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
+        getFavs('ac.qq', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
 
     this.setAfterStore(qqQuery, ajaxCall);
@@ -45,7 +45,7 @@ _exportFunObj[SITE_QQ+'-'+TYPE_COMIC] = function(args, resSend) {
     var dataArg = {
         datas:userCols,
         type:TYPE_COMIC,
-        site:SITE_QQ
+        site:'ac.qq'
     };
     log('dataArg',dataArg);
     var handleData = function(text, resSend,data) {

@@ -100,3 +100,21 @@ _allBaseStoreObj[SITE_QIDIAN] = function(origin,type){
     };
     return storObj;
 }
+
+_allBaseStoreObj[SITE_BILIBILI] = function(origin,type){
+    origin = origin ? origin : 'https://www.bilibili.com';
+    var baseImgUrl = '//i0.hdslb.com/bfs/bangumi/',
+        baseChapterUrl = origin + '/bangumi/play/',
+        baseIndexUrl = origin + '/bangumi/media/';
+
+    storObj = {
+        baseImg: baseImgUrl,
+        baseIndex: baseIndexUrl,
+        baseChapter: baseChapterUrl,
+        type:type,
+        origin: origin,
+        site: SITE_BILIBILI,
+        siteName:'哔哩哔哩'
+    };
+    return storObj;
+}

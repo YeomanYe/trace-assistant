@@ -83,8 +83,9 @@ function toggleMenu(){
 }
 /**
  * 收藏或取消收藏
+ * accessIndex是否访问目录页获取信息
  */
-function toggleFav(storObj, getCurComic, getChapterInfo) {
+function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
     var baseImgUrl = storObj.baseImg,
         baseIndexUrl = storObj.baseIndex,
         baseChapterUrl = storObj.baseChapter;
@@ -113,8 +114,9 @@ function toggleFav(storObj, getCurComic, getChapterInfo) {
             var obj = getChapterInfo(text);
             curChapter = curChapter ? curChapter : obj.curChapter;
             curUrl = curUrl ? curUrl : obj.curUrl;
+            var imgUrl = obj.imgUrl ? obj.imgUrl : '';
             var col = {
-                imgUrl: obj.imgUrl.replace(baseImgUrl, ''),
+                imgUrl: imgUrl.replace(baseImgUrl, ''),
                 indexUrl: indexUrl.replace(baseIndexUrl, ''),
                 newChapter: obj.newChapter,
                 curChapter: curChapter,
@@ -130,7 +132,7 @@ function toggleFav(storObj, getCurComic, getChapterInfo) {
             _$imgToggle.attr('src',_src.collect);
             showTips('收藏成功');
         };
-        if(!curUrl){
+        if(!curUrl && !accessIndex){
             sucCall($('html'));
         }else{
             $.ajax(indexUrl, {
