@@ -1,10 +1,17 @@
 $(function(){
-    if(curHref.indexOf('bangumi/play') < 0 && curHref.indexOf('bangumi/media') < 0)return;
-    log(SITE_BILIBILI);
-    createBtn();
-    _$imgExport.on('click',exportUserColBilibili);
-    _$imgToggle.on('click',toggleFavBilibili);
-    updateBilibili();
+    if(curHref.indexOf('bangumi/play') >= 0 || curHref.indexOf('bangumi/media') >= 0){
+        log(SITE_BILIBILI);
+        createBtn();
+        _$imgExport.on('click',function () {
+            showTips('该网站使用此功能需要进入个人空间页面');
+        });
+        _$imgToggle.on('click',toggleFavBilibili);
+        updateBilibili();
+    }else if(curHref.indexOf('space.bilibili') >= 0){
+        createBtn();
+        _$imgExport.on('click',exportUserColBilibili);
+    }
+
 });
 
 /**
@@ -40,9 +47,10 @@ function getCurIndexBilibili() {
  * 导出腾讯动漫用户配置
  */
 function exportUserColBilibili(){
-    $.ajax('http://ac.qq.com/MyPersonalCenter/getUserCollection',{success:function(text){
-        var msgArr = ['exportCollect',location.origin,TYPE_COMIC,text];
-        sendMsg(null, msgArr,handleResData(updateQq));
+    var userId = location.pathname.match(/\d+/)[0];
+    $.ajax('https://space.bilibili.com/ajax/Bangumi/getList?mid='+userId,{success:function(text){
+        var msgArr = ['exportCollect',location.origin,TYPE_VIDEO,text];
+        sendMsg(null, msgArr,handleResData(updateBilibili));
     }});
 }
 /**

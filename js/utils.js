@@ -277,10 +277,9 @@ function pipeExport(dataArg,handleFun,resSend){
                 newUrl = newUrl.replace(baseChapter,'');
                 curUrl = curUrl.replace(baseChapter,'');
             }
-
             obj.newUrl = newUrl;
             obj.curUrl = curUrl;
-            obj.imgUrl = obj.imgUrl.replace(baseImgUrl,'');
+            obj.imgUrl = obj.imgUrl ? obj.imgUrl.replace(baseImgUrl,'') : undefined;
             obj.isUpdate = false;
 
             var index = arrInStr(cols,{title:obj.title});

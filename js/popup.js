@@ -81,7 +81,7 @@ function resolveColItems(type) {
             liTempStr = $('#listItemTemplate').html();
             $liInstance = $(liTempStr);
             $liInstance.find('.left div').css({
-                'background-image': 'url(' + formatHref(obj.imgUrl, baseImg) + ')',
+                'background-image': 'url(' + formatHref(obj.imgUrl,baseImg) + ')',
                 'background-size': 'cover',
                 'background-repeat': 'no-repeat'
             });

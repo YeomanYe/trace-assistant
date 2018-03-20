@@ -147,7 +147,7 @@ function toggleFavHandlerMhdmzj() {
 function exportUserColDmzj() {
     $.ajax('https://i.dmzj.com/ajax/my/subscribe', {
         success: function(text) {
-            var msgArr = ['exportCollect',location.origin,TYPE_COMIC,text];
+            var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC,text];
             sendMsg(null, msgArr,handleResData());
         },
         type:'POST',

@@ -2,7 +2,7 @@ $(function() {
     if (curHref.indexOf('kuaikanmanhua.com/web') < 0) return;
     createBtn();
     _$imgExport.on('click', function() {
-        var msgArr = ['exportCollect',location.origin,TYPE_COMIC];
+        var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC];
         sendMsg(null, msgArr, handleResData(updateKk));
     });
     _$imgToggle.on('click', toggleHandlerKk);

@@ -12,7 +12,7 @@ $(function(){
  */
 function exportUserColQq(){
     $.ajax('http://ac.qq.com/MyPersonalCenter/getUserCollection',{success:function(text){
-        var msgArr = ['exportCollect',location.origin,TYPE_COMIC,text];
+        var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC,text];
         sendMsg(null, msgArr,handleResData(updateQq));
     }});
 }
