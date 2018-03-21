@@ -135,7 +135,7 @@ function exportHandler() {
         var blob = new Blob([JSON.stringify(resObj)], {
             type: 'text/plain;charset=utf-8'
         });
-        saveAs(blob, 'favList.json');
+        saveAs(blob, '追综饭.json');
     });
 }
 

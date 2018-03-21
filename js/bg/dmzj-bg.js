@@ -11,7 +11,7 @@ _exportFunObj[SITE_DMZJ+'-'+TYPE_COMIC] = function(args,resSend) {
             var $html = $(text);
             var $as = $html.find('.tab-content-selected .list_con_li a');
             var title = $html.find('.comic_deCon h1 a').text();
-            var index = arrInStr(favs, {title:title});
+            var index = arrEqStr(favs, {title:title});
             if (index > 0) return;
             var imgUrl = $html.find('.comic_i_img img').get(0).src;
             var baseChapter = storObj.baseChapter,
@@ -46,7 +46,7 @@ _exportFunObj[SITE_DMZJ+'-'+TYPE_COMIC] = function(args,resSend) {
             var $html = $(text);
             var $as = $html.find('.cartoon_online_border li a');
             var title = $html.find('.odd_anim_title_m h1').text();
-            var index = arrInStr(favs, {title:title});
+            var index = arrEqStr(favs, {title:title});
             if (index > 0) return;
             var imgUrl = $html.find('.anim_intro_ptext img').get(0).src;
             var baseChapter = storObj.baseChapter,
@@ -79,7 +79,7 @@ _exportFunObj[SITE_DMZJ+'-'+TYPE_COMIC] = function(args,resSend) {
     getFavs(SITE_W3_DMZJ, TYPE_COMIC, function(w3dmzjFavs, allFavs) {
         storLocal.set({allFavs:allFavs});
         getFavs(SITE_MH_DMZJ, TYPE_COMIC, function(mhdmzjFavs, allFavs) {
-            var index = arrInStr(allFavs,{site:'www.dmzj',type:TYPE_COMIC});
+            var index = arrEqStr(allFavs,{site:SITE_W3_DMZJ,type:TYPE_COMIC});
             w3dmzjFavs = allFavs[index].cols;
             var $html = $(htmlText);
             var $as = $html.find('.dy_img a');

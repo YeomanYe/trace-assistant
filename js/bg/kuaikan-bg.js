@@ -17,7 +17,7 @@ _createQueryObj.createKuaikanQuery = function() {
     };
 
     var kuaikanQuery = function(){
-        getFavs('kuaikan', TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
+        getFavs(SITE_KUAIKAN, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
     
     this.setAfterStore(kuaikanQuery,ajaxCall);
@@ -61,7 +61,7 @@ _exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
                 //如果数组中有标题和目录链接则说明已经存在该漫画了
                 var title = data.title,
                     indexUrl = '/' + data.id;
-                if (arrInStr(cols, {title:title}) >= 0) return;
+                if (arrEqStr(cols, {title:title}) >= 0) return;
                 var tmpArr, newUrl, curUrl;
                 tmpArr = newA.href.split('/');
                 newUrl = tmpArr[tmpArr.length - 2] + '/';

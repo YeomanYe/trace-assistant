@@ -26,10 +26,10 @@ function getBaseUrl(url1, url2) {
 }
 
 /**
- * 判断数组中是否有一个字符串在字符串中。并返回序列号。-1代表不存在
+ * 判断数组中是否有一个字符串在目标字符串中。并返回序列号。-1代表不存在
  * field代表数组中某个对象的某一字段
  */
-function arrInStr(arr, strs, fields) {
+function arrInStr(arr, strs) {
     var flag;
     for (var i = 0, len = arr.length; i < len; i++) {
         var obj = arr[i];
@@ -45,6 +45,31 @@ function arrInStr(arr, strs, fields) {
             }
             if(flag) return i;
         } else  if (strs.indexOf(obj) >= 0){
+            return i;
+        }
+    }
+    return -1;
+}
+/**
+ * 判断数组中是否有一个字符串等于目标字符串。并返回序列号。-1代表不存在
+ * field代表数组中某个对象的某一字段
+ */
+function arrEqStr(arr, strs) {
+    var flag;
+    for (var i = 0, len = arr.length; i < len; i++) {
+        var obj = arr[i];
+        flag = true;
+        if (typeof strs === 'object') {
+            var keys = Object.keys(strs);
+            //为数组的情况
+            for(var j=0,len2=keys.length;j<len2;j++){
+                if(strs[keys[j]] !== obj[keys[j]]){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag) return i;
+        } else  if (strs === obj){
             return i;
         }
     }
@@ -76,7 +101,7 @@ function getFavs(siteName, type, callback) {
         allFavs = allFavs ? allFavs : [];
         updateNum = updateNum ? updateNum : 0;
         var index = -1;
-        if (allFavs.length) index = arrInStr(allFavs, {site:siteName,type:type});
+        if (allFavs.length) index = arrEqStr(allFavs, {site:siteName,type:type});
         var cols = [];
         if (index < 0) {
             defaultStore.cols = cols;
@@ -119,7 +144,7 @@ function updateColRecord(getCurComic) {
     return function(favs, allFavs) {
         var curIndex = getCurComic();
         //解析当前页面并更新阅读记录
-        var index = arrInStr(favs, {title:curIndex.title});
+        var index = arrEqStr(favs, {title:curIndex.title});
         if (index < 0) return;
         //更新图标
         _$imgToggle.get(0).src = _src.collect;
@@ -205,8 +230,9 @@ function createNotify(title, iconUrl, message, newUrl) {
 /**
  * 创建toast提醒
  */
-function showTips(msg) {
+function showTips(msg,time) {
     var $div = $('<div>');
+    time = time ? time : TIME_SHORT;
     $div.text(msg);
     var width = $(window).width(),
         height = $(window).height();
@@ -223,7 +249,7 @@ function showTips(msg) {
     $('body').append($div);
     setTimeout(function() {
         $div.remove();
-    }, 1000);
+    }, time);
 }
 /**
  * 处理响应数据
@@ -243,7 +269,7 @@ function handleResData(sucCall,errCall) {
             for(var i=0,len=data.msg.length;i<len;i++){
                 str += ' 《'+data.msg[i]+'》 ';
             }
-            showTips('导出失败,请手动添加：'+str);
+            showTips('导出失败,请手动添加：'+str,TIME_LONG);
         }
         if(errCall) errCall(data);
     }
@@ -282,7 +308,7 @@ function pipeExport(dataArg,handleFun,resSend){
             obj.imgUrl = obj.imgUrl ? obj.imgUrl.replace(baseImgUrl,'') : undefined;
             obj.isUpdate = false;
 
-            var index = arrInStr(cols,{title:obj.title});
+            var index = arrEqStr(cols,{title:obj.title});
             if(index < 0) {
                 assignColItem(obj,colItem);
                 cols.unshift(colItem);
@@ -293,7 +319,7 @@ function pipeExport(dataArg,handleFun,resSend){
         log('datas',datas);
         for (var i = 0, len = datas.length; i < len; i++) {
             var item = datas[i];
-            var index = arrInStr(cols, {title:item.title});
+            var index = arrEqStr(cols, {title:item.title});
             //当收藏中没有该漫画时才添加
             if (index < 0) {
                 var colItem = assignColItem(item);

@@ -95,7 +95,7 @@ function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
         curUrl = tmpObj.curUrl,
         curChapter = tmpObj.curChapter;
     return function(favs, allFavs) {
-        var index = arrInStr(favs, {title:title});
+        var index = arrEqStr(favs, {title:title});
         //已经收藏，则取消收藏
         if (index >= 0) {
             var item = favs[index];

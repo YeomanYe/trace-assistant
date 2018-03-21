@@ -16,3 +16,6 @@ SITE_MH_DMZJ = 'manhua.dmzj';
 SITE_DMZJ = 'dmzj';
 SITE_KUAIKAN = 'kuaikan';
 SITE_BILIBILI = 'bilibili';
+
+TIME_SHORT = 1000;
+TIME_LONG = 5 * 1000;
