@@ -48,10 +48,26 @@ function getCurIndexBilibili() {
  */
 function exportUserColBilibili(){
     var userId = location.pathname.match(/\d+/)[0];
-    $.ajax('https://space.bilibili.com/ajax/Bangumi/getList?mid='+userId,{success:function(text){
-        var msgArr = ['exportCollect',location.origin,TYPE_VIDEO,text];
-        sendMsg(null, msgArr,handleResData(updateBilibili));
-    }});
+    var len = 1,page = 1,sendData,result;
+    var baseUrl = 'https://space.bilibili.com/ajax/Bangumi/getList?mid='+userId+'&page=';
+    var successCallback = function(resData){
+        len = resData.data.pages;
+        ++page;
+        if(!sendData) {
+            result = resData.data.result;
+            sendData = resData;
+        }else{
+            result = result.concat(resData.data.result);
+            sendData.data.result = result;
+        }
+        if(page>len){
+            var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_VIDEO,sendData];
+            sendMsg(null, msgArr,handleResData());
+        }else{
+            $.ajax(baseUrl+page,{success:successCallback});
+        }
+    };
+    $.ajax(baseUrl+page,{success:successCallback});
 }
 /**
  * 更新收藏
