@@ -8,13 +8,13 @@ var rename = require('gulp-rename');
 
 // 合并，压缩content页脚本
 gulp.task('default', function() {
-    gulp.src(['./js/content/pre-cnt.js','./js/content/dmzj-cnt.js','./js/content/bilibili-cnt.js','./js/content/kuaikan-cnt.js','./js/content/qidian-cnt.js','./js/content/qq-cnt.js'])
+    gulp.src(['./js/content/preprocess.js','./js/content/*-cnt.js'])
         .pipe(concat('content.js'))
         .pipe(rename('content.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./build/js'));
 
-    gulp.src(['./js/bg/dmzj-bg.js','./js/bg/kuaikan-bg.js','./js/bg/bilibili-bg.js','./js/bg/qidian-bg.js','./js/bg/qq-bg.js','./js/bg/bg.js'])
+    gulp.src(['./js/bg/*-bg.js','./js/bg/background.js'])
         .pipe(concat('bg.js'))
         .pipe(rename('bg.min.js'))
         .pipe(uglify())
