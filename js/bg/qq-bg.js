@@ -54,6 +54,7 @@ _exportFunObj[SITE_QQ+'-'+TYPE_COMIC] = function(args, resSend) {
         try {
             var $html = $(text);
             var $as = $html.find('#chapter .works-chapter-list-wr .chapter-page-all a');
+            curSeqNo = $as.length - 1 < curSeqNo ? $as.length - 1 : curSeqNo;
             var newA = $as.get($as.length - 1),
                 curA = $as.get(curSeqNo);
             var tmpArr = newA.title.split('：');

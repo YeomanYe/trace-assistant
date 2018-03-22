@@ -2,6 +2,7 @@ var $optionTab, $colTab, $favList, $settingList, $export, $import, $fileImport;
 var $allFav,$comicFav,$fictionFav,$videoFav;
 var $contentFav,$contentSetting;
 var favBtnGroups = [];
+var switchTipsElm;
 $(function () {
     init();
 });
@@ -28,6 +29,15 @@ function init() {
         log(allFavs);
         allFavs.forEach(resolveColItems());
     });
+    getStoreLocal('closeTips',function (status) {
+        status = !status;
+        switchTipsElm = new Switch($('#switchTips').get(0), {size: 'small',checked:status,onChange:function (e) {
+            var checked = switchTipsElm.getChecked();
+            storLocal.set({'closeTips':!checked});
+        }});
+    })
+
+    console.log(switchTipsElm);
 }
 function createFavBtnHandler(type) {
     return function (e) {
@@ -182,6 +192,7 @@ function delCollect(e) {
     getStoreLocal('allFavs', function (allFavs) {
         var delArr = allFavs[indexArr[0]].cols.splice(indexArr[1], 1);
         decUpdateNum(delArr[0]);
+        sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
         log('allFavs', allFavs);
         storLocal.set({
             allFavs: allFavs

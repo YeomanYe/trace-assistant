@@ -185,7 +185,10 @@ function queryUpdate(baseObj, callback) {
                 if (col.newChapter !== newChapter) {
                     col.newChapter = newChapter;
                     col.newUrl = newUrl;
-                    createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
+                    getStoreLocal('closeTips',function (status) {
+                        if(!closeTips)
+                            createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
+                    });
                     isUpdate = true;
                     if (!col.isUpdate) {
                         col.isUpdate = true;
@@ -266,7 +269,7 @@ function showTips(msg, time) {
 /**
  * 处理响应数据
  */
-function handleResData() {
+function handleResData(data) {
     log('handleResData', data);
     var status = data.status;
     if (status === STATUS_OK) {

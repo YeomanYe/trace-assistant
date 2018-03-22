@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>漫画助手</title>
     <link rel="stylesheet" href="css/popup.css"/>
+    <link rel="stylesheet" href="lib/switch.css"/>
     <script type="text/javascript" src="lib/jquery.min.js"></script>
     <script type="text/javascript" src="lib/FileSaver.min.js"></script>
+    <script type="text/javascript" src="lib/switch.js"></script>
     <script type="text/javascript" src="js/constant.js"></script>
     <script type="text/javascript" src="js/baseStoreObj.js"></script>
     <script type="text/javascript" src="js/utils.js"></script>
@@ -32,6 +34,7 @@
             <legend><span>全部设置</span></legend>
             <li><span id="export">导出收藏</span></li>
             <li><span title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
+            <li><span>桌面提醒</span><input class="checkbox-switch" type="checkbox" id="switchTips"/></li>
         </ul>
         <input type="file" hidden name="fileImport" id="fileImport">
     </div>

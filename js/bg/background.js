@@ -26,6 +26,9 @@ chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
         case BG_CMD_EXPORT:
             exportCollect(msgArr,resSend);
             break;
+        case BG_CMD_UPDATE_FAV_BTN:
+            sendMsg(null,CNT_CMD_UPDATE_CUR_FAV);
+            break;
     }
     return true;
 });

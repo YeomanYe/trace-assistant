@@ -4,6 +4,7 @@ TYPE_FICTION = 'fiction';//小说
 
 BG_CMD_EXPORT = 'exportCollect'; //background页 执行的命令
 BG_CMD_UPDATE_NUM = 'updateNumChange';
+BG_CMD_UPDATE_FAV_BTN = 'updateFavBtn'; //更新content页的favbtn图标
 
 CNT_CMD_UPDATE_CUR_FAV = 'updateCurFav';//content页 命令
 
