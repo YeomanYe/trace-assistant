@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gulpfile.js" afterPath="$PROJECT_DIR$/gulpfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/constant.js" afterPath="$PROJECT_DIR$/js/constant.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/bilibili-cnt.js" afterPath="$PROJECT_DIR$/js/content/bilibili-cnt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/dmzj-cnt.js" afterPath="$PROJECT_DIR$/js/content/dmzj-cnt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/kuaikan-cnt.js" afterPath="$PROJECT_DIR$/js/content/kuaikan-cnt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/preprocess.js" afterPath="$PROJECT_DIR$/js/content/preprocess.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/qidian-cnt.js" afterPath="$PROJECT_DIR$/js/content/qidian-cnt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/content/qq-cnt.js" afterPath="$PROJECT_DIR$/js/content/qq-cnt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/popup.js" afterPath="$PROJECT_DIR$/js/popup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/utils.js" afterPath="$PROJECT_DIR$/js/utils.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,44 +28,44 @@
       <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/constant.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+            <state relative-caret-position="154">
+              <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="utils.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
+            <state relative-caret-position="6965">
+              <caret line="272" column="21" lean-forward="false" selection-start-line="272" selection-start-column="21" selection-end-line="272" selection-end-column="21" />
               <folding>
-                <element signature="e#130#323#0" expanded="false" />
-                <element signature="e#179#321#0" expanded="false" />
-                <element signature="e#230#314#0" expanded="false" />
+                <element signature="e#130#325#0" expanded="false" />
+                <element signature="e#180#323#0" expanded="false" />
+                <element signature="e#232#316#0" expanded="false" />
                 <element signature="n#!!doc;n#getBaseUrl#0" expanded="false" />
                 <element signature="n#!!block;n#getBaseUrl#0" expanded="false" />
-                <element signature="e#607#670#0" expanded="false" />
+                <element signature="e#609#672#0" expanded="false" />
                 <element signature="n#!!doc;n#getStoreLocal#0" expanded="false" />
                 <element signature="n#!!block;n#getStoreLocal#0" expanded="false" />
-                <element signature="e#2115#2432#0" expanded="false" />
-                <element signature="e#2176#2223#0" expanded="false" />
-                <element signature="e#2229#2426#0" expanded="false" />
-                <element signature="e#2319#2378#0" expanded="false" />
+                <element signature="e#2150#2467#0" expanded="false" />
+                <element signature="e#2211#2258#0" expanded="false" />
+                <element signature="e#2264#2461#0" expanded="false" />
+                <element signature="e#2354#2413#0" expanded="false" />
                 <element signature="n#!!doc;n#getFavs#0" expanded="false" />
-                <element signature="e#2889#2981#0" expanded="false" />
-                <element signature="e#2987#3038#0" expanded="false" />
+                <element signature="e#2930#3022#0" expanded="false" />
+                <element signature="e#3028#3079#0" expanded="false" />
                 <element signature="n#!!doc;n#addArr#0" expanded="false" />
                 <element signature="n#!!block;n#addArr#0" expanded="false" />
-                <element signature="e#3185#3220#0" expanded="false" />
+                <element signature="e#3240#3275#0" expanded="false" />
                 <element signature="n#!!doc;n#decUpdateNum#0" expanded="false" />
                 <element signature="n#!!doc;n#updateColRecord#0" expanded="false" />
                 <element signature="n#!!doc;n#queryUpdate#0" expanded="false" />
-                <element signature="e#5165#5280#0" expanded="false" />
-                <element signature="e#5483#5522#0" expanded="false" />
-                <element signature="e#5592#5797#0" expanded="false" />
-                <element signature="e#5707#5785#0" expanded="false" />
+                <element signature="e#5236#5351#0" expanded="false" />
+                <element signature="e#5557#5596#0" expanded="false" />
+                <element signature="e#5666#5871#0" expanded="false" />
+                <element signature="e#5781#5859#0" expanded="false" />
                 <element signature="n#!!doc;n#replaceOrigin#0" expanded="false" />
                 <element signature="n#!!block;n#replaceOrigin#0" expanded="false" />
                 <element signature="n#!!doc;n#createNotify#0" expanded="false" />
@@ -65,63 +74,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="baseStoreObj.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/js/baseStoreObj.js">
+      <file leaf-file-name="preprocess.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/preprocess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-              <folding>
-                <marker date="1521645937265" expanded="true" signature="2422:3396" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/bg.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="86" column="30" lean-forward="false" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
+            <state relative-caret-position="490">
+              <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dmzj-bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
+      <file leaf-file-name="background.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/bg/background.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="81" column="33" lean-forward="false" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kuaikan-bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="998">
-              <caret line="63" column="29" lean-forward="false" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pre-cnt.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/content/pre-cnt.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="97" column="29" lean-forward="false" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gulpfile.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-49">
-              <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="490">
+              <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -130,8 +97,18 @@
       <file leaf-file-name="bilibili-cnt.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/content/bilibili-cnt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
+            <state relative-caret-position="-2891">
+              <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dmzj-cnt.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/dmzj-cnt.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1260">
+              <caret line="36" column="71" lean-forward="false" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -140,8 +117,38 @@
       <file leaf-file-name="popup.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/popup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4144">
-              <caret line="133" column="34" lean-forward="false" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
+            <state relative-caret-position="-301">
+              <caret line="165" column="49" lean-forward="false" selection-start-line="165" selection-start-column="49" selection-end-line="165" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kuaikan-cnt.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/kuaikan-cnt.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qidian-cnt.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/qidian-cnt.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qq-cnt.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/content/qq-cnt.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -183,6 +190,8 @@
       <find>arrInStr</find>
       <find>arrEqStr</find>
       <find>arrIn</find>
+      <find>update</find>
+      <find>resD</find>
     </findStrings>
     <replaceStrings>
       <replace>favList</replace>
@@ -205,22 +214,23 @@
         <option value="$PROJECT_DIR$/js/content/iqiyi-cnt.js" />
         <option value="$PROJECT_DIR$/popup.html" />
         <option value="$PROJECT_DIR$/css/popup.css" />
-        <option value="$PROJECT_DIR$/js/content/qidian-cnt.js" />
         <option value="$PROJECT_DIR$/js/baseStoreObj.js" />
         <option value="$PROJECT_DIR$/js/bg/qq-bg.js" />
         <option value="$PROJECT_DIR$/manifest.json" />
-        <option value="$PROJECT_DIR$/js/content/dmzj-cnt.js" />
-        <option value="$PROJECT_DIR$/js/content/kuaikan-cnt.js" />
-        <option value="$PROJECT_DIR$/js/content/qq-cnt.js" />
         <option value="$PROJECT_DIR$/js/bg/bilibili-bg.js" />
-        <option value="$PROJECT_DIR$/js/content/bilibili-cnt.js" />
-        <option value="$PROJECT_DIR$/js/constant.js" />
-        <option value="$PROJECT_DIR$/js/popup.js" />
-        <option value="$PROJECT_DIR$/js/utils.js" />
         <option value="$PROJECT_DIR$/js/bg/dmzj-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/kuaikan-bg.js" />
         <option value="$PROJECT_DIR$/js/content/pre-cnt.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/js/popup.js" />
+        <option value="$PROJECT_DIR$/js/content/preprocess.js" />
+        <option value="$PROJECT_DIR$/js/content/bilibili-cnt.js" />
+        <option value="$PROJECT_DIR$/js/content/qq-cnt.js" />
+        <option value="$PROJECT_DIR$/js/content/qidian-cnt.js" />
+        <option value="$PROJECT_DIR$/js/content/kuaikan-cnt.js" />
+        <option value="$PROJECT_DIR$/js/content/dmzj-cnt.js" />
+        <option value="$PROJECT_DIR$/js/constant.js" />
+        <option value="$PROJECT_DIR$/js/utils.js" />
       </list>
     </option>
   </component>
@@ -264,7 +274,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -310,6 +319,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,34 +361,36 @@
       <workItem from="1521597388162" duration="675000" />
       <workItem from="1521626275809" duration="1353000" />
       <workItem from="1521633357727" duration="4358000" />
+      <workItem from="1521684191027" duration="62000" />
+      <workItem from="1521730802021" duration="1765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58090000" />
+    <option name="totallyTimeSpent" value="59917000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20613107" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -395,21 +407,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2835">
-          <caret line="81" column="25" lean-forward="true" selection-start-line="81" selection-start-column="25" selection-end-line="81" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/constant.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/popup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4550">
@@ -433,7 +430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1260">
           <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -442,31 +438,31 @@
         <state relative-caret-position="2170">
           <caret line="62" column="16" lean-forward="false" selection-start-line="62" selection-start-column="9" selection-end-line="62" selection-end-column="16" />
           <folding>
-            <element signature="e#130#323#0" expanded="false" />
-            <element signature="e#179#321#0" expanded="false" />
-            <element signature="e#230#314#0" expanded="false" />
+            <element signature="e#130#325#0" expanded="false" />
+            <element signature="e#180#323#0" expanded="false" />
+            <element signature="e#232#316#0" expanded="false" />
             <element signature="n#!!doc;n#getBaseUrl#0" expanded="false" />
             <element signature="n#!!block;n#getBaseUrl#0" expanded="false" />
-            <element signature="e#607#670#0" expanded="false" />
+            <element signature="e#609#672#0" expanded="false" />
             <element signature="n#!!doc;n#getStoreLocal#0" expanded="false" />
             <element signature="n#!!block;n#getStoreLocal#0" expanded="false" />
-            <element signature="e#2115#2432#0" expanded="false" />
-            <element signature="e#2176#2223#0" expanded="false" />
-            <element signature="e#2229#2426#0" expanded="false" />
-            <element signature="e#2319#2378#0" expanded="false" />
+            <element signature="e#2150#2467#0" expanded="false" />
+            <element signature="e#2211#2258#0" expanded="false" />
+            <element signature="e#2264#2461#0" expanded="false" />
+            <element signature="e#2354#2413#0" expanded="false" />
             <element signature="n#!!doc;n#getFavs#0" expanded="false" />
-            <element signature="e#2889#2981#0" expanded="false" />
-            <element signature="e#2987#3038#0" expanded="false" />
+            <element signature="e#2930#3022#0" expanded="false" />
+            <element signature="e#3028#3079#0" expanded="false" />
             <element signature="n#!!doc;n#addArr#0" expanded="false" />
             <element signature="n#!!block;n#addArr#0" expanded="false" />
-            <element signature="e#3185#3220#0" expanded="false" />
+            <element signature="e#3240#3275#0" expanded="false" />
             <element signature="n#!!doc;n#decUpdateNum#0" expanded="false" />
             <element signature="n#!!doc;n#updateColRecord#0" expanded="false" />
             <element signature="n#!!doc;n#queryUpdate#0" expanded="false" />
-            <element signature="e#5165#5280#0" expanded="false" />
-            <element signature="e#5483#5522#0" expanded="false" />
-            <element signature="e#5592#5797#0" expanded="false" />
-            <element signature="e#5707#5785#0" expanded="false" />
+            <element signature="e#5236#5351#0" expanded="false" />
+            <element signature="e#5557#5596#0" expanded="false" />
+            <element signature="e#5666#5871#0" expanded="false" />
+            <element signature="e#5781#5859#0" expanded="false" />
             <element signature="n#!!doc;n#replaceOrigin#0" expanded="false" />
             <element signature="n#!!block;n#replaceOrigin#0" expanded="false" />
             <element signature="n#!!doc;n#createNotify#0" expanded="false" />
@@ -492,13 +488,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/content/pre-content.js" />
     <entry file="file://$PROJECT_DIR$/js/content/kuaikan-content.js" />
-    <entry file="file://$PROJECT_DIR$/js/bg/bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/bg.js" />
     <entry file="file://$PROJECT_DIR$/js/content/qq-content.js" />
     <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -584,41 +574,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/dmzj-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="149" column="39" lean-forward="false" selection-start-line="149" selection-start-column="39" selection-end-line="149" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/kuaikan-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="4" column="35" lean-forward="false" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/qidian-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/qq-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11585">
           <caret line="331" column="9" lean-forward="false" selection-start-line="331" selection-start-column="9" selection-end-line="331" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -626,7 +585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2345">
           <caret line="67" column="30" lean-forward="false" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -634,118 +592,149 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3500">
           <caret line="100" column="19" lean-forward="true" selection-start-line="100" selection-start-column="19" selection-end-line="100" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/bilibili-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="65" column="14" lean-forward="false" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/popup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4144">
-          <caret line="133" column="34" lean-forward="false" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/constant.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-          <folding>
-            <element signature="e#130#323#0" expanded="false" />
-            <element signature="e#179#321#0" expanded="false" />
-            <element signature="e#230#314#0" expanded="false" />
-            <element signature="n#!!doc;n#getBaseUrl#0" expanded="false" />
-            <element signature="n#!!block;n#getBaseUrl#0" expanded="false" />
-            <element signature="e#607#670#0" expanded="false" />
-            <element signature="n#!!doc;n#getStoreLocal#0" expanded="false" />
-            <element signature="n#!!block;n#getStoreLocal#0" expanded="false" />
-            <element signature="e#2115#2432#0" expanded="false" />
-            <element signature="e#2176#2223#0" expanded="false" />
-            <element signature="e#2229#2426#0" expanded="false" />
-            <element signature="e#2319#2378#0" expanded="false" />
-            <element signature="n#!!doc;n#getFavs#0" expanded="false" />
-            <element signature="e#2889#2981#0" expanded="false" />
-            <element signature="e#2987#3038#0" expanded="false" />
-            <element signature="n#!!doc;n#addArr#0" expanded="false" />
-            <element signature="n#!!block;n#addArr#0" expanded="false" />
-            <element signature="e#3185#3220#0" expanded="false" />
-            <element signature="n#!!doc;n#decUpdateNum#0" expanded="false" />
-            <element signature="n#!!doc;n#updateColRecord#0" expanded="false" />
-            <element signature="n#!!doc;n#queryUpdate#0" expanded="false" />
-            <element signature="e#5165#5280#0" expanded="false" />
-            <element signature="e#5483#5522#0" expanded="false" />
-            <element signature="e#5592#5797#0" expanded="false" />
-            <element signature="e#5707#5785#0" expanded="false" />
-            <element signature="n#!!doc;n#replaceOrigin#0" expanded="false" />
-            <element signature="n#!!block;n#replaceOrigin#0" expanded="false" />
-            <element signature="n#!!doc;n#createNotify#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/js/baseStoreObj.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-          <folding>
-            <marker date="1521645937265" expanded="true" signature="2422:3396" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="86" column="30" lean-forward="false" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="81" column="33" lean-forward="false" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/bg.js" />
+    <entry file="file://$PROJECT_DIR$/js/content/pre-cnt.js" />
     <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="998">
+        <state relative-caret-position="2205">
           <caret line="63" column="29" lean-forward="false" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/content/pre-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="97" column="29" lean-forward="false" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-49">
-          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        <state relative-caret-position="881">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="679">
+          <caret line="81" column="33" lean-forward="false" selection-start-line="81" selection-start-column="33" selection-end-line="81" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/js/baseStoreObj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="8" column="21" lean-forward="false" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/background.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="26" column="33" lean-forward="false" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/qq-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/kuaikan-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="43" lean-forward="false" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/preprocess.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/bilibili-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2891">
+          <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/dmzj-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="36" column="71" lean-forward="false" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/content/qidian-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="34" column="39" lean-forward="false" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/popup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-301">
+          <caret line="165" column="49" lean-forward="false" selection-start-line="165" selection-start-column="49" selection-end-line="165" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6965">
+          <caret line="272" column="21" lean-forward="false" selection-start-line="272" selection-start-column="21" selection-end-line="272" selection-end-column="21" />
+          <folding>
+            <element signature="e#130#325#0" expanded="false" />
+            <element signature="e#180#323#0" expanded="false" />
+            <element signature="e#232#316#0" expanded="false" />
+            <element signature="n#!!doc;n#getBaseUrl#0" expanded="false" />
+            <element signature="n#!!block;n#getBaseUrl#0" expanded="false" />
+            <element signature="e#609#672#0" expanded="false" />
+            <element signature="n#!!doc;n#getStoreLocal#0" expanded="false" />
+            <element signature="n#!!block;n#getStoreLocal#0" expanded="false" />
+            <element signature="e#2150#2467#0" expanded="false" />
+            <element signature="e#2211#2258#0" expanded="false" />
+            <element signature="e#2264#2461#0" expanded="false" />
+            <element signature="e#2354#2413#0" expanded="false" />
+            <element signature="n#!!doc;n#getFavs#0" expanded="false" />
+            <element signature="e#2930#3022#0" expanded="false" />
+            <element signature="e#3028#3079#0" expanded="false" />
+            <element signature="n#!!doc;n#addArr#0" expanded="false" />
+            <element signature="n#!!block;n#addArr#0" expanded="false" />
+            <element signature="e#3240#3275#0" expanded="false" />
+            <element signature="n#!!doc;n#decUpdateNum#0" expanded="false" />
+            <element signature="n#!!doc;n#updateColRecord#0" expanded="false" />
+            <element signature="n#!!doc;n#queryUpdate#0" expanded="false" />
+            <element signature="e#5236#5351#0" expanded="false" />
+            <element signature="e#5557#5596#0" expanded="false" />
+            <element signature="e#5666#5871#0" expanded="false" />
+            <element signature="e#5781#5859#0" expanded="false" />
+            <element signature="n#!!doc;n#replaceOrigin#0" expanded="false" />
+            <element signature="n#!!block;n#replaceOrigin#0" expanded="false" />
+            <element signature="n#!!doc;n#createNotify#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -5,6 +5,7 @@ $(function() {
             showTips('该网站导出功能只能在 https://my.qidian.com/bookcase 网页上使用');
         });
         _$imgToggle.on('click', toggleHandlerQidian);
+        _updateCurFavFun = updateQidian;
         updateQidian();
     }else if(curHref === 'https://my.qidian.com/bookcase'){
         createBtn();
@@ -31,7 +32,7 @@ function exportQidian() {
         type:TYPE_FICTION
     };
     var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_FICTION,extra];
-    sendMsg(null, msgArr, handleResData(updateQidian));
+    sendMsg(null, msgArr, handleResData);
 }
 /**
  * 更新

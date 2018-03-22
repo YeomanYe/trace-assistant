@@ -4,11 +4,13 @@ $(function() {
         createBtn();
         _$imgToggle.on('click', toggleFavHandlerW3dmzj);
         _$imgExport.on('click', showLoginTips);
+        _updateCurFavFun = updateW3dmzj;
         updateW3dmzj();
     } else if (curHref.search(/manhua.dmzj.com\/.+/) >= 0) {
         createBtn();
         _$imgToggle.on('click', toggleFavHandlerMhdmzj);
         _$imgExport.on('click', showLoginTips);
+        _updateCurFavFun = updateMhdmzj;
         updateMhdmzj();
     } else if (curHref.indexOf('i.dmzj') >= 0 && curHref.indexOf('login') < 0) {
         createBtn();

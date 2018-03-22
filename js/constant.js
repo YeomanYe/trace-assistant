@@ -5,8 +5,10 @@ TYPE_FICTION = 'fiction';//小说
 BG_CMD_EXPORT = 'exportCollect'; //background页 执行的命令
 BG_CMD_UPDATE_NUM = 'updateNumChange';
 
+CNT_CMD_UPDATE_CUR_FAV = 'updateCurFav';//content页 命令
+
 STATUS_UNAUTH = 403; //未授权的
-STATUS_OK = 200; //成功
+STATUS_OK = 200; //导出收藏成功
 STATUS_EXPORT_FAIL = 100;//导出失败
 
 SITE_QIDIAN = 'qidian'; //起点

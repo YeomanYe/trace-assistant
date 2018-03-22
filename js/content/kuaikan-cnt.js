@@ -3,9 +3,10 @@ $(function() {
     createBtn();
     _$imgExport.on('click', function() {
         var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC];
-        sendMsg(null, msgArr, handleResData(updateKk));
+        sendMsg(null, msgArr, handleResData);
     });
     _$imgToggle.on('click', toggleHandlerKk);
+    _updateCurFavFun = updateKk;
     updateKk();
 });
 

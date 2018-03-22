@@ -9,6 +9,7 @@ var _src = {
     comicGrey:cGetUrl('images/comic-grey.png'),
     comic:cGetUrl('images/comic.png')
 };
+var _updateCurFavFun;
 //获取基本信息
 var origin = location.origin,
     storObj = getBaseStoreObj(origin);
@@ -17,6 +18,14 @@ if(storObj){
         baseChapterUrl = storObj.baseChapter,
         baseIndexUrl = storObj.baseIndex;
 }
+chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
+    switch (msgArr[0]) {
+        case CNT_CMD_UPDATE_CUR_FAV:
+            if(_updateCurFavFun) _updateCurFavFun();
+            break;
+    }
+    return true;
+});
 //创建按钮
 function createBtn(){
     var $ul = $('<ul>');

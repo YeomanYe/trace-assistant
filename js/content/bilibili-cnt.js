@@ -6,6 +6,7 @@ $(function(){
             showTips('该网站使用此功能需要进入用户空间页面(https://space.bilibili.com)');
         });
         _$imgToggle.on('click',toggleFavBilibili);
+        _updateCurFavFun = updateBilibili;
         updateBilibili();
     }else if(curHref.indexOf('space.bilibili') >= 0){
         createBtn();

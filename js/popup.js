@@ -162,9 +162,10 @@ function fileImportChangeHandler(e) {
                 var favItem = allFavs[i];
                 favItem.type = favItem.type ? favItem.type : TYPE_COMIC;
             }
-            storLocal.set(data);
+            storLocal.set(data,function () {
+                sendMsg(null, [BG_CMD_UPDATE_NUM]);
+            });
             // allFavs.forEach(resolveColItems());
-            sendMsg(null, BG_CMD_UPDATE_NUM);
         };
         reader.readAsText(file);
     }
