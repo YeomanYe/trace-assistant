@@ -2,7 +2,7 @@ var storLocal = chrome.storage.local;
 var log = console.log;
 var sendMsg = chrome.runtime.sendMessage;
 var _createQueryObjProto = {
-    setAfterStore: function (queryFun, hangFun) {
+    addAfterStore: function (queryFun, hangFun) {
         queryFun.afterStore = function (callback) {
             hangFun._afterStore = callback;
             return callback;
@@ -185,10 +185,15 @@ function queryUpdate(baseObj, callback) {
                 if (col.newChapter !== newChapter) {
                     col.newChapter = newChapter;
                     col.newUrl = newUrl;
-                    getStoreLocal('closeTips',function (status) {
-                        if(!closeTips)
-                            createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
-                    });
+                    //生成提示
+                    getStoreLocal('isCloseTips',(function (baseImage,col,newChapter,baseChatper,newUrl) {
+                        var baseImage = baseImage,col = col,newChapter = newChapter, baseChapter = baseChapter,newUrl = newUrl;
+                        return function (isCloseTips) {
+                            if(!isCloseTips)
+                                createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
+                        }
+                    })(baseImage,col,newChapter,baseChapter,newUrl));
+
                     isUpdate = true;
                     if (!col.isUpdate) {
                         col.isUpdate = true;
@@ -393,15 +398,15 @@ function formatHref(href, baseHref) {
 /**
  * 存储消抖函数
  */
-var storeDebounce = function (obj) {
+var storeDebounce = function (obj,func) {
     var storeDebounceTimeout;
-    storeDebounce = function (obj) {
+    storeDebounce = function (obj,func) {
         if (storeDebounceTimeout) {
             clearTimeout(storeDebounceTimeout);
         }
         storeDebounceTimeout = setTimeout(function () {
-            chrome.storage.local.set(obj);
+            chrome.storage.local.set(obj,func);
         }, 500);
-    }
-    storeDebounce(obj);
-}
+    };
+    storeDebounce(obj,func);
+};

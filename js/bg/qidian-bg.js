@@ -21,7 +21,7 @@ _createQueryObj.createQidianQuery = function() {
         getFavs(SITE_QIDIAN, TYPE_FICTION, queryUpdate(baseObj, ajaxCall));
     };
 
-    this.setAfterStore(qidianQuery, ajaxCall);
+    this.addAfterStore(qidianQuery, ajaxCall);
     return qidianQuery;
 };
 

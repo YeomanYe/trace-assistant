@@ -20,7 +20,7 @@ _createQueryObj.createKuaikanQuery = function() {
         getFavs(SITE_KUAIKAN, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
     
-    this.setAfterStore(kuaikanQuery,ajaxCall);
+    this.addAfterStore(kuaikanQuery,ajaxCall);
     return kuaikanQuery;
 }
 

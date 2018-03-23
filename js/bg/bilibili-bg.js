@@ -24,7 +24,7 @@ _createQueryObj.createBilibiliQuery = function() {
         getFavs(SITE_BILIBILI, TYPE_VIDEO, queryUpdate(baseObj, ajaxCall));
     };
 
-    this.setAfterStore(qqQuery, ajaxCall);
+    this.addAfterStore(qqQuery, ajaxCall);
     return qqQuery;
 }
 

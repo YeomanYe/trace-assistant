@@ -22,7 +22,7 @@ _createQueryObj.createQqQuery = function() {
         getFavs(SITE_QQ, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
 
-    this.setAfterStore(qqQuery, ajaxCall);
+    this.addAfterStore(qqQuery, ajaxCall);
     return qqQuery;
 }
 

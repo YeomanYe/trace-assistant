@@ -29,13 +29,6 @@ function init() {
         log(allFavs);
         allFavs.forEach(resolveColItems());
     });
-    getStoreLocal('closeTips',function (status) {
-        status = !status;
-        switchTipsElm = new Switch($('#switchTips').get(0), {size: 'small',checked:status,onChange:function (e) {
-            var checked = switchTipsElm.getChecked();
-            storLocal.set({'closeTips':!checked});
-        }});
-    })
 
     console.log(switchTipsElm);
 }
@@ -71,6 +64,14 @@ function optionTabHandler() {
     $contentSetting.show();
     $optionTab.addClass('curTab');
     $colTab.removeClass('curTab');
+    getStoreLocal('isCloseTips',function (status) {
+        status = !status;
+        switchTipsElm = new Switch($('#switchTips').get(0), {size: 'middle',onChange:function (e) {
+            var checked = switchTipsElm.getChecked();
+            storLocal.set({'isCloseTips':!checked});
+        }});
+        if(status) switchTipsElm.on();
+    });
 }
 
 /**

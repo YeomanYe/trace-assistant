@@ -129,7 +129,7 @@ _createQueryObj.createMhdmzjQuery = function() {
     var mhdmzjQuery = function(){
         getFavs(SITE_MH_DMZJ, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     };
-    this.setAfterStore(mhdmzjQuery,ajaxCall);
+    this.addAfterStore(mhdmzjQuery,ajaxCall);
     return mhdmzjQuery;
 }
 /**
@@ -157,6 +157,6 @@ _createQueryObj.createW3dmzjQuery = function() {
         getFavs(SITE_W3_DMZJ, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
     }
     
-    this.setAfterStore(w3dmzjQuery,ajaxCall);
+    this.addAfterStore(w3dmzjQuery,ajaxCall);
     return w3dmzjQuery;
 }

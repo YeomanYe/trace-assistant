@@ -192,7 +192,7 @@ nav span{
     font-size: 18px;
     cursor: pointer;
     color: #999;
-    padding: 10px;
+    margin-right: 15px;
 }
 
 #settingList legend{
