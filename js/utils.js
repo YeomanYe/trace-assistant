@@ -186,13 +186,12 @@ function queryUpdate(baseObj, callback) {
                     col.newChapter = newChapter;
                     col.newUrl = newUrl;
                     //生成提示
-                    getStoreLocal('isCloseTips',(function (baseImage,col,newChapter,baseChatper,newUrl) {
-                        var baseImage = baseImage,col = col,newChapter = newChapter, baseChapter = baseChapter,newUrl = newUrl;
+                    getStoreLocal('isCloseTips', (function (baseImage, col, newChapter, baseChatper, newUrl) {
                         return function (isCloseTips) {
-                            if(!isCloseTips)
+                            if (!isCloseTips)
                                 createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
                         }
-                    })(baseImage,col,newChapter,baseChapter,newUrl));
+                    })(baseImage, col, newChapter, baseChapter, newUrl));
 
                     isUpdate = true;
                     if (!col.isUpdate) {
@@ -398,15 +397,15 @@ function formatHref(href, baseHref) {
 /**
  * 存储消抖函数
  */
-var storeDebounce = function (obj,func) {
+var storeDebounce = function (obj, func) {
     var storeDebounceTimeout;
-    storeDebounce = function (obj,func) {
+    storeDebounce = function (obj, func) {
         if (storeDebounceTimeout) {
             clearTimeout(storeDebounceTimeout);
         }
         storeDebounceTimeout = setTimeout(function () {
-            chrome.storage.local.set(obj,func);
+            chrome.storage.local.set(obj, func);
         }, 500);
     };
-    storeDebounce(obj,func);
+    storeDebounce(obj, func);
 };

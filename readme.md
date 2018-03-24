@@ -3,18 +3,10 @@
 
 支持的网站
 漫画：快看、腾讯动漫、漫画之家
-小说：
-视频:
+小说：起点
+视频:bilibili
 
-
-下一部打算支持：
-漫画：动漫屋、爱优漫、漫画台、酷漫网、看漫网
-
-也会考虑加入新的功能。感谢大家的使用，欢迎大家与我讨论交流。
-
-- 交流Q群:729873411
-- github地址:[https://github.com/YeomanYe/comic-assistant](https://github.com/YeomanYe/comic-assistant)
-- 作者邮箱:ming1549957235@foxmail.com
+下一步将会考虑支持更多的网站，也会考虑加入新的功能。感谢大家的使用，欢迎大家与我讨论交流。
 
 ## 截图
 
@@ -39,3 +31,10 @@
 
 ## 使用
 到支持的站点的漫画目录页或漫画内容页，即可看到对应的图标，鼠标移动到图标上会有对应的功能说明。点击图标即可启动功能。
+
+- github地址:[https://github.com/YeomanYe/comic-assistant](https://github.com/YeomanYe/comic-assistant)
+- 作者邮箱:ming1549957235@foxmail.com
+
+交流Q群:729873411
+
+![qq-qrcord](screenshot/qq-qrcode.png)
