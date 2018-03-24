@@ -11,7 +11,7 @@
 ## 截图
 
 - 截图一
-![popup截图](screenshot/popup.png)
+![popup截图](screenshot/追综饭.png)
 
 - 截图二
 ![content截图](screenshot/content.png)

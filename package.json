@@ -1,7 +1,7 @@
 {
   "name": "comic-assistant",
   "version": "1.0.0",
-  "description": "动漫助手",
+  "description": "追综饭",
   "directories": {
     "lib": "lib"
   },
@@ -16,7 +16,7 @@
     "chrome-extension"
   ],
   "author": "Ming Ye",
-  "license": "MIT",
+  "license": "GPL",
   "bugs": {
     "url": "https://github.com/YeomanYe/comic-assistant/issues"
   },
