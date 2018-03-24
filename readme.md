@@ -38,3 +38,4 @@
 交流Q群:729873411
 
 ![qq-qrcord](screenshot/qq-qrcode.png)
+![wx-qrcode](screenshot/wx-qrcode.png)
