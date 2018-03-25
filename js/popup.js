@@ -1,202 +1,125 @@
-var $optionTab, $colTab, $favList, $settingList, $export, $import, $fileImport;
-var $allFav,$comicFav,$fictionFav,$videoFav;
-var $contentFav,$contentSetting;
-var favBtnGroups = [];
+var vContentWrap;
 var switchTipsElm;
-$(function () {
-    init();
-});
-
-function init() {
-    $optionTab = $('#optionTab').on('click', optionTabHandler);
-    $colTab = $('#colTab').on('click', colTabHandler);
-    $export = $('#export').on('click', exportHandler);
-    $import = $('#import').on('click', importHandler);
-    $allFav = $('#allFav').on('click',createFavBtnHandler());
-    $comicFav = $('#comicFav').on('click',createFavBtnHandler(TYPE_COMIC));
-    $fictionFav = $('#fictionFav').on('click',createFavBtnHandler(TYPE_FICTION));
-    $videoFav = $('#videoFav').on('click',createFavBtnHandler(TYPE_VIDEO));
-    $contentFav = $('#contentFavWrap');
-    $contentSetting = $('#contentSettingWrap');
-    favBtnGroups.push($allFav,$comicFav,$fictionFav,$videoFav);
-
-    $fileImport = $('#fileImport').change(fileImportChangeHandler);
-    $favList = $('#favList');
-    $contentSetting.hide();
-    $settingList = $('#settingList');
-    getStoreLocal('allFavs', function (allFavs) {
-        allFavs = allFavs ? allFavs : [];
-        log(allFavs);
-        allFavs.forEach(resolveColItems());
-    });
-
-    console.log(switchTipsElm);
-}
-function createFavBtnHandler(type) {
-    return function (e) {
-        var self = this;
-        getStoreLocal('allFavs', function (allFavs) {
-            for(var i=0,len=favBtnGroups.length;i<len;i++){
-                favBtnGroups[i].removeClass('curFav');
-            }
-            $(self).addClass('curFav');
-            $favList.empty();
-            allFavs = allFavs ? allFavs : [];
-            allFavs.forEach(resolveColItems(type));
-        });
+showFavs(0);
+function showFavs(curShowFav) {
+    var type = undefined;
+    switch (curShowFav){
+        case 1:type = TYPE_COMIC;break;
+        case 2:type = TYPE_FICTION;break;
+        case 3:type = TYPE_VIDEO;break;
     }
-}
-/**
- * 点击收藏tab事件
- */
-function colTabHandler() {
-    $contentFav.show();
-    $contentSetting.hide();
-    $colTab.addClass('curTab');
-    $optionTab.removeClass('curTab');
-}
+    getStoreLocal('allFavs', function (allFavs) {
+        var cols = [];
+        log('allFavs',allFavs);
+        for (var i = 0, len = allFavs.length; i < len; i++) {
+            var favItem = allFavs[i],
+                colItems = favItem.cols,
+                baseChapter = favItem.baseChapter,
+                baseIndex = favItem.baseIndex,
+                baseImg = favItem.baseImg;
 
-/**
- * 点击设置tab事件
- */
-function optionTabHandler() {
-    $contentFav.hide();
-    $contentSetting.show();
-    $optionTab.addClass('curTab');
-    $colTab.removeClass('curTab');
-    getStoreLocal('isCloseTips',function (status) {
-        status = !status;
-        switchTipsElm = new Switch($('#switchTips').get(0), {size: 'middle',onChange:function (e) {
-            var checked = switchTipsElm.getChecked();
-            storLocal.set({'isCloseTips':!checked});
-        }});
-        if(status) switchTipsElm.on();
+            if(type && type != favItem.type) continue;
+
+            for (var j = 0, len2 = colItems.length; j < len2; j++) {
+                var item = colItems[j];
+                item.indexUrl = formatHref(item.indexUrl,baseIndex);
+                item.imgUrl = formatHref(item.imgUrl,baseImg);
+                item.curUrl = formatHref(item.curUrl,baseChapter);
+                item.newUrl = formatHref(item.newUrl,baseChapter);
+                item.type = favItem.type;
+                item.siteName = favItem.siteName;
+                item.origin = favItem.origin;
+                item.bgStyle = {backgroundImage:'url('+item.imgUrl+')'};
+                item.delIndex = i+','+j;
+            }
+            cols = cols.concat(colItems);
+        }
+        log('all-cols',cols);
+        if(vContentWrap === undefined) initView(cols);
+        else {
+            vContentWrap.curShowFav = curShowFav;
+            vContentWrap.items = cols;
+        }
     });
 }
-
 /**
- * 处理每一个网站收藏的漫画
+ *初始化视图
  */
-function resolveColItems(type) {
-    return function (colItem, colIndex) {
-        var baseImg = colItem.baseImg,
-            baseIndex = colItem.baseIndex,
-            baseChapter = colItem.baseChapter,
-            origin = colItem.origin,
-            siteName = colItem.siteName,
-            cols = colItem.cols,
-            colType = colItem.type;
-        if(type && type !== colType) return;
-        log(baseImg, baseIndex);
-        cols.forEach(function (obj, index) {
-            liTempStr = $('#listItemTemplate').html();
-            $liInstance = $(liTempStr);
-            $liInstance.find('.left div').css({
-                'background-image': 'url(' + formatHref(obj.imgUrl,baseImg) + ')',
-                'background-size': 'cover',
-                'background-repeat': 'no-repeat'
-            });
-            $liInstance.find('.left').attr({
-                href: formatHref(obj.indexUrl, baseIndex),
-                target: '_blank'
-            });
-            $liInstance.find('.middle h3 .titleName').text(obj.title).attr({
-                href: formatHref(obj.indexUrl, baseIndex),
-                target: '_blank'
-            });
-            $liInstance.find('.middle .news').text('最新：' + obj.newChapter).attr({
-                href: formatHref(obj.newUrl, baseChapter),
-                target: '_blank'
-            });
-            $liInstance.find('.middle .current').text('看到：' + obj.curChapter).attr({
-                href: formatHref(obj.curUrl, baseChapter),
-                target: '_blank'
-            });
-            $liInstance.find('.right .source').text(siteName).attr({
-                href: formatHref(origin),
-                target: '_blank'
-            });
-            $liInstance.find('.right .delBtn').text('删除').attr('data-index', colIndex + ',' + index).on('click', delCollect);
-            var tmpText = '继续阅读';
-            if(colType === TYPE_VIDEO) tmpText = '继续观看';
-            $liInstance.find('.right .contBtn').text(tmpText).attr({
-                href: formatHref(obj.curUrl, baseChapter),
-                target: '_blank'
-            });
-            //添加最新按钮
-            if (obj.isUpdate) {
-                $liInstance.find('.middle .news-badge').css('display', 'inline-block').attr({
-                    href: formatHref(obj.newUrl, baseChapter),
-                    target: '_blank'
+function initView(cols) {
+    vContentWrap = new Vue({
+        el:'#contentWrap',
+        data:{
+            curShow:0,//当前显示的tab内容
+            items: cols,//收藏的集合
+            curShowFav:0 //当前显示的收藏
+        },
+        methods:{
+            importHandler:function () {
+                document.getElementById('fileImport').click();
+            },
+            exportHandler:function (e) {
+                storLocal.get(['allFavs', 'updateNum'], function (resObj) {
+                    log('export obj', resObj);
+                    var blob = new Blob([JSON.stringify(resObj)], {
+                        type: 'text/plain;charset=utf-8'
+                    });
+                    saveAs(blob, '追综饭.json');
+                });
+            },
+            fileImportChangeHandler:function (e) {
+                var files = e.currentTarget.files;
+                if (files.length) {
+                    var file = files[0],
+                        reader = new FileReader(); //new一个FileReader实例
+                    reader.onload = function () {
+                        var data = JSON.parse(this.result);
+                        var allFavs = data.allFavs;
+                        //兼容老版本
+                        for(var i=0,len=allFavs.length;i<len;i++){
+                            var favItem = allFavs[i];
+                            favItem.type = favItem.type ? favItem.type : TYPE_COMIC;
+                        }
+                        storLocal.set(data,function () {
+                            sendMsg(null, [BG_CMD_UPDATE_NUM]);
+                        });
+                        showFavs(vContentWrap.curShowFav);
+                    };
+                    reader.readAsText(file);
+                }
+            },
+            showContentToggle:function (contentId) {
+                vContentWrap.curShow = contentId;
+                if(contentId == 1){
+                    if(switchTipsElm)return;
+                    getStoreLocal('isCloseTips',function (status) {
+                        status = !status;
+                        switchTipsElm = new Switch(document.getElementById('switchTips'), {size: 'middle',onChange:function (e) {
+                            var checked = switchTipsElm.getChecked();
+                            storLocal.set({'isCloseTips':!checked});
+                        }});
+                        if(status) switchTipsElm.on();
+                    });
+                }
+            },
+            showFavs:showFavs,
+            delFavItem:function (index,item) {
+                //更新视图
+                vContentWrap.items.splice(index,1);
+                //更新存储
+                var origin = item.origin,type = item.type,title = item.title;
+                getStoreLocal('allFavs', function (allFavs) {
+                    var index = arrEqStr(allFavs,{origin:origin,type:type});
+                    var cols = allFavs[index].cols;
+                    index = arrEqStr(cols,{title:title});
+                    var delArr = cols.splice(index,1);
+                    decUpdateNum(delArr[0]);
+                    sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
+                    log('allFavs', allFavs);
+                    storLocal.set({
+                        allFavs: allFavs
+                    });
                 });
             }
-            log($liInstance);
-            $favList.append($liInstance);
-        });
-    }
-
-}
-
-/**
- * 导出数据
- */
-function exportHandler() {
-    storLocal.get(['allFavs', 'updateNum'], function (resObj) {
-        log('export obj', resObj);
-        var blob = new Blob([JSON.stringify(resObj)], {
-            type: 'text/plain;charset=utf-8'
-        });
-        saveAs(blob, '追综饭.json');
-    });
-}
-
-/**
- * 导入数据
- */
-function importHandler() {
-    $fileImport.get(0).click();
-}
-
-/**
- * 解析文件并导入数据
- */
-function fileImportChangeHandler(e) {
-    var files = this.files;
-    if (files.length) {
-        var file = files[0],
-            reader = new FileReader(); //new一个FileReader实例
-        reader.onload = function () {
-            var data = JSON.parse(this.result);
-            var allFavs = data.allFavs;
-            //兼容老版本
-            for(var i=0,len=allFavs.length;i<len;i++){
-                var favItem = allFavs[i];
-                favItem.type = favItem.type ? favItem.type : TYPE_COMIC;
-            }
-            storLocal.set(data,function () {
-                sendMsg(null, [BG_CMD_UPDATE_NUM]);
-            });
-            // allFavs.forEach(resolveColItems());
-        };
-        reader.readAsText(file);
-    }
-}
-
-/**
- * 删除收藏的漫画
- */
-function delCollect(e) {
-    //删除UI
-    $(this).parents('li').remove();
-    //从本地存储中删除
-    var indexArr = $(this).data('index').split(',');
-    getStoreLocal('allFavs', function (allFavs) {
-        var delArr = allFavs[indexArr[0]].cols.splice(indexArr[1], 1);
-        decUpdateNum(delArr[0]);
-        sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
-        log('allFavs', allFavs);
-        storLocal.set({
-            allFavs: allFavs
-        });
+        }
     });
 }

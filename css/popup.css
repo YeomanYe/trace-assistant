@@ -27,8 +27,12 @@ body{
 }
 
 .right{
-    float: right;
-    margin:0 15px;
+    display: inline-block;
+    margin-top:0px;
+}
+
+.right div:first-child{
+    margin-top: 0px;
 }
 
 li{
@@ -71,7 +75,7 @@ li{
 }
 
 div{
-    margin-top: 10px;
+    margin-top: 12px;
     max-width: 100%;
     overflow: hidden;
 }
@@ -139,7 +143,6 @@ h3 a:hover{
 }
 
 .news-badge{
-    display:none;
     color: white;
     background: red;
     margin-left: 10px;
@@ -222,6 +225,15 @@ nav span{
     color: white;
 }
 
-#contentWrap{
-    height: 500px;
+#contentFavWrap{
+    height: 495px;
+}
+
+#contentSettingWrap{
+    height:495px;
+}
+
+.left div{
+background-size: cover;
+background-repeat: no-repeat;
 }
