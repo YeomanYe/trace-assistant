@@ -30,7 +30,6 @@ function showFavs(curShowFav) {
                 item.siteName = favItem.siteName;
                 item.origin = favItem.origin;
                 item.bgStyle = {backgroundImage:'url('+item.imgUrl+')'};
-                item.delIndex = i+','+j;
             }
             cols = cols.concat(colItems);
         }
