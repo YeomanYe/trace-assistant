@@ -39,9 +39,9 @@
     <div v-show="curShow == 1" id="contentSettingWrap">
         <!-- 设置列表 -->
         <ul id="settingList" class="list">
-            <legend><span>全部设置</span></legend>
-            <li><span v-on:click="exportHandler" id="export">导出收藏</span></li>
-            <li><span v-on:click="importHandler" title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
+            <legend><img src="images/all-setting.png"/><span>全部设置</span></legend>
+            <li><img src="images/download.png"/><span v-on:click="exportHandler" id="export">导出收藏</span></li>
+            <li><img src="images/upload.png"/><span v-on:click="importHandler" title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
             <li><span>桌面提醒</span><input class="checkbox-switch" type="checkbox" id="switchTips"/></li>
         </ul>
         <input v-on:change="fileImportChangeHandler" type="file" hidden name="fileImport" id="fileImport">
