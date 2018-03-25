@@ -155,6 +155,7 @@ function updateColRecord(getCurComic) {
         //更新图标
         _$imgToggle.get(0).src = _src.collect;
         var curItem = favs[index];
+        curItem.timestamp = Date.now();
         if (!curIndex.curChapter) return;
         curItem.curChapter = curIndex.curChapter;
         curItem.curUrl = curIndex.curUrl.replace(baseChapterUrl, '');

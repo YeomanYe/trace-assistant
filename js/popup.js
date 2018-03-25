@@ -33,6 +33,12 @@ function showFavs(curShowFav) {
             }
             cols = cols.concat(colItems);
         }
+        //按照阅读的时间进行降序排序
+        cols.sort(function (obj1,obj2) {
+            var val1 = obj1.timestamp ? obj1.timestamp : 0;
+            var val2 = obj2.timestamp ? obj2.timestamp : 0;
+            return val2 - val1;
+        });
         log('all-cols',cols);
         if(vContentWrap === undefined) initView(cols);
         else {
