@@ -11,15 +11,15 @@ function showFavs(curShowFav) {
     getStoreLocal('allFavs', function (allFavs) {
         var cols = [];
         log('allFavs',allFavs);
+        allFavs = allFavs ? allFavs : [];
         for (var i = 0, len = allFavs.length; i < len; i++) {
             var favItem = allFavs[i],
-                colItems = favItem.cols,
+                colItems = favItem.cols ? favItem.cols : [],
                 baseChapter = favItem.baseChapter,
                 baseIndex = favItem.baseIndex,
                 baseImg = favItem.baseImg;
 
             if(type && type != favItem.type) continue;
-
             for (var j = 0, len2 = colItems.length; j < len2; j++) {
                 var item = colItems[j];
                 item.indexUrl = formatHref(item.indexUrl,baseIndex);
