@@ -43,7 +43,7 @@ chrome.notifications.onClicked.addListener(function(url) {
  * 更新徽章数
  */
 function updateBadge() {
-    getStoreLocal('updateNum',function(updateNum){
+    getStoreLocal(STOR_KEY_UPDATE_NUM,function(updateNum){
         updateNum = updateNum ? updateNum : 0;
         setBadge(updateNum);
     })
@@ -62,7 +62,7 @@ function setBadge(num) {
             color: 'red'
         });
         storLocal.set({
-            updateNum: 0
+            [STOR_KEY_UPDATE_NUM]: 0
         });
         return;
     }

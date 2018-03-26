@@ -12,6 +12,10 @@ STATUS_UNAUTH = 403; //未授权的
 STATUS_OK = 200; //导出收藏成功
 STATUS_EXPORT_FAIL = 100;//导出失败
 
+STOR_KEY_FAVS = 'allFavs';
+STOR_KEY_UPDATE_NUM = 'updateNum';
+STOR_KEY_IS_CLOSE_TIPS = 'isCloseTips';
+
 SITE_QIDIAN = 'qidian'; //起点
 SITE_QQ = 'ac.qq';
 SITE_W3_DMZJ = 'www.dmzj';

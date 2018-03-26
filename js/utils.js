@@ -100,7 +100,7 @@ function getStoreLocal(keys, callback) {
  */
 function getFavs(siteName, type, callback) {
     var defaultStore = getBaseStoreObj(siteName, type);
-    getStoreLocal(['allFavs', 'updateNum'], function (allFavs, updateNum) {
+    getStoreLocal([STOR_KEY_FAVS, STOR_KEY_UPDATE_NUM], function (allFavs, updateNum) {
         allFavs = allFavs ? allFavs : [];
         updateNum = updateNum ? updateNum : 0;
         var index = -1;
@@ -132,12 +132,12 @@ function addArr(arr1, arr2) {
 function decUpdateNum(item) {
     if (item.isUpdate) {
         item.isUpdate = false;
-        getStoreLocal('updateNum', function (updateNum) {
+        getStoreLocal(STOR_KEY_UPDATE_NUM, function (updateNum) {
             --updateNum;
             storLocal.set({
                 updateNum: updateNum
             }, function () {
-                chrome.runtime.sendMessage(null, ['updateNumChange']);
+                chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
             });
         });
     }
@@ -187,7 +187,7 @@ function queryUpdate(baseObj, callback) {
                     col.newChapter = newChapter;
                     col.newUrl = newUrl;
                     //生成提示
-                    getStoreLocal('isCloseTips', (function (baseImage, col, newChapter, baseChatper, newUrl) {
+                    getStoreLocal(STOR_KEY_IS_CLOSE_TIPS, (function (baseImage, col, newChapter, baseChatper, newUrl) {
                         return function (isCloseTips) {
                             if (!isCloseTips)
                                 createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);

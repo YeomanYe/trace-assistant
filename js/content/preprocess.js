@@ -111,7 +111,7 @@ function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
             decUpdateNum(item);
             favs.splice(index, 1);
             storLocal.set({
-                allFavs: allFavs
+                [STOR_KEY_FAVS]: allFavs
             });
             _$imgToggle.attr('src',_src.collectGrey);
             showTips('取消收藏成功');
@@ -136,7 +136,7 @@ function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
             };
             favs.unshift(col);
             chrome.storage.local.set({
-                allFavs: allFavs
+                [STOR_KEY_FAVS]: allFavs
             });
             _$imgToggle.attr('src',_src.collect);
             showTips('收藏成功');

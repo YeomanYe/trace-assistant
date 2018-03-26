@@ -38,7 +38,7 @@ _exportFunObj[SITE_DMZJ+'-'+TYPE_COMIC] = function(args,resSend) {
                 indexUrl: indexUrl.replace(baseIndex, '')
             };
             favs.unshift(colItem);
-            storeDebounce({allFavs:allFavs});
+            storeDebounce({[STOR_KEY_FAVS]:allFavs});
         }
     };
     var mhdmzjIndexCall = function(indexUrl, storObj, favs, allFavs) {
@@ -73,11 +73,11 @@ _exportFunObj[SITE_DMZJ+'-'+TYPE_COMIC] = function(args,resSend) {
                 indexUrl: indexUrl.replace(baseIndex, '')
             };
             favs.unshift(colItem);
-            storeDebounce({allFavs:allFavs});
+            storeDebounce({[STOR_KEY_FAVS]:allFavs});
         }
     };
     getFavs(SITE_W3_DMZJ, TYPE_COMIC, function(w3dmzjFavs, allFavs) {
-        storLocal.set({allFavs:allFavs});
+        storLocal.set({[STOR_KEY_FAVS]:allFavs});
         getFavs(SITE_MH_DMZJ, TYPE_COMIC, function(mhdmzjFavs, allFavs) {
             var index = arrEqStr(allFavs,{site:SITE_W3_DMZJ,type:TYPE_COMIC});
             w3dmzjFavs = allFavs[index].cols;

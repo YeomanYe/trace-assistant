@@ -8,7 +8,7 @@ function showFavs(curShowFav) {
         case 2:type = TYPE_FICTION;break;
         case 3:type = TYPE_VIDEO;break;
     }
-    getStoreLocal('allFavs', function (allFavs) {
+    getStoreLocal(STOR_KEY_FAVS, function (allFavs) {
         var cols = [];
         log('allFavs',allFavs);
         allFavs = allFavs ? allFavs : [];
@@ -63,7 +63,7 @@ function initView(cols) {
                 document.getElementById('fileImport').click();
             },
             exportHandler:function (e) {
-                storLocal.get(['allFavs', 'updateNum'], function (resObj) {
+                storLocal.get([STOR_KEY_FAVS, STOR_KEY_UPDATE_NUM], function (resObj) {
                     log('export obj', resObj);
                     var blob = new Blob([JSON.stringify(resObj)], {
                         type: 'text/plain;charset=utf-8'
@@ -96,11 +96,11 @@ function initView(cols) {
                 vContentWrap.curShow = contentId;
                 if(contentId == 1){
                     if(switchTipsElm)return;
-                    getStoreLocal('isCloseTips',function (status) {
+                    getStoreLocal(STOR_KEY_IS_CLOSE_TIPS,function (status) {
                         status = !status;
                         switchTipsElm = new Switch(document.getElementById('switchTips'), {size: 'middle',onChange:function (e) {
                             var checked = switchTipsElm.getChecked();
-                            storLocal.set({'isCloseTips':!checked});
+                            storLocal.set({[STOR_KEY_IS_CLOSE_TIPS]:!checked});
                         }});
                         if(status) switchTipsElm.on();
                     });
@@ -112,7 +112,7 @@ function initView(cols) {
                 vContentWrap.items.splice(index,1);
                 //更新存储
                 var origin = item.origin,type = item.type,title = item.title;
-                getStoreLocal('allFavs', function (allFavs) {
+                getStoreLocal(STOR_KEY_FAVS, function (allFavs) {
                     var index = arrEqStr(allFavs,{origin:origin,type:type});
                     var cols = allFavs[index].cols;
                     index = arrEqStr(cols,{title:title});
@@ -121,7 +121,7 @@ function initView(cols) {
                     sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
                     log('allFavs', allFavs);
                     storLocal.set({
-                        allFavs: allFavs
+                        [STOR_KEY_FAVS]: allFavs
                     });
                 });
             }

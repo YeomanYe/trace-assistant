@@ -92,7 +92,7 @@ _exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
                 log('storObj', kuaikanStorObj);
                 log('allFavs', allFavs);
                 storLocal.set({
-                    'allFavs': allFavs
+                    [STOR_KEY_FAVS]: allFavs
                 });
                 resSend({status:STATUS_OK});//导出成功
             }
