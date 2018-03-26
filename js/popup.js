@@ -118,13 +118,17 @@ function initView(cols) {
                     index = arrEqStr(cols,{title:title});
                     var delArr = cols.splice(index,1);
                     decUpdateNum(delArr[0]);
-                    sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
+
+                    // sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
                     log('allFavs', allFavs);
                     storLocal.set({
                         [STOR_KEY_FAVS]: allFavs
+                    },function () {
+                        sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
                     });
                 });
             }
         }
     });
 }
+

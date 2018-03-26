@@ -115,6 +115,8 @@ function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
             });
             _$imgToggle.attr('src',_src.collectGrey);
             showTips('取消收藏成功');
+            //通知全部tab页面更新图标
+            sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
             return;
         }
         //未收藏，则收藏
@@ -138,6 +140,8 @@ function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
             chrome.storage.local.set({
                 [STOR_KEY_FAVS]: allFavs
             });
+            //通知全部tab页面更新图标
+            sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
             _$imgToggle.attr('src',_src.collect);
             showTips('收藏成功');
         };

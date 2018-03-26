@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
             exportCollect(msgArr,resSend);
             break;
         case BG_CMD_UPDATE_FAV_BTN:
-            sendMsg(null,CNT_CMD_UPDATE_CUR_FAV);
+            sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
             break;
     }
     return true;

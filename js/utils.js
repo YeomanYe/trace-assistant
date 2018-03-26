@@ -151,6 +151,7 @@ function updateColRecord(getCurComic) {
         var curIndex = getCurComic();
         //解析当前页面并更新阅读记录
         var index = arrEqStr(favs, {title: curIndex.title});
+        _$imgToggle.get(0).src = _src.collectGrey;
         if (index < 0) return;
         //更新图标
         _$imgToggle.get(0).src = _src.collect;
@@ -410,3 +411,21 @@ var storeDebounce = function (obj, func) {
     };
     storeDebounce(obj, func);
 };
+
+/**
+ * 发送通知到全部的tab页
+ * @param data
+ */
+function sendToAllTabs(data) {
+    chrome.windows.getAll(null,function (wins) {
+        for(var i=0,len=wins.length;i<len;i++){
+            var win = wins[i];
+            chrome.tabs.query({windowId:win.id},function (tabs) {
+                for(var i=0,len=tabs.length;i<len;i++){
+                    var tab = tabs[i];
+                    chrome.tabs.sendMessage(tab.id,data);
+                }
+            });
+        }
+    });
+}
