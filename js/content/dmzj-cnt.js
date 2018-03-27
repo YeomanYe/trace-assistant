@@ -150,7 +150,7 @@ function exportUserColDmzj() {
     $.ajax('https://i.dmzj.com/ajax/my/subscribe', {
         success: function(text) {
             var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC,text];
-            sendMsg(null, msgArr,handleResData());
+            sendMsg(null, msgArr,handleResData);
         },
         type:'POST',
         data:'page=1&type_id=1&letter_id=0&read_id=1'

@@ -63,7 +63,7 @@ function exportUserColBilibili(){
         }
         if(page>len){
             var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_VIDEO,sendData];
-            sendMsg(null, msgArr,handleResData());
+            sendMsg(null, msgArr,handleResData);
         }else{
             $.ajax(baseUrl+page,{success:successCallback});
         }

@@ -22,7 +22,7 @@ gulp.task('default', function() {
 
     gulp.src(['./images/**']).pipe(gulp.dest('./build/images'));
     gulp.src(['./css/**']).pipe(gulp.dest('./build/css'));
-    gulp.src(['./lib/**']).pipe(gulp.dest('./build/lib'));
+    gulp.src(['./lib/**','!./lib/vue.js']).pipe(gulp.dest('./build/lib'));
     gulp.src(['./js/*.js']).pipe(gulp.dest('./build/js'));
     gulp.src(['./popup.html']).pipe(gulp.dest('./build'));
 });
