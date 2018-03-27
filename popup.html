@@ -6,51 +6,28 @@
     <link rel="stylesheet" href="css/popup.css"/>
     <link rel="stylesheet" href="css/switch.css"/>
     <!--<script type="text/javascript" src="js/popup.js"></script>-->
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<div id="contentWrap">
+<div id="contentWrap" v-cloak>
     <div v-show="curShow == 0" id="contentFavWrap">
         <!--切换收藏类型的按钮-->
-        <div id="favToggleWrap">
-            <span :class="{curFav:curShowFav == 0}" v-on:click="showFavs(0)" id="allFav">全部</span>
-            <span :class="{curFav:curShowFav == 1}" v-on:click="showFavs(1)" id="comicFav">漫画</span>
-            <span :class="{curFav:curShowFav == 2}" v-on:click="showFavs(2)" id="fictionFav">小说</span>
-            <span :class="{curFav:curShowFav == 3}" v-on:click="showFavs(3)" id="videoFav">视频</span>
-        </div>
+        <toggle-fav-panel :cur-show-fav="curShowFav"></toggle-fav-panel>
         <!-- 收藏的漫画列表 -->
         <ul id="favList" class="list">
-            <li v-for="(item,index) in items" :key="item.indexUrl">
-                <a :href="item.indexUrl" target="_blank" class="left">
-                    <div :style="item.bgStyle"></div>
-                </a>
-                <div class="middle">
-                    <h3 class="tiltle"><a :href="item.indexUrl" target="_blank" class="titleName">{{item.title}}</a><a target="_blank" :href="item.newUrl" v-show="item.isUpdate" class="news-badge">news</a></h3>
-                    <div><a :href="item.curUrl" target="_blank" class="current">{{item.curChapter}}</a></div>
-                    <div><a :href="item.newUrl" target="_blank" class="news">{{item.newChapter}}</a></div>
-                </div>
-                <div class="right">
-                    <div><a :href="item.origin" target="_blank" class="source">{{item.siteName}}</a></div>
-                    <div v-on:click.once="delFavItem(index,item)" class="delBtn">删除</div>
-                    <div><a :href="item.curUrl" target="_blank" class="contBtn">{{item.type === 'video' ? '继续观看' : '继续阅读'}}</a></div>
-                </div>
-            </li>
+            <fav-item v-for="(item,index) in items" :item="item" :key="item.indexUrl"></fav-item>
         </ul>
     </div>
     <div v-show="curShow == 1" id="contentSettingWrap">
         <!-- 设置列表 -->
-        <ul id="settingList" class="list">
-            <legend><img src="images/all-setting.png"/><span>全部设置</span></legend>
-            <li><img src="images/download.png"/><span v-on:click="exportHandler" id="export">导出收藏</span></li>
-            <li><img src="images/upload.png"/><span v-on:click="importHandler" title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
-            <li><span>桌面提醒</span><input class="checkbox-switch" type="checkbox" id="switchTips"/></li>
-        </ul>
-        <input v-on:change="fileImportChangeHandler" type="file" hidden name="fileImport" id="fileImport">
+        <setting-panel></setting-panel>
     </div>
     <!-- tab栏 -->
-    <nav id="nav">
-        <span v-on:click="showContentToggle(0)" id="colTab"  :class="{curTab:curShow == 0}">收藏</span>
-        <span v-on:click="showContentToggle(1)" :class="{curTab:curShow == 1}" id="optionTab">设置</span>
-    </nav>
+    <nav-panel :cur-show="curShow"></nav-panel>
 </div>
 <script type="text/javascript" src="lib/FileSaver.min.js"></script>
 <script type="text/javascript" src="lib/vue.min.js"></script>
@@ -58,6 +35,10 @@
 <script type="text/javascript" src="js/constant.js"></script>
 <script type="text/javascript" src="js/baseStoreObj.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="component/fav-item.js"></script>
+<script type="text/javascript" src="component/toggle-fav-panel.js"></script>
+<script type="text/javascript" src="component/setting-panel.js"></script>
+<script type="text/javascript" src="component/nav-panel.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
 </body>
 </html>
