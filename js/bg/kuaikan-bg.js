@@ -22,7 +22,7 @@ _createQueryObj.createKuaikanQuery = function() {
     
     this.addAfterStore(kuaikanQuery,ajaxCall);
     return kuaikanQuery;
-}
+};
 
 /**
  * 快看漫画导出用户的收藏
@@ -101,4 +101,4 @@ _exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
             success: successCallback
         });
     });
-}
+};

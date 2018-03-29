@@ -13,7 +13,7 @@ var allQuery = function() {
         setTimeout(allQuery, 1000 * 60 * 45);
     };
     allQuery();
-}
+};
 
 updateBadge();
 allQuery();

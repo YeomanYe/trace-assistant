@@ -24,7 +24,7 @@ _createQueryObj.createQqQuery = function() {
 
     this.addAfterStore(qqQuery, ajaxCall);
     return qqQuery;
-}
+};
 
 /**
  * 腾讯动漫导出用户的收藏
@@ -84,4 +84,4 @@ _exportFunObj[SITE_QQ+'-'+TYPE_COMIC] = function(args, resSend) {
         return retObj;
     };
     pipeExport(dataArg, handleData, resSend);
-}
+};

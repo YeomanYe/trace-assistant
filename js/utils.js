@@ -213,7 +213,7 @@ function queryUpdate(baseObj, callback) {
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
             var indexUrl = col.indexUrl;
-            $.ajax(baseIndex + indexUrl, {
+            $.ajax(formatHref(indexUrl,baseIndex), {
                 success: sucCall,
                 async: false
             });

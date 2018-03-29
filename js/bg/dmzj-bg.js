@@ -103,7 +103,7 @@ _exportFunObj[SITE_DMZJ+'-'+TYPE_COMIC] = function(args,resSend) {
             resSend({status:STATUS_OK});
         });
     });
-}
+};
 
 /**
  * 查询收藏的动漫之家漫画是否有更新
@@ -131,7 +131,7 @@ _createQueryObj.createMhdmzjQuery = function() {
     };
     this.addAfterStore(mhdmzjQuery,ajaxCall);
     return mhdmzjQuery;
-}
+};
 /**
  * 查询收藏的动漫之家漫画是否有更新
  */
@@ -155,8 +155,8 @@ _createQueryObj.createW3dmzjQuery = function() {
 
     var w3dmzjQuery = function(){
         getFavs(SITE_W3_DMZJ, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
-    }
+    };
     
     this.addAfterStore(w3dmzjQuery,ajaxCall);
     return w3dmzjQuery;
-}
+};

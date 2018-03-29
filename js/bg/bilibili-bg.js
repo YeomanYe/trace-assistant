@@ -20,13 +20,13 @@ _createQueryObj.createBilibiliQuery = function() {
         return resObj;
     };
 
-    var qqQuery = function() {
+    var bilibiliQuery = function() {
         getFavs(SITE_BILIBILI, TYPE_VIDEO, queryUpdate(baseObj, ajaxCall));
     };
 
-    this.addAfterStore(qqQuery, ajaxCall);
-    return qqQuery;
-}
+    this.addAfterStore(bilibiliQuery, ajaxCall);
+    return bilibiliQuery;
+};
 
 /**
  * 腾讯动漫导出用户的收藏
@@ -90,4 +90,4 @@ _exportFunObj[SITE_BILIBILI+'-'+TYPE_VIDEO] = function(args, resSend) {
         return retObj;
     };
     pipeExport(dataArg, handleData, resSend);
-}
+};
