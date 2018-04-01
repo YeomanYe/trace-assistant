@@ -9,14 +9,15 @@ var allQuery = function() {
         nextQuery = nextQuery.afterStore(_createQueryObj[keys[i]]());
     }
     allQuery = function(){
+        setBadge('....'); //提示正在查询中
         firstQuery();
         setTimeout(allQuery, 1000 * 60 * 45);
     };
     allQuery();
 };
 
-updateBadge();
-allQuery();
+updateBadge(allQuery);
+
 //监听消息
 chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
     switch (msgArr[0]) {
@@ -42,10 +43,11 @@ chrome.notifications.onClicked.addListener(function(url) {
 /**
  * 更新徽章数
  */
-function updateBadge() {
+function updateBadge(callback) {
     getStoreLocal(STOR_KEY_UPDATE_NUM,function(updateNum){
         updateNum = updateNum ? updateNum : 0;
         setBadge(updateNum);
+        if(callback) callback();
     })
 }
 

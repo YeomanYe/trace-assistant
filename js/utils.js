@@ -175,8 +175,8 @@ function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImg;
     var baseChapter = baseObj.baseChapter;
-    var afterStoreCall = callback._afterStore ? callback._afterStore : function () {
-    }; //存储成功之后的回调函数
+    var emptyFun = function () {};
+    var afterStoreCall = callback._afterStore ? callback._afterStore : emptyFun; //存储成功之后的回调函数
     var isUpdate = false;
     return function (favs, allFavs, updateNum) {
         var sucCall = function (data) {
@@ -198,8 +198,9 @@ function queryUpdate(baseObj, callback) {
                     isUpdate = true;
                     if (!col.isUpdate) {
                         col.isUpdate = true;
-                        setBadge(++updateNum);
+                        ++updateNum;
                     }
+
                     storLocal.set({
                         updateNum: updateNum,
                         allFavs: allFavs
@@ -219,6 +220,10 @@ function queryUpdate(baseObj, callback) {
             });
         }
         if (!isUpdate) afterStoreCall();
+        //更新查询完毕，替换掉正在查询标志“....”  改为更新的数量
+        if(afterStoreCall == emptyFun){
+            setBadge(updateNum);
+        }
     }
 }
 

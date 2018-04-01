@@ -5,8 +5,8 @@ var vSettingPanel = Vue.component('setting-panel', {
             <li><img src="images/download.png"/><span @click="exportHandler" id="export">导出收藏</span></li>
             <li><img src="images/upload.png"/><span @click="importHandler" title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
             <li><span>桌面提醒</span><input class="checkbox-switch" type="checkbox" id="switchTips"/></li>
+            <input @change="fileImportChangeHandler" type="file" hidden name="fileImport" id="fileImport">
         </ul>
-        <input @change="fileImportChangeHandler" type="file" hidden name="fileImport" id="fileImport">
      `,
     methods: {
         importHandler:function () {
