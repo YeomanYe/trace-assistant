@@ -2,7 +2,8 @@ bower_components/
 dist/
 node_modules/
 package-lock.json
-build/
 *.pem
 360build/
-!/build/manifest.json
+
+build/*
+!build/manifest.json
