@@ -5,3 +5,4 @@ package-lock.json
 build/
 *.pem
 360build/
+!/build/manifest.json
