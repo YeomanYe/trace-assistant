@@ -2,7 +2,7 @@ import gulp from 'gulp'; //引入gulp
 import gulpLoadPlugins from 'gulp-load-plugins'; //自动加载插件 省去一个一个require进来
 const $ = gulpLoadPlugins();
 import del from 'del';
-// const reload = browserSync.reload;
+
 //预编译js文件，将es6变成es2015
 gulp.task('pre-compile', ()=>{
     return gulp.src(['js/bg/*.js','js/cnt/*.js','js/component/*.js'])
@@ -84,27 +84,3 @@ gulp.task('clean' , function(){
 gulp.task('default',['clean'],()=>{
     gulp.start(['build:bg','build:cnt','build:comp','uglify','images','pipe']);
 });
-
-/*
-gulp.task('html', ['scripts'], ()=>{
-    // var version = (new Date).valueOf() + '';
-    var options = {
-        removeComments: false,//清除HTML注释
-        collapseWhitespace: true,//压缩HTML
-        collapseBooleanAttributes: false,//省略布尔属性的值 <input checked="true"/> ==> <input />
-        removeEmptyAttributes: false,//删除所有空格作属性值 <input id="" /> ==> <input />
-        removeScriptTypeAttributes: false,//删除<script>的type="text/javascript"
-        removeStyleLinkTypeAttributes: false,//删除<style>和<link>的type="text/css"
-        minifyJS: false,//压缩页面里的JS
-        minifyCSS: false//压缩页面里的CSS
-    };
-    return gulp.src('*.html')
-        .pipe($.plumber())
-        // .pipe($.useref({searchPath: ['app', '.']}))  //将页面上 <!--endbuild--> 根据上下顺序合并
-        // .pipe($.if('*.js', $.uglify()))
-        // .pipe($.if('*.css', $.cssnano()))
-        .pipe($.if('*.html', $.htmlmin(options)))
-        // .pipe($.replace('.js"></script>' , '.js?v=' + version + '"></script>'))   //这种方法比较不成熟 每一次的任务都会改变，不管文件是否被修改
-        // .pipe($.replace('.css">' , '.css?v=' + version + '">'))
-        .pipe(gulp.dest('dist'));
-});*/
