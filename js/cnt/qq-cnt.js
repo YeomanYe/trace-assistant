@@ -63,7 +63,7 @@ function toggleFavHandlerQq(){
         var $as = $html.find('.chapter-page-all a');
         var newA = $as.get($as.length - 1),curA = $as.get(0);
         var tmpArr = newA.title.split('：');
-        var newChapter,newUrl;
+        var newChapter,newUrl,curChapter,curUrl;
         newChapter = tmpArr[1];
         newUrl = newA.href;
         tmpArr = curA.title.split('：');

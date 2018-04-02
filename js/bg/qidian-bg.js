@@ -38,7 +38,7 @@ _exportFunObj[SITE_QIDIAN+'-'+TYPE_FICTION] = function(args, resSend) {
             var imgUrl = $html.find('#bookImg img').attr('src');
             var $as = $html.find('#j-catalogWrap .cf a');
             var newA = $as.get($as.length - 1),curA = $as.get(0);
-            var newChapter,newUrl;
+            var newChapter,newUrl,curChapter,curUrl;
             newChapter = newA.innerText;
             newUrl = newA.href.replace('chrome-extension','https');
             curChapter = curA.innerText;

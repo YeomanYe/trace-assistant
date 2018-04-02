@@ -41,8 +41,7 @@ function createBtn(){
 }
 //给ul列表中加入一个图片
 function addImgToUL($ul,srcStr,clickHandler,title){
-    $li = $('<li>');
-    $img = $('<img>');
+    var $li = $('<li>'),$img = $('<img>');
     $img.addClass('fab-img');
     $img.get(0).src = srcStr;
     $img.get(0).title = title;

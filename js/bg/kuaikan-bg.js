@@ -53,8 +53,8 @@ _exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
                     async: false
                 }).responseText;
                 // log('resText',resText);
-                $html = $(resText);
-                $as = $html.find('.tit a');
+                var $html = $(resText);
+                var $as = $html.find('.tit a');
                 log('$as', $as);
                 var newA = $as.get(0),
                     curA = $as.get($as.length - 1);

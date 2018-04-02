@@ -49,7 +49,7 @@ function toggleHandlerQidian() {
         var imgUrl = $html.find('#bookImg img').attr('src');
         var $as = $html.find('#j-catalogWrap .cf a');
         var newA = $as.get($as.length - 1),curA = $as.get(0);
-        var newChapter,newUrl;
+        var newChapter,newUrl,curChapter,curUrl;
         newChapter = newA.innerText;
         newUrl = newA.href;
         curChapter = curA.innerText;

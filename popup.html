@@ -30,15 +30,19 @@
     <nav-panel :cur-show="curShow"></nav-panel>
 </div>
 <script type="text/javascript" src="lib/FileSaver.min.js"></script>
-<script type="text/javascript" src="lib/vue.min.js"></script>
+<!--build:js lib/vue.min.js-->
+<script type="text/javascript" src="lib/vue.js"></script>
+<!--endbuild-->
 <script type="text/javascript" src="lib/switch.js"></script>
 <script type="text/javascript" src="js/constant.js"></script>
 <script type="text/javascript" src="js/baseStoreObj.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
-<script type="text/javascript" src="component/fav-item.js"></script>
-<script type="text/javascript" src="component/toggle-fav-panel.js"></script>
-<script type="text/javascript" src="component/setting-panel.js"></script>
-<script type="text/javascript" src="component/nav-panel.js"></script>
+<!--build:js js/popup.min.js-->
+<script type="text/javascript" src="js/component/fav-item-comp.js"></script>
+<script type="text/javascript" src="js/component/toggle-fav-panel-comp.js"></script>
+<script type="text/javascript" src="js/component/setting-panel-comp.js"></script>
+<script type="text/javascript" src="js/component/nav-panel-comp.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
+<!--endbuild-->
 </body>
 </html>

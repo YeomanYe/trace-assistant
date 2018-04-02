@@ -1,4 +1,3 @@
-var switchTipsElm;
 showFavs(0);
 
 var vContentWrap = new Vue({
