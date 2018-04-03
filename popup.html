@@ -19,7 +19,7 @@
         <toggle-fav-panel :cur-show-fav="curShowFav"></toggle-fav-panel>
         <!-- 收藏的漫画列表 -->
         <ul id="favList" class="list">
-            <fav-item v-for="(item,index) in items" :item="item" :key="item.indexUrl"></fav-item>
+            <fav-item v-for="(item,index) in items" :item="item" :index="index" :key="item.indexUrl"></fav-item>
         </ul>
     </div>
     <div v-show="curShow == 1" id="contentSettingWrap">

@@ -1,6 +1,7 @@
 var vFavItem = Vue.component('fav-item', {
     props: {
-        item: Object
+        item: Object,
+        index:Number
     },
     template: `
     <li>
