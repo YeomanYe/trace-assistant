@@ -48,6 +48,17 @@ function showFavs(curShowFav) {
             var val2 = obj2.timestamp ? obj2.timestamp : 0;
             return val2 - val1;
         });
+        //有更新的排在前头
+        var tmpArr1 = [],tmpArr2 = [];
+        for(i=0,len=cols.length;i<len;i++){
+            var c = cols[i];
+            if(c.isUpdate) {
+                tmpArr1.push(c);
+            }else{
+                tmpArr2.push(c);
+            }
+        }
+        cols = tmpArr1.concat(tmpArr2);
         log('all-cols', cols);
         vContentWrap.curShowFav = curShowFav;
         vContentWrap.items = cols;
