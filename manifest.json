@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": ["lib/jquery.min.js", "js/constant.js","js/utils.js","js/baseStoreObj.js", "js/bg/kuaikan-bg.js", "js/bg/qq-bg.js", "js/bg/dmzj-bg.js","js/bg/qidian-bg.js","js/bg/bilibili-bg.js", "js/bg/background.js"]
+      "scripts": ["lib/jquery.min.js", "js/constant.js","js/utils.js","js/baseStoreObj.js", "js/bg/kuaikan-bg.js", "js/bg/qq-bg.js", "js/bg/dmzj-bg.js","js/bg/qidian-bg.js","js/bg/bilibili-bg.js","js/bg/kuku-bg.js", "js/bg/background.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",
@@ -8,7 +8,7 @@
       "default_title": "追综饭"
    },
    "content_scripts": [{
-      "js": ["lib/jquery.min.js","js/constant.js", "js/utils.js","js/baseStoreObj.js", "js/cnt/preprocess.js", "js/cnt/kuaikan-cnt.js", "js/cnt/qq-cnt.js", "js/cnt/dmzj-cnt.js","js/cnt/bilibili-cnt.js","js/cnt/qidian-cnt.js"],
+      "js": ["lib/jquery.min.js","js/constant.js", "js/utils.js","js/baseStoreObj.js", "js/cnt/preprocess.js", "js/cnt/kuaikan-cnt.js", "js/cnt/qq-cnt.js", "js/cnt/dmzj-cnt.js","js/cnt/bilibili-cnt.js","js/cnt/kuku-cnt.js","js/cnt/qidian-cnt.js"],
       "css": ["css/content.css"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_end"

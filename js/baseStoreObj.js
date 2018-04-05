@@ -10,7 +10,7 @@ function getBaseStoreObj(name,type){
     type = type ? type : TYPE_COMIC;
     if(index >= 0)
         return _allBaseStoreObj[keys[index]](origin,type);
-}
+};
 
 _allBaseStoreObj[SITE_KUAIKAN] = function(origin,type){
         origin = origin ? origin : 'http://www.kuaikanmanhua.com';
@@ -27,7 +27,7 @@ _allBaseStoreObj[SITE_KUAIKAN] = function(origin,type){
         siteName:'快看漫画'
     };
     return storObj;
-}
+};
 
 _allBaseStoreObj[SITE_QQ] = function(origin,type){
     origin = origin ? origin : 'http://ac.qq.com';
@@ -45,7 +45,7 @@ _allBaseStoreObj[SITE_QQ] = function(origin,type){
         siteName:'腾讯动漫'
     };
     return storObj;
-}
+};
 
 _allBaseStoreObj[SITE_W3_DMZJ] = function(origin,type){
         origin = origin ? origin : 'https://www.dmzj.com';
@@ -63,7 +63,7 @@ _allBaseStoreObj[SITE_W3_DMZJ] = function(origin,type){
         siteName:'动漫之家'
     };
     return storObj;
-}
+};
 
 _allBaseStoreObj[SITE_MH_DMZJ] = function(origin,type){
     origin = origin ? origin : 'https://manhua.dmzj.com';
@@ -81,7 +81,7 @@ _allBaseStoreObj[SITE_MH_DMZJ] = function(origin,type){
         siteName:'动漫之家'
     };
     return storObj;
-}
+};
 
 _allBaseStoreObj[SITE_QIDIAN] = function(origin,type){
     origin = origin ? origin : 'https://www.qidian.com';
@@ -99,7 +99,7 @@ _allBaseStoreObj[SITE_QIDIAN] = function(origin,type){
         siteName:'起点'
     };
     return storObj;
-}
+};
 
 _allBaseStoreObj[SITE_BILIBILI] = function(origin,type){
     origin = origin ? origin : 'https://www.bilibili.com';
@@ -117,4 +117,41 @@ _allBaseStoreObj[SITE_BILIBILI] = function(origin,type){
         siteName:'哔哩哔哩'
     };
     return storObj;
-}
+};
+
+_allBaseStoreObj[SITE_KUKU] = function(origin,type){
+    origin = origin ? origin : 'http://comic.kukudm.com';
+    var baseImgUrl = 'http://img.1whour.com/xpic/',
+        baseChapterUrl = origin + '/comiclist/',
+        baseIndexUrl = origin + '/comiclist/';
+
+    storObj = {
+        baseImg: baseImgUrl,
+        baseIndex: baseIndexUrl,
+        baseChapter: baseChapterUrl,
+        type:type,
+        origin: origin,
+        site: SITE_KUKU,
+        siteName:'Kuku动漫'
+    };
+    return storObj;
+};
+
+
+_allBaseStoreObj[SITE_CARTOONMAD] = function(origin,type){
+    origin = origin ? origin : 'http://www.cartoonmad.com';
+    var baseImgUrl = 'http://img.cartoonmad.com/ctimg/',
+        baseChapterUrl = origin + '/comic/',
+        baseIndexUrl = origin + '/comic/';
+
+    storObj = {
+        baseImg: baseImgUrl,
+        baseIndex: baseIndexUrl,
+        baseChapter: baseChapterUrl,
+        type:type,
+        origin: origin,
+        site: SITE_KUKU,
+        siteName:'動漫狂'
+    };
+    return storObj;
+};
