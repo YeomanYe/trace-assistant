@@ -11,4 +11,3 @@ var vContentWrap = new Vue({
 
     }
 });
-

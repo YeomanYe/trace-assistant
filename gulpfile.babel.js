@@ -6,33 +6,40 @@ import del from 'del';
 //预编译js文件，将es6变成es2015
 gulp.task('pre-compile', ()=>{
     return gulp.src(['js/bg/*.js','js/cnt/*.js','js/component/*.js'])
+        .pipe($.sourcemaps.init())
         .pipe($.plumber())
         .pipe($.babel())    //靠这个插件编译
         .pipe($.sourcemaps.write('.'))
-        .pipe(gulp.dest('dist/js'));
+        .pipe(gulp.dest('dist/temp'));
 });
 //编译cnt文件夹下的js文件
 gulp.task('build:cnt',['pre-compile'],()=>{
-    return gulp.src(['./dist/js/preprocess.js','./dist/js/*-cnt.js'])
+    return gulp.src(['./dist/temp/preprocess.js','./dist/temp/*-cnt.js'])
+        .pipe($.sourcemaps.init())
         .pipe($.concat('content.js'))
         .pipe($.rename('content.min.js'))
         .pipe($.uglify())
+        .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js'));
 });
 //编译bg文件夹下的js文件
 gulp.task('build:bg',['pre-compile'],()=>{
-    return gulp.src(['./dist/js/*-bg.js','./dist/js/background.js'])
+    return gulp.src(['./dist/temp/*-bg.js','./dist/temp/background.js'])
+        .pipe($.sourcemaps.init())
         .pipe($.concat('bg.js'))
         .pipe($.rename('bg.min.js'))
         .pipe($.uglify())
+        .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js'));
 });
 //编译component文件夹下的js文件
 gulp.task('build:comp',['pre-compile'],()=>{
-    return gulp.src(['./dist/js/*-comp.js','js/popup.js'])
+    return gulp.src(['./dist/temp/*-comp.js','js/popup.js'])
+        .pipe($.sourcemaps.init())
         .pipe($.concat('popup.js'))
         .pipe($.rename('popup.min.js'))
         .pipe($.uglify())
+        .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js'));
 });
 //压缩文件并重命名
@@ -49,6 +56,7 @@ gulp.task('uglify',()=>{
     };
     return gulp.src(['*.html','js/*.js','css/*.css','!js/popup.js'])
         .pipe($.plumber())
+        .pipe($.sourcemaps.init())
         .pipe($.useref({noAssets:true,/*searchPath: ['app', '.']*/}))  //将页面上 <!--endbuild--> 根据上下顺序合并
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', $.cssnano()))
@@ -57,6 +65,7 @@ gulp.task('uglify',()=>{
             if(path.extname.indexOf('html') < 0)
                 path.dirname = path.extname.replace('.','');
         }))
+        .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build'));
 });
 //只需要移动的文件
@@ -72,7 +81,7 @@ gulp.task('images',()=>{
             interlaced: true})
         )).pipe (gulp.dest ('build/images'));
 });
-
+//前置清理
 gulp.task('clean' , function(){
     return del([
         'dist',
@@ -80,7 +89,25 @@ gulp.task('clean' , function(){
         '!build/manifest.json'
     ])
 });
+//后置清理，清理无用文件
+gulp.task('clean:map' , function(){
+    return del([
+        'build/**/*.map',
+        'build/*.map',
+        'dist'
+    ])
+});
+//构建
+gulp.task('b',['clean'],()=>{
+    return gulp.start(['build:bg','build:cnt','build:comp','uglify','images','pipe']);
+});
 
-gulp.task('default',['clean'],()=>{
-    gulp.start(['build:bg','build:cnt','build:comp','uglify','images','pipe']);
+gulp.task('default',['b'],()=>{
+    //监测变化 自动编译
+    gulp.watch('js/cnt/**' , ['build:cnt']);
+    gulp.watch('js/bg/**' , ['build:bg']);
+    gulp.watch(['js/component/**','js/popup.js'], ['build:comp']);
+    gulp.watch('images/**' , ['images']);
+    gulp.watch('./lib/**' , ['pipe']);
+    gulp.watch(['*.html','js/*.js','css/*.css','!js/popup.js'],['uglify']);
 });
