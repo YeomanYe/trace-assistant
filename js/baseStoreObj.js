@@ -155,3 +155,21 @@ _allBaseStoreObj[SITE_CARTOONMAD] = function(origin,type){
     };
     return storObj;
 };
+
+_allBaseStoreObj[SITE_GF] = function(origin,type){
+    origin = origin ? origin : 'http://www.gufengmh.com';
+    var baseImgUrl = 'http://res.gufengmh.com/images/cover/',
+        baseChapterUrl = origin + '/manhua/',
+        baseIndexUrl = origin + '/manhua/';
+
+    storObj = {
+        baseImg: baseImgUrl,
+        baseIndex: baseIndexUrl,
+        baseChapter: baseChapterUrl,
+        type:type,
+        origin: origin,
+        site: SITE_GF,
+        siteName:'古风漫画'
+    };
+    return storObj;
+};

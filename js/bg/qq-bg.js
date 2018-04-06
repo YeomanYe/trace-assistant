@@ -1,5 +1,5 @@
 /**
- * 查询收藏的腾讯漫画是否有更新
+ * 查询收藏是否有更新
  */
 _createQueryObj.createQqQuery = function() {
     var baseObj = getBaseStoreObj(SITE_QQ);
@@ -27,7 +27,7 @@ _createQueryObj.createQqQuery = function() {
 };
 
 /**
- * 腾讯动漫导出用户的收藏
+ * 导出用户的收藏
  */
 _exportFunObj[SITE_QQ+'-'+TYPE_COMIC] = function(args, resSend) {
     var dataStr = args[3];

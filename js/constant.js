@@ -25,6 +25,7 @@ SITE_KUAIKAN = 'kuaikan';
 SITE_BILIBILI = 'bilibili';
 SITE_KUKU = 'kuku';
 SITE_CARTOONMAD = 'cartoonmad';
+SITE_GF = 'gufengmh';
 
 TIME_SHORT = 1000;
 TIME_LONG = 5 * 1000;

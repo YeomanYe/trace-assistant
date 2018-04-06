@@ -143,6 +143,7 @@ function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
             sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
             _$imgToggle.attr('src',_src.collect);
             showTips('收藏成功');
+
         };
         if(!curUrl && !accessIndex){
             sucCall($('html'));

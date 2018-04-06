@@ -21,17 +21,16 @@ function exportUserColQq(){
  * 获取章节信息
  */
 function getCurComicQq(){
-    var href = location.origin + location.pathname;
     var $as = $('.chapter-page-all a');
     var retObj;
     if($as.length){
         var title = $('.works-intro-title').text();
         retObj = {
-            indexUrl:href,
+            indexUrl:curHref,
             title:title
         };
     }else{
-        var curUrl = href;
+        var curUrl = curHref;
         var aElm = $('#chapter')[0];
         if(aElm){
             var indexUrl = aElm.href;
