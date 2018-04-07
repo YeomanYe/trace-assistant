@@ -14,7 +14,7 @@ $(function(){
  * 导出用户收藏
  */
 function exportUserColGf(){
-    
+
 }
 /**
  * 获取章节信息
