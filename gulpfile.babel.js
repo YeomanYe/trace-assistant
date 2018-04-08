@@ -90,7 +90,7 @@ gulp.task('clean' , function(){
     ])
 });
 //后置清理，清理无用文件
-gulp.task('clean:map' , function(){
+gulp.task('c:after' , function(){
     return del([
         'build/**/*.map',
         'build/*.map',
