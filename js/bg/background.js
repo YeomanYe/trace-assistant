@@ -9,7 +9,7 @@ var allQuery = function() {
         nextQuery = nextQuery.afterStore(_createQueryObj[keys[i]]());
     }
     allQuery = function(){
-        setBadge('....'); //提示正在查询中
+        setBadge('....','blue'); //提示正在查询中
         firstQuery();
         setTimeout(allQuery, 1000 * 60 * 45);
     };
@@ -55,13 +55,14 @@ function updateBadge(callback) {
 /**
  * 设置徽章
  */
-function setBadge(num) {
+function setBadge(num,color) {
+    color = color ? color : 'red';
     if (num <= 0) {
         chrome.browserAction.setBadgeText({
             text: ''
         });
         chrome.browserAction.setBadgeBackgroundColor({
-            color: 'red'
+            color: color
         });
         storLocal.set({
             [STOR_KEY_UPDATE_NUM]: 0
@@ -72,7 +73,7 @@ function setBadge(num) {
         text: '' + num
     });
     chrome.browserAction.setBadgeBackgroundColor({
-        color: 'red'
+        color: color
     })
 }
 
