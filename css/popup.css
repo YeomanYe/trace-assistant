@@ -19,6 +19,8 @@ body{
     height: 92px;
     border-radius: 8px;
     margin:5px 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .middle{
@@ -243,9 +245,4 @@ nav span{
 
 #contentSettingWrap{
     height:495px;
-}
-
-.left div{
-background-size: cover;
-background-repeat: no-repeat;
 }

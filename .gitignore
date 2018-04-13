@@ -4,6 +4,7 @@ node_modules/
 package-lock.json
 *.pem
 360build/
+*.zip
 
 build/*
 !build/manifest.json
