@@ -43,6 +43,10 @@ li{
     margin-top:10px;
 }
 
+#favList li:hover{
+    background-color: #cccccc;
+}
+
 .delBtn{
     font-weight: bold;
     cursor: pointer;
