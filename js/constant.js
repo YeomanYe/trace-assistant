@@ -15,6 +15,7 @@ STATUS_EXPORT_FAIL = 100;//导出失败
 STOR_KEY_FAVS = 'allFavs';
 STOR_KEY_UPDATE_NUM = 'updateNum';
 STOR_KEY_IS_CLOSE_TIPS = 'isCloseTips';
+SERVICE_UTIL = 'http://140.143.157.181:3000';
 
 SITE_QIDIAN = 'qidian'; //起点
 SITE_QQ = 'ac.qq';

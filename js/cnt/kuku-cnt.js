@@ -31,23 +31,14 @@ function getCurComicKuku() {
         var tdHtmlText = $('table:eq(1) tbody tr:eq(0)').html();
         tmpArr = tdHtmlText.match(/<td [\s\S]*?>([\s\S]*)[\s\S]*<input name/)[1].split('|');
         tmpArr = tmpArr[0].split(' ');
-        curChapter = tmpArr.splice(0, tmpArr.length - 1).join(' ');
+        var curChapter = tmpArr.splice(0, tmpArr.length - 1).join(' ');
         //获取标题
-        $.ajax(indexUrl, {
-            dataType: 'text', async: false,
-            beforeSend: function( xhr ) {
-                xhr.setRequestHeader('Accept','text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8');
-                xhr.setRequestHeader('Accept-Language','zh-CN,zh;q=0.9');
-                xhr.setRequestHeader('Content-Type','charset=gbk');
-                log('xhr',xhr);
-            },
-            success: function (text) {
-                var $html = $(text);
-                title = $html.find('table table table:eq(4) td:eq(0)').text();
-                title = title.substring(0, title.length - 2);
-            }
-        });
-        // title = tmpArr.splice(0,tmpArr.length - 2).join(' ');
+        var text = htmlDecode(indexUrl,'gbk');
+        var $html = $(text);
+        log(text);
+        title = $html.find('table table:eq(3)').find('tbody tr td').eq(0).text();;
+        title.substring(0, title.length - 2);
+
         retObj = {
             indexUrl: indexUrl,
             title: title,

@@ -175,7 +175,8 @@ function queryUpdate(baseObj, callback) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImg;
     var baseChapter = baseObj.baseChapter;
-    var emptyFun = function () {};
+    var emptyFun = function () {
+    };
     var afterStoreCall = callback._afterStore ? callback._afterStore : emptyFun; //存储成功之后的回调函数
     var isUpdate = false;
     return function (favs, allFavs, updateNum) {
@@ -214,14 +215,14 @@ function queryUpdate(baseObj, callback) {
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
             var indexUrl = col.indexUrl;
-            $.ajax(formatHref(indexUrl,baseIndex), {
+            $.ajax(formatHref(indexUrl, baseIndex), {
                 success: sucCall,
                 async: false
             });
         }
         if (!isUpdate) afterStoreCall();
         //更新查询完毕，替换掉正在查询标志“....”  改为更新的数量
-        if(afterStoreCall == emptyFun){
+        if (afterStoreCall == emptyFun) {
             setBadge(updateNum);
         }
     }
@@ -380,6 +381,27 @@ function assignColItem(obj, colItem) {
 }
 
 /**
+ * 转换html编码
+ * @param url
+ * @param originCode
+ * @returns {string}
+ */
+function htmlDecode(url, originCode) {
+    var data = {
+        method: 'get',
+        url: url,
+        distCode: 'utf-8'
+    };
+    typeof originCode === 'string' ? data.originCode = originCode : Object.assign(data, originCode);
+    var text = $.ajax(SERVICE_UTIL + '/decode', {
+        async: false,
+        method: 'post',
+        data: data
+    }).responseText;
+    return text;
+}
+
+/**
  * 格式化href
  * @param href
  */
@@ -422,13 +444,13 @@ var storeDebounce = function (obj, func) {
  * @param data
  */
 function sendToAllTabs(data) {
-    chrome.windows.getAll(null,function (wins) {
-        for(var i=0,len=wins.length;i<len;i++){
+    chrome.windows.getAll(null, function (wins) {
+        for (var i = 0, len = wins.length; i < len; i++) {
             var win = wins[i];
-            chrome.tabs.query({windowId:win.id},function (tabs) {
-                for(var i=0,len=tabs.length;i<len;i++){
+            chrome.tabs.query({windowId: win.id}, function (tabs) {
+                for (var i = 0, len = tabs.length; i < len; i++) {
                     var tab = tabs[i];
-                    chrome.tabs.sendMessage(tab.id,data);
+                    chrome.tabs.sendMessage(tab.id, data);
                 }
             });
         }

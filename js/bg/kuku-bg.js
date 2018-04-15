@@ -9,7 +9,7 @@ _createQueryObj.createKukuQuery = function() {
         var $as = $html.find('table table table:eq(4) a');
         var newA = $as.get($as.length - 4);
         var newChapter,newUrl;
-        newChapter = newA.innerText;
+        newChapter = newA.innerText+'0';
         newUrl = newA.href;
 
         newUrl = replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');
