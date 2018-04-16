@@ -91,9 +91,9 @@ function toggleMenu(){
 }
 /**
  * 收藏或取消收藏
- * accessIndex是否访问目录页获取信息
+ * wayFlag 获取方式
  */
-function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
+function toggleFav(storObj, getCurComic, getChapterInfo,wayFlag) {
     var baseImgUrl = storObj.baseImg,
         baseIndexUrl = storObj.baseIndex,
         baseChapterUrl = storObj.baseChapter;
@@ -145,12 +145,14 @@ function toggleFav(storObj, getCurComic, getChapterInfo,accessIndex) {
             showTips('收藏成功');
 
         };
-        if(!curUrl && !accessIndex){
+        var retText = getIndexContent(indexUrl,wayFlag);
+        sucCall(retText);
+        /*if(!curUrl && !wayFlag){
             sucCall($('html'));
         }else{
             $.ajax(indexUrl, {
                 success: sucCall
             });
-        }
+        }*/
     }
 }

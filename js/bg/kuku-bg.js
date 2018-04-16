@@ -6,10 +6,10 @@ _createQueryObj.createKukuQuery = function() {
     var ajaxCall = function(data) {
         var $html = $(data);
         var baseChapter = baseObj.baseChapter;
-        var $as = $html.find('table table table:eq(4) a');
+        var $as = $html.find('table table:eq(3)').find('tr td a');
         var newA = $as.get($as.length - 4);
         var newChapter,newUrl;
-        newChapter = newA.innerText+'0';
+        newChapter = newA.innerText;
         newUrl = newA.href;
 
         newUrl = replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');
@@ -21,7 +21,7 @@ _createQueryObj.createKukuQuery = function() {
     };
 
     var kukuQuery = function() {
-        getFavs(SITE_KUKU, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
+        getFavs(SITE_KUKU, TYPE_COMIC, queryUpdate(baseObj, ajaxCall,{originCode:'gbk'}));
     };
 
     this.addAfterStore(kukuQuery, ajaxCall);

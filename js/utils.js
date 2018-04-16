@@ -171,7 +171,7 @@ function updateColRecord(getCurComic) {
 /**
  * 查询是否有更新的通用函数
  */
-function queryUpdate(baseObj, callback) {
+function queryUpdate(baseObj, callback,wayFlag) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImg;
     var baseChapter = baseObj.baseChapter;
@@ -215,10 +215,12 @@ function queryUpdate(baseObj, callback) {
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
             var indexUrl = col.indexUrl;
-            $.ajax(formatHref(indexUrl, baseIndex), {
+            var retText = getIndexContent(formatHref(indexUrl,baseIndex),wayFlag);
+            sucCall(retText);
+            /*$.ajax(formatHref(indexUrl, baseIndex), {
                 success: sucCall,
                 async: false
-            });
+            });*/
         }
         if (!isUpdate) afterStoreCall();
         //更新查询完毕，替换掉正在查询标志“....”  改为更新的数量
@@ -399,6 +401,19 @@ function htmlDecode(url, originCode) {
         data: data
     }).responseText;
     return text;
+}
+
+/**
+ * 获取index页面的内容
+ */
+function getIndexContent(indexUrl,wayFlag){
+    var retText;
+    if(typeof wayFlag !== 'object'){
+        retText = $.ajax(indexUrl,{async:false}).responseText;
+    }else{
+        retText = htmlDecode(indexUrl,wayFlag.originCode);
+    }
+    return retText;
 }
 
 /**

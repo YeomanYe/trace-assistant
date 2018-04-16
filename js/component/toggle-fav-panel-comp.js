@@ -27,20 +27,22 @@ function showFavs(curShowFav) {
                 baseChapter = favItem.baseChapter,
                 baseIndex = favItem.baseIndex,
                 baseImg = favItem.baseImg;
+            var tmpArr = [];
 
             if (type && type != favItem.type) continue;
             for (var j = 0, len2 = colItems.length; j < len2; j++) {
-                var item = colItems[j];
-                item.indexUrl = formatHref(item.indexUrl, baseIndex);
-                item.imgUrl = formatHref(item.imgUrl, baseImg);
-                item.curUrl = formatHref(item.curUrl, baseChapter);
-                item.newUrl = formatHref(item.newUrl, baseChapter);
-                item.type = favItem.type;
-                item.siteName = favItem.siteName;
-                item.origin = favItem.origin;
-                item.bgStyle = {backgroundImage: 'url(' + item.imgUrl + ')'};
+                var item = colItems[j],obj = Object.assign({},item);
+                obj.indexUrl = formatHref(item.indexUrl, baseIndex);
+                obj.imgUrl = formatHref(item.imgUrl, baseImg);
+                obj.curUrl = formatHref(item.curUrl, baseChapter);
+                obj.newUrl = formatHref(item.newUrl, baseChapter);
+                obj.type = favItem.type;
+                obj.siteName = favItem.siteName;
+                obj.origin = favItem.origin;
+                obj.bgStyle = {backgroundImage: 'url(' + obj.imgUrl + ')'};
+                tmpArr.push(obj);
             }
-            cols = cols.concat(colItems);
+            cols = cols.concat(tmpArr);
         }
         //按照阅读的时间进行降序排序
         cols.sort(function (obj1, obj2) {

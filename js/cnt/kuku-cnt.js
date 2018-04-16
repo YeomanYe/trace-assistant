@@ -36,8 +36,8 @@ function getCurComicKuku() {
         var text = htmlDecode(indexUrl,'gbk');
         var $html = $(text);
         log(text);
-        title = $html.find('table table:eq(3)').find('tbody tr td').eq(0).text();;
-        title.substring(0, title.length - 2);
+        title = $html.find('table table:eq(3)').find('tr td').eq(0).text();
+        title = title.substring(0, title.length - 2);
 
         retObj = {
             indexUrl: indexUrl,
@@ -62,9 +62,9 @@ function updateKuku() {
 function toggleFavHandlerKuku() {
     var getChapterInfo = function (text) {
         var $html = $(text);
-        var $as = $html.find('table table table:eq(4) a');
+        var $as = $html.find('table table:eq(3)').find('tr td a');
         var newA = $as.get($as.length - 4), curA = $as.get(0);
-        var imgUrl = $html.find('table table table img').attr('src');
+        var imgUrl = $html.find('table table:eq(3)').find('tr td img').attr('src');
 
         var newChapter, newUrl, curChapter, curUrl;
         newChapter = newA.innerText;
@@ -81,5 +81,5 @@ function toggleFavHandlerKuku() {
         return retObj;
     };
 
-    getFavs(SITE_KUKU, TYPE_COMIC, toggleFav(storObj, getCurComicKuku, getChapterInfo));
+    getFavs(SITE_KUKU, TYPE_COMIC, toggleFav(storObj, getCurComicKuku, getChapterInfo,{originCode:'gbk'}));
 }
