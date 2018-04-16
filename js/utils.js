@@ -397,6 +397,7 @@ function htmlDecode(url, originCode) {
     typeof originCode === 'string' ? data.originCode = originCode : Object.assign(data, originCode);
     var text = $.ajax(SERVICE_UTIL + '/decode', {
         async: false,
+        timeout:1500,
         method: 'post',
         data: data
     }).responseText;
