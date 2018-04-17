@@ -145,33 +145,38 @@ function decUpdateNum(item) {
 
 /**
  * 更新阅读记录
+ * async 是否异步获取的信息
  */
-function updateColRecord(getCurComic) {
+function updateColRecord(getCurIndex,async) {
     return function (favs, allFavs) {
-        var curIndex = getCurComic();
-        //解析当前页面并更新阅读记录
-        var index = arrEqStr(favs, {title: curIndex.title});
-        _$imgToggle.get(0).src = _src.collectGrey;
-        if (index < 0) return;
-        //更新图标
-        _$imgToggle.get(0).src = _src.collect;
-        var curItem = favs[index];
-        curItem.timestamp = Date.now();
-        if (!curIndex.curChapter) return;
-        curItem.curChapter = curIndex.curChapter;
-        curItem.curUrl = curIndex.curUrl.replace(baseChapterUrl, '');
-        //更新，当前更新的漫画数量
-        decUpdateNum(curItem);
-        storLocal.set({
-            allFavs: allFavs
-        });
+
+        var updateCurInfo = function (curIndex) {
+            //解析当前页面并更新阅读记录
+            var index = arrEqStr(favs, {title: curIndex.title});
+            _$imgToggle.get(0).src = _src.collectGrey;
+            if (index < 0) return;
+            //更新图标
+            _$imgToggle.get(0).src = _src.collect;
+            var curItem = favs[index];
+            curItem.timestamp = Date.now();
+            if (!curIndex.curChapter) return;
+            curItem.curChapter = curIndex.curChapter;
+            curItem.curUrl = curIndex.curUrl.replace(baseChapterUrl, '');
+            //更新，当前更新的漫画数量
+            decUpdateNum(curItem);
+            storLocal.set({
+                allFavs: allFavs
+            });
+        };
+        if(async) getCurIndex(updateCurInfo);
+        else updateCurInfo(getCurIndex());
     }
 }
 
 /**
  * 查询是否有更新的通用函数
  */
-function queryUpdate(baseObj, callback,wayFlag) {
+function queryUpdate(baseObj, callback, wayFlag) {
     var baseIndex = baseObj.baseIndex;
     var baseImage = baseObj.baseImg;
     var baseChapter = baseObj.baseChapter;
@@ -215,12 +220,8 @@ function queryUpdate(baseObj, callback,wayFlag) {
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
             var indexUrl = col.indexUrl;
-            var retText = getIndexContent(formatHref(indexUrl,baseIndex),wayFlag);
+            var retText = getIndexContent(formatHref(indexUrl, baseIndex), wayFlag);
             sucCall(retText);
-            /*$.ajax(formatHref(indexUrl, baseIndex), {
-                success: sucCall,
-                async: false
-            });*/
         }
         if (!isUpdate) afterStoreCall();
         //更新查询完毕，替换掉正在查询标志“....”  改为更新的数量
@@ -397,7 +398,7 @@ function htmlDecode(url, originCode) {
     typeof originCode === 'string' ? data.originCode = originCode : Object.assign(data, originCode);
     var text = $.ajax(SERVICE_UTIL + '/decode', {
         async: false,
-        timeout:1500,
+        timeout: 1500,
         method: 'post',
         data: data
     }).responseText;
@@ -405,16 +406,54 @@ function htmlDecode(url, originCode) {
 }
 
 /**
+ * 替换html编码通过iframe的形式，异步方案
+ * @param url
+ * @param sucCall
+ */
+function htmlDecodeByFrame(url,sucCall) {
+    var $iframe = $('#indexInfoFrame'),frElm;
+    if($iframe.length === 0){
+        $iframe = $('<iframe id="indexInfoFrame" hidden/>');
+    }
+    $iframe.attr('src',url);
+    frElm = $iframe.get(0);
+    frElm.onload = function () {
+        var textHtml = frElm.contentWindow.document.body.innerHTML;
+        log('iframe',textHtml);
+        sucCall(textHtml);
+    };
+    $('body').append($iframe);
+}
+
+/**
  * 获取index页面的内容
  */
-function getIndexContent(indexUrl,wayFlag){
+function getIndexContent(indexUrl, wayFlag) {
     var retText;
-    if(typeof wayFlag !== 'object'){
-        retText = $.ajax(indexUrl,{async:false}).responseText;
-    }else{
-        retText = htmlDecode(indexUrl,wayFlag.originCode);
+    if (typeof wayFlag !== 'object') {
+        retText = $.ajax(indexUrl, {async: false}).responseText;
+    } else {
+        retText = htmlDecode(indexUrl, wayFlag.originCode);
     }
     return retText;
+}
+
+/**
+ * 获取index内容通过iframe的形式
+ * @param indexUrl
+ * @param wayFlag
+ * @param sucCall
+ */
+function getIndexContentByFrame(indexUrl, wayFlag, sucCall) {
+    if (typeof wayFlag !== 'object') {
+        $.ajax(indexUrl, {
+            async: true,
+            success: sucCall
+        });
+    } else {
+        htmlDecodeByFrame(indexUrl,sucCall);
+        // retText = htmlDecode(indexUrl, wayFlag.originCode);
+    }
 }
 
 /**

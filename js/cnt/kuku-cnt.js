@@ -13,39 +13,41 @@ $(function () {
 /**
  * 获取章节信息
  */
-function getCurComicKuku() {
+function getCurComicKuku(sucCall) {
     var retObj;
     var title;
+    var indexUrl = curHref;
     if (curHref.search(/comiclist\/[\d]*\/[\d]+/) < 0) {
         //获取漫画名
-        title = $('table table table:eq(4) td:eq(0)').text();
-        title = title.substring(0, title.length - 2);
         retObj = {
-            title: title,
-            indexUrl: curHref
-        }
+            indexUrl: indexUrl
+        };
     } else {
         var curUrl = curHref;
         var tmpArr = curHref.split('/');
-        var indexUrl = tmpArr.splice(0, tmpArr.length - 2).join('/');
+        indexUrl = tmpArr.splice(0, tmpArr.length - 2).join('/');
         var tdHtmlText = $('table:eq(1) tbody tr:eq(0)').html();
         tmpArr = tdHtmlText.match(/<td [\s\S]*?>([\s\S]*)[\s\S]*<input name/)[1].split('|');
         tmpArr = tmpArr[0].split(' ');
         var curChapter = tmpArr.splice(0, tmpArr.length - 1).join(' ');
-        //获取标题
-        var text = htmlDecode(indexUrl,'gbk');
-        var $html = $(text);
-        log(text);
-        title = $html.find('table table:eq(3)').find('tr td').eq(0).text();
-        title = title.substring(0, title.length - 2);
 
         retObj = {
             indexUrl: indexUrl,
-            title: title,
             curUrl: curUrl,
             curChapter: curChapter
-        }
+        };
     }
+    //获取标题
+    var handle = function (text) {
+        log(text);
+        var $html = $(text);
+        title = $html.find('table table:eq(3)').find('tr td').eq(0).text();
+        title = title.substring(0, title.length - 2);
+        retObj.title = title;
+
+        sucCall(retObj);
+    };
+    htmlDecodeByFrame(indexUrl,handle);
     return retObj;
 }
 
@@ -53,7 +55,7 @@ function getCurComicKuku() {
  * 更新收藏
  */
 function updateKuku() {
-    getFavs(SITE_KUKU, TYPE_COMIC, updateColRecord(getCurComicKuku));
+    getFavs(SITE_KUKU, TYPE_COMIC, updateColRecord(getCurComicKuku,true));
 }
 
 /**

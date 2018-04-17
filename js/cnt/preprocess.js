@@ -93,66 +93,63 @@ function toggleMenu(){
  * 收藏或取消收藏
  * wayFlag 获取方式
  */
-function toggleFav(storObj, getCurComic, getChapterInfo,wayFlag) {
+function toggleFav(storObj, getCurIndex, getChapterInfo,wayFlag) {
     var baseImgUrl = storObj.baseImg,
         baseIndexUrl = storObj.baseIndex,
         baseChapterUrl = storObj.baseChapter;
-    var tmpObj = getCurComic();
-    var title = tmpObj.title,
-        indexUrl = tmpObj.indexUrl,
-        curUrl = tmpObj.curUrl,
-        curChapter = tmpObj.curChapter;
-    return function(favs, allFavs) {
-        var index = arrEqStr(favs, {title:title});
-        //已经收藏，则取消收藏
-        if (index >= 0) {
-            var item = favs[index];
-            decUpdateNum(item);
-            favs.splice(index, 1);
-            storLocal.set({
-                [STOR_KEY_FAVS]: allFavs
-            });
-            _$imgToggle.attr('src',_src.collectGrey);
-            showTips('取消收藏成功');
-            //通知全部tab页面更新图标
-            sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
-            return;
-        }
-        //未收藏，则收藏
-        var sucCall = function(text) {
-            //获取章节与图片信息
-            var obj = getChapterInfo(text);
-            curChapter = curChapter ? curChapter : obj.curChapter;
-            curUrl = curUrl ? curUrl : obj.curUrl;
-            var imgUrl = obj.imgUrl ? obj.imgUrl : '';
-            var col = {
-                imgUrl: imgUrl.replace(baseImgUrl, ''),
-                indexUrl: indexUrl.replace(baseIndexUrl, ''),
-                newChapter: obj.newChapter,
-                curChapter: curChapter,
-                newUrl: obj.newUrl.replace(baseChapterUrl, ''), //最新章节地址
-                curUrl: curUrl.replace(baseChapterUrl, ''), //当前章节地址
-                title: title,
-                isUpdate: false
-            };
-            favs.unshift(col);
-            chrome.storage.local.set({
-                [STOR_KEY_FAVS]: allFavs
-            });
-            //通知全部tab页面更新图标
-            sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
-            _$imgToggle.attr('src',_src.collect);
-            showTips('收藏成功');
+    // var tmpObj = getCurIndex();
 
+    return function(favs, allFavs) {
+        var handle = function (indexObj) {
+            var title = indexObj.title,
+                indexUrl = indexObj.indexUrl,
+                curUrl = indexObj.curUrl,
+                curChapter = indexObj.curChapter;
+            var index = arrEqStr(favs, {title:title});
+            //已经收藏，则取消收藏
+            if (index >= 0) {
+                var item = favs[index];
+                decUpdateNum(item);
+                favs.splice(index, 1);
+                storLocal.set({
+                    [STOR_KEY_FAVS]: allFavs
+                });
+                _$imgToggle.attr('src',_src.collectGrey);
+                showTips('取消收藏成功');
+                //通知全部tab页面更新图标
+                sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
+                return;
+            }
+            //未收藏，则收藏
+            var sucCall = function(text) {
+                //获取章节与图片信息
+                var obj = getChapterInfo(text);
+                curChapter = curChapter ? curChapter : obj.curChapter;
+                curUrl = curUrl ? curUrl : obj.curUrl;
+                var imgUrl = obj.imgUrl ? obj.imgUrl : '';
+                var col = {
+                    imgUrl: imgUrl.replace(baseImgUrl, ''),
+                    indexUrl: indexUrl.replace(baseIndexUrl, ''),
+                    newChapter: obj.newChapter,
+                    curChapter: curChapter,
+                    newUrl: obj.newUrl.replace(baseChapterUrl, ''), //最新章节地址
+                    curUrl: curUrl.replace(baseChapterUrl, ''), //当前章节地址
+                    title: title,
+                    isUpdate: false
+                };
+                favs.unshift(col);
+                chrome.storage.local.set({
+                    [STOR_KEY_FAVS]: allFavs
+                });
+                //通知全部tab页面更新图标
+                sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
+                _$imgToggle.attr('src',_src.collect);
+                showTips('收藏成功');
+
+            };
+            getIndexContentByFrame(indexUrl,wayFlag,sucCall);
         };
-        var retText = getIndexContent(indexUrl,wayFlag);
-        sucCall(retText);
-        /*if(!curUrl && !wayFlag){
-            sucCall($('html'));
-        }else{
-            $.ajax(indexUrl, {
-                success: sucCall
-            });
-        }*/
+        if(typeof wayFlag === 'object') getCurIndex(handle);
+        else handle(getCurIndex());
     }
 }
