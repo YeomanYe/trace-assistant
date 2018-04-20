@@ -14,7 +14,7 @@ var vNavPanel = Vue.component('nav-panel', {
     },
     template: `
     <nav id="nav">
-        <span v-for="(text,index) in textArr" @click="showContentToggle(index)" id="colTab"  :class="{curTab:curShow == index}">{{text}}</span>
+        <span v-for="(text,index) in textArr" @click="showContentToggle(index)"  :class="{curTab:curShow == index}">{{text}}</span>
     </nav>
      `,
     methods: {

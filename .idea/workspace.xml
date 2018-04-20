@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cnt/kuku-cnt.js" afterPath="$PROJECT_DIR$/js/cnt/kuku-cnt.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cnt/preprocess.js" afterPath="$PROJECT_DIR$/js/cnt/preprocess.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/utils.js" afterPath="$PROJECT_DIR$/js/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/component/nav-panel-comp.js" afterPath="$PROJECT_DIR$/js/component/nav-panel-comp.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,7 +20,7 @@
       <file leaf-file-name="kuku-bg.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/bg/kuku-bg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
+            <state relative-caret-position="385">
               <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
               <folding />
             </state>
@@ -54,14 +52,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nav-panel-comp.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nav-panel-comp.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+            <state relative-caret-position="560">
+              <caret line="16" column="79" lean-forward="false" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="79" />
               <folding>
-                <marker date="1522162771772" expanded="true" signature="275:430" ph="..." />
+                <marker date="1524227937509" expanded="true" signature="275:418" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popup.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/popup.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="197" column="1" lean-forward="true" selection-start-line="197" selection-start-column="1" selection-end-line="197" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -81,7 +89,7 @@
       <file leaf-file-name="kuku-cnt.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cnt/kuku-cnt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1904">
+            <state relative-caret-position="840">
               <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
               <folding />
             </state>
@@ -91,18 +99,18 @@
       <file leaf-file-name="preprocess.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cnt/preprocess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4326">
+            <state relative-caret-position="5250">
               <caret line="150" column="10" lean-forward="false" selection-start-line="150" selection-start-column="10" selection-end-line="150" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="512" column="1" lean-forward="true" selection-start-line="512" selection-start-column="1" selection-end-line="512" selection-end-column="1" />
+            <state relative-caret-position="17885">
+              <caret line="511" column="7" lean-forward="true" selection-start-line="511" selection-start-column="7" selection-end-line="511" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -111,26 +119,11 @@
       <file leaf-file-name="kuku-cnt.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/temp/kuku-cnt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
+            <state relative-caret-position="1260">
               <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
               <folding>
                 <marker date="1523977339630" expanded="true" signature="1429:1450" ph="{...}" />
-                <marker date="1523977339630" expanded="true" signature="1452:1471" ph="/** 更新收藏 ...*/" />
-                <marker date="1523977339630" expanded="true" signature="1575:1602" ph="/** 切换收藏按钮点击处理函数 ...*/" />
-                <marker date="1523977339630" expanded="true" signature="1635:2445" ph="{...}" />
-                <marker date="1523977339630" expanded="true" signature="1692:2329" ph="{...}" />
-                <marker date="1523977339630" expanded="true" signature="2140:2298" ph="{&quot;curUrl&quot;: curUrl...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/constant.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -146,8 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setting</find>
-      <find>isClose</find>
       <find>allF</find>
       <find>allFavs</find>
       <find>updateNum</find>
@@ -176,6 +167,8 @@
       <find>$html</find>
       <find>update</find>
       <find>decode</find>
+      <find>colTab</find>
+      <find>nav</find>
     </findStrings>
     <replaceStrings>
       <replace>favList</replace>
@@ -187,7 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/js/bg/bg.js" />
         <option value="$PROJECT_DIR$/js/content/iqiyi-cnt.js" />
         <option value="$PROJECT_DIR$/js/content/pre-cnt.js" />
         <option value="$PROJECT_DIR$/js/content/qq-cnt.js" />
@@ -238,6 +230,7 @@
         <option value="$PROJECT_DIR$/js/cnt/preprocess.js" />
         <option value="$PROJECT_DIR$/js/cnt/kuku-cnt.js" />
         <option value="$PROJECT_DIR$/js/utils.js" />
+        <option value="$PROJECT_DIR$/js/component/nav-panel-comp.js" />
       </list>
     </option>
   </component>
@@ -293,13 +286,13 @@
               <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
               <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
               <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
               <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
               <item name="build" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
@@ -444,7 +437,9 @@
       <workItem from="1523880934042" duration="7433000" />
       <workItem from="1523925347462" duration="54000" />
       <workItem from="1523938988741" duration="238000" />
-      <workItem from="1523972590487" duration="4850000" />
+      <workItem from="1523972590487" duration="5530000" />
+      <workItem from="1524226188926" duration="2561000" />
+      <workItem from="1524232963348" duration="123000" />
     </task>
     <task id="LOCAL-00001" summary="fix bug">
       <created>1522150762362</created>
@@ -457,7 +452,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="203498000" />
+    <option name="totallyTimeSpent" value="206862000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -467,7 +462,6 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5021142" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Tail" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.49788582" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -481,6 +475,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32891566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -634,7 +629,6 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding />
           </first_editor>
           <second_editor>
             <js_state />
@@ -705,13 +699,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/popup.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4130">
-          <caret line="118" column="1" lean-forward="false" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/jquery/dist/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309225">
@@ -723,7 +710,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,7 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="7" column="36" lean-forward="false" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,7 +745,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="17" column="43" lean-forward="false" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,16 +757,6 @@
             <marker date="1522917349757" expanded="true" signature="192:251" ph="..." />
             <marker date="1522917349757" expanded="true" signature="280:699" ph="..." />
             <marker date="1522917349757" expanded="true" signature="727:1045" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding>
-            <marker date="1522162771772" expanded="true" signature="275:430" ph="..." />
           </folding>
         </state>
       </provider>
@@ -807,22 +781,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/temp/kuku-cnt.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
+        <state relative-caret-position="1260">
           <caret line="36" column="27" lean-forward="false" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
           <folding>
             <marker date="1523977339630" expanded="true" signature="1429:1450" ph="{...}" />
-            <marker date="1523977339630" expanded="true" signature="1452:1471" ph="/** 更新收藏 ...*/" />
-            <marker date="1523977339630" expanded="true" signature="1575:1602" ph="/** 切换收藏按钮点击处理函数 ...*/" />
-            <marker date="1523977339630" expanded="true" signature="1635:2445" ph="{...}" />
-            <marker date="1523977339630" expanded="true" signature="1692:2329" ph="{...}" />
-            <marker date="1523977339630" expanded="true" signature="2140:2298" ph="{&quot;curUrl&quot;: curUrl...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/bg/kuku-bg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
+        <state relative-caret-position="385">
           <caret line="11" column="35" lean-forward="false" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
           <folding />
         </state>
@@ -830,7 +799,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cnt/preprocess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4326">
+        <state relative-caret-position="5250">
           <caret line="150" column="10" lean-forward="false" selection-start-line="150" selection-start-column="10" selection-end-line="150" selection-end-column="10" />
           <folding />
         </state>
@@ -838,7 +807,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cnt/kuku-cnt.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1904">
+        <state relative-caret-position="840">
           <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding />
         </state>
@@ -846,9 +815,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="512" column="1" lean-forward="true" selection-start-line="512" selection-start-column="1" selection-end-line="512" selection-end-column="1" />
+        <state relative-caret-position="17885">
+          <caret line="511" column="7" lean-forward="true" selection-start-line="511" selection-start-column="7" selection-end-line="511" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/popup.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="197" column="1" lean-forward="true" selection-start-line="197" selection-start-column="1" selection-end-line="197" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="16" column="79" lean-forward="false" selection-start-line="16" selection-start-column="79" selection-end-line="16" selection-end-column="79" />
+          <folding>
+            <marker date="1524227937509" expanded="true" signature="275:418" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
