@@ -1,5 +1,5 @@
 $(function () {
-    if (curHref.indexOf('kukudm') < 0) return;
+    if (curHref.indexOf('kukudm.com/comiclist') < 0) return;
     log(SITE_KUKU);
     createBtn();
     _$imgExport.on('click', function () {
