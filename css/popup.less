@@ -1,20 +1,15 @@
 /*预定义的样式*/
-.linkWhite{
+.linkColor(@color,@hover:@color){
     text-decoration: none;
-    color: white;
-}
-.linkBlue{
-    text-decoration: none;
-    color: blue;
-}
-.linkGrey{
-    text-decoration: none;
-    color: grey;
-}
-
-.linkBlack{
-    text-decoration: none;
-    color: black;
+    color: @color;
+    &:hover{
+        text-decoration: none;
+        color: @color;
+    }
+    &:active,&:visited{
+        text-decoration: none;
+        color: @color;
+    }
 }
 @sumHeight:500px;
 /*元素样式设置*/
@@ -81,8 +76,7 @@ li{
     border-radius: 5px;
     display: inline-block;
     padding: 5px 8px;
-    .linkWhite;
-    &:active,&:visited,&:hover{.linkWhite}
+    .linkColor(white);
 }
 
 div{
@@ -92,22 +86,19 @@ div{
     a{
         text-overflow: ellipsis;
         white-space: nowrap;
-        .linkBlue;
-        &:active,&:visited,&:hover{.linkBlue}
+        .linkColor(blue);
     }
 }
 
 
 
 .source{
-    .linkGrey;
-    &:active,&:visited,&:hover{.linkGrey}
+    .linkColor(grey);
 }
 
 h3{
     a{
-        .linkBlack;
-        &:active,&:visited,&:hover{.linkBlack}
+        .linkColor(black);
     }
 }
 
@@ -118,8 +109,7 @@ h3{
     font-weight: normal;
     padding: 3px;
     font-size: 12px;
-    .linkWhite;
-    &:active,&:visited,&:hover{.linkWhite}
+    .linkColor(white);
 }
 
 nav{
