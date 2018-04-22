@@ -63,12 +63,13 @@ gulp.task('uglify',()=>{
         minifyJS: true,//压缩页面里的JS
         minifyCSS: true//压缩页面里的CSS
     };
-    return gulp.src(['*.html','js/*.js','!js/popup.js'])
+    return gulp.src(['*.html','css/*.css','js/*.js','!js/popup.js'])
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.useref({noAssets:true,/*searchPath: ['app', '.']*/}))  //将页面上 <!--endbuild--> 根据上下顺序合并
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.html', $.htmlmin(options)))
+        .pipe($.if('*.css',$.cssnano()))
         .pipe($.rename(path=>{
             if(path.extname.indexOf('html') < 0)
                 path.dirname = path.extname.replace('.','');
@@ -118,5 +119,5 @@ gulp.task('default',['b'],()=>{
     gulp.watch(['js/component/**','js/popup.js'], ['build:comp']);
     gulp.watch('images/**' , ['images']);
     gulp.watch('./lib/**' , ['pipe']);
-    gulp.watch(['*.html','js/*.js','!js/popup.js'],['uglify']);
+    gulp.watch(['*.html','js/*.js','css/*.css','!js/popup.js'],['uglify']);
 });
