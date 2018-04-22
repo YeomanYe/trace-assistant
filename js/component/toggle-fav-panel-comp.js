@@ -39,7 +39,7 @@ function showFavs(curShowFav) {
                 obj.type = favItem.type;
                 obj.siteName = favItem.siteName;
                 obj.origin = favItem.origin;
-                obj.bgStyle = {backgroundImage: 'url(' + obj.imgUrl + ')'};
+                // obj.bgStyle = {backgroundImage: 'url(' + obj.imgUrl + ')'};
                 tmpArr.push(obj);
             }
             cols = cols.concat(tmpArr);

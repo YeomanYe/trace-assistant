@@ -6,7 +6,8 @@ var vFavItem = Vue.component('fav-item', {
     template: `
     <li>
         <a :href="item.indexUrl" target="_blank" class="left">
-            <div :style="item.bgStyle"></div>
+            <img :src="item.imgUrl" @error="imgLoseHandler"/>
+            <!--<div :style="item.bgStyle"></div>-->
         </a>
         <div class="middle">
             <h3 class="tiltle"><a :href="item.indexUrl" target="_blank" class="titleName">{{item.title}}</a><a target="_blank" :href="item.newUrl" v-show="item.isUpdate" class="news-badge">news</a></h3>
@@ -21,6 +22,9 @@ var vFavItem = Vue.component('fav-item', {
     </li>
      `,
     methods: {
+        imgLoseHandler:function (event) {
+            event.target.src='images/lose.png'
+        },
         delFavItem: function (index, item) {
             //更新视图
             vContentWrap.items.splice(index, 1);
