@@ -42,6 +42,15 @@ gulp.task('build:comp',['pre-compile'],()=>{
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js'));
 });
+gulp.task('less' , ()=>{
+    return gulp.src('css/*.less') //指明源文件路径 读取其数据流
+        .pipe($.plumber()) //替换错误的pipe方法  使数据流正常运行
+        .pipe($.sourcemaps.init()) //压缩环境出现错误能找到未压缩的错误来源
+        .pipe($.less())
+        .pipe($.cssnano())
+        .pipe($.sourcemaps.write('.'))  //map文件命名
+        .pipe(gulp.dest('build/css'))  //指定输出路径
+});
 //压缩文件并重命名
 gulp.task('uglify',()=>{
     var options = {
@@ -54,12 +63,11 @@ gulp.task('uglify',()=>{
         minifyJS: true,//压缩页面里的JS
         minifyCSS: true//压缩页面里的CSS
     };
-    return gulp.src(['*.html','js/*.js','css/*.css','!js/popup.js'])
+    return gulp.src(['*.html','js/*.js','!js/popup.js'])
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.useref({noAssets:true,/*searchPath: ['app', '.']*/}))  //将页面上 <!--endbuild--> 根据上下顺序合并
         .pipe($.if('*.js', $.uglify()))
-        .pipe($.if('*.css', $.cssnano()))
         .pipe($.if('*.html', $.htmlmin(options)))
         .pipe($.rename(path=>{
             if(path.extname.indexOf('html') < 0)
@@ -99,15 +107,16 @@ gulp.task('c:after' , function(){
 });
 //构建
 gulp.task('b',['clean'],()=>{
-    return gulp.start(['build:bg','build:cnt','build:comp','uglify','images','pipe']);
+    return gulp.start(['build:bg','build:cnt','build:comp','uglify','images','pipe','less']);
 });
 
 gulp.task('default',['b'],()=>{
     //监测变化 自动编译
     gulp.watch('js/cnt/**' , ['build:cnt']);
     gulp.watch('js/bg/**' , ['build:bg']);
+    gulp.watch('css/*.less',['less']);
     gulp.watch(['js/component/**','js/popup.js'], ['build:comp']);
     gulp.watch('images/**' , ['images']);
     gulp.watch('./lib/**' , ['pipe']);
-    gulp.watch(['*.html','js/*.js','css/*.css','!js/popup.js'],['uglify']);
+    gulp.watch(['*.html','js/*.js','!js/popup.js'],['uglify']);
 });

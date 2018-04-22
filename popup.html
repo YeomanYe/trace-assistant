@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="contentWrap" v-cloak>
-    <div v-show="curShow == 0" id="contentFavWrap">
+    <div v-show="curShow == 0" id="contentFavWrap" class="listWrap">
         <!--切换收藏类型的按钮-->
         <toggle-fav-panel :cur-show-fav="curShowFav"></toggle-fav-panel>
         <!-- 收藏的漫画列表 -->
@@ -22,7 +22,7 @@
             <fav-item v-for="(item,index) in items" :item="item" :index="index" :key="item.indexUrl"></fav-item>
         </ul>
     </div>
-    <div v-show="curShow == 1" id="contentSettingWrap">
+    <div v-show="curShow == 1" id="contentSettingWrap" class="listWrap">
         <!-- 设置列表 -->
         <setting-panel></setting-panel>
     </div>
