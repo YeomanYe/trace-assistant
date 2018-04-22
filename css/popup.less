@@ -16,6 +16,7 @@
     text-decoration: none;
     color: black;
 }
+@sumHeight:500px;
 /*元素样式设置*/
 *{
     margin: 0;
@@ -24,11 +25,15 @@
 
 body{
     width: 430px;
-    height: 500px;
+    height: @sumHeight;
+}
+
+.listWrap{
+    height: @sumHeight - 5;
 }
 
 .list{
-    height: 450px;
+    height: @sumHeight - 50;
     overflow: auto;
 }
 
@@ -122,7 +127,7 @@ nav{
     span{
         display: inline-block;
         margin: 0;
-        padding: 10px 88px;
+        padding: 10px 89px;
         font-size: 18px;
         cursor: pointer;
         color: black;
@@ -181,7 +186,4 @@ nav{
         background: rgb(78,144,232);
         color: white;
     }
-}
-.listWrap{
-    height: 495px;
 }
