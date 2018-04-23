@@ -173,3 +173,21 @@ _allBaseStoreObj[SITE_GF] = function(origin,type){
     };
     return storObj;
 };
+
+_allBaseStoreObj[SITE_BUKA] = function(origin,type){
+    origin = origin ? origin : 'http://www.buka.cn';
+    var baseImgUrl = 'http://i-r7.ibuka.cn/logo/',
+        baseChapterUrl = origin + '/view/',
+        baseIndexUrl = origin + '/detail/';
+
+    storObj = {
+        baseImg: baseImgUrl,
+        baseIndex: baseIndexUrl,
+        baseChapter: baseChapterUrl,
+        type:type,
+        origin: origin,
+        site: SITE_BUKA,
+        siteName:'布卡漫画'
+    };
+    return storObj;
+};
