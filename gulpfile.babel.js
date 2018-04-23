@@ -47,7 +47,7 @@ gulp.task('less' , ()=>{
         .pipe($.plumber()) //替换错误的pipe方法  使数据流正常运行
         .pipe($.sourcemaps.init()) //压缩环境出现错误能找到未压缩的错误来源
         .pipe($.less())
-        .pipe($.cssnano())
+        .pipe($.cssnano({zindex:false}))
         .pipe($.sourcemaps.write('.'))  //map文件命名
         .pipe(gulp.dest('build/css'))  //指定输出路径
 });
