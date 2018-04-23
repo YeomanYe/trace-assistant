@@ -63,7 +63,7 @@ function toggleFavHandlerBuka() {
         tmpArr1 = newA.href.split('/');
         tmpArr2 = curA.href.split('/');
 
-        if(parseInt(tmpArr1[tmpArr1.length - 1]) < parseInt(tmpArr2[tmpArr2.length - 1])){
+        if(parseInt(tmpArr1[tmpArr1.length - 1]) < parseInt(tmpArr2[tmpArr1.length - 1])){
             var tmp = newA;
             newA = curA;
             curA = tmp;
