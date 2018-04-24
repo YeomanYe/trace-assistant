@@ -42,6 +42,19 @@ gulp.task('build:comp',['pre-compile'],()=>{
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js'));
 });
+gulp.task('typecheck', function() {
+    return gulp.src('./js/component/*.js')
+        .pipe($.flowtype({
+            all: false,
+            weak: false,
+            declarations: './.flowconfig',
+            killFlow: false,
+            beep: true,
+            abort: false
+        }))
+        .pipe(gulp.dest('./dist/typecheck'));
+});
+//less编译
 gulp.task('less' , ()=>{
     return gulp.src('css/*.less') //指明源文件路径 读取其数据流
         .pipe($.plumber()) //替换错误的pipe方法  使数据流正常运行

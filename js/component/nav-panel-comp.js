@@ -1,8 +1,9 @@
-var CUR_NAV = {
+/*@flow*/
+var CUR_NAV:string = {
     FAV:0,
     SETTING:1
 };
-var switchTipsElm;
+var switchTipsElm:Object;
 var vNavPanel = Vue.component('nav-panel', {
     props: {
         curShow: Number
@@ -18,11 +19,11 @@ var vNavPanel = Vue.component('nav-panel', {
     </nav>
      `,
     methods: {
-        showContentToggle:function (contentId) {
+        showContentToggle:function (contentId:number) {
             vContentWrap.curShow = contentId;
             if(contentId == 1){
                 if(switchTipsElm)return;
-                getStoreLocal(STOR_KEY_IS_CLOSE_TIPS,function (status) {
+                getStoreLocal(STOR_KEY_IS_CLOSE_TIPS,function (status:boolean) {
                     status = !status;
                     switchTipsElm = new Switch(document.getElementById('switchTips'), {size: 'middle',onChange:function (e) {
                         var checked = switchTipsElm.getChecked();
