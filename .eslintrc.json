@@ -1,6 +1,5 @@
 {
     "plugins": [
-        "react"
     ],
     "parserOptions": {
         "ecmaVersion": 5,
@@ -10,10 +9,21 @@
         }
     },
     "parser": "babel-eslint",
+    "extends": [
+//        "plugin:flowtype/recommended"
+    ],
+    "settings": {
+        "flowtype": {
+            //只检查 声明 flow语法的文件
+            "onlyFilesWithFlowAnnotation": true
+        }
+    },
     "env": {
         "es6": true,
-        "node": true,
-        "commonjs": true
+        "browser": true
+    },
+    "globals": {
+        "chrome":false
     },
     "rules": {
         "no-cond-assign": "error",
@@ -58,15 +68,6 @@
         "quotes": ["warn", "single"],
         // "indent": ["error", 4],
         "no-lonely-if": "error",
-        "no-self-assign": "error",
-        "react/no-array-index-key": "warn",
-        "react/no-deprecated": "error",
-        "react/no-find-dom-node": "error",
-        "react/no-is-mounted": "error",
-        "react/no-multi-comp": "warn",
-        "react/no-string-refs": "warn",
-        "react/no-unused-prop-types": "error",
-        "react/prefer-es6-class": "off",
-        "react/prop-types": "off"
+        "no-self-assign": "error"
     }
 }

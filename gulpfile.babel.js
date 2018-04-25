@@ -4,18 +4,20 @@ const $ = gulpLoadPlugins();
 import del from 'del';
 
 //预编译js文件，将es6变成es2015
-gulp.task('pre-compile', ()=>{
-    return gulp.src(['js/bg/*.js','js/cnt/*.js','js/component/*.js'])
+/*gulp.task('pre-compile', ()=>{
+    return gulp.src(['js/bg/!*.js','js/cnt/!*.js'])
         .pipe($.sourcemaps.init())
         .pipe($.plumber())
         .pipe($.babel())    //靠这个插件编译
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('dist/temp'));
-});
+});*/
 //编译cnt文件夹下的js文件
-gulp.task('build:cnt',['pre-compile'],()=>{
-    return gulp.src(['./dist/temp/preprocess.js','./dist/temp/*-cnt.js'])
+gulp.task('build:cnt',()=>{
+    return gulp.src(['js/cnt/preprocess.js','js/cnt/*-cnt.js'])
         .pipe($.sourcemaps.init())
+        .pipe($.plumber())
+        .pipe($.babel())
         .pipe($.concat('content.js'))
         .pipe($.rename('content.min.js'))
         .pipe($.uglify())
@@ -23,9 +25,11 @@ gulp.task('build:cnt',['pre-compile'],()=>{
         .pipe(gulp.dest('./build/js'));
 });
 //编译bg文件夹下的js文件
-gulp.task('build:bg',['pre-compile'],()=>{
-    return gulp.src(['./dist/temp/*-bg.js','./dist/temp/background.js'])
+gulp.task('build:bg',()=>{
+    return gulp.src(['js/bg/*-bg.js','js/bg/background.js'])
         .pipe($.sourcemaps.init())
+        .pipe($.plumber())
+        .pipe($.babel())
         .pipe($.concat('bg.js'))
         .pipe($.rename('bg.min.js'))
         .pipe($.uglify())
@@ -33,9 +37,11 @@ gulp.task('build:bg',['pre-compile'],()=>{
         .pipe(gulp.dest('./build/js'));
 });
 //编译component文件夹下的js文件
-gulp.task('build:comp',['pre-compile'],()=>{
-    return gulp.src(['./dist/temp/*-comp.js','js/popup.js'])
+gulp.task('build:comp',()=>{
+    return gulp.src(['js/component/*-comp.js','js/popup.js'])
         .pipe($.sourcemaps.init())
+        .pipe($.plumber())
+        .pipe($.babel())
         .pipe($.concat('popup.js'))
         .pipe($.rename('popup.min.js'))
         .pipe($.uglify())
@@ -45,9 +51,9 @@ gulp.task('build:comp',['pre-compile'],()=>{
 gulp.task('typecheck', function() {
     return gulp.src('./js/component/*.js')
         .pipe($.flowtype({
-            all: false,
+            all: true,
             weak: false,
-            declarations: './.flowconfig',
+            // declarations: '.flowconfig',
             killFlow: false,
             beep: true,
             abort: false
