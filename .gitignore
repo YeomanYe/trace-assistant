@@ -8,3 +8,8 @@ package-lock.json
 
 build/*
 !build/manifest.json
+.flowconfig
+.idea/codeStyles/
+.idea/jsLibraryMappings.xml
+run_flow.js
+yarn.lock

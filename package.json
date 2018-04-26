@@ -55,8 +55,5 @@
     "presets": [
       "es2015"
     ]
-  },
-  "dependencies": {
-    "gulp-flowtype": "^1.0.0"
   }
 }

@@ -3,15 +3,6 @@ import gulpLoadPlugins from 'gulp-load-plugins'; //自动加载插件 省去一�
 const $ = gulpLoadPlugins();
 import del from 'del';
 
-//预编译js文件，将es6变成es2015
-/*gulp.task('pre-compile', ()=>{
-    return gulp.src(['js/bg/!*.js','js/cnt/!*.js'])
-        .pipe($.sourcemaps.init())
-        .pipe($.plumber())
-        .pipe($.babel())    //靠这个插件编译
-        .pipe($.sourcemaps.write('.'))
-        .pipe(gulp.dest('dist/temp'));
-});*/
 //编译cnt文件夹下的js文件
 gulp.task('build:cnt',()=>{
     return gulp.src(['js/cnt/preprocess.js','js/cnt/*-cnt.js'])
@@ -47,18 +38,6 @@ gulp.task('build:comp',()=>{
         .pipe($.uglify())
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js'));
-});
-gulp.task('typecheck', function() {
-    return gulp.src('./js/component/*.js')
-        .pipe($.flowtype({
-            all: true,
-            weak: false,
-            // declarations: '.flowconfig',
-            killFlow: false,
-            beep: true,
-            abort: false
-        }))
-        .pipe(gulp.dest('./dist/typecheck'));
 });
 //less编译
 gulp.task('less' , ()=>{
