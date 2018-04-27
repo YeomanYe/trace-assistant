@@ -5,6 +5,7 @@ _createQueryObj.createBukaQuery = function() {
     var baseObj = getBaseStoreObj(SITE_BUKA);
     var ajaxCall = function(text) {
         var $html = $(text);
+        var baseChapter = baseObj.baseChapter;
         var $as = $html.find('#episodes .epsbox-eplink');
         var newA = $as.get($as.length - 1) , curA = $as.get(0);
         var tmpArr1,tmpArr2;
@@ -20,7 +21,7 @@ _createQueryObj.createBukaQuery = function() {
         newUrl = newA.href;
 
         var resObj = {
-            newUrl: newUrl,
+            newUrl: replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');,
             newChapter: newChapter
         };
         return resObj;

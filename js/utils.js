@@ -184,7 +184,9 @@ function queryUpdate(baseObj, callback, wayFlag) {
     };
     var afterStoreCall = callback._afterStore ? callback._afterStore : emptyFun; //存储成功之后的回调函数
     var isUpdate = false;
+    var varCnt = 0;
     return function (favs, allFavs, updateNum) {
+        varCnt = favs.length;
         var sucCall = function (data) {
             try {
                 var resObj = callback(data);
@@ -210,22 +212,27 @@ function queryUpdate(baseObj, callback, wayFlag) {
                     storLocal.set({
                         updateNum: updateNum,
                         allFavs: allFavs
-                    }, afterStoreCall);
+                    },afterStoreCall);
                 }
             } catch (e) {
                 log(e);
             }
-
+            /*if(--varCnt === 0){
+              afterStoreCall();
+              if(afterStoreCall === emptyFun){
+                setBadge(updateNum);
+              }
+            }*/
         };
         for (var i = 0, len = favs.length; i < len; i++) {
             var col = favs[i];
             var indexUrl = col.indexUrl;
-            var retText = getIndexContent(formatHref(indexUrl, baseIndex), wayFlag);
+            var retText = getIndexContent(formatHref(indexUrl, baseIndex), wayFlag,sucCall);
             sucCall(retText);
         }
         if (!isUpdate) afterStoreCall();
         //更新查询完毕，替换掉正在查询标志“....”  改为更新的数量
-        if (afterStoreCall == emptyFun) {
+        if (afterStoreCall === emptyFun) {
             setBadge(updateNum);
         }
     }
@@ -413,7 +420,7 @@ function htmlDecode(url, originCode) {
 function htmlDecodeByFrame(url,sucCall) {
     var $iframe = $('#indexInfoFrame'),frElm;
     if($iframe.length === 0){
-        $iframe = $('<iframe id="indexInfoFrame" hidden/>');
+        $iframe = $('<iframe id="indexInfoFrame" style="display:none;" hidden></iframe>');
     }
     $iframe.attr('src',url);
     frElm = $iframe.get(0);

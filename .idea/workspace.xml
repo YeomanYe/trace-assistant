@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gulpfile.babel.js" beforeDir="false" afterPath="$PROJECT_DIR$/gulpfile.babel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/utils.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,73 +18,119 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="gulpfile.babel.js" pinned="true" current-in-tab="true">
+      <file leaf-file-name="gulpfile.babel.js" pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="252">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".babelrc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.babelrc">
+      <file leaf-file-name="utils.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav-panel-comp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-137">
+              <caret line="454" column="23" lean-forward="true" selection-start-line="454" selection-start-column="23" selection-end-line="454" selection-end-column="23" />
               <folding>
-                <marker date="1524666590247" expanded="true" signature="275:418" ph="..." />
+                <element signature="e#130#325#0" />
+                <element signature="e#180#323#0" />
+                <element signature="e#232#316#0" />
+                <element signature="n#!!doc;n#getBaseUrl#0" />
+                <element signature="n#!!block;n#getBaseUrl#0" />
+                <element signature="e#609#672#0" />
+                <element signature="n#!!doc;n#arrInStr#0" />
+                <element signature="n#!!block;n#arrInStr#0" />
+                <element signature="e#873#1360#0" />
+                <element signature="e#960#1287#0" />
+                <element signature="e#1088#1245#0" />
+                <element signature="e#1151#1231#0" />
+                <element signature="e#1321#1354#0" />
+                <element signature="n#!!doc;n#arrEqStr#0" />
+                <element signature="n#!!block;n#arrEqStr#0" />
+                <element signature="e#1546#2014#0" />
+                <element signature="e#1633#1951#0" />
+                <element signature="e#1761#1909#0" />
+                <element signature="e#1815#1895#0" />
+                <element signature="e#1975#2008#0" />
+                <element signature="n#!!doc;n#getStoreLocal#0" />
+                <element signature="n#!!block;n#getStoreLocal#0" />
+                <element signature="e#2150#2467#0" />
+                <element signature="e#2211#2258#0" />
+                <element signature="e#2264#2461#0" />
+                <element signature="e#2354#2413#0" />
+                <element signature="n#!!doc;n#getFavs#0" />
+                <element signature="n#!!block;n#getFavs#0" />
+                <element signature="e#2696#3141#0" />
+                <element signature="e#2942#3034#0" />
+                <element signature="e#3040#3091#0" />
+                <element signature="n#!!doc;n#addArr#0" />
+                <element signature="n#!!block;n#addArr#0" />
+                <element signature="e#3252#3287#0" />
+                <element signature="n#!!doc;n#decUpdateNum#0" />
+                <element signature="n#!!block;n#decUpdateNum#0" />
+                <element signature="e#3385#3707#0" />
+                <element signature="e#3482#3699#0" />
+                <element signature="e#3535#3587#0" />
+                <element signature="e#3601#3687#0" />
+                <element signature="n#!!doc;n#updateColRecord#0" />
+                <element signature="n#!!block;n#updateColRecord#0" />
+                <element signature="e#3830#4637#0" />
+                <element signature="e#3881#4541#0" />
+                <element signature="e#4481#4529#0" />
+                <element signature="n#!!doc;n#queryUpdate#0" />
+                <element signature="e#4866#4873#0" />
+                <element signature="n#!!doc;n#replaceOrigin#0" />
+                <element signature="n#!!block;n#replaceOrigin#0" />
+                <element signature="n#!!doc;n#createNotify#0" />
+                <element signature="n#!!block;n#createNotify#0" />
+                <element signature="n#!!doc;n#showTips#0" />
+                <element signature="n#!!block;n#showTips#0" />
+                <element signature="n#!!doc;n#handleResData#0" />
+                <element signature="n#!!block;n#handleResData#0" />
+                <element signature="n#!!doc;n#pipeExport#0" />
+                <element signature="n#!!block;n#pipeExport#0" />
+                <element signature="n#!!doc;n#assignColItem#0" />
+                <element signature="n#!!block;n#assignColItem#0" />
+                <element signature="n#!!doc;n#htmlDecode#0" />
+                <element signature="n#!!block;n#htmlDecode#0" />
+                <element signature="n#!!doc;n#htmlDecodeByFrame#0" />
+                <element signature="n#!!block;n#htmlDecodeByFrame#0" />
+                <element signature="n#!!doc;n#getIndexContent#0" />
+                <element signature="n#!!block;n#getIndexContent#0" />
+                <element signature="n#!!doc;n#formatHref#0" />
+                <element signature="n#!!block;n#formatHref#0" />
+                <element signature="e#14070#14399#0" />
+                <element signature="n#!!doc;n#sendToAllTabs#0" />
+                <element signature="n#!!block;n#sendToAllTabs#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fav-item-comp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/component/fav-item-comp.js">
+      <file leaf-file-name="dmzj-bg.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="43">
-              <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-              <folding>
-                <marker date="1524743831049" expanded="true" signature="129:1124" ph="..." />
-                <marker date="1524743831049" expanded="true" signature="192:320" ph="..." />
-                <marker date="1524743831049" expanded="true" signature="349:768" ph="..." />
-                <marker date="1524743831049" expanded="true" signature="796:1114" ph="..." />
-              </folding>
+            <state relative-caret-position="3472">
+              <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="kuku-bg.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/bg/kuku-bg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="448">
+              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".eslintrc.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.eslintrc.json">
+      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build/manifest.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-853">
-              <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+            <state relative-caret-position="756">
+              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -102,8 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>set</find>
-      <find>bgStyle</find>
       <find>li</find>
       <find>responseT</find>
       <find>log</find>
@@ -132,6 +174,8 @@
       <find>pre-compile</find>
       <find>unused</find>
       <find>unused-ar</find>
+      <find>HTML</find>
+      <find>htmlDecodeBy</find>
     </findStrings>
     <replaceStrings>
       <replace>favList</replace>
@@ -154,7 +198,6 @@
         <option value="$PROJECT_DIR$/component/nav-panel.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/js/bg/bilibili-bg.js" />
-        <option value="$PROJECT_DIR$/js/bg/dmzj-bg.js" />
         <option value="$PROJECT_DIR$/gulp.babel.js" />
         <option value="$PROJECT_DIR$/component/setting-panel.js" />
         <option value="$PROJECT_DIR$/dist/js/preprocess.js" />
@@ -164,7 +207,6 @@
         <option value="$PROJECT_DIR$/dist/js/kuaikan-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/qidian-bg.js" />
         <option value="$PROJECT_DIR$/js/cnt/cartoonmad-cnt.js" />
-        <option value="$PROJECT_DIR$/build/manifest.json" />
         <option value="$PROJECT_DIR$/dist/manifest.json" />
         <option value="$PROJECT_DIR$/js/popup.js" />
         <option value="$PROJECT_DIR$/js/cnt/qq-cnt.js" />
@@ -174,9 +216,7 @@
         <option value="$PROJECT_DIR$/js/bg/background.js" />
         <option value="$PROJECT_DIR$/css/popup.css" />
         <option value="$PROJECT_DIR$/manifest.json" />
-        <option value="$PROJECT_DIR$/js/bg/kuku-bg.js" />
         <option value="$PROJECT_DIR$/js/cnt/preprocess.js" />
-        <option value="$PROJECT_DIR$/js/utils.js" />
         <option value="$PROJECT_DIR$/js/cnt/kuku-cnt.js" />
         <option value="$PROJECT_DIR$/dist/styles/content.css" />
         <option value="$PROJECT_DIR$/dist/styles/popup.css" />
@@ -195,9 +235,13 @@
         <option value="$PROJECT_DIR$/.eslintrc.json" />
         <option value="$PROJECT_DIR$/js/component/nav-panel-comp.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/js/component/fav-item-comp.js" />
         <option value="$PROJECT_DIR$/gulpfile.babel.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/build/manifest.json" />
+        <option value="$PROJECT_DIR$/js/bg/dmzj-bg.js" />
+        <option value="$PROJECT_DIR$/js/bg/kuku-bg.js" />
+        <option value="$PROJECT_DIR$/js/utils.js" />
       </list>
     </option>
   </component>
@@ -270,13 +314,18 @@
             <path>
               <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
               <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
               <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="component" type="462c0819:PsiDirectoryNode" />
+              <item name="bg" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -430,7 +479,8 @@
       <workItem from="1524709190985" duration="14000" />
       <workItem from="1524709256185" duration="22000" />
       <workItem from="1524709300374" duration="574000" />
-      <workItem from="1524743080719" duration="807000" />
+      <workItem from="1524743080719" duration="6695000" />
+      <workItem from="1524788758764" duration="75000" />
     </task>
     <task id="LOCAL-00001" summary="fix bug">
       <created>1522150762362</created>
@@ -537,11 +587,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524657040338</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="update gulpfile">
+      <created>1524743979229</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1524743979229</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276280000" />
+    <option name="totallyTimeSpent" value="282243000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -558,24 +615,24 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50317127" side_tool="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49788582" weight="0.32891566" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32771084" />
+      <window_info id="npm" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32671756" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3268945" />
-      <window_info anchor="bottom" id="Flow" order="8" sideWeight="0.49682876" visible="true" weight="0.27633587" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21042216" />
+      <window_info anchor="bottom" id="Flow" order="8" sideWeight="0.49682876" weight="0.27633587" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48526078" visible="true" weight="0.21634294" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Tail" order="7" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" auto_hide="true" x="1041" y="218" width="319" height="226" id="Structure" order="3" sideWeight="0.5147392" side_tool="true" weight="0.2103148" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="Gulp" order="2" side_tool="true" />
+      <window_info id="Gulp" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32824427" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,18 +673,18 @@
     <MESSAGE value="modify css to less" />
     <MESSAGE value="update pop.less" />
     <MESSAGE value="update popup.less" />
-    <MESSAGE value="update gulpfile" />
     <MESSAGE value="add img lose handler" />
     <MESSAGE value="add buka support" />
     <MESSAGE value="add lose.png" />
     <MESSAGE value="fix buka bug" />
     <MESSAGE value="add flow-type" />
     <MESSAGE value="update eslint" />
-    <option name="LAST_COMMIT_MESSAGE" value="update eslint" />
+    <MESSAGE value="update gulpfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="update gulpfile" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
@@ -640,15 +697,6 @@
     <select />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1524666590247" expanded="true" signature="275:418" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.eslintrc.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1064">
@@ -667,12 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding>
-            <marker date="1524743831049" expanded="true" signature="129:1124" ph="..." />
-            <marker date="1524743831049" expanded="true" signature="192:320" ph="..." />
-            <marker date="1524743831049" expanded="true" signature="349:768" ph="..." />
-            <marker date="1524743831049" expanded="true" signature="796:1114" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -694,13 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -748,13 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5250">
           <caret line="150" column="10" selection-start-line="150" selection-start-column="10" selection-end-line="150" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/kuku-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
         </state>
       </provider>
     </entry>
@@ -837,13 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/bilibili-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/cnt/buka-cnt.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
@@ -898,21 +919,8 @@
     <entry file="file://$PROJECT_DIR$/dist/typecheck/setting-panel-comp.js" />
     <entry file="file://$PROJECT_DIR$/dist/typecheck/nav-panel-comp.js" />
     <entry file="file://$PROJECT_DIR$/dist/typecheck/fav-item-comp.js" />
-    <entry file="file://$PROJECT_DIR$/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1524666590247" expanded="true" signature="275:418" ph="..." />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -925,40 +933,141 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
           <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-          <folding>
-            <marker date="1524743831049" expanded="true" signature="129:1124" ph="..." />
-            <marker date="1524743831049" expanded="true" signature="192:320" ph="..." />
-            <marker date="1524743831049" expanded="true" signature="349:768" ph="..." />
-            <marker date="1524743831049" expanded="true" signature="796:1114" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-853">
-          <caret line="20" column="11" lean-forward="true" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.eslintrc.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.babelrc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        <state relative-caret-position="168">
+          <caret line="6" column="4" selection-start-line="4" selection-start-column="2" selection-end-line="6" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.eslintrc.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/bilibili-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="23" column="43" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="252">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3472">
+          <caret line="124" column="34" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/kuku-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-137">
+          <caret line="454" column="23" lean-forward="true" selection-start-line="454" selection-start-column="23" selection-end-line="454" selection-end-column="23" />
+          <folding>
+            <element signature="e#130#325#0" />
+            <element signature="e#180#323#0" />
+            <element signature="e#232#316#0" />
+            <element signature="n#!!doc;n#getBaseUrl#0" />
+            <element signature="n#!!block;n#getBaseUrl#0" />
+            <element signature="e#609#672#0" />
+            <element signature="n#!!doc;n#arrInStr#0" />
+            <element signature="n#!!block;n#arrInStr#0" />
+            <element signature="e#873#1360#0" />
+            <element signature="e#960#1287#0" />
+            <element signature="e#1088#1245#0" />
+            <element signature="e#1151#1231#0" />
+            <element signature="e#1321#1354#0" />
+            <element signature="n#!!doc;n#arrEqStr#0" />
+            <element signature="n#!!block;n#arrEqStr#0" />
+            <element signature="e#1546#2014#0" />
+            <element signature="e#1633#1951#0" />
+            <element signature="e#1761#1909#0" />
+            <element signature="e#1815#1895#0" />
+            <element signature="e#1975#2008#0" />
+            <element signature="n#!!doc;n#getStoreLocal#0" />
+            <element signature="n#!!block;n#getStoreLocal#0" />
+            <element signature="e#2150#2467#0" />
+            <element signature="e#2211#2258#0" />
+            <element signature="e#2264#2461#0" />
+            <element signature="e#2354#2413#0" />
+            <element signature="n#!!doc;n#getFavs#0" />
+            <element signature="n#!!block;n#getFavs#0" />
+            <element signature="e#2696#3141#0" />
+            <element signature="e#2942#3034#0" />
+            <element signature="e#3040#3091#0" />
+            <element signature="n#!!doc;n#addArr#0" />
+            <element signature="n#!!block;n#addArr#0" />
+            <element signature="e#3252#3287#0" />
+            <element signature="n#!!doc;n#decUpdateNum#0" />
+            <element signature="n#!!block;n#decUpdateNum#0" />
+            <element signature="e#3385#3707#0" />
+            <element signature="e#3482#3699#0" />
+            <element signature="e#3535#3587#0" />
+            <element signature="e#3601#3687#0" />
+            <element signature="n#!!doc;n#updateColRecord#0" />
+            <element signature="n#!!block;n#updateColRecord#0" />
+            <element signature="e#3830#4637#0" />
+            <element signature="e#3881#4541#0" />
+            <element signature="e#4481#4529#0" />
+            <element signature="n#!!doc;n#queryUpdate#0" />
+            <element signature="e#4866#4873#0" />
+            <element signature="n#!!doc;n#replaceOrigin#0" />
+            <element signature="n#!!block;n#replaceOrigin#0" />
+            <element signature="n#!!doc;n#createNotify#0" />
+            <element signature="n#!!block;n#createNotify#0" />
+            <element signature="n#!!doc;n#showTips#0" />
+            <element signature="n#!!block;n#showTips#0" />
+            <element signature="n#!!doc;n#handleResData#0" />
+            <element signature="n#!!block;n#handleResData#0" />
+            <element signature="n#!!doc;n#pipeExport#0" />
+            <element signature="n#!!block;n#pipeExport#0" />
+            <element signature="n#!!doc;n#assignColItem#0" />
+            <element signature="n#!!block;n#assignColItem#0" />
+            <element signature="n#!!doc;n#htmlDecode#0" />
+            <element signature="n#!!block;n#htmlDecode#0" />
+            <element signature="n#!!doc;n#htmlDecodeByFrame#0" />
+            <element signature="n#!!block;n#htmlDecodeByFrame#0" />
+            <element signature="n#!!doc;n#getIndexContent#0" />
+            <element signature="n#!!block;n#getIndexContent#0" />
+            <element signature="n#!!doc;n#formatHref#0" />
+            <element signature="n#!!block;n#formatHref#0" />
+            <element signature="e#14070#14399#0" />
+            <element signature="n#!!doc;n#sendToAllTabs#0" />
+            <element signature="n#!!block;n#sendToAllTabs#0" />
+          </folding>
         </state>
       </provider>
     </entry>
