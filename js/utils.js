@@ -177,65 +177,58 @@ function updateColRecord(getCurIndex,async) {
  * 查询是否有更新的通用函数
  */
 function queryUpdate(baseObj, callback, wayFlag) {
-    var baseIndex = baseObj.baseIndex;
-    var baseImage = baseObj.baseImg;
-    var baseChapter = baseObj.baseChapter;
-    var emptyFun = function () {
-    };
-    var afterStoreCall = callback._afterStore ? callback._afterStore : emptyFun; //存储成功之后的回调函数
-    var isUpdate = false;
-    var varCnt = 0;
-    return function (favs, allFavs, updateNum) {
-        varCnt = favs.length;
-        var sucCall = function (data) {
-            try {
-                var resObj = callback(data);
-                var newUrl = resObj.newUrl,
-                    newChapter = resObj.newChapter;
-                if (col.newChapter !== newChapter) {
-                    col.newChapter = newChapter;
-                    col.newUrl = newUrl;
-                    //生成提示
-                    getStoreLocal(STOR_KEY_IS_CLOSE_TIPS, (function (baseImage, col, newChapter, baseChatper, newUrl) {
-                        return function (isCloseTips) {
-                            if (!isCloseTips)
-                                createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
-                        }
-                    })(baseImage, col, newChapter, baseChapter, newUrl));
-
-                    isUpdate = true;
-                    if (!col.isUpdate) {
-                        col.isUpdate = true;
-                        ++updateNum;
-                    }
-
-                    storLocal.set({
-                        updateNum: updateNum,
-                        allFavs: allFavs
-                    },afterStoreCall);
-                }
-            } catch (e) {
-                log(e);
+  var baseIndex = baseObj.baseIndex;
+  var baseImage = baseObj.baseImg;
+  var baseChapter = baseObj.baseChapter;
+  var afterStoreCall = callback._afterStore;
+  var singleFavLen = 0;
+  return function (favs, allFavs, updateNum) {
+    singleFavLen = favs.length;
+    var sucCall = function (data) {
+      var col = favs[singleFavLen];
+      try {
+        var resObj = callback(data);
+        var newUrl = resObj.newUrl,
+          newChapter = resObj.newChapter;
+        if (col.newChapter !== newChapter) {
+          col.newChapter = newChapter;
+          col.newUrl = newUrl;
+          //生成提示
+          getStoreLocal(STOR_KEY_IS_CLOSE_TIPS, (function (baseImage, col, newChapter, baseChatper, newUrl) {
+            return function (isCloseTips) {
+              if (!isCloseTips)
+                createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
             }
-            /*if(--varCnt === 0){
-              afterStoreCall();
-              if(afterStoreCall === emptyFun){
-                setBadge(updateNum);
-              }
-            }*/
-        };
-        for (var i = 0, len = favs.length; i < len; i++) {
-            var col = favs[i];
-            var indexUrl = col.indexUrl;
-            var retText = getIndexContent(formatHref(indexUrl, baseIndex), wayFlag,sucCall);
-            sucCall(retText);
+          })(baseImage, col, newChapter, baseChapter, newUrl));
+
+          if (!col.isUpdate) {
+              col.isUpdate = true;
+              ++updateNum;
+          }
+
+          storLocal.set({
+            updateNum: updateNum,
+            allFavs: allFavs
+          });
         }
-        if (!isUpdate) afterStoreCall();
-        //更新查询完毕，替换掉正在查询标志“....”  改为更新的数量
-        if (afterStoreCall === emptyFun) {
-            setBadge(updateNum);
+      } catch (e) {
+        log(e);
+      }
+      nextHandler();
+    };
+    var nextHandler = function(){
+      if(--singleFavLen < 0){
+        if(afterStoreCall instanceof Function){
+          afterStoreCall();
+        }else{
+          setBadge(updateNum);
         }
-    }
+      }else{
+        getIndexContent(formatHref(favs[singleFavLen].indexUrl, baseIndex), wayFlag,sucCall);
+      }
+    };
+    nextHandler();
+  }
 }
 
 /**
@@ -396,20 +389,20 @@ function assignColItem(obj, colItem) {
  * @param originCode
  * @returns {string}
  */
-function htmlDecode(url, originCode) {
+function htmlDecode(url, originCode,completeCall) {
     var data = {
         method: 'get',
         url: url,
         distCode: 'utf-8'
     };
     typeof originCode === 'string' ? data.originCode = originCode : Object.assign(data, originCode);
-    var text = $.ajax(SERVICE_UTIL + '/decode', {
-        async: false,
+    $.ajax(SERVICE_UTIL + '/decode', {
+        async: true,
         timeout: 1500,
         method: 'post',
+        complete:completeCall,
         data: data
-    }).responseText;
-    return text;
+    });
 }
 
 /**
@@ -424,8 +417,8 @@ function htmlDecodeByFrame(url,sucCall) {
     }
     $iframe.attr('src',url);
     frElm = $iframe.get(0);
-    frElm.onload = function () {
-        var textHtml = frElm.contentWindow.document.body.innerHTML;
+    frElm.onload = function (e) {
+        var textHtml = frElm.contentWindow.document.body;
         log('iframe',textHtml);
         sucCall(textHtml);
     };
@@ -435,14 +428,15 @@ function htmlDecodeByFrame(url,sucCall) {
 /**
  * 获取index页面的内容
  */
-function getIndexContent(indexUrl, wayFlag) {
-    var retText;
+function getIndexContent(indexUrl, wayFlag,sucCall) {
     if (typeof wayFlag !== 'object') {
-        retText = $.ajax(indexUrl, {async: false}).responseText;
+      $.ajax(indexUrl, {
+        async: true,
+        success: sucCall
+      });
     } else {
-        retText = htmlDecode(indexUrl, wayFlag.originCode);
+       htmlDecode(indexUrl, wayFlag.originCode,sucCall);
     }
-    return retText;
 }
 
 /**

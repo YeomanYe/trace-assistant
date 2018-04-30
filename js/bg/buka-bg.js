@@ -21,7 +21,7 @@ _createQueryObj.createBukaQuery = function() {
         newUrl = newA.href;
 
         var resObj = {
-            newUrl: replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');,
+            newUrl: replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, ''),
             newChapter: newChapter
         };
         return resObj;
