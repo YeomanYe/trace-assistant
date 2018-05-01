@@ -415,14 +415,15 @@ function htmlDecodeByFrame(url,sucCall) {
 /**
  * 获取index页面的内容
  */
-function getIndexContent(indexUrl, wayFlag,sucCall) {
+function getIndexContent(indexUrl, wayFlag,completeCall) {
     if (typeof wayFlag !== 'object') {
       $.ajax(indexUrl, {
         async: true,
-        success: sucCall
+        timeout:1500,
+        complete: completeCall
       });
     } else {
-       htmlDecode(indexUrl, wayFlag.originCode,sucCall);
+       htmlDecode(indexUrl, wayFlag.originCode,completeCall);
     }
 }
 

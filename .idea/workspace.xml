@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="update queryUpdate">
+    <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/bg/buka-bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/bg/buka-bg.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/FileSaver.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/FileSaver.min.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,8 +21,8 @@
       <file leaf-file-name="gulpfile.babel.js" pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="784">
+              <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -30,51 +30,22 @@
       <file leaf-file-name="utils.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-856">
-              <caret line="183" column="44" lean-forward="true" selection-start-line="183" selection-start-column="44" selection-end-line="183" selection-end-column="44" />
+            <state relative-caret-position="-4956">
+              <caret line="6" column="43" lean-forward="true" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
               <folding>
-                <element signature="n#!!doc;n#getBaseUrl#0" />
-                <element signature="n#!!block;n#getBaseUrl#0" />
-                <element signature="e#609#672#0" />
                 <element signature="n#!!doc;n#arrInStr#0" />
                 <element signature="n#!!block;n#arrInStr#0" />
-                <element signature="e#873#1360#0" />
-                <element signature="e#960#1287#0" />
-                <element signature="e#1088#1245#0" />
-                <element signature="e#1151#1231#0" />
-                <element signature="e#1321#1354#0" />
                 <element signature="n#!!doc;n#arrEqStr#0" />
                 <element signature="n#!!block;n#arrEqStr#0" />
-                <element signature="e#1546#2014#0" />
-                <element signature="e#1633#1951#0" />
-                <element signature="e#1761#1909#0" />
-                <element signature="e#1815#1895#0" />
-                <element signature="e#1975#2008#0" />
                 <element signature="n#!!doc;n#getStoreLocal#0" />
                 <element signature="n#!!block;n#getStoreLocal#0" />
-                <element signature="e#2150#2467#0" />
-                <element signature="e#2211#2258#0" />
-                <element signature="e#2264#2461#0" />
-                <element signature="e#2354#2413#0" />
                 <element signature="n#!!doc;n#getFavs#0" />
-                <element signature="n#!!block;n#getFavs#0" />
-                <element signature="e#2696#3141#0" />
-                <element signature="e#2942#3034#0" />
-                <element signature="e#3040#3091#0" />
                 <element signature="n#!!doc;n#addArr#0" />
                 <element signature="n#!!block;n#addArr#0" />
-                <element signature="e#3252#3287#0" />
                 <element signature="n#!!doc;n#decUpdateNum#0" />
                 <element signature="n#!!block;n#decUpdateNum#0" />
-                <element signature="e#3385#3707#0" />
-                <element signature="e#3482#3699#0" />
-                <element signature="e#3535#3587#0" />
-                <element signature="e#3601#3687#0" />
                 <element signature="n#!!doc;n#updateColRecord#0" />
                 <element signature="n#!!block;n#updateColRecord#0" />
-                <element signature="e#3830#4637#0" />
-                <element signature="e#3881#4541#0" />
-                <element signature="e#4481#4529#0" />
                 <element signature="n#!!doc;n#replaceOrigin#0" />
                 <element signature="n#!!block;n#replaceOrigin#0" />
                 <element signature="n#!!doc;n#createNotify#0" />
@@ -82,7 +53,6 @@
                 <element signature="n#!!doc;n#showTips#0" />
                 <element signature="n#!!block;n#showTips#0" />
                 <element signature="n#!!doc;n#handleResData#0" />
-                <element signature="n#!!block;n#handleResData#0" />
                 <element signature="n#!!doc;n#pipeExport#0" />
                 <element signature="n#!!block;n#pipeExport#0" />
                 <element signature="n#!!doc;n#assignColItem#0" />
@@ -99,20 +69,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="constant.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/constant.js">
+      <file leaf-file-name="dmzj-bg.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="17" column="47" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="47" />
+            <state relative-caret-position="2856">
+              <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dmzj-bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
+      <file leaf-file-name="dmzj-cnt.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cnt/dmzj-cnt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3668">
-              <caret line="131" column="40" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
+            <state relative-caret-position="2100">
+              <caret line="141" column="22" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -120,44 +90,8 @@
       <file leaf-file-name="background.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/bg/background.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gufengmh-bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/gufengmh-bg.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="buka-bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/buka-bg.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="980">
-              <caret line="35" column="2" selection-start-line="35" selection-start-column="2" selection-end-line="35" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="kuku-bg.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/bg/kuku-bg.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build/manifest.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+            <state relative-caret-position="896">
+              <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -173,7 +107,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>responseT</find>
       <find>log</find>
       <find>log`</find>
       <find>deco</find>
@@ -203,6 +136,7 @@
       <find>HTML</find>
       <find>htmlDecodeBy</find>
       <find>document</find>
+      <find>send</find>
     </findStrings>
     <replaceStrings>
       <replace>favList</replace>
@@ -218,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/vue/toggle-panel.js" />
         <option value="$PROJECT_DIR$/component/toggle-panel.js" />
         <option value="$PROJECT_DIR$/component/fav-item.js" />
         <option value="$PROJECT_DIR$/component/toggle-fav-panel.js" />
@@ -240,18 +173,13 @@
         <option value="$PROJECT_DIR$/js/bg/qq-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/gufengmh-bg.js" />
         <option value="$PROJECT_DIR$/js/cnt/gufengmh-cnt.js" />
-        <option value="$PROJECT_DIR$/js/bg/background.js" />
         <option value="$PROJECT_DIR$/css/popup.css" />
-        <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/js/cnt/preprocess.js" />
-        <option value="$PROJECT_DIR$/js/cnt/kuku-cnt.js" />
         <option value="$PROJECT_DIR$/dist/styles/content.css" />
         <option value="$PROJECT_DIR$/dist/styles/popup.css" />
         <option value="$PROJECT_DIR$/popup.html" />
         <option value="$PROJECT_DIR$/js/component/toggle-fav-panel-comp.js" />
         <option value="$PROJECT_DIR$/css/popup.less" />
-        <option value="$PROJECT_DIR$/lib/FileSaver.min.js" />
-        <option value="$PROJECT_DIR$/js/constant.js" />
         <option value="$PROJECT_DIR$/js/baseStoreObj.js" />
         <option value="$PROJECT_DIR$/css/content.less" />
         <option value="$PROJECT_DIR$/js/cnt/buka-cnt.js" />
@@ -268,6 +196,12 @@
         <option value="$PROJECT_DIR$/js/bg/dmzj-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/kuku-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/buka-bg.js" />
+        <option value="$PROJECT_DIR$/lib/FileSaver.min.js" />
+        <option value="$PROJECT_DIR$/js/bg/background.js" />
+        <option value="$PROJECT_DIR$/js/component/setting-panel-comp.js" />
+        <option value="$PROJECT_DIR$/js/constant.js" />
+        <option value="$PROJECT_DIR$/manifest.json" />
+        <option value="$PROJECT_DIR$/js/cnt/kuku-cnt.js" />
         <option value="$PROJECT_DIR$/js/utils.js" />
       </list>
     </option>
@@ -355,6 +289,23 @@
               <item name="js" type="462c0819:PsiDirectoryNode" />
               <item name="bg" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="cnt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -384,13 +335,14 @@
     <property name="standardjs.codestyle.accepted" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="G:\Workspace\Github\comic-assistant\js\bg" />
-      <recent name="G:\Workspace\Github\comic-assistant\js\cnt" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="G:\Workspace\Github\comic-assistant\js\cnt" />
       <recent name="G:\Workspace\Github\comic-assistant\js\bg" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Workspace\Github\comic-assistant\lib" />
+      <recent name="G:\Workspace\Github\comic-assistant\js\bg" />
+      <recent name="G:\Workspace\Github\comic-assistant\js\cnt" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -511,7 +463,8 @@
       <workItem from="1524835705752" duration="966000" />
       <workItem from="1524998659333" duration="1599000" />
       <workItem from="1525060286947" duration="4033000" />
-      <workItem from="1525066052872" duration="1563000" />
+      <workItem from="1525066052872" duration="9743000" />
+      <workItem from="1525148735412" duration="584000" />
     </task>
     <task id="LOCAL-00001" summary="fix bug">
       <created>1522150762362</created>
@@ -632,11 +585,25 @@
       <option name="project" value="LOCAL" />
       <updated>1524835945942</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update queryUpdate">
+      <created>1525067642875</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1525067642875</updated>
+    </task>
+    <task id="LOCAL-00019" summary="delete getBaseUrl">
+      <created>1525067743654</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1525067743654</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="290404000" />
+    <option name="totallyTimeSpent" value="299168000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -656,14 +623,14 @@
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49788582" weight="0.32891566" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3246951" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3268945" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3262195" />
       <window_info anchor="bottom" id="Flow" order="8" sideWeight="0.49682876" weight="0.27633587" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48526078" visible="true" weight="0.22937626" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48526078" visible="true" weight="0.23272972" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Tail" order="7" />
       <window_info anchor="right" auto_hide="true" x="1041" y="218" width="319" height="226" id="Structure" order="3" sideWeight="0.5147392" side_tool="true" weight="0.2103148" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39940387" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39939025" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -721,7 +688,8 @@
     <MESSAGE value="update gulpfile" />
     <MESSAGE value="fix buka-bg bug" />
     <MESSAGE value="update queryUpdate" />
-    <option name="LAST_COMMIT_MESSAGE" value="update queryUpdate" />
+    <MESSAGE value="delete getBaseUrl" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete getBaseUrl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -738,83 +706,6 @@
     <select />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3556">
-          <caret line="454" column="23" lean-forward="true" selection-start-line="454" selection-start-column="23" selection-end-line="454" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc;n#getBaseUrl#0" />
-            <element signature="n#!!block;n#getBaseUrl#0" />
-            <element signature="e#609#672#0" />
-            <element signature="n#!!doc;n#arrInStr#0" />
-            <element signature="n#!!block;n#arrInStr#0" />
-            <element signature="e#873#1360#0" />
-            <element signature="e#960#1287#0" />
-            <element signature="e#1088#1245#0" />
-            <element signature="e#1151#1231#0" />
-            <element signature="e#1321#1354#0" />
-            <element signature="n#!!doc;n#arrEqStr#0" />
-            <element signature="n#!!block;n#arrEqStr#0" />
-            <element signature="e#1546#2014#0" />
-            <element signature="e#1633#1951#0" />
-            <element signature="e#1761#1909#0" />
-            <element signature="e#1815#1895#0" />
-            <element signature="e#1975#2008#0" />
-            <element signature="n#!!doc;n#getStoreLocal#0" />
-            <element signature="n#!!block;n#getStoreLocal#0" />
-            <element signature="e#2150#2467#0" />
-            <element signature="e#2211#2258#0" />
-            <element signature="e#2264#2461#0" />
-            <element signature="e#2354#2413#0" />
-            <element signature="n#!!doc;n#getFavs#0" />
-            <element signature="n#!!block;n#getFavs#0" />
-            <element signature="e#2696#3141#0" />
-            <element signature="e#2942#3034#0" />
-            <element signature="e#3040#3091#0" />
-            <element signature="n#!!doc;n#addArr#0" />
-            <element signature="n#!!block;n#addArr#0" />
-            <element signature="e#3252#3287#0" />
-            <element signature="n#!!doc;n#decUpdateNum#0" />
-            <element signature="n#!!block;n#decUpdateNum#0" />
-            <element signature="e#3385#3707#0" />
-            <element signature="e#3482#3699#0" />
-            <element signature="e#3535#3587#0" />
-            <element signature="e#3601#3687#0" />
-            <element signature="n#!!doc;n#updateColRecord#0" />
-            <element signature="n#!!block;n#updateColRecord#0" />
-            <element signature="e#3830#4637#0" />
-            <element signature="e#3881#4541#0" />
-            <element signature="e#4481#4529#0" />
-            <element signature="n#!!doc;n#replaceOrigin#0" />
-            <element signature="n#!!block;n#replaceOrigin#0" />
-            <element signature="n#!!doc;n#createNotify#0" />
-            <element signature="n#!!block;n#createNotify#0" />
-            <element signature="n#!!doc;n#showTips#0" />
-            <element signature="n#!!block;n#showTips#0" />
-            <element signature="n#!!doc;n#handleResData#0" />
-            <element signature="n#!!block;n#handleResData#0" />
-            <element signature="n#!!doc;n#pipeExport#0" />
-            <element signature="n#!!block;n#pipeExport#0" />
-            <element signature="n#!!doc;n#assignColItem#0" />
-            <element signature="n#!!block;n#assignColItem#0" />
-            <element signature="n#!!doc;n#htmlDecode#0" />
-            <element signature="n#!!doc;n#htmlDecodeByFrame#0" />
-            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
-            <element signature="n#!!doc;n#formatHref#0" />
-            <element signature="n#!!block;n#formatHref#0" />
-            <element signature="n#!!doc;n#sendToAllTabs#0" />
-            <element signature="n#!!block;n#sendToAllTabs#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.eslintrc.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1064">
-          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -853,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/cnt/bilibili-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2660">
-          <caret line="76" selection-start-line="76" selection-end-line="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/jquery/dist/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309225">
@@ -868,20 +752,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/temp/preprocess.js" />
-    <entry file="file://$PROJECT_DIR$/js/cnt/dmzj-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1869">
-          <caret line="153" column="10" selection-start-line="153" selection-start-column="10" selection-end-line="153" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/temp/kuku-cnt.js" />
     <entry file="file://$PROJECT_DIR$/js/cnt/preprocess.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -906,38 +776,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/setting-panel-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="23" column="12" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/popup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/FileSaver.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-748">
-          <caret line="1" column="3100" selection-start-line="1" selection-start-column="3100" selection-end-line="1" selection-end-column="3100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/baseStoreObj.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="192" column="2" selection-start-line="192" selection-start-column="2" selection-end-line="192" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cnt/kuku-cnt.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3010">
-          <caret line="86" column="1" selection-start-line="86" selection-start-column="1" selection-end-line="86" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -959,20 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="65" column="86" selection-start-line="65" selection-start-column="86" selection-end-line="65" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/toggle-fav-panel-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2695">
-          <caret line="80" column="96" selection-start-line="80" selection-start-column="96" selection-end-line="80" selection-end-column="96" />
         </state>
       </provider>
     </entry>
@@ -1009,13 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/fav-item-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.babelrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1044,13 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
@@ -1058,10 +872,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/gufengmh-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/fav-item-comp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/baseStoreObj.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5376">
+          <caret line="192" column="2" selection-start-line="192" selection-start-column="2" selection-end-line="192" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/toggle-fav-panel-comp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2240">
+          <caret line="80" column="96" selection-start-line="80" selection-start-column="96" selection-end-line="80" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/FileSaver.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="188" selection-start-line="188" selection-end-line="188" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/constant.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/kuaikan-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/bg/kuku-bg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state relative-caret-position="336">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cnt/bilibili-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="76" selection-start-line="76" selection-end-line="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/setting-panel-comp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="16" selection-start-line="16" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cnt/kuku-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="784">
+          <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cnt/kuaikan-cnt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -1074,79 +986,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/bg/background.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        <state relative-caret-position="896">
+          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/bg/dmzj-bg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3668">
-          <caret line="131" column="40" selection-start-line="131" selection-start-column="40" selection-end-line="131" selection-end-column="40" />
+        <state relative-caret-position="2856">
+          <caret line="102" column="19" selection-start-line="102" selection-start-column="19" selection-end-line="102" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/gufengmh-bg.js">
+    <entry file="file://$PROJECT_DIR$/js/cnt/dmzj-cnt.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/constant.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="17" column="47" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="47" />
+        <state relative-caret-position="2100">
+          <caret line="141" column="22" selection-start-line="141" selection-start-column="22" selection-end-line="141" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-856">
-          <caret line="183" column="44" lean-forward="true" selection-start-line="183" selection-start-column="44" selection-end-line="183" selection-end-column="44" />
+        <state relative-caret-position="-4956">
+          <caret line="6" column="43" lean-forward="true" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
           <folding>
-            <element signature="n#!!doc;n#getBaseUrl#0" />
-            <element signature="n#!!block;n#getBaseUrl#0" />
-            <element signature="e#609#672#0" />
             <element signature="n#!!doc;n#arrInStr#0" />
             <element signature="n#!!block;n#arrInStr#0" />
-            <element signature="e#873#1360#0" />
-            <element signature="e#960#1287#0" />
-            <element signature="e#1088#1245#0" />
-            <element signature="e#1151#1231#0" />
-            <element signature="e#1321#1354#0" />
             <element signature="n#!!doc;n#arrEqStr#0" />
             <element signature="n#!!block;n#arrEqStr#0" />
-            <element signature="e#1546#2014#0" />
-            <element signature="e#1633#1951#0" />
-            <element signature="e#1761#1909#0" />
-            <element signature="e#1815#1895#0" />
-            <element signature="e#1975#2008#0" />
             <element signature="n#!!doc;n#getStoreLocal#0" />
             <element signature="n#!!block;n#getStoreLocal#0" />
-            <element signature="e#2150#2467#0" />
-            <element signature="e#2211#2258#0" />
-            <element signature="e#2264#2461#0" />
-            <element signature="e#2354#2413#0" />
             <element signature="n#!!doc;n#getFavs#0" />
-            <element signature="n#!!block;n#getFavs#0" />
-            <element signature="e#2696#3141#0" />
-            <element signature="e#2942#3034#0" />
-            <element signature="e#3040#3091#0" />
             <element signature="n#!!doc;n#addArr#0" />
             <element signature="n#!!block;n#addArr#0" />
-            <element signature="e#3252#3287#0" />
             <element signature="n#!!doc;n#decUpdateNum#0" />
             <element signature="n#!!block;n#decUpdateNum#0" />
-            <element signature="e#3385#3707#0" />
-            <element signature="e#3482#3699#0" />
-            <element signature="e#3535#3587#0" />
-            <element signature="e#3601#3687#0" />
             <element signature="n#!!doc;n#updateColRecord#0" />
             <element signature="n#!!block;n#updateColRecord#0" />
-            <element signature="e#3830#4637#0" />
-            <element signature="e#3881#4541#0" />
-            <element signature="e#4481#4529#0" />
             <element signature="n#!!doc;n#replaceOrigin#0" />
             <element signature="n#!!block;n#replaceOrigin#0" />
             <element signature="n#!!doc;n#createNotify#0" />
@@ -1154,7 +1030,6 @@
             <element signature="n#!!doc;n#showTips#0" />
             <element signature="n#!!block;n#showTips#0" />
             <element signature="n#!!doc;n#handleResData#0" />
-            <element signature="n#!!block;n#handleResData#0" />
             <element signature="n#!!doc;n#pipeExport#0" />
             <element signature="n#!!block;n#pipeExport#0" />
             <element signature="n#!!doc;n#assignColItem#0" />
