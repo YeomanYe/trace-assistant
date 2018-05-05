@@ -5,6 +5,7 @@ package-lock.json
 *.pem
 360build/
 *.zip
+.idea
 
 build/*
 !build/manifest.json

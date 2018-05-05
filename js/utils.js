@@ -405,7 +405,7 @@ function htmlDecodeByFrame(url,sucCall) {
     $iframe.attr('src',url);
     frElm = $iframe.get(0);
     frElm.onload = function (e) {
-        var textHtml = frElm.contentWindow.document.body;
+        var textHtml = frElm.contentWindow.document.body.innerHTML;
         log('iframe',textHtml);
         sucCall(textHtml);
     };
