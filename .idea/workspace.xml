@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="fix html decodeByFrameBug">
+    <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/utils.js" afterDir="false" />
@@ -27,43 +27,125 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="utils.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="utils.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/utils.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="405" column="27" lean-forward="true" selection-start-line="405" selection-start-column="27" selection-end-line="405" selection-end-column="27" />
+            <state relative-caret-position="1456">
+              <caret line="195" column="24" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="24" />
               <folding>
+                <element signature="e#130#325#0" />
+                <element signature="e#180#323#0" />
+                <element signature="e#232#316#0" />
                 <element signature="n#!!doc;n#arrInStr#0" />
                 <element signature="n#!!block;n#arrInStr#0" />
+                <element signature="e#578#1065#0" />
+                <element signature="e#665#992#0" />
+                <element signature="e#793#950#0" />
+                <element signature="e#856#936#0" />
+                <element signature="e#1026#1059#0" />
                 <element signature="n#!!doc;n#arrEqStr#0" />
                 <element signature="n#!!block;n#arrEqStr#0" />
+                <element signature="e#1251#1719#0" />
+                <element signature="e#1338#1656#0" />
+                <element signature="e#1466#1614#0" />
+                <element signature="e#1520#1600#0" />
+                <element signature="e#1680#1713#0" />
                 <element signature="n#!!doc;n#getStoreLocal#0" />
                 <element signature="n#!!block;n#getStoreLocal#0" />
+                <element signature="e#1855#2172#0" />
+                <element signature="e#1916#1963#0" />
+                <element signature="e#1969#2166#0" />
+                <element signature="e#2059#2118#0" />
                 <element signature="n#!!doc;n#getFavs#0" />
+                <element signature="n#!!block;n#getFavs#0" />
+                <element signature="e#2401#2846#0" />
+                <element signature="e#2647#2739#0" />
+                <element signature="e#2745#2796#0" />
                 <element signature="n#!!doc;n#addArr#0" />
                 <element signature="n#!!block;n#addArr#0" />
+                <element signature="e#2957#2992#0" />
                 <element signature="n#!!doc;n#decUpdateNum#0" />
                 <element signature="n#!!block;n#decUpdateNum#0" />
+                <element signature="e#3090#3412#0" />
+                <element signature="e#3187#3404#0" />
+                <element signature="e#3240#3292#0" />
+                <element signature="e#3306#3392#0" />
                 <element signature="n#!!doc;n#updateColRecord#0" />
                 <element signature="n#!!block;n#updateColRecord#0" />
+                <element signature="e#3535#4342#0" />
+                <element signature="e#3586#4246#0" />
+                <element signature="e#4186#4234#0" />
+                <element signature="n#!!doc;n#queryUpdate#0" />
+                <element signature="e#5121#5344#0" />
+                <element signature="e#5427#5502#0" />
+                <element signature="e#5528#5604#0" />
+                <element signature="e#5635#5660#0" />
+                <element signature="e#5751#5892#0" />
+                <element signature="e#5842#5884#0" />
                 <element signature="n#!!doc;n#replaceOrigin#0" />
                 <element signature="n#!!block;n#replaceOrigin#0" />
                 <element signature="n#!!doc;n#createNotify#0" />
                 <element signature="n#!!block;n#createNotify#0" />
+                <element signature="e#6358#6520#0" />
                 <element signature="n#!!doc;n#showTips#0" />
                 <element signature="n#!!block;n#showTips#0" />
+                <element signature="e#6796#7020#0" />
+                <element signature="e#7078#7108#0" />
                 <element signature="n#!!doc;n#handleResData#0" />
+                <element signature="n#!!block;n#handleResData#0" />
+                <element signature="e#7261#7382#0" />
+                <element signature="e#7418#7451#0" />
+                <element signature="e#7492#7762#0" />
+                <element signature="e#7577#7634#0" />
                 <element signature="n#!!doc;n#pipeExport#0" />
                 <element signature="n#!!block;n#pipeExport#0" />
+                <element signature="e#8274#9371#0" />
+                <element signature="e#8307#9365#0" />
+                <element signature="e#8405#8538#0" />
+                <element signature="e#8667#8844#0" />
+                <element signature="e#8850#8981#0" />
+                <element signature="e#9256#9355#0" />
+                <element signature="e#9421#10016#0" />
+                <element signature="e#9510#9920#0" />
+                <element signature="e#9661#9910#0" />
+                <element signature="e#9778#9894#0" />
+                <element signature="e#9943#9983#0" />
                 <element signature="n#!!doc;n#assignColItem#0" />
                 <element signature="n#!!block;n#assignColItem#0" />
                 <element signature="n#!!doc;n#htmlDecode#0" />
+                <element signature="n#!!block;n#htmlDecode#0" />
+                <element signature="e#10956#11030#0" />
+                <element signature="e#11170#11295#0" />
                 <element signature="n#!!doc;n#htmlDecodeByFrame#0" />
-                <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+                <element signature="n#!!block;n#htmlDecodeByFrame#0" />
+                <element signature="e#11485#11583#0" />
+                <element signature="e#11673#11807#0" />
+                <element signature="n#!!doc;n#getIndexContent#0" />
+                <element signature="n#!!block;n#getIndexContent#0" />
+                <element signature="e#11963#12079#0" />
+                <element signature="e#11988#12071#0" />
+                <element signature="e#12085#12154#0" />
+                <element signature="n#!!doc;n#getIndexContentByFrame#0" />
+                <element signature="n#!!block;n#getIndexContentByFrame#0" />
+                <element signature="e#12344#12444#0" />
+                <element signature="e#12371#12436#0" />
+                <element signature="e#12450#12565#0" />
                 <element signature="n#!!doc;n#formatHref#0" />
                 <element signature="n#!!block;n#formatHref#0" />
+                <element signature="e#12720#13023#0" />
+                <element signature="e#12837#13017#0" />
+                <element signature="e#13029#13060#0" />
+                <element signature="e#13084#13101#0" />
+                <element signature="e#13143#13472#0" />
+                <element signature="e#13216#13439#0" />
+                <element signature="e#13252#13311#0" />
+                <element signature="e#13366#13426#0" />
                 <element signature="n#!!doc;n#sendToAllTabs#0" />
                 <element signature="n#!!block;n#sendToAllTabs#0" />
+                <element signature="e#13593#13967#0" />
+                <element signature="e#13652#13961#0" />
+                <element signature="e#13751#13949#0" />
+                <element signature="e#13818#13935#0" />
               </folding>
             </state>
           </provider>
@@ -72,17 +154,26 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="672">
               <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="103">
+              <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gufengmh-bg.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/bg/gufengmh-bg.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-56">
+              <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -99,7 +190,7 @@
       <file leaf-file-name="kuku-cnt.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cnt/kuku-cnt.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
+            <state relative-caret-position="280">
               <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
             </state>
           </provider>
@@ -143,9 +234,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>log`</find>
       <find>deco</find>
-      <find>queryUpdate</find>
       <find>que</find>
       <find>toggleFav</find>
       <find>$html</find>
@@ -173,6 +262,8 @@
       <find>document</find>
       <find>send</find>
       <find>body</find>
+      <find>html</find>
+      <find>queryUpdate</find>
     </findStrings>
     <replaceStrings>
       <replace>favList</replace>
@@ -207,7 +298,6 @@
         <option value="$PROJECT_DIR$/js/popup.js" />
         <option value="$PROJECT_DIR$/js/cnt/qq-cnt.js" />
         <option value="$PROJECT_DIR$/js/bg/qq-bg.js" />
-        <option value="$PROJECT_DIR$/js/bg/gufengmh-bg.js" />
         <option value="$PROJECT_DIR$/js/cnt/gufengmh-cnt.js" />
         <option value="$PROJECT_DIR$/css/popup.css" />
         <option value="$PROJECT_DIR$/js/cnt/preprocess.js" />
@@ -237,8 +327,9 @@
         <option value="$PROJECT_DIR$/js/constant.js" />
         <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/js/cnt/kuku-cnt.js" />
-        <option value="$PROJECT_DIR$/js/utils.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/js/utils.js" />
+        <option value="$PROJECT_DIR$/js/bg/gufengmh-bg.js" />
       </list>
     </option>
   </component>
@@ -351,7 +442,7 @@
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="back&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/background.js&#10;background&#9;null&#9;null&#10;nav&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/nav-panel-comp.js&#10;pre&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;po&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/popup.html&#10;comp&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/toggle-fav-panel-comp.js&#10;prep&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;util&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;kuai&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/kuaikan-bg.js&#10;qq-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qq-cnt.js&#10;qidian-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qidian-cnt.js&#10;qi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qidian-bg.js&#10;UTIL&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;bi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;qq&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qq-bg.js&#10;bilib&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;bili&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/content/bilibili-cnt.js" />
+    <property name="SearchEverywhereHistoryKey" value="util&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;back&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/background.js&#10;background&#9;null&#9;null&#10;nav&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/nav-panel-comp.js&#10;pre&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;po&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/popup.html&#10;comp&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/toggle-fav-panel-comp.js&#10;prep&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;kuai&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/kuaikan-bg.js&#10;qq-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qq-cnt.js&#10;qidian-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qidian-cnt.js&#10;qi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qidian-bg.js&#10;UTIL&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;bi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;qq&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qq-bg.js&#10;bilib&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;bili&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/content/bilibili-cnt.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/dist/typecheck/fav-item-comp.js" />
     <property name="javascript.nodejs.core.library.configured.version" value="8.9.0" />
@@ -501,7 +592,8 @@
       <workItem from="1525060286947" duration="4033000" />
       <workItem from="1525066052872" duration="9743000" />
       <workItem from="1525148735412" duration="1990000" />
-      <workItem from="1525488554312" duration="754000" />
+      <workItem from="1525488554312" duration="784000" />
+      <workItem from="1525703274729" duration="1299000" />
     </task>
     <task id="LOCAL-00001" summary="fix bug">
       <created>1522150762362</created>
@@ -643,11 +735,18 @@
       <option name="project" value="LOCAL" />
       <updated>1525149381131</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix html decodeByFrameBug">
+      <created>1525489318248</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1525489318248</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301328000" />
+    <option name="totallyTimeSpent" value="302657000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -666,15 +765,15 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50317127" side_tool="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49788582" weight="0.32891566" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32411674" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32411674" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3262195" />
       <window_info anchor="bottom" id="Flow" order="8" sideWeight="0.49682876" weight="0.27633587" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48526078" visible="true" weight="0.23608316" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48526078" visible="true" weight="0.23943663" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Tail" order="7" />
       <window_info anchor="right" auto_hide="true" x="1041" y="218" width="319" height="226" id="Structure" order="3" sideWeight="0.5147392" side_tool="true" weight="0.2103148" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39939025" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3978979" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -734,11 +833,12 @@
     <MESSAGE value="update queryUpdate" />
     <MESSAGE value="delete getBaseUrl" />
     <MESSAGE value="update getIndexContent" />
-    <option name="LAST_COMMIT_MESSAGE" value="update getIndexContent" />
+    <MESSAGE value="fix html decodeByFrameBug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix html decodeByFrameBug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
@@ -903,13 +1003,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/bg/gufengmh-bg.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/component/fav-item-comp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-72">
@@ -1031,62 +1124,151 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cnt/kuku-cnt.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
+        <state relative-caret-position="280">
           <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/utils.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="405" column="27" lean-forward="true" selection-start-line="405" selection-start-column="27" selection-end-line="405" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!doc;n#arrInStr#0" />
-            <element signature="n#!!block;n#arrInStr#0" />
-            <element signature="n#!!doc;n#arrEqStr#0" />
-            <element signature="n#!!block;n#arrEqStr#0" />
-            <element signature="n#!!doc;n#getStoreLocal#0" />
-            <element signature="n#!!block;n#getStoreLocal#0" />
-            <element signature="n#!!doc;n#getFavs#0" />
-            <element signature="n#!!doc;n#addArr#0" />
-            <element signature="n#!!block;n#addArr#0" />
-            <element signature="n#!!doc;n#decUpdateNum#0" />
-            <element signature="n#!!block;n#decUpdateNum#0" />
-            <element signature="n#!!doc;n#updateColRecord#0" />
-            <element signature="n#!!block;n#updateColRecord#0" />
-            <element signature="n#!!doc;n#replaceOrigin#0" />
-            <element signature="n#!!block;n#replaceOrigin#0" />
-            <element signature="n#!!doc;n#createNotify#0" />
-            <element signature="n#!!block;n#createNotify#0" />
-            <element signature="n#!!doc;n#showTips#0" />
-            <element signature="n#!!block;n#showTips#0" />
-            <element signature="n#!!doc;n#handleResData#0" />
-            <element signature="n#!!doc;n#pipeExport#0" />
-            <element signature="n#!!block;n#pipeExport#0" />
-            <element signature="n#!!doc;n#assignColItem#0" />
-            <element signature="n#!!block;n#assignColItem#0" />
-            <element signature="n#!!doc;n#htmlDecode#0" />
-            <element signature="n#!!doc;n#htmlDecodeByFrame#0" />
-            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
-            <element signature="n#!!doc;n#formatHref#0" />
-            <element signature="n#!!block;n#formatHref#0" />
-            <element signature="n#!!doc;n#sendToAllTabs#0" />
-            <element signature="n#!!block;n#sendToAllTabs#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="672">
           <caret line="24" column="22" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        <state relative-caret-position="103">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/bg/gufengmh-bg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-56">
+          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1456">
+          <caret line="195" column="24" selection-start-line="195" selection-start-column="24" selection-end-line="195" selection-end-column="24" />
+          <folding>
+            <element signature="e#130#325#0" />
+            <element signature="e#180#323#0" />
+            <element signature="e#232#316#0" />
+            <element signature="n#!!doc;n#arrInStr#0" />
+            <element signature="n#!!block;n#arrInStr#0" />
+            <element signature="e#578#1065#0" />
+            <element signature="e#665#992#0" />
+            <element signature="e#793#950#0" />
+            <element signature="e#856#936#0" />
+            <element signature="e#1026#1059#0" />
+            <element signature="n#!!doc;n#arrEqStr#0" />
+            <element signature="n#!!block;n#arrEqStr#0" />
+            <element signature="e#1251#1719#0" />
+            <element signature="e#1338#1656#0" />
+            <element signature="e#1466#1614#0" />
+            <element signature="e#1520#1600#0" />
+            <element signature="e#1680#1713#0" />
+            <element signature="n#!!doc;n#getStoreLocal#0" />
+            <element signature="n#!!block;n#getStoreLocal#0" />
+            <element signature="e#1855#2172#0" />
+            <element signature="e#1916#1963#0" />
+            <element signature="e#1969#2166#0" />
+            <element signature="e#2059#2118#0" />
+            <element signature="n#!!doc;n#getFavs#0" />
+            <element signature="n#!!block;n#getFavs#0" />
+            <element signature="e#2401#2846#0" />
+            <element signature="e#2647#2739#0" />
+            <element signature="e#2745#2796#0" />
+            <element signature="n#!!doc;n#addArr#0" />
+            <element signature="n#!!block;n#addArr#0" />
+            <element signature="e#2957#2992#0" />
+            <element signature="n#!!doc;n#decUpdateNum#0" />
+            <element signature="n#!!block;n#decUpdateNum#0" />
+            <element signature="e#3090#3412#0" />
+            <element signature="e#3187#3404#0" />
+            <element signature="e#3240#3292#0" />
+            <element signature="e#3306#3392#0" />
+            <element signature="n#!!doc;n#updateColRecord#0" />
+            <element signature="n#!!block;n#updateColRecord#0" />
+            <element signature="e#3535#4342#0" />
+            <element signature="e#3586#4246#0" />
+            <element signature="e#4186#4234#0" />
+            <element signature="n#!!doc;n#queryUpdate#0" />
+            <element signature="e#5121#5344#0" />
+            <element signature="e#5427#5502#0" />
+            <element signature="e#5528#5604#0" />
+            <element signature="e#5635#5660#0" />
+            <element signature="e#5751#5892#0" />
+            <element signature="e#5842#5884#0" />
+            <element signature="n#!!doc;n#replaceOrigin#0" />
+            <element signature="n#!!block;n#replaceOrigin#0" />
+            <element signature="n#!!doc;n#createNotify#0" />
+            <element signature="n#!!block;n#createNotify#0" />
+            <element signature="e#6358#6520#0" />
+            <element signature="n#!!doc;n#showTips#0" />
+            <element signature="n#!!block;n#showTips#0" />
+            <element signature="e#6796#7020#0" />
+            <element signature="e#7078#7108#0" />
+            <element signature="n#!!doc;n#handleResData#0" />
+            <element signature="n#!!block;n#handleResData#0" />
+            <element signature="e#7261#7382#0" />
+            <element signature="e#7418#7451#0" />
+            <element signature="e#7492#7762#0" />
+            <element signature="e#7577#7634#0" />
+            <element signature="n#!!doc;n#pipeExport#0" />
+            <element signature="n#!!block;n#pipeExport#0" />
+            <element signature="e#8274#9371#0" />
+            <element signature="e#8307#9365#0" />
+            <element signature="e#8405#8538#0" />
+            <element signature="e#8667#8844#0" />
+            <element signature="e#8850#8981#0" />
+            <element signature="e#9256#9355#0" />
+            <element signature="e#9421#10016#0" />
+            <element signature="e#9510#9920#0" />
+            <element signature="e#9661#9910#0" />
+            <element signature="e#9778#9894#0" />
+            <element signature="e#9943#9983#0" />
+            <element signature="n#!!doc;n#assignColItem#0" />
+            <element signature="n#!!block;n#assignColItem#0" />
+            <element signature="n#!!doc;n#htmlDecode#0" />
+            <element signature="n#!!block;n#htmlDecode#0" />
+            <element signature="e#10956#11030#0" />
+            <element signature="e#11170#11295#0" />
+            <element signature="n#!!doc;n#htmlDecodeByFrame#0" />
+            <element signature="n#!!block;n#htmlDecodeByFrame#0" />
+            <element signature="e#11485#11583#0" />
+            <element signature="e#11673#11807#0" />
+            <element signature="n#!!doc;n#getIndexContent#0" />
+            <element signature="n#!!block;n#getIndexContent#0" />
+            <element signature="e#11963#12079#0" />
+            <element signature="e#11988#12071#0" />
+            <element signature="e#12085#12154#0" />
+            <element signature="n#!!doc;n#getIndexContentByFrame#0" />
+            <element signature="n#!!block;n#getIndexContentByFrame#0" />
+            <element signature="e#12344#12444#0" />
+            <element signature="e#12371#12436#0" />
+            <element signature="e#12450#12565#0" />
+            <element signature="n#!!doc;n#formatHref#0" />
+            <element signature="n#!!block;n#formatHref#0" />
+            <element signature="e#12720#13023#0" />
+            <element signature="e#12837#13017#0" />
+            <element signature="e#13029#13060#0" />
+            <element signature="e#13084#13101#0" />
+            <element signature="e#13143#13472#0" />
+            <element signature="e#13216#13439#0" />
+            <element signature="e#13252#13311#0" />
+            <element signature="e#13366#13426#0" />
+            <element signature="n#!!doc;n#sendToAllTabs#0" />
+            <element signature="n#!!block;n#sendToAllTabs#0" />
+            <element signature="e#13593#13967#0" />
+            <element signature="e#13652#13961#0" />
+            <element signature="e#13751#13949#0" />
+            <element signature="e#13818#13935#0" />
+          </folding>
         </state>
       </provider>
     </entry>

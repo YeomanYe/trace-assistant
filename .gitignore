@@ -12,5 +12,4 @@ build/*
 .flowconfig
 .idea/codeStyles/
 .idea/jsLibraryMappings.xml
-run_flow.js
 yarn.lock

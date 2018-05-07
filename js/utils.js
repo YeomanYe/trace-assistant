@@ -171,10 +171,10 @@ function queryUpdate(baseObj, callback, wayFlag) {
   var singleFavLen = 0;
   return function (favs, allFavs, updateNum) {
     singleFavLen = favs.length;
-    var sucCall = function (data) {
+    var completeCall = function (data) {
       var col = favs[singleFavLen];
       try {
-        var resObj = callback(data);
+        var resObj = callback(data.responseText);
         var newUrl = resObj.newUrl,
           newChapter = resObj.newChapter;
         if (col.newChapter !== newChapter) {
@@ -211,7 +211,7 @@ function queryUpdate(baseObj, callback, wayFlag) {
           setBadge(updateNum);
         }
       }else{
-        getIndexContent(formatHref(favs[singleFavLen].indexUrl, baseIndex), wayFlag,sucCall);
+        getIndexContent(formatHref(favs[singleFavLen].indexUrl, baseIndex), wayFlag,completeCall);
       }
     };
     nextHandler();
