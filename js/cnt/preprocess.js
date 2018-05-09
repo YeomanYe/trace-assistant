@@ -23,6 +23,9 @@ chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
         case CNT_CMD_UPDATE_CUR_FAV:
             if(_updateCurFavFun) _updateCurFavFun();
             break;
+      case CNT_CMD_EXOPORT_FAV:
+            exportFav();
+          break;
     }
     return true;
 });
@@ -152,4 +155,17 @@ function toggleFav(storObj, getCurIndex, getChapterInfo,wayFlag) {
         if(typeof wayFlag === 'object') getCurIndex(handle);
         else handle(getCurIndex());
     }
+}
+
+/**
+ * 导出收藏
+ */
+function exportFav() {
+  storLocal.get([STOR_KEY_FAVS, STOR_KEY_UPDATE_NUM], function (resObj) {
+    log('export obj', resObj);
+    var blob = new Blob([JSON.stringify(resObj)], {
+      type: 'text/plain;charset=utf-8'
+    });
+    saveAs(blob, '追综饭.json');
+  })
 }

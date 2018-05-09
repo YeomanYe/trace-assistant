@@ -500,3 +500,16 @@ function sendToAllTabs(data) {
         }
     });
 }
+
+/**
+ * 发送通知到当前tab页
+ * @param data
+ * @param handler
+ */
+function sendToCurTab(data,handler) {
+  chrome.tabs.query({active:true},function (tabs) {
+    var tab = tabs[0];
+    handler = handler || function(){};
+    chrome.tabs.sendMessage(tab.id,data,null,handler);
+  });
+}

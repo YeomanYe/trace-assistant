@@ -7,6 +7,7 @@ const TYPE_COMIC = 'comic',//漫画
     BG_CMD_UPDATE_FAV_BTN = 'updateFavBtn', //更新content页的favbtn图标
 
     CNT_CMD_UPDATE_CUR_FAV = 'updateCurFav',//content页 命令
+    CNT_CMD_EXOPORT_FAV = 'exportFav',//导出文件命令
 
     STATUS_UNAUTH = 403, //未授权的
     STATUS_OK = 200, //导出收藏成功

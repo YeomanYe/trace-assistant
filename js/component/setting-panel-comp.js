@@ -13,13 +13,7 @@ var vSettingPanel = Vue.component('setting-panel', {
             document.getElementById('fileImport').click();
         },
         exportHandler:function (e) {
-            storLocal.get([STOR_KEY_FAVS, STOR_KEY_UPDATE_NUM], function (resObj) {
-                log('export obj', resObj);
-                var blob = new Blob([JSON.stringify(resObj)], {
-                    type: 'text/plain;charset=utf-8'
-                });
-                saveAs(blob, '追综饭.json');
-            });
+          sendToCurTab([CNT_CMD_EXOPORT_FAV]);
         },
         fileImportChangeHandler:function (e) {
             var files = e.currentTarget.files;
