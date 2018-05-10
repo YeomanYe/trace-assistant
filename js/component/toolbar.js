@@ -8,7 +8,9 @@ var vToolbar = Vue.component('toolbar', {
                 <h1>追综饭</h1>
             </div>
             <div class="bd">
-                <!--<img onClick={this.toggleCol} src={isCol ? "../../images/star-yellow.png" : "../../images/star-white.png"} alt=""/>-->
+                <a target="_blank" title="给个好评" href="https://chrome.google.com/webstore/detail/%E8%BF%BD%E7%BB%BC%E9%A5%AD/fajeglfbhflmbaccedmbgelodcbljobl/reviews?utm_source=chrome-ntp-icon">
+                    <img src="../../images/praise.png" alt=""/>
+                </a>
             </div>
         </header>
      `,

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="">
+    <list default="true" id="d55a0d5f-5ef1-4067-a9ae-1a9b68ab0eda" name="Default" comment="add toolbar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/component/setting-panel-comp.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/component/setting-panel-comp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/FileSaver.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/FileSaver.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/popup.less" beforeDir="false" afterPath="$PROJECT_DIR$/css/popup.less" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/component/toolbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/component/toolbar.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,56 +21,20 @@
       <file leaf-file-name="gulpfile.babel.js" pinned="true" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3360">
-              <caret line="120" column="3" selection-start-line="120" selection-start-column="3" selection-end-line="120" selection-end-column="3" />
+            <state relative-caret-position="231">
+              <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manifest.json">
+      <file leaf-file-name="toolbar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/component/toolbar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="preprocess.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/cnt/preprocess.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="163" column="2" lean-forward="true" selection-start-line="163" selection-start-column="2" selection-end-line="169" selection-end-column="4" />
+            <state relative-caret-position="252">
+              <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
               <folding>
-                <element signature="e#175#415#0" />
-                <element signature="e#528#657#0" />
-                <element signature="n#!!block;n#createBtn#0" />
-                <element signature="n#!!block;n#addImgToUL#0" />
-                <element signature="n#!!doc;n#setDraggable#0" />
-                <element signature="n#!!block;n#setDraggable#0" />
-                <element signature="n#!!doc;n#toggleMenu#0" />
-                <element signature="n#!!block;n#toggleMenu#0" />
-                <element signature="n#!!doc;n#toggleFav#0" />
-                <element signature="n#!!block;n#toggleFav#0" />
+                <element signature="e#51#56#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="nav-panel-comp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-712">
-              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="setting-panel-comp.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/component/setting-panel-comp.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -81,17 +42,35 @@
       <file leaf-file-name="popup.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/popup.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-348">
-              <caret line="30" column="6" lean-forward="true" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
+            <state relative-caret-position="56">
+              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manifest.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build/manifest.json">
+      <file leaf-file-name="popup.less" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/popup.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+            <state relative-caret-position="163">
+              <caret line="136" column="20" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="setting-panel.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/component/setting-panel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" column="88" selection-start-line="4" selection-start-column="88" selection-end-line="4" selection-end-column="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fav-item.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/component/fav-item.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="4" column="13" selection-end-line="49" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -107,17 +86,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>deco</find>
-      <find>que</find>
-      <find>toggleFav</find>
-      <find>$html</find>
-      <find>update</find>
-      <find>decode</find>
-      <find>colTab</find>
-      <find>nav</find>
-      <find>switchTips</find>
-      <find>css</find>
-      <find>height</find>
       <find>span</find>
       <find>link</find>
       <find>.link</find>
@@ -137,6 +105,17 @@
       <find>html</find>
       <find>queryUpdate</find>
       <find>send</find>
+      <find>comp</find>
+      <find>vFavItem</find>
+      <find>.list</find>
+      <find>contBtn</find>
+      <find>settingLi</find>
+      <find>contentSettingWrap</find>
+      <find>.middle</find>
+      <find>#favToggleWrap</find>
+      <find>wrapList</find>
+      <find>wrap</find>
+      <find>sett</find>
     </findStrings>
     <replaceStrings>
       <replace>favList</replace>
@@ -152,9 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/component/toggle-panel.js" />
-        <option value="$PROJECT_DIR$/component/fav-item.js" />
-        <option value="$PROJECT_DIR$/component/toggle-fav-panel.js" />
         <option value="$PROJECT_DIR$/component/nav-panel.js" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/js/bg/bilibili-bg.js" />
@@ -176,7 +152,6 @@
         <option value="$PROJECT_DIR$/dist/styles/content.css" />
         <option value="$PROJECT_DIR$/dist/styles/popup.css" />
         <option value="$PROJECT_DIR$/js/component/toggle-fav-panel-comp.js" />
-        <option value="$PROJECT_DIR$/css/popup.less" />
         <option value="$PROJECT_DIR$/js/baseStoreObj.js" />
         <option value="$PROJECT_DIR$/css/content.less" />
         <option value="$PROJECT_DIR$/js/cnt/buka-cnt.js" />
@@ -186,7 +161,6 @@
         <option value="$PROJECT_DIR$/.eslintrc.json" />
         <option value="$PROJECT_DIR$/js/component/nav-panel-comp.js" />
         <option value="$PROJECT_DIR$/js/component/fav-item-comp.js" />
-        <option value="$PROJECT_DIR$/gulpfile.babel.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/js/bg/dmzj-bg.js" />
         <option value="$PROJECT_DIR$/js/bg/kuku-bg.js" />
@@ -200,9 +174,14 @@
         <option value="$PROJECT_DIR$/js/cnt/preprocess.js" />
         <option value="$PROJECT_DIR$/js/utils.js" />
         <option value="$PROJECT_DIR$/js/component/setting-panel-comp.js" />
-        <option value="$PROJECT_DIR$/popup.html" />
         <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/build/manifest.json" />
+        <option value="$PROJECT_DIR$/gulpfile.babel.js" />
+        <option value="$PROJECT_DIR$/js/component/fav-item.js" />
+        <option value="$PROJECT_DIR$/popup.html" />
+        <option value="$PROJECT_DIR$/js/component/setting-panel.js" />
+        <option value="$PROJECT_DIR$/js/component/toolbar.js" />
+        <option value="$PROJECT_DIR$/css/popup.less" />
       </list>
     </option>
   </component>
@@ -280,20 +259,12 @@
             <path>
               <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
               <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-              <item name="file-saver" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
-              <item name="bower_components" type="462c0819:PsiDirectoryNode" />
-              <item name="file-saver" type="462c0819:PsiDirectoryNode" />
-              <item name="FileSaver.js" type="620a8d5e:NestingTreeNode" />
-            </path>
-            <path>
-              <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
-              <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
               <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
+              <item name="comic-assistant" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="comic-assistant" type="b2602c69:ProjectViewProjectNode" />
@@ -321,7 +292,7 @@
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="SearchEverywhereHistoryKey" value="pr&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;utils&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;util&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;back&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/background.js&#10;background&#9;null&#9;null&#10;nav&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/nav-panel-comp.js&#10;pre&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;po&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/popup.html&#10;comp&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/toggle-fav-panel-comp.js&#10;prep&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;kuai&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/kuaikan-bg.js&#10;qq-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qq-cnt.js&#10;qidian-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qidian-cnt.js&#10;qi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qidian-bg.js&#10;UTIL&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;bi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;qq&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qq-bg.js&#10;bilib&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;bili&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/content/bilibili-cnt.js" />
+    <property name="SearchEverywhereHistoryKey" value="tool&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/toolbar.js&#10;pr&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;utils&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;util&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;back&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/background.js&#10;background&#9;null&#9;null&#10;nav&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/nav-panel-comp.js&#10;pre&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;po&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/popup.html&#10;comp&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/component/toggle-fav-panel-comp.js&#10;prep&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/preprocess.js&#10;kuai&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/kuaikan-bg.js&#10;qq-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qq-cnt.js&#10;qidian-cnt&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/cnt/qidian-cnt.js&#10;qi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qidian-bg.js&#10;UTIL&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/utils.js&#10;bi&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;qq&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/qq-bg.js&#10;bilib&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/bg/bilibili-bg.js&#10;bili&#9;FILE&#9;file://G:/Workspace/Github/comic-assistant/js/content/bilibili-cnt.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/dist/typecheck/fav-item-comp.js" />
     <property name="javascript.nodejs.core.library.configured.version" value="8.9.0" />
@@ -337,7 +308,7 @@
     <property name="node.js.selected.package.jscs" value="" />
     <property name="node.js.selected.package.standard" value="C:\Users\yeming\AppData\Roaming\npm\node_modules\eslint" />
     <property name="nodejs_interpreter_path" value="D:/nodejs/node" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="standardjs.codestyle.accepted" value="true" />
   </component>
   <component name="RecentsManager">
@@ -474,7 +445,7 @@
       <workItem from="1525488554312" duration="784000" />
       <workItem from="1525703274729" duration="1984000" />
       <workItem from="1525869834102" duration="3809000" />
-      <workItem from="1525951016572" duration="3616000" />
+      <workItem from="1525951016572" duration="8846000" />
     </task>
     <task id="LOCAL-00001" summary="fix bug">
       <created>1522150762362</created>
@@ -637,11 +608,25 @@
       <option name="project" value="LOCAL" />
       <updated>1525874314082</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="update export file">
+      <created>1525958583355</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1525958583355</updated>
+    </task>
+    <task id="LOCAL-00025" summary="add toolbar">
+      <created>1525961852181</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1525961852181</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310767000" />
+    <option name="totallyTimeSpent" value="315997000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -660,15 +645,16 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50317127" side_tool="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49788582" weight="0.32891566" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32411674" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32411674" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32465544" />
       <window_info anchor="bottom" id="Flow" order="8" sideWeight="0.49682876" weight="0.27633587" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48526078" visible="true" weight="0.24614353" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48526078" visible="true" weight="0.21193829" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Tail" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32718894" />
       <window_info anchor="right" auto_hide="true" x="1041" y="218" width="319" height="226" id="Structure" order="3" sideWeight="0.5147392" side_tool="true" weight="0.2103148" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39784947" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.24577573" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -676,7 +662,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32718894" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -731,7 +716,9 @@
     <MESSAGE value="fix html decodeByFrameBug" />
     <MESSAGE value="fix queryUpdate" />
     <MESSAGE value="fix export error" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix export error" />
+    <MESSAGE value="update export file" />
+    <MESSAGE value="add toolbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="add toolbar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -748,14 +735,7 @@
     <select />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/fav-item-comp.js">
+    <entry file="file://$PROJECT_DIR$/js/component/fav-item.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
@@ -827,13 +807,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/typecheck/toggle-fav-panel-comp.js" />
     <entry file="file://$PROJECT_DIR$/dist/temp/nav-panel-comp.js" />
-    <entry file="file://$PROJECT_DIR$/css/popup.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2401">
-          <caret line="129" column="1" selection-start-line="129" selection-start-column="1" selection-end-line="129" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.9.0/core-modules/module.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -872,24 +845,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/fav-item-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-72">
-          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/baseStoreObj.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5376">
           <caret line="192" column="2" selection-start-line="192" selection-start-column="2" selection-end-line="192" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/toggle-fav-panel-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2240">
-          <caret line="80" column="96" selection-start-line="80" selection-start-column="96" selection-end-line="80" selection-end-column="96" />
         </state>
       </provider>
     </entry>
@@ -974,13 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="14" column="9" lean-forward="true" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3360">
-          <caret line="120" column="3" selection-start-line="120" selection-start-column="3" selection-end-line="120" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -1129,10 +1081,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/nav-panel-comp.js">
+    <entry file="file://$PROJECT_DIR$/js/component/nav-panel.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-712">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1155,24 +1107,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/component/setting-panel-comp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/popup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret column="1199" selection-start-column="1199" selection-end-column="1199" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/popup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-348">
-          <caret line="30" column="6" lean-forward="true" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1185,8 +1123,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/build/manifest.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
+        <state relative-caret-position="448">
           <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/toggle-fav-panel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="80" column="96" selection-start-line="80" selection-start-column="96" selection-end-line="80" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/fav-item.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="13" selection-end-line="49" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.babel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/popup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/setting-panel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="88" selection-start-line="4" selection-start-column="88" selection-end-line="4" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/component/toolbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+          <folding>
+            <element signature="e#51#56#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/popup.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="136" column="20" selection-start-line="136" selection-start-column="20" selection-end-line="136" selection-end-column="20" />
         </state>
       </provider>
     </entry>

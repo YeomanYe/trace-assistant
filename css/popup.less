@@ -1,208 +1,209 @@
 /*预定义的样式*/
-.linkColor(@color,@hover:@color){
+.linkColor(@color,@hover:@color) {
+  text-decoration: none;
+  color: @color;
+  &:hover {
     text-decoration: none;
     color: @color;
-    &:hover{
-        text-decoration: none;
-        color: @color;
-    }
-    &:active,&:visited{
-        text-decoration: none;
-        color: @color;
-    }
+  }
+  &:active, &:visited {
+    text-decoration: none;
+    color: @color;
+  }
 }
-@sumHeight:500px;
-@themeColor:rgb(78,144,232);
+
+@sumHeight: 500px;
+@themeColor: rgb(78, 144, 232);
 /*元素样式设置*/
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    width: 430px;
-    height: @sumHeight;
+body {
+  width: 430px;
+  height: @sumHeight;
 }
 
-.listWrap{
-    height: @sumHeight - 40;
+.listWrap {
+  height: @sumHeight - 40;
+  padding-top: 10px;
 }
 
-.list{
-    height: @sumHeight - 90;
-    overflow: auto;
+.list {
+  height: @sumHeight - 90;
+  overflow: auto;
 }
 
-.left img{
-    float: left;
-    width: 67px;
-    height: 92px;
-    border-radius: 8px;
-    margin:5px 20px;
-    background-color: rgb(211,211,211);
+.left img {
+  float: left;
+  width: 67px;
+  height: 92px;
+  border-radius: 8px;
+  margin: 5px 20px;
+  background-color: rgb(211, 211, 211);
 }
 
-.middle{
-    display: inline-block;
-    width:50%;
-}
-
-.right{
-    display: inline-block;
-    margin-top:0px;
-    div:first-child{
-        margin-top: 0px;
-    }
-}
-
-li{
+#favList{
+  li {
     width: 100%;
     overflow: hidden;
-    margin-top:10px;
-}
-
-#favList li:hover{
-    background-color: #cccccc;
-}
-
-.delBtn{
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.contBtn{
-    color:white;
-    background: @themeColor;
-    border-radius: 5px;
-    display: inline-block;
-    padding: 5px 8px;
-    .linkColor(white);
-}
-
-div{
+    margin-top: 10px;
+    &:hover {
+      background-color: #cccccc;
+    }
+  }
+  div {
     margin-top: 12px;
     max-width: 100%;
     overflow: hidden;
-    a{
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        .linkColor(blue);
+  }
+  .middle,.right{
+    vertical-align: top;
+    display: inline-block;
+  }
+  .middle{
+    width: 50%;
+  }
+  .right {
+    margin-top: 0px;
+  }
+}
+
+a {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  .linkColor(blue);
+}
+
+.delBtn {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contBtn {
+  color: white;
+  background: @themeColor;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 5px 8px;
+  .linkColor(white);
+}
+
+.source {
+  .linkColor(grey);
+}
+
+h3 {
+  a {
+    .linkColor(black);
+  }
+}
+
+.news-badge {
+  background: red;
+  margin-left: 10px;
+  border-radius: 5px;
+  font-weight: normal;
+  padding: 3px;
+  font-size: 12px;
+  .linkColor(white);
+}
+
+nav {
+  font-size: 0px;
+  span {
+    display: inline-block;
+    margin: 0;
+    padding: 10px 89px;
+    font-size: 18px;
+    cursor: pointer;
+    color: black;
+    background: white;
+  }
+}
+
+.curTab {
+  background: @themeColor;
+  color: white;
+}
+
+#settingList {
+  li {
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    &:first-child{
+      padding-top: 0;
     }
-}
-
-
-
-.source{
-    .linkColor(grey);
-}
-
-h3{
-    a{
-        .linkColor(black);
+    span {
+      font-size: 18px;
+      cursor: pointer;
+      color: #999;
+      margin-right: 15px;
     }
-}
-
-.news-badge{
-    background: red;
-    margin-left: 10px;
-    border-radius: 5px;
-    font-weight: normal;
-    padding: 3px;
-    font-size: 12px;
-    .linkColor(white);
-}
-
-nav{
-    font-size: 0px;
-    span{
-        display: inline-block;
-        margin: 0;
-        padding: 10px 89px;
-        font-size: 18px;
-        cursor: pointer;
-        color: black;
-        background: white;
+    img {
+      width: 35px;
+      margin-bottom: -10px;
+      margin-right: 15px;
     }
+  }
+  legend {
+    border-bottom: 2px solid #777;
+    font-size: 18px;
+    color: #123;
+    padding: 10px;
+    img {
+      width: 35px;
+      margin-bottom: -10px;
+      margin-right: 10px;
+    }
+  }
 }
 
-.curTab{
+#contentSettingWrap {
+  margin-top: 0;
+}
+
+#favToggleWrap {
+  font-size: 0px; /* 出自http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/ 去除元素之间空隙 */
+  transform: translate(25%, 0%);
+  span {
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 15px;
+    background: rgb(139, 167, 227);
+    margin: 0;
+    color: white;
+    cursor: pointer;
+  }
+  .curFav {
     background: @themeColor;
     color: white;
+  }
 }
 
-#settingList{
-    li{
-        text-align:center;
-        border-bottom: 1px solid #ccc;
-        padding: 10px 0;
-        span{
-            font-size: 18px;
-            cursor: pointer;
-            color: #999;
-            margin-right: 15px;
-        }
-        img{
-            width: 35px;
-            margin-bottom: -10px;
-            margin-right: 15px;
-        }
-    }
-    legend{
-        border-bottom: 2px solid #777;
-        font-size: 18px;
-        color: #123;
-        padding: 10px;
-        img{
-            width: 35px;
-            margin-bottom: -10px;
-            margin-right: 10px;
-        }
-    }
-}
-
-#favToggleWrap{
-    font-size: 0px; /* 出自http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/ 去除元素之间空隙 */
-    transform: translate(25%,0%);
-    span{
-        display: inline-block;
-        padding: 5px 15px;
-        font-size: 15px;
-        background: rgb(139,167,227);
-        margin: 0;
-        color: white;
-        cursor: pointer;
-    }
-    .curFav{
-        background: @themeColor;
-        color: white;
-    }
-}
-
-#toolbar{
-    padding:8px;
-    background: @themeColor;
-    div{
-        display: inline-block;
-        color: white;
-        margin-top: 0;
-        vertical-align: middle;
-        h1{
-            display: inline-block;
-            vertical-align: top;
-        }
-        img{
-            width: 32px;
-            margin-right: 10px;
-            margin-left: 5px;
-        }
-        &.bd{
-            float: right;
-            cursor: pointer;
-            margin-top: 0;
-        }
-    }
-}
-
-#contentWrap{
+#toolbar {
+  padding: 8px;
+  background: @themeColor;
+  div {
+    display: inline-block;
+    color: white;
     margin-top: 0;
+    vertical-align: middle;
+    h1 {
+      display: inline-block;
+      vertical-align: top;
+    }
+    img {
+      width: 32px;
+      margin-right: 10px;
+      margin-left: 5px;
+    }
+    &.bd {
+      float: right;
+      cursor: pointer;
+      margin-top: 0;
+    }
+  }
 }
