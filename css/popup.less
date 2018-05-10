@@ -12,6 +12,7 @@
     }
 }
 @sumHeight:500px;
+@themeColor:rgb(78,144,232);
 /*元素样式设置*/
 *{
     margin: 0;
@@ -24,11 +25,11 @@ body{
 }
 
 .listWrap{
-    height: @sumHeight - 5;
+    height: @sumHeight - 40;
 }
 
 .list{
-    height: @sumHeight - 50;
+    height: @sumHeight - 90;
     overflow: auto;
 }
 
@@ -71,7 +72,7 @@ li{
 
 .contBtn{
     color:white;
-    background: black;
+    background: @themeColor;
     border-radius: 5px;
     display: inline-block;
     padding: 5px 8px;
@@ -125,7 +126,7 @@ nav{
 }
 
 .curTab{
-    background: rgb(78,144,232);
+    background: @themeColor;
     color: white;
 }
 
@@ -172,7 +173,36 @@ nav{
         cursor: pointer;
     }
     .curFav{
-        background: rgb(78,144,232);
+        background: @themeColor;
         color: white;
     }
+}
+
+#toolbar{
+    padding:8px;
+    background: @themeColor;
+    div{
+        display: inline-block;
+        color: white;
+        margin-top: 0;
+        vertical-align: middle;
+        h1{
+            display: inline-block;
+            vertical-align: top;
+        }
+        img{
+            width: 32px;
+            margin-right: 10px;
+            margin-left: 5px;
+        }
+        &.bd{
+            float: right;
+            cursor: pointer;
+            margin-top: 0;
+        }
+    }
+}
+
+#contentWrap{
+    margin-top: 0;
 }

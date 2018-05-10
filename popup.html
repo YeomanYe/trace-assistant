@@ -14,13 +14,12 @@
 </head>
 <body>
 <div id="contentWrap" v-cloak>
+    <toolbar></toolbar>
     <div v-show="curShow == 0" id="contentFavWrap" class="listWrap">
         <!--切换收藏类型的按钮-->
         <toggle-fav-panel :cur-show-fav="curShowFav"></toggle-fav-panel>
         <!-- 收藏的漫画列表 -->
-        <ul id="favList" class="list">
-            <fav-item v-for="(item,index) in items" :item="item" :index="index" :key="item.indexUrl"></fav-item>
-        </ul>
+        <fav-list :items="items"></fav-list>
     </div>
     <div v-show="curShow == 1" id="contentSettingWrap" class="listWrap">
         <!-- 设置列表 -->
@@ -39,10 +38,10 @@
 <script type="text/javascript" src="js/baseStoreObj.js"></script>
 <script type="text/javascript" src="js/utils.js"></script>
 <!--build:js js/popup.min.js-->
-<script type="text/javascript" src="js/component/fav-item-comp.js"></script>
-<script type="text/javascript" src="js/component/toggle-fav-panel-comp.js"></script>
-<script type="text/javascript" src="js/component/setting-panel-comp.js"></script>
-<script type="text/javascript" src="js/component/nav-panel-comp.js"></script>
+<script type="text/javascript" src="js/component/fav-item.js"></script>
+<script type="text/javascript" src="js/component/toggle-fav-panel.js"></script>
+<script type="text/javascript" src="js/component/setting-panel.js"></script>
+<script type="text/javascript" src="js/component/nav-panel.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
 <!--endbuild-->
 </body>

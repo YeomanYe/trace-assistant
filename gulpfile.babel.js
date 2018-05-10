@@ -29,7 +29,7 @@ gulp.task('build:bg',()=>{
 });
 //编译component文件夹下的js文件
 gulp.task('build:comp',()=>{
-    return gulp.src(['js/component/*-comp.js','js/popup.js'])
+    return gulp.src(['js/component/*.js','js/popup.js'])
         .pipe($.sourcemaps.init())
         .pipe($.plumber())
         .pipe($.babel())
