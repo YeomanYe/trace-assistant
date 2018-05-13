@@ -39,3 +39,10 @@
 
 ![qq-qrcord](screenshot/qq-qrcode.png)
 ![wx-qrcode](screenshot/wx-qrcode.png)
+
+## 下一步
+
+* [ ] 搜索本地收藏
+* [ ] 设为已读
+* [ ] 更好的通知
+* [ ] 批量操作
