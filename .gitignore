@@ -1,7 +1,6 @@
 bower_components/
 dist/
 node_modules/
-package-lock.json
 *.pem
 360build/
 *.zip
@@ -10,6 +9,3 @@ package-lock.json
 build/*
 !build/manifest.json
 .flowconfig
-.idea/codeStyles/
-.idea/jsLibraryMappings.xml
-yarn.lock

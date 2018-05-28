@@ -1,6 +1,7 @@
 var storLocal = chrome.storage.local;
 var log = console.log;
 var sendMsg = chrome.runtime.sendMessage;
+var cGetUrl = chrome.runtime.getURL;
 var _createQueryObjProto = {
     addAfterStore: function (queryFun, hangFun) {
         queryFun.afterStore = function (callback) {
@@ -238,6 +239,9 @@ function createNotify(title, iconUrl, message, newUrl) {
         title: title,
         iconUrl: iconUrl,
         isClickable: true,
+        buttons:[
+            {title:'打开',iconUrl:cGetUrl('images/notification-buttons/ic_flash_auto_black_48dp.png')},
+            {title:'已读',iconUrl:cGetUrl('images/notification-buttons/ic_exposure_plus_1_black_48dp.png')}],
         message: message
     };
     chrome.notifications.create(newUrl, options);

@@ -1,6 +1,5 @@
 var _$imgAss,_$imgExport,_$imgToggle;
 var curHref = location.origin + location.pathname;
-var cGetUrl = chrome.runtime.getURL;
 var storLocal = chrome.storage.local;
 var _src = {
     collect:cGetUrl('images/collect.png'),
@@ -90,7 +89,7 @@ function toggleMenu(){
         imgElm.src = _src.comicGrey;
     }
     _$imgExport.toggle();
-    _$imgToggle.toggle();    
+    _$imgToggle.toggle();
 }
 /**
  * 收藏或取消收藏

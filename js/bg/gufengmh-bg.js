@@ -14,7 +14,7 @@ _createQueryObj.createGfQuery = function() {
         newUrl = replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');
         var resObj = {
             newUrl: newUrl,
-            newChapter: newChapter
+            newChapter: newChapter+'1'
         };
         return resObj;
     };

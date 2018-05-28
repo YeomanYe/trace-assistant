@@ -40,6 +40,34 @@ chrome.notifications.onClicked.addListener(function(url) {
     window.open(url);
 });
 
+chrome.notifications.onButtonClicked.addListener(function(url,btnIndex){
+    var updateToNews = function(){
+        getStoreLocal([STOR_KEY_FAVS],function(allFavs){
+            for(var i=0,len = allFavs.length;i<len;i++){
+                var favItem = allFavs[i];
+                var cols = favItem.cols;
+                for(var len2=cols.length - 1;len2--;){
+                    var colItem = cols[len2];
+                    var url2 = formatHref(colItem.newUrl,favItem.baseChapter);
+                    if(url == url2) {
+                        colItem.curChapter = colItem.newChapter;
+                        colItem.curUrl = colItem.newUrl;
+                        decUpdateNum(colItem);
+                        storLocal.save({[STOR_KEY_FAVS]:allFavs});
+                        return;
+                    }
+                }
+
+            }
+            storLocal.save({STOR_KEY_FAVS:allFavs});
+        });
+    }
+    switch(btnIndex){
+        case 0:window.open(url);break;
+        case 1:updateToNews();break;
+    }
+});
+
 /**
  * 更新徽章数
  */
