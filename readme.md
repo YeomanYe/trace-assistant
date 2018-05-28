@@ -36,11 +36,6 @@
 - github地址:[https://github.com/YeomanYe/comic-assistant](https://github.com/YeomanYe/comic-assistant)
 - 作者邮箱:ming1549957235@foxmail.com
 
-交流Q群:729873411
-
-![qq-qrcord](screenshot/qq-qrcode.png)
-![wx-qrcode](screenshot/wx-qrcode.png)
-
 ## 下一步
 
 * [ ] 搜索本地收藏
