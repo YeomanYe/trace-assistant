@@ -42,30 +42,29 @@ chrome.notifications.onClicked.addListener(function(url) {
 
 chrome.notifications.onButtonClicked.addListener(function(url,btnIndex){
     var updateToNews = function(){
-        getStoreLocal([STOR_KEY_FAVS],function(allFavs){
-            for(var i=0,len = allFavs.length;i<len;i++){
-                var favItem = allFavs[i];
+        getStoreLocal([STOR_KEY_FAVS,STOR_KEY_UPDATE_NUM],function(allFavs,updateNum){
+            for(var len = allFavs.length;--len;){
+                var favItem = allFavs[len];
                 var cols = favItem.cols;
-                for(var len2=cols.length - 1;len2--;){
+                for(var len2=cols.length;len2--;){
                     var colItem = cols[len2];
                     var url2 = formatHref(colItem.newUrl,favItem.baseChapter);
                     if(url == url2) {
                         colItem.curChapter = colItem.newChapter;
                         colItem.curUrl = colItem.newUrl;
-                        decUpdateNum(colItem);
-                        storLocal.save({[STOR_KEY_FAVS]:allFavs});
+                        colItem.isUpdate = false;
+                        storLocal.set({[STOR_KEY_FAVS]:allFavs,[STOR_KEY_UPDATE_NUM]:--updateNum});
                         return;
                     }
                 }
-
             }
-            storLocal.save({STOR_KEY_FAVS:allFavs});
         });
     }
     switch(btnIndex){
         case 0:window.open(url);break;
         case 1:updateToNews();break;
     }
+    chrome.notifications.clear(url);
 });
 
 /**
