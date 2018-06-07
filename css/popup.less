@@ -38,32 +38,39 @@ body {
   overflow: auto;
 }
 
-.left img {
-  float: left;
-  width: 67px;
-  height: 92px;
-  border-radius: 8px;
-  margin: 5px 20px;
-  background-color: rgb(211, 211, 211);
-}
-
 #favList{
+  @coverImgH:92px;
   li {
     width: 100%;
     overflow: hidden;
     margin-top: 10px;
     &:hover {
-      background-color: #cccccc;
+      background-color: #eee;
     }
-  }
-  div {
-    margin-top: 12px;
-    max-width: 100%;
-    overflow: hidden;
   }
   .middle,.right{
     vertical-align: top;
     display: inline-block;
+    &,& div{
+      margin-top: 12px;
+      max-width: 100%;
+      overflow: hidden;
+    }
+  }
+  .wrapCheckbox{
+    float: left;
+    margin-top: @coverImgH / 2;
+    margin-left: 15px;
+    margin-right: 0px;
+     display: none;
+  }
+  .left img {
+    float: left;
+    width: 67px;
+    height: @coverImgH;
+    border-radius: 8px;
+    margin: 5px 20px;
+    background-color: rgb(211, 211, 211);
   }
   .middle{
     width: 50%;
