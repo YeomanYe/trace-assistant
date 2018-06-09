@@ -1,4 +1,4 @@
-var vFavItem = Vue.component('fav-list', {
+var vFavList = Vue.component('fav-list', {
   props: {
     items: Array
   },
