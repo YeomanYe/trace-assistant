@@ -15,20 +15,7 @@
 </head>
 <body>
 <div id="contentWrap" v-cloak>
-    <toolbar></toolbar>
-    <div v-show="curShow == 0" id="contentFavWrap" class="listWrap">
-        <batch-panel></batch-panel>
-        <!--切换收藏类型的按钮-->
-        <toggle-fav-panel :cur-show-fav="curShowFav"></toggle-fav-panel>
-        <!-- 收藏的漫画列表 -->
-        <fav-list :items="items"></fav-list>
-    </div>
-    <div v-show="curShow == 1" id="contentSettingWrap" class="listWrap">
-        <!-- 设置列表 -->
-        <setting-panel></setting-panel>
-    </div>
-    <!-- tab栏 -->
-    <nav-panel :cur-show="curShow"></nav-panel>
+
 </div>
 <script type="text/javascript" src="lib/FileSaver.min.js"></script>
 
@@ -44,6 +31,8 @@
 <script type="text/javascript" src="js/component/toggle-fav-panel.js"></script>
 <script type="text/javascript" src="js/component/setting-panel.js"></script>
 <script type="text/javascript" src="js/component/nav-panel.js"></script>
+<script type="text/javascript" src="js/component/toolbar.js"></script>
+<script type="text/javascript" src="js/component/batch-panel.js"></script>
 <script type="text/javascript" src="js/popup.js"></script>
 <!--endbuild-->
 </body>

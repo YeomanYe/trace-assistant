@@ -1,9 +1,9 @@
 var vBatchPanel = Vue.component('batch-panel', {
     props: {
-        items: Array
+        hide:Boolean
     },
     template: `
-        <div id="batchPanel">
+        <div id="batchPanel" v-show="!hide">
             <!-- checkbox -->
             <div class="pretty p-svg p-curve">
                     <input type="checkbox" />
@@ -15,11 +15,11 @@ var vBatchPanel = Vue.component('batch-panel', {
                         <label ></label>
                     </div>
                 </div>
-                <!-- 删除 -->
-                <div class="inline-right">
-                    <a href="javascript:;">删除</a>
-                    <a href="javascript:;">标为已读</a>
-                </div>
+            <!-- 删除 -->
+            <div class="inline-right">
+                <a>删除</a>
+                <a>标为已读</a>
+            </div>
         </div>
      `,
     methods: {}

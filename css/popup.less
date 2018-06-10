@@ -62,7 +62,6 @@ body {
     margin-top: @coverImgH / 2;
     margin-left: 15px;
     margin-right: 0px;
-     display: none;
   }
   .left img {
     float: left;
@@ -172,16 +171,19 @@ nav {
 }
 
 #batchPanel{
-  .p-curve{
-    margin-left: 15px;
-  }
   .inline-right{
     display: inline-block;
     float: right;
   }
-  padding: 10px 0;
-  background: orange;
-  margin: -15px 0 15px;
+  a{
+    color:rgb(78, 144, 232);
+    margin-right: 10px;
+    &:last-child{
+      margin-right: 0px;
+    }
+  }
+  padding: 8px 15px;
+  background: rgb(241,218,75);
 }
 
 #contentSettingWrap {

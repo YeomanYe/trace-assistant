@@ -1,12 +1,13 @@
 var vFavList = Vue.component('fav-list', {
   props: {
-    items: Array
+    items: Array,
+    batch:Boolean
   },
   template: `
 <ul id="favList" class="list">
     <li v-for="(item,index) in items"   :key="item.indexUrl">
     <!-- checkbox -->
-    <div class="wrapCheckbox pretty p-svg p-curve">
+    <div v-show="batch" class="wrapCheckbox pretty p-svg p-curve">
             <input type="checkbox" />
             <div class="state p-success">
                 <!-- svg path -->
