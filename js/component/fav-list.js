@@ -1,14 +1,14 @@
 var vFavList = Vue.component('fav-list', {
-  props: {
-    items: Array,
-    batch:Boolean
-  },
-  template: `
+    props: {
+        items: Array,
+        batch: Boolean
+    },
+    template: `
 <ul id="favList" class="list">
     <li v-for="(item,index) in items"   :key="item.indexUrl">
     <!-- checkbox -->
     <div v-show="batch" class="wrapCheckbox pretty p-svg p-curve">
-            <input type="checkbox" />
+            <input v-model="item.checkState" @click="checkboxHandler(index,item)" type="checkbox" />
             <div class="state p-success">
                 <!-- svg path -->
                 <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -34,16 +34,24 @@ var vFavList = Vue.component('fav-list', {
     </li>
     </ul>
      `,
-  methods: {
-    imgLoseHandler: function (event) {
-      event.target.src = 'images/lose.png'
-    },
-    delFavItem: function (index, item) {
-      //更新视图
-      vContentWrap.items.splice(index, 1)
-      //更新存储
-      var origin = item.origin, type = item.type, title = item.title
-      getStoreLocal(STOR_KEY_FAVS, function (allFavs) {
+    methods: {
+        imgLoseHandler: function (event) {
+            event.target.src = 'images/lose.png'
+        },
+        checkboxHandler:function(index,item){
+            item.checkState = !item.checkState;
+            console.log(item);
+        },
+        delFavItem: delFavItem
+    }
+});
+
+function delFavItem(index, item) {
+    //更新视图
+    vContentWrap.items.splice(index, 1)
+    //更新存储
+    var origin = item.origin, type = item.type, title = item.title
+    getStoreLocal(STOR_KEY_FAVS, function (allFavs) {
         var index = arrEqStr(allFavs, {origin: origin, type: type})
         var cols = allFavs[index].cols
         index = arrEqStr(cols, {title: title})
@@ -53,11 +61,9 @@ var vFavList = Vue.component('fav-list', {
         // sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
         log('allFavs', allFavs)
         storLocal.set({
-          [STOR_KEY_FAVS]: allFavs
+            [STOR_KEY_FAVS]: allFavs
         }, function () {
-          sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV])
+            sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV])
         })
-      })
-    }
-  }
-})
+    })
+}

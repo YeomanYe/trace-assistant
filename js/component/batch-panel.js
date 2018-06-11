@@ -23,4 +23,4 @@ var vBatchPanel = Vue.component('batch-panel', {
         </div>
      `,
     methods: {}
-})
+});
