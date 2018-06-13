@@ -6,7 +6,7 @@ var vBatchPanel = Vue.component('batch-panel', {
         <div id="batchPanel" v-show="!hide">
             <!-- checkbox -->
             <div class="pretty p-svg p-curve">
-                    <input type="checkbox" />
+                    <input @click="invertSelection()" type="checkbox" />
                     <div class="state p-success">
                         <!-- svg path -->
                         <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -23,6 +23,28 @@ var vBatchPanel = Vue.component('batch-panel', {
         </div>
      `,
     methods: {
+        invertSelection:function(){
+          var allItems = vContentWrap.items;
+          for(var i=0,len=allItems.length;i<len;i++){
+              var item = allItems[i];
+              var index = arrEqStr(_selectedFavs,{index:i});
+              if(index < 0){
+                  item.checkState = true;
+                  _selectedFavs.push({index:i,item:item})
+              }else{
+                  item.checkState = false;
+                  _selectedFavs.splice(index,1);
+              }
+          }
+          vContentWrap.items = Object.assign([],allItems);
+          /*for(var item of allItems){
+              let index = _selectedFavs.indexOf(item);
+              item.checkState = !item.checkState;
+              if(index<0) _selectedFavs.push(item);
+              else _selectedFavs.splice(index,1)
+          }*/
+          console.log('invertSelection',_selectedFavs);
+        },
         batchMarkRead:function(){
             eventHub.$emit(EVT_BATCH_MARK_READ);
         },

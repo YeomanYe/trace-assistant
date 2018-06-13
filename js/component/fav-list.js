@@ -40,12 +40,14 @@ var vFavList = Vue.component('fav-list', {
         },
         checkboxHandler:function(index,item){
             let checkState = !item.checkState;
-            if(checkState)
+            let i = arrEqStr(_selectedFavs,{index});
+            if(checkState && i < 0){
                 _selectedFavs.push({index,item});
-            else{
-                let i = arrEqStr(_selectedFavs,{index});
-                if(i>0) _selectedFavs.splice(i,1);
             }
+            else if(i>=0) {
+                _selectedFavs.splice(i,1);
+            }
+            console.log('checkboxHandler',_selectedFavs);
             item.checkState = checkState;
             // console.log(item);
             // eventHub.$emit('test',{data:'test'});
