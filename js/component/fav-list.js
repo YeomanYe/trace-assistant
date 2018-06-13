@@ -39,11 +39,98 @@ var vFavList = Vue.component('fav-list', {
             event.target.src = 'images/lose.png'
         },
         checkboxHandler:function(index,item){
-            item.checkState = !item.checkState;
-            console.log(item);
+            let checkState = !item.checkState;
+            if(checkState)
+                _selectedFavs.push({index,item});
+            else{
+                let i = arrEqStr(_selectedFavs,{index});
+                if(i>0) _selectedFavs.splice(i,1);
+            }
+            item.checkState = checkState;
+            // console.log(item);
+            // eventHub.$emit('test',{data:'test'});
         },
         delFavItem: delFavItem
     }
+});
+
+var _selectedFavs = [];
+var eventHub = new Vue();
+
+eventHub.$on(EVT_BATCH_MARK_READ,function(){
+    _selectedFavs = _selectedFavs.sort(function (a,b) {
+        return b.index - a.index;
+    });
+    console.log('_selectedFavs',_selectedFavs);
+    getStoreLocal([STOR_KEY_FAVS,STOR_KEY_UPDATE_NUM], function (allFavs,updateNum) {
+        for(var favItem of _selectedFavs){
+            var index = favItem.index,
+                item = favItem.item;
+            item.checkState = false;
+            if (item.isUpdate) {
+                item.isUpdate = false;
+                updateNum--;
+            }
+            //更新视图
+            var vItem = vContentWrap.items[index];
+            vItem.curUrl = vItem.newUrl;
+            vItem.curChapter = vItem.newChapter;
+            //更新存储
+            var origin = item.origin, type = item.type, title = item.title;
+            var i = arrEqStr(allFavs, {origin: origin, type: type});
+            var cols = allFavs[i].cols;
+            i = arrEqStr(cols, {title: title});
+            var col = cols[i];
+            col.isUpdate = false;
+            col.curUrl = col.newUrl;
+            col.curChapter = col.newChapter;
+
+            // sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
+            log('allFavs', allFavs);
+            storLocal.set({
+                [STOR_KEY_FAVS]: allFavs,
+                [STOR_KEY_UPDATE_NUM]:updateNum
+            }, function () {
+                _selectedFavs = [];
+                sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
+                chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
+            })
+        }
+    })
+});
+
+eventHub.$on(EVT_BATCH_DEL,function() {
+    _selectedFavs = _selectedFavs.sort(function (a,b) {
+        return b.index - a.index;
+    });
+    getStoreLocal([STOR_KEY_FAVS,STOR_KEY_UPDATE_NUM], function (allFavs,updateNum) {
+        for(var favItem of _selectedFavs){
+            var index = favItem.index,
+                item = favItem.item;
+            if (item.isUpdate) {
+                item.isUpdate = false;
+                updateNum--;
+            }
+            //更新视图
+            vContentWrap.items.splice(index, 1);
+            //更新存储
+            var origin = item.origin, type = item.type, title = item.title;
+            var i = arrEqStr(allFavs, {origin: origin, type: type});
+            var cols = allFavs[i].cols;
+            i = arrEqStr(cols, {title: title});
+            cols.splice(i, 1);
+
+            // sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
+            log('allFavs', allFavs);
+            storLocal.set({
+                [STOR_KEY_FAVS]: allFavs,
+                [STOR_KEY_UPDATE_NUM]:updateNum
+            }, function () {
+                sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
+                chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
+            })
+        }
+    })
 });
 
 function delFavItem(index, item) {

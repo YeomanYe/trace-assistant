@@ -17,10 +17,17 @@ var vBatchPanel = Vue.component('batch-panel', {
                 </div>
             <!-- 删除 -->
             <div class="inline-right">
-                <a>删除</a>
-                <a>标为已读</a>
+                <a class="pointer" @click="batchDel()">删除</a>
+                <a class="pointer" @click="batchMarkRead()">标为已读</a>
             </div>
         </div>
      `,
-    methods: {}
+    methods: {
+        batchMarkRead:function(){
+            eventHub.$emit(EVT_BATCH_MARK_READ);
+        },
+        batchDel:function () {
+            eventHub.$emit(EVT_BATCH_DEL);
+        }
+    }
 });

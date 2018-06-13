@@ -30,5 +30,8 @@ const TYPE_COMIC = 'comic',//漫画
     SITE_GF = 'gufengmh',
     SITE_BUKA = 'buka',
 
+    EVT_BATCH_DEL = 'batchDel',
+    EVT_BATCH_MARK_READ = 'batchMarkRead',
+
     TIME_SHORT = 1000,
     TIME_LONG = 5 * 1000;
