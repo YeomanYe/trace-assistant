@@ -1,4 +1,4 @@
-# 追综饭
+# [追综饭](https://chrome.google.com/webstore/detail/%E8%BF%BD%E7%BB%BC%E9%A5%AD/fajeglfbhflmbaccedmbgelodcbljobl?utm_source=chrome-ntp-icon)
 
 追综饭是一款浏览器扩展，使用该插件能够添加漫画、小说、视频到插件中收藏，能够导出网站中收藏的小说、漫画、视频到插件中，收藏有更新时能够提醒用户。还能够导出收藏到其他电脑浏览器上恢复数据。
 
@@ -41,5 +41,5 @@
 * [ ] 搜索本地收藏
 * [X] 设为已读
 * [X] 更好的通知
-* [ ] 批量操作
+* [X] 批量操作
 * [X] 添加评价
