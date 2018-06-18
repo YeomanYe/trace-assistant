@@ -28,7 +28,7 @@ var vFavList = Vue.component('fav-list', {
         </div>
         <div class="right">
             <div><a :href="item.origin" target="_blank" class="source">{{item.siteName}}</a></div>
-            <div @click.once="delFavItem(index,item)" class="delBtn">删除</div>
+            <div class="operBtn"><span @click.once="delFavItem(index,item)">删除</span><span @click="markReadSingle(index,item)">已读</span></div>
             <div><a :href="item.curUrl" target="_blank" class="contBtn">{{item.type === 'video' ? '继续观看' : '继续阅读'}}</a></div>
         </div>
     </li>
@@ -52,12 +52,48 @@ var vFavList = Vue.component('fav-list', {
             // console.log(item);
             // eventHub.$emit('test',{data:'test'});
         },
-        delFavItem: delFavItem
+        delFavItem: delFavItem,
+        markReadSingle:markReadSingle
     }
 });
 
 var _selectedFavs = [];
 var eventHub = new Vue();
+
+function _markRead(item, index, allFavs, updateNum){
+    if (item.isUpdate) {
+        item.isUpdate = false;
+        updateNum--;
+    }
+    //更新视图
+    var vItem = vContentWrap.items[index];
+    vItem.curUrl = vItem.newUrl;
+    vItem.curChapter = vItem.newChapter;
+    //更新存储
+    var origin = item.origin, type = item.type, title = item.title;
+    var i = arrEqStr(allFavs, {origin: origin, type: type});
+    var cols = allFavs[i].cols;
+    i = arrEqStr(cols, {title: title});
+    var col = cols[i];
+    col.isUpdate = false;
+    col.curUrl = col.newUrl;
+    col.curChapter = col.newChapter;
+    return updateNum;
+}
+
+function markReadSingle(index,item){
+    getStoreLocal([STOR_KEY_FAVS,STOR_KEY_UPDATE_NUM], function (allFavs,updateNum) {
+        updateNum = _markRead(item,index,allFavs,updateNum);
+        storLocal.set({
+            [STOR_KEY_FAVS]: allFavs,
+            [STOR_KEY_UPDATE_NUM]:updateNum
+        }, function () {
+            _selectedFavs = [];
+            sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
+            chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
+        })
+    });
+}
 
 eventHub.$on(EVT_BATCH_MARK_READ,function(){
     _selectedFavs = _selectedFavs.sort(function (a,b) {
@@ -69,35 +105,16 @@ eventHub.$on(EVT_BATCH_MARK_READ,function(){
             var index = favItem.index,
                 item = favItem.item;
             item.checkState = false;
-            if (item.isUpdate) {
-                item.isUpdate = false;
-                updateNum--;
-            }
-            //更新视图
-            var vItem = vContentWrap.items[index];
-            vItem.curUrl = vItem.newUrl;
-            vItem.curChapter = vItem.newChapter;
-            //更新存储
-            var origin = item.origin, type = item.type, title = item.title;
-            var i = arrEqStr(allFavs, {origin: origin, type: type});
-            var cols = allFavs[i].cols;
-            i = arrEqStr(cols, {title: title});
-            var col = cols[i];
-            col.isUpdate = false;
-            col.curUrl = col.newUrl;
-            col.curChapter = col.newChapter;
-
-            // sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
-            log('allFavs', allFavs);
-            storLocal.set({
-                [STOR_KEY_FAVS]: allFavs,
-                [STOR_KEY_UPDATE_NUM]:updateNum
-            }, function () {
-                _selectedFavs = [];
-                sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
-                chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
-            })
+            updateNum = _markRead(item,index,allFavs,updateNum);
         }
+        storLocal.set({
+            [STOR_KEY_FAVS]: allFavs,
+            [STOR_KEY_UPDATE_NUM]:updateNum
+        }, function () {
+            _selectedFavs = [];
+            sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
+            chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
+        })
     })
 });
 
