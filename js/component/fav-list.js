@@ -89,6 +89,7 @@ function markReadSingle(index,item){
             [STOR_KEY_UPDATE_NUM]:updateNum
         }, function () {
             _selectedFavs = [];
+            sortFavItems();
             sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
             chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
         })
@@ -112,6 +113,7 @@ eventHub.$on(EVT_BATCH_MARK_READ,function(){
             [STOR_KEY_UPDATE_NUM]:updateNum
         }, function () {
             _selectedFavs = [];
+            sortFavItems();
             sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
             chrome.runtime.sendMessage(null, [BG_CMD_UPDATE_NUM]);
         })

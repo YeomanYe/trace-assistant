@@ -44,27 +44,36 @@ function showFavs(curShowFav) {
             }
             cols = cols.concat(tmpArr);
         }
-        //按照阅读的时间进行降序排序
-        cols.sort(function (obj1, obj2) {
-            var val1 = obj1.timestamp ? obj1.timestamp : 0;
-            var val2 = obj2.timestamp ? obj2.timestamp : 0;
-            return val2 - val1;
-        });
-        //有更新的排在前头
-        var tmpArr1 = [],tmpArr2 = [];
-        for(i=0,len=cols.length;i<len;i++){
-            var c = cols[i];
-            if(c.isUpdate) {
-                tmpArr1.push(c);
-            }else{
-                tmpArr2.push(c);
-            }
-        }
-        cols = tmpArr1.concat(tmpArr2);
         log('all-cols', cols);
         vContentWrap.curShowFav = curShowFav;
         vContentWrap.items = cols;
+        sortFavItems();
     });
+}
+
+/**
+ * 排序显示收藏项
+ * @returns {*[]}
+ */
+function sortFavItems() {
+    var cols = vContentWrap.items;
+    //按照阅读的时间进行降序排序
+    cols.sort(function (obj1, obj2) {
+        var val1 = obj1.timestamp ? obj1.timestamp : 0;
+        var val2 = obj2.timestamp ? obj2.timestamp : 0;
+        return val2 - val1;
+    });
+    //有更新的排在前头
+    var tmpArr1 = [],tmpArr2 = [];
+    for(var i=0,len=cols.length;i<len;i++){
+        var c = cols[i];
+        if(c.isUpdate) {
+            tmpArr1.push(c);
+        }else{
+            tmpArr2.push(c);
+        }
+    }
+    vContentWrap.items =  Object.assign([],tmpArr1.concat(tmpArr2));
 }
 
 var vTogglePanel = Vue.component('toggle-fav-panel', {
