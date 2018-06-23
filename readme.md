@@ -42,3 +42,9 @@
 
 ## Thanks
 加菲猫
+
+## Dependence
+[switch](https://github.com/zhiyul/switch)
+[pretty-checkbox](https://github.com/lokesh-coder/pretty-checkbox)
+[buffer](https://github.com/feross/buffer)
+[FileSaver](https://github.com/eligrey/FileSaver.js)
