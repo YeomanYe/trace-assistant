@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": ["build/lib/jquery.min.js","build/js/constant.js", "build/js/utils.js","build/js/baseStoreObj.js", "build/js/bg.min.js"]
+      "scripts": ["build/js/back-dep.js","build/lib/jquery.min.js","build/js/constant.js", "build/js/utils.js","build/js/baseStoreObj.js", "build/js/bg.min.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",

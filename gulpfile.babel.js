@@ -2,6 +2,8 @@ import gulp from 'gulp'; //引入gulp
 import gulpLoadPlugins from 'gulp-load-plugins'; //自动加载插件 省去一个一个require进来
 const $ = gulpLoadPlugins();
 import del from 'del';
+import source from 'vinyl-source-stream';
+import browserify from 'browserify';
 
 //编译cnt文件夹下的js文件
 gulp.task('build:cnt',()=>{
@@ -15,9 +17,23 @@ gulp.task('build:cnt',()=>{
         .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest('./build/js'));
 });
+//gulp主动设置的命令
+gulp.task("dependency",()=>{
+    //通过browserify管理依赖
+    browserify({
+        //入口点,app.jsx
+        entries : ["./js/back-dep.js"]
+    })
+    //转换为gulp能识别的流
+    .bundle()
+    //合并输出为app.js
+    .pipe(source("back-dep.js"))
+    //输出到当前文件夹中
+    .pipe(gulp.dest("./build/js"));
+});
 //编译bg文件夹下的js文件
 gulp.task('build:bg',()=>{
-    return gulp.src(['js/bg/*-bg.js','js/bg/background.js'])
+    return gulp.src(['lib/buffer.js','js/bg/*-bg.js','js/bg/background.js'])
         .pipe($.sourcemaps.init())
         .pipe($.plumber())
         .pipe($.babel())
@@ -29,7 +45,7 @@ gulp.task('build:bg',()=>{
 });
 //编译component文件夹下的js文件
 gulp.task('build:comp',()=>{
-    return gulp.src(['js/component/*.js','js/popup.js'])
+    return gulp.src(['js/component/*.js','js/App.js'])
         .pipe($.sourcemaps.init())
         .pipe($.plumber())
         .pipe($.babel())
@@ -61,7 +77,7 @@ gulp.task('uglify',()=>{
         minifyJS: true,//压缩页面里的JS
         minifyCSS: true//压缩页面里的CSS
     };
-    return gulp.src(['*.html','css/*.css','js/*.js','!js/popup.js'])
+    return gulp.src(['*.html','css/*.css','js/*.js','!js/App.js'])
         .pipe($.plumber())
         .pipe($.sourcemaps.init())
         .pipe($.useref({noAssets:true,/*searchPath: ['app', '.']*/}))  //将页面上 <!--endbuild--> 根据上下顺序合并
@@ -106,7 +122,7 @@ gulp.task('c:after' , function(){
 });
 //构建
 gulp.task('b',['clean'],()=>{
-    return gulp.start(['build:bg','build:cnt','build:comp','uglify','images','pipe','less']);
+    return gulp.start(['build:bg','dependency','build:cnt','build:comp','uglify','images','pipe','less']);
 });
 
 gulp.task('default',['b'],()=>{
@@ -114,8 +130,9 @@ gulp.task('default',['b'],()=>{
     gulp.watch('js/cnt/**' , ['build:cnt']);
     gulp.watch('js/bg/**' , ['build:bg']);
     gulp.watch('css/*.less',['less']);
-    gulp.watch(['js/component/**','js/popup.js'], ['build:comp']);
+    gulp.watch('js/back-dep.js',['dependency']);
+    gulp.watch(['js/component/**','js/App.js'], ['build:comp']);
     gulp.watch('images/**' , ['images']);
     gulp.watch('./lib/**' , ['pipe']);
-    gulp.watch(['*.html','js/*.js','css/*.css','!js/popup.js'],['uglify']);
+    gulp.watch(['*.html','js/*.js','css/*.css','!js/App.js'],['uglify']);
 });
