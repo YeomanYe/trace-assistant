@@ -22,7 +22,7 @@ gulp.task("dependency",()=>{
     //通过browserify管理依赖
     browserify({
         //入口点,app.jsx
-        entries : ["./js/back-dep.js"]
+        entries : ["./js/deps/back-dep.js"]
     })
     //转换为gulp能识别的流
     .bundle()
@@ -130,7 +130,7 @@ gulp.task('default',['b'],()=>{
     gulp.watch('js/cnt/**' , ['build:cnt']);
     gulp.watch('js/bg/**' , ['build:bg']);
     gulp.watch('css/*.less',['less']);
-    gulp.watch('js/back-dep.js',['dependency']);
+    gulp.watch('js/deps/back-dep.js',['dependency']);
     gulp.watch(['js/component/**','js/App.js'], ['build:comp']);
     gulp.watch('images/**' , ['images']);
     gulp.watch('./lib/**' , ['pipe']);

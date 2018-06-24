@@ -135,7 +135,7 @@ function decUpdateNum(item) {
  * 更新阅读记录
  * async 是否异步获取的信息
  */
-function updateColRecord(getCurIndex,async) {
+function updateColRecord(getCurIndex, async) {
     return function (favs, allFavs) {
 
         var updateCurInfo = function (curIndex) {
@@ -156,7 +156,7 @@ function updateColRecord(getCurIndex,async) {
                 allFavs: allFavs
             });
         };
-        if(async) getCurIndex(updateCurInfo);
+        if (async) getCurIndex(updateCurInfo);
         else updateCurInfo(getCurIndex());
     }
 }
@@ -165,58 +165,58 @@ function updateColRecord(getCurIndex,async) {
  * 查询是否有更新的通用函数
  */
 function queryUpdate(baseObj, callback, wayFlag) {
-  var baseIndex = baseObj.baseIndex;
-  var baseImage = baseObj.baseImg;
-  var baseChapter = baseObj.baseChapter;
-  var afterStoreCall = callback._afterStore;
-  var singleFavLen = 0;
-  return function (favs, allFavs, updateNum) {
-    singleFavLen = favs.length;
-    var completeCall = function (data) {
-      var col = favs[singleFavLen];
-      try {
-        var resObj = callback(data.responseText);
-        var newUrl = resObj.newUrl,
-          newChapter = resObj.newChapter;
-        if (col.newChapter !== newChapter) {
-          col.newChapter = newChapter;
-          col.newUrl = newUrl;
-          //生成提示
-          getStoreLocal(STOR_KEY_IS_CLOSE_TIPS, (function (baseImage, col, newChapter, baseChatper, newUrl) {
-            return function (isCloseTips) {
-              if (!isCloseTips)
-                createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
+    var baseIndex = baseObj.baseIndex;
+    var baseImage = baseObj.baseImg;
+    var baseChapter = baseObj.baseChapter;
+    var afterStoreCall = callback._afterStore;
+    var singleFavLen = 0;
+    return function (favs, allFavs, updateNum) {
+        singleFavLen = favs.length;
+        var completeCall = function (htmlText) {
+            var col = favs[singleFavLen];
+            try {
+                var resObj = callback(htmlText);
+                var newUrl = resObj.newUrl,
+                    newChapter = resObj.newChapter;
+                if (col.newChapter !== newChapter) {
+                    col.newChapter = newChapter;
+                    col.newUrl = newUrl;
+                    //生成提示
+                    getStoreLocal(STOR_KEY_IS_CLOSE_TIPS, (function (baseImage, col, newChapter, baseChatper, newUrl) {
+                        return function (isCloseTips) {
+                            if (!isCloseTips)
+                                createNotify(col.title, formatHref(col.imgUrl, baseImage), '更新到: ' + newChapter, baseChapter + newUrl);
+                        }
+                    })(baseImage, col, newChapter, baseChapter, newUrl));
+
+                    if (!col.isUpdate) {
+                        col.isUpdate = true;
+                        ++updateNum;
+                    }
+
+                    storLocal.set({
+                        updateNum: updateNum,
+                        allFavs: allFavs
+                    });
+                }
+            } catch (e) {
+                log(e);
             }
-          })(baseImage, col, newChapter, baseChapter, newUrl));
-
-          if (!col.isUpdate) {
-              col.isUpdate = true;
-              ++updateNum;
-          }
-
-          storLocal.set({
-            updateNum: updateNum,
-            allFavs: allFavs
-          });
-        }
-      } catch (e) {
-        log(e);
-      }
-      nextHandler();
-    };
-    var nextHandler = function(){
-      if(--singleFavLen < 0){
-        if(afterStoreCall instanceof Function){
-          afterStoreCall();
-        }else{
-          setBadge(updateNum);
-        }
-      }else{
-        getIndexContent(formatHref(favs[singleFavLen].indexUrl, baseIndex), wayFlag,completeCall);
-      }
-    };
-    nextHandler();
-  }
+            nextHandler();
+        };
+        var nextHandler = function () {
+            if (--singleFavLen < 0) {
+                if (afterStoreCall instanceof Function) {
+                    afterStoreCall();
+                } else {
+                    setBadge(updateNum);
+                }
+            } else {
+                getIndexContent(formatHref(favs[singleFavLen].indexUrl, baseIndex), wayFlag, completeCall);
+            }
+        };
+        nextHandler();
+    }
 }
 
 /**
@@ -239,9 +239,9 @@ function createNotify(title, iconUrl, message, newUrl) {
         title: title,
         iconUrl: iconUrl,
         isClickable: true,
-        buttons:[
-            {title:'打开',iconUrl:cGetUrl('images/notification-buttons/ic_flash_auto_black_48dp.png')},
-            {title:'已读',iconUrl:cGetUrl('images/notification-buttons/ic_exposure_plus_1_black_48dp.png')}],
+        buttons: [
+            {title: '打开', iconUrl: cGetUrl('images/notification-buttons/ic_flash_auto_black_48dp.png')},
+            {title: '已读', iconUrl: cGetUrl('images/notification-buttons/ic_exposure_plus_1_black_48dp.png')}],
         message: message
     };
     chrome.notifications.create(newUrl, options);
@@ -380,20 +380,21 @@ function assignColItem(obj, colItem) {
  * @param originCode
  * @returns {string}
  */
-function htmlDecode(url, originCode,completeCall) {
-    var data = {
-        method: 'get',
-        url: url,
-        distCode: 'utf-8'
+function htmlDecode(url, originCode, completeCall) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function (oEvent) {
+        var arrayBuffer = xhr.response; // Note: not oReq.responseText
+        try {
+            var text = iconv.decode(buffer.Buffer.from(arrayBuffer), originCode);
+            // text = iconv.encode(text, 'utf-8');
+            completeCall(text);
+        } catch (e) {
+            console.warn(e);
+        }
     };
-    typeof originCode === 'string' ? data.originCode = originCode : Object.assign(data, originCode);
-    $.ajax(SERVICE_UTIL + '/decode', {
-        async: true,
-        timeout: 1500,
-        method: 'post',
-        complete:completeCall,
-        data: data
-    });
+    xhr.send(null);
 }
 
 /**
@@ -401,16 +402,16 @@ function htmlDecode(url, originCode,completeCall) {
  * @param url
  * @param sucCall
  */
-function htmlDecodeByFrame(url,sucCall) {
-    var $iframe = $('#indexInfoFrame'),frElm;
-    if($iframe.length === 0){
+function htmlDecodeByFrame(url, sucCall) {
+    var $iframe = $('#indexInfoFrame'), frElm;
+    if ($iframe.length === 0) {
         $iframe = $('<iframe id="indexInfoFrame" style="display:none;" hidden></iframe>');
     }
-    $iframe.attr('src',url);
+    $iframe.attr('src', url);
     frElm = $iframe.get(0);
     frElm.onload = function (e) {
         var textHtml = frElm.contentWindow.document.body.innerHTML;
-        log('iframe',textHtml);
+        log('iframe', textHtml);
         sucCall(textHtml);
     };
     $('body').append($iframe);
@@ -419,15 +420,17 @@ function htmlDecodeByFrame(url,sucCall) {
 /**
  * 获取index页面的内容
  */
-function getIndexContent(indexUrl, wayFlag,completeCall) {
+function getIndexContent(indexUrl, wayFlag, completeCall) {
     if (typeof wayFlag !== 'object') {
-      $.ajax(indexUrl, {
-        async: true,
-        timeout:1500,
-        complete: completeCall
-      });
+        $.ajax(indexUrl, {
+            async: true,
+            timeout: 1500,
+            complete: function (data){
+                completeCall(data.responseText);
+            }
+        });
     } else {
-       htmlDecode(indexUrl, wayFlag.originCode,completeCall);
+        htmlDecode(indexUrl, wayFlag.originCode, completeCall);
     }
 }
 
@@ -444,7 +447,7 @@ function getIndexContentByFrame(indexUrl, wayFlag, sucCall) {
             success: sucCall
         });
     } else {
-        htmlDecodeByFrame(indexUrl,sucCall);
+        htmlDecodeByFrame(indexUrl, sucCall);
         // retText = htmlDecode(indexUrl, wayFlag.originCode);
     }
 }
@@ -510,10 +513,11 @@ function sendToAllTabs(data) {
  * @param data
  * @param handler
  */
-function sendToCurTab(data,handler) {
-  chrome.tabs.query({active:true},function (tabs) {
-    var tab = tabs[0];
-    handler = handler || function(){};
-    chrome.tabs.sendMessage(tab.id,data,null,handler);
-  });
+function sendToCurTab(data, handler) {
+    chrome.tabs.query({active: true}, function (tabs) {
+        var tab = tabs[0];
+        handler = handler || function () {
+        };
+        chrome.tabs.sendMessage(tab.id, data, null, handler);
+    });
 }
