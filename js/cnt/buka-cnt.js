@@ -3,7 +3,7 @@ $(function () {
     log(SITE_BUKA);
     createBtn();
     _$imgExport.on('click', function () {
-        showTips('该网站不支持导出功能');
+        showTips('该网站暂不支持导出功能');
     });
     _$imgToggle.on('click', toggleFavHandlerBuka);
     _updateCurFavFun = updateBuka;

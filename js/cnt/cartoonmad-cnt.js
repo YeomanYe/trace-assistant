@@ -12,10 +12,7 @@ $(function(){
  * 导出腾讯动漫用户配置
  */
 function exportUserColCartoonMad(){
-    $.ajax('http://ac.qq.com/MyPersonalCenter/getUserCollection',{success:function(text){
-        var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC,text];
-        sendMsg(null, msgArr,handleResData);
-    }});
+    showTips('该网站暂不支持导出功能');
 }
 /**
  * 获取章节信息
@@ -24,6 +21,7 @@ function getCurComicCartoonMad(){
     var tmpArr = document.title.split(' - ');
     var title = tmpArr[0];
     title.substr(title.length - 2,2);
+    var retObj;
     if(title.substr(title.length - 2,2) !== '漫畫'){
         retObj = {
             indexUrl:curHref,
@@ -31,7 +29,7 @@ function getCurComicCartoonMad(){
         };
     }else{
         title = title.substr(0,title.length - 2);
-        var indexUrl = $('table tbody tr:eq(1) tr:eq(0) td tr td center li a').attr('href');
+        var indexUrl = $('table table center li a:eq(0)').attr('href');
         var curUrl = curHref;
         var curChapter = tmpArr[1];
         retObj = {
@@ -55,15 +53,13 @@ function updateCartoonMad(){
 function toggleFavHandlerCartoonMad(){
     var getChapterInfo = function(text){
         var $html = $(text);
-        var imgUrl = $html.find('.works-cover img').get(0).src;
-        var $as = $html.find('.chapter-page-all a');
+        var imgUrl = $html.find('.cover + img').get(0).src;
+        var $as = $html.find('fieldset#info legend + table a');
         var newA = $as.get($as.length - 1),curA = $as.get(0);
-        var tmpArr = newA.title.split('：');
         var newChapter,newUrl,curChapter,curUrl;
-        newChapter = tmpArr[1];
+        newChapter = newA.innerText;
         newUrl = newA.href;
-        tmpArr = curA.title.split('：');
-        curChapter = tmpArr[1];
+        curChapter = curA.innerText;
         curUrl = curA.href;
         var retObj = {
             curUrl:curUrl,

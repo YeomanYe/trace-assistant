@@ -254,8 +254,8 @@ function showTips(msg, time) {
     var $div = $('<div>');
     time = time ? time : TIME_SHORT;
     $div.text(msg);
-    var width = $(window).width(),
-        height = $(window).height();
+    var width = window.innerWidth,
+        height = window.innerHeight;
     $div.css({
         position: 'fixed',
         padding: '20px',

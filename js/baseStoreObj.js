@@ -150,7 +150,7 @@ _allBaseStoreObj[SITE_CARTOONMAD] = function(origin,type){
         baseChapter: baseChapterUrl,
         type:type,
         origin: origin,
-        site: SITE_KUKU,
+        site: SITE_CARTOONMAD,
         siteName:'動漫狂'
     };
     return storObj;
