@@ -3,7 +3,7 @@
 追综饭是一款浏览器扩展，使用该插件能够添加漫画、小说、视频到插件中收藏，能够导出网站中收藏的小说、漫画、视频到插件中，收藏有更新时能够提醒用户。还能够导出收藏到其他电脑浏览器上恢复数据。
 
 支持的网站
-漫画：快看、腾讯动漫、漫画之家、古风漫画
+漫画：快看、腾讯动漫、漫画之家、古风漫画、kuku、动漫狂
 小说：起点
 视频:bilibili
 
@@ -38,7 +38,7 @@
 
 ## 下一步
 
-* [ ] 搜索本地收藏
+* [X] 搜索本地收藏
 
 ## Thanks
 加菲猫
@@ -48,3 +48,4 @@
 [pretty-checkbox](https://github.com/lokesh-coder/pretty-checkbox)
 [buffer](https://github.com/feross/buffer)
 [FileSaver](https://github.com/eligrey/FileSaver.js)
+[iconv-lite](https://github.com/ashtuchkin/iconv-lite)
