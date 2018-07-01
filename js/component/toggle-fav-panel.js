@@ -29,7 +29,8 @@ function showFavs(curShowFav) {
                 baseImg = favItem.baseImg;
             var tmpArr = [];
 
-            if (type && type != favItem.type) continue;
+            if (type && type !== favItem.type) continue;
+            var searchText = vContentWrap.searchText;
             for (var j = 0, len2 = colItems.length; j < len2; j++) {
                 var item = colItems[j],obj = Object.assign({},item);
                 obj.indexUrl = formatHref(item.indexUrl, baseIndex);
@@ -39,7 +40,7 @@ function showFavs(curShowFav) {
                 obj.type = favItem.type;
                 obj.siteName = favItem.siteName;
                 obj.origin = favItem.origin;
-                // obj.bgStyle = {backgroundImage: 'url(' + obj.imgUrl + ')'};
+                if(searchText && item.title.indexOf(searchText) < 0) continue;
                 tmpArr.push(obj);
             }
             cols = cols.concat(tmpArr);

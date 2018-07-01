@@ -10,7 +10,7 @@ var vToolbar = Vue.component('toolbar', {
                     img: '../../images/praise.png',
                     href: 'https://chrome.google.com/webstore/detail/%E8%BF%BD%E7%BB%BC%E9%A5%AD/fajeglfbhflmbaccedmbgelodcbljobl/reviews?utm_source=chrome-ntp-icon'
                 },
-                {title: '批量操作', img: '../../images/batch.png',click:'vToolbar.batch = !vToolbar.batch'},
+                {title: '批量操作', img: '../../images/batch.png'},
                 {title:'搜索',img:'../../images/search.png'}
             ]
         }

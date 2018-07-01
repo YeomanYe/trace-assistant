@@ -3,6 +3,7 @@ var vSearchPanel = Vue.component('search-panel', {
     },
     data: function () {
         return {
+            searchText:''
         }
     },
     template: `
@@ -11,7 +12,7 @@ var vSearchPanel = Vue.component('search-panel', {
                 <img src="../../images/search.png" alt=""/>
             </div>
             <div class="bd">
-                <input type="text">
+                <input v-model.trim="searchText" @input="inputSearch" type="text">
             </div>
             <div class="fd">
                 <a @click="cancelSearch" class="pointer">取消</a>
@@ -21,6 +22,12 @@ var vSearchPanel = Vue.component('search-panel', {
     methods: {
         cancelSearch:function () {
             vContentWrap.search = false;
+            vContentWrap.searchText = '';
+            showFavs(vContentWrap.curShowFav);
+        },
+        inputSearch:function () {
+            vContentWrap.searchText = this.searchText;
+            showFavs(vContentWrap.curShowFav);
         }
     }
 })
