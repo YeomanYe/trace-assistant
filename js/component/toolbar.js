@@ -35,6 +35,7 @@ var vToolbar = Vue.component('toolbar', {
             switch(index){
                 case 0:break;
                 case 1:vContentWrap.batch = !vContentWrap.batch;break;
+                case 2:vContentWrap.search = true;break;
             }
         }
     }
