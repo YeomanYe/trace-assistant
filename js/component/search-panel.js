@@ -12,7 +12,7 @@ var vSearchPanel = Vue.component('search-panel', {
                 <img src="../../images/search.png" alt=""/>
             </div>
             <div class="bd">
-                <input v-model.trim="searchText" @input="inputSearch" type="text">
+                <input autofocus v-model.trim="searchText" @input="inputSearch" type="text">
             </div>
             <div class="fd">
                 <a @click="cancelSearch" class="pointer">取消</a>
