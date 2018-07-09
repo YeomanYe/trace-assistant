@@ -18,6 +18,7 @@ var vContentWrap = new Vue({
             <toggle-fav-panel :cur-show-fav="curShowFav"></toggle-fav-panel>
             <!-- 收藏的漫画列表 -->
             <fav-list :batch="batch" :items="items"></fav-list>
+            <empty-result v-show="items.length == 0"></empty-result>
         </div>
         <div v-show="curShow == 1" id="contentSettingWrap" class="listWrap">
             <!-- 设置列表 -->

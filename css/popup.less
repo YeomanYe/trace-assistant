@@ -196,6 +196,10 @@ nav {
   margin-top: 0;
 }
 
+#contentFavWrap{
+  position: relative;
+}
+
 #favToggleWrap {
   font-size: 0px; /* 出自http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/ 去除元素之间空隙 */
   transform: translate(25%, 0%);
@@ -266,6 +270,21 @@ nav {
     a{
       color: white;
     }
+  }
+}
+
+#emptyResult{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  p{
+    font-size: 40px;
+    text-align: center;
+    color: rgb(138,138,138);
+  }
+  img{
+    width: 300px;
   }
 }
 
