@@ -22,7 +22,7 @@ var vFavList = Vue.component('fav-list', {
             <img :src="item.imgUrl" @error="imgLoseHandler"/>
         </a>
         <div class="middle">
-            <h3 class="tiltle"><a :href="item.indexUrl" target="_blank" class="titleName">{{item.title}}</a><a target="_blank" :href="item.newUrl" v-show="item.isUpdate" class="news-badge">news</a></h3>
+            <h3 class="tiltle"><a :href="item.indexUrl" target="_blank" class="titleName">{{item.title}}</a><a target="_blank" :href="item.newUrl" v-show="item.isUpdate" class="news-badge">更新</a></h3>
             <div><a :href="item.curUrl" target="_blank" class="current">{{item.curChapter}}</a></div>
             <div><a :href="item.newUrl" target="_blank" class="news">{{item.newChapter}}</a></div>
         </div>
