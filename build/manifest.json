@@ -26,5 +26,5 @@
    "options_page": "popup.html",
    "permissions": ["http://*/*", "https://*/*", "notifications", "storage", "unlimitedStorage"],
    "version": "3.0.2",
-   "web_accessible_resources": ["remote/*", "lib/jquery.min.js", "manifest.json", "images/*", "_locales/*"]
+   "web_accessible_resources": ["remote/*", "lib/jquery.min.js", "manifest.json", "images/*", "_locales/*","fonts/*"]
 }

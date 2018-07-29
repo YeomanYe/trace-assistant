@@ -26,5 +26,5 @@
    "options_page": "build/popup.html",
    "permissions": ["http://*/*", "https://*/*", "notifications", "storage", "unlimitedStorage"],
    "version": "1.0.0",
-   "web_accessible_resources": ["remote/*", "js/*","css/*","lib/*", "manifest.json", "images/*", "_locales/*"]
+   "web_accessible_resources": ["remote/*", "js/*","css/*","lib/*", "manifest.json", "images/*", "_locales/*","fonts/*"]
 }

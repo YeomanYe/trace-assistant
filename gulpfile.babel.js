@@ -93,6 +93,7 @@ gulp.task('uglify',()=>{
 });
 //只需要移动的文件
 gulp.task('pipe',()=>{
+    gulp.src('./fonts/**').pipe(gulp.dest('./build/fonts'));
     gulp.src(['./lib/**','!./lib/vue.js']).pipe(gulp.dest('./build/lib'));
 });
 //压缩图片
@@ -133,6 +134,6 @@ gulp.task('default',['b'],()=>{
     gulp.watch('js/deps/back-dep.js',['dependency']);
     gulp.watch(['js/component/**','js/App.js'], ['build:comp']);
     gulp.watch('images/**' , ['images']);
-    gulp.watch('./lib/**' , ['pipe']);
+    gulp.watch(['./fonts/**','./lib/**'] , ['pipe']);
     gulp.watch(['*.html','js/*.js','css/*.css','!js/App.js'],['uglify']);
 });

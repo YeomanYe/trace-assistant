@@ -21,6 +21,7 @@ var vToolbar = Vue.component('toolbar', {
                 <img src="../../images/icon/logo-white32.png" alt=""/>
                 <h1>追综饭</h1>
             </div>
+            <i class="fa fa-thumbs-o-up"></i>
             <template v-for="(bdObj,index) in bdArr" >
                 <div class="bd" >
                     <a target="_blank" @click="clickHandler(index,bdObj)" :title="bdObj.title" :href="bdObj.href">
