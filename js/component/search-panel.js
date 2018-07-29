@@ -9,7 +9,7 @@ var vSearchPanel = Vue.component('search-panel', {
     template: `
           <header id='search'>
             <div class="hd">
-                <img src="../../images/search.png" alt=""/>
+                <i class="fa fa-search"/>
             </div>
             <div class="bd">
                 <input autofocus v-model.trim="searchText" @input="inputSearch" type="text">

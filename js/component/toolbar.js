@@ -7,11 +7,12 @@ var vToolbar = Vue.component('toolbar', {
             bdArr: [
                 {
                     title: '给个好评',
-                    img: '../../images/praise.png',
+                    icon:'fa-thumbs-o-up',
+                    wrapStyle:'margin-top:1px;',
                     href: 'https://chrome.google.com/webstore/detail/%E8%BF%BD%E7%BB%BC%E9%A5%AD/fajeglfbhflmbaccedmbgelodcbljobl/reviews?utm_source=chrome-ntp-icon'
                 },
-                {title: '批量操作', img: '../../images/batch.png'},
-                {title:'搜索',img:'../../images/search.png'}
+                {title: '批量操作',icon:'fa-list',wrapStyle:'margin-top:3px;'},
+                {title:'搜索',icon:'fa-search'}
             ]
         }
     },
@@ -21,13 +22,10 @@ var vToolbar = Vue.component('toolbar', {
                 <img src="../../images/icon/logo-white32.png" alt=""/>
                 <h1>追综饭</h1>
             </div>
-            <i class="fa fa-thumbs-o-up"></i>
             <template v-for="(bdObj,index) in bdArr" >
-                <div class="bd" >
-                    <a target="_blank" @click="clickHandler(index,bdObj)" :title="bdObj.title" :href="bdObj.href">
-                        <img :src="bdObj.img" alt=""/>
-                    </a>
-                </div>
+                <a target="_blank" @click="clickHandler(index,bdObj)" :style="bdObj.wrapStyle" :title="bdObj.title" :href="bdObj.href">
+                    <i class="fa" :class="bdObj.icon"/>
+                </a>
             </template>
         </header>
      `,
