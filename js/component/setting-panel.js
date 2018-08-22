@@ -42,6 +42,7 @@ var vSettingPanel = Vue.component('setting-panel', {
                 };
                 reader.readAsText(file);
             }
+            e.currentTarget.value = '';
         },
     }
 });
