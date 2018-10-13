@@ -1,15 +1,15 @@
 {
    "background": {
-      "scripts": ["build/js/back-dep.js","build/lib/jquery.min.js","build/js/constant.js", "build/js/utils.js","build/js/baseStoreObj.js", "build/js/bg.min.js"]
+      "scripts": ["js/back-dep.js","lib/jquery.min.js","js/constant.js", "js/utils.js","js/baseStoreObj.js", "js/bg.min.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",
-      "default_popup": "build/popup.html",
+      "default_popup": "popup.html",
       "default_title": "追综饭"
    },
    "content_scripts": [{
-      "js": ["build/lib/jquery.min.js","build/js/constant.js", "build/js/utils.js","build/js/baseStoreObj.js", "build/js/content.min.js"],
-      "css": ["build/css/content.css"],
+      "js": ["lib/jquery.min.js","js/constant.js", "js/utils.js","js/baseStoreObj.js", "js/content.min.js"],
+      "css": ["css/content.css"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_end"
    }],
@@ -25,6 +25,6 @@
    "name": "追综饭",
    "options_page": "build/popup.html",
    "permissions": ["http://*/*", "https://*/*", "notifications", "storage", "unlimitedStorage"],
-   "version": "1.0.0",
+   "version": "3.2.0",
    "web_accessible_resources": ["remote/*", "js/*","css/*","lib/*", "manifest.json", "images/*", "_locales/*","fonts/*"]
 }
