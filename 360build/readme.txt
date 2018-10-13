@@ -10,3 +10,4 @@
 
 github地址:https://github.com/YeomanYe/comic-assistant
 作者邮箱:ming1549957235@foxmail.com
+交流Q群：591792275
