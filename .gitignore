@@ -4,8 +4,8 @@ node_modules/
 *.pem
 360build/*.crx
 *.zip
+*.log
 .idea
 
 build/*
-!build/manifest.json
 .flowconfig
