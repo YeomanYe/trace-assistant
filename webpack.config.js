@@ -7,7 +7,7 @@ const path = require('path');
 const NODE_ENV = process.env.NODE_ENV;
 module.exports = {
     entry: {
-        popup: './js/App.vue',
+        popup: './js/App.js',
     },
     output: {
         path: path.resolve(__dirname, './build'),

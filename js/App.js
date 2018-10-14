@@ -1,4 +1,15 @@
-<template>
+import Vue from 'vue';
+var vContentWrap = new Vue({
+    el:'#contentWrap',
+    data:{
+        curShow:CUR_FAV.ALL,//当前显示的tab内容
+        items: [],//收藏的集合
+        batch:false, //是否显示批量处理
+        search:false,//是否显示搜索面板
+        searchText:'',
+        curShowFav:CUR_NAV.FAV //当前显示的收藏
+    },
+    template:`
     <div>
         <search-panel v-show="search" :searchText="searchText"></search-panel>
         <toolbar :batch="batch" ></toolbar>
@@ -17,20 +28,9 @@
         <!-- tab栏 -->
         <nav-panel :cur-show="curShow"></nav-panel>
     </div>
-</template>
+    `,
+    methods:{
 
-<script>
-    // showFavs(0);
-    import Vue from 'vue';
-    export default {
-        el:'#contentWrap',
-        data:{
-            curShow:CUR_FAV.ALL,//当前显示的tab内容
-            items: [],//收藏的集合
-            batch:false, //是否显示批量处理
-            search:false,//是否显示搜索面板
-            searchText:'',
-            curShowFav:CUR_NAV.FAV //当前显示的收藏
-        },
     }
-</script>
+});
+// showFavs(0);
