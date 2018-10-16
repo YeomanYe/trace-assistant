@@ -3,11 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const path = require('path');
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const NODE_ENV = process.env.NODE_ENV;
 module.exports = {
     entry: {
-        popup: './js/App.js',
+        popup: './js/popup.js',
     },
     output: {
         path: path.resolve(__dirname, './build'),
@@ -18,7 +19,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(scss|css)$/,
-                use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader'],
+                use: [MiniCssExtractPlugin.loader,'vue-style-loader','css-loader', 'sass-loader'],
                 exclude: /node_modules/
             },
             {
@@ -82,6 +83,7 @@ module.exports = {
         }
     },
     plugins: [
+        new VueLoaderPlugin(),
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css'
