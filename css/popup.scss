@@ -1,22 +1,22 @@
 /*预定义的样式*/
-.linkColor(@color,@hover:@color) {
+@mixin linkColor($color,$hover:$color) {
   text-decoration: none;
-  color: @color;
+  color: $color;
   &:hover {
     text-decoration: none;
-    color: @color;
+    color: $color;
   }
   &:active, &:visited {
     text-decoration: none;
-    color: @color;
+    color: $color;
   }
 }
 
-@sumHeight: 500px;
-//@themeColor: rgb(78, 144, 232);
-//@themeColorLight:rgb(139, 167, 227);
-@themeColor: black;
-@themeColorLight:grey;
+$sumHeight: 500px;
+//$themeColor: rgb(78, 144, 232);
+//$themeColorLight:rgb(139, 167, 227);
+$themeColor: black;
+$themeColorLight:grey;
 /*元素样式设置*/
 * {
   margin: 0;
@@ -25,21 +25,21 @@
 
 body {
   width: 430px;
-  height: @sumHeight;
+  height: $sumHeight;
 }
 
 .listWrap {
-  height: @sumHeight - 40;
+  height: $sumHeight - 40;
   padding-top: 10px;
 }
 
 .list {
-  height: @sumHeight - 90;
+  height: $sumHeight - 90;
   overflow: auto;
 }
 
 #favList{
-  @coverImgH:92px;
+  $coverImgH:92px;
   li {
     width: 100%;
     overflow: hidden;
@@ -59,14 +59,14 @@ body {
   }
   .wrapCheckbox{
     float: left;
-    margin-top: @coverImgH / 2;
+    margin-top: $coverImgH / 2;
     margin-left: 15px;
     margin-right: 0px;
   }
   .left img {
     float: left;
     width: 67px;
-    height: @coverImgH;
+    height: $coverImgH;
     object-fit: contain;
     border-radius: 8px;
     margin: 5px 20px;
@@ -83,7 +83,7 @@ body {
 a {
   text-overflow: ellipsis;
   white-space: nowrap;
-  .linkColor(blue);
+  @include linkColor(blue);
 }
 
 .operBtn {
@@ -98,20 +98,20 @@ a {
 
 .contBtn {
   color: white;
-  background: @themeColor;
+  background: $themeColor;
   border-radius: 5px;
   display: inline-block;
   padding: 5px 8px;
-  .linkColor(white);
+  @include linkColor(white);
 }
 
 .source {
-  .linkColor(grey);
+  @include linkColor(grey);
 }
 
 h3 {
   a {
-    .linkColor(black);
+    @include linkColor(black);
   }
 }
 
@@ -122,7 +122,7 @@ h3 {
   font-weight: normal;
   padding: 3px;
   font-size: 12px;
-  .linkColor(white);
+  @include linkColor(white);
 }
 
 nav {
@@ -139,7 +139,7 @@ nav {
 }
 
 .curTab {
-  background: @themeColor;
+  background: $themeColor;
   color: white;
 }
 
@@ -212,20 +212,20 @@ nav {
     display: inline-block;
     padding: 5px 15px;
     font-size: 15px;
-    background: @themeColorLight;
+    background: $themeColorLight;
     margin: 0;
     color: white;
     cursor: pointer;
   }
   .curFav {
-    background: @themeColor;
+    background: $themeColor;
     color: white;
   }
 }
 
 #toolbar {
   padding: 8px;
-  background: @themeColor;
+  background: $themeColor;
   div {
     display: inline-block;
     color: white;
@@ -256,7 +256,7 @@ nav {
 }
 #search{
   position: absolute;
-  background: @themeColor;
+  background: $themeColor;
   padding: 8px;
   width: 100%;
   div{

@@ -5,7 +5,7 @@
             <h1>追综饭</h1>
         </div>
         <template v-for="(bdObj,index) in bdArr" >
-            <a target="_blank" @click="clickHandler(index,bdObj)" :style="bdObj.wrapStyle" :title="bdObj.title" :href="bdObj.href">
+            <a target="_blank" @click="onClick(index,bdObj)" :style="bdObj.wrapStyle" :title="bdObj.title" :href="bdObj.href">
                 <i class="fa" :class="bdObj.icon"/>
             </a>
         </template>
@@ -14,7 +14,7 @@
 
 <script>
     // var vToolbar = Vue.component('toolbar', )
-    import vContentWrap from '../App';
+    import {mapState,mapActions} from 'vuex';
 
     export default {
         props: {
@@ -35,13 +35,14 @@
             }
         },
         methods: {
-            clickHandler:function(index){
+            onClick:function(index){
                 switch(index){
                     case 0:break;
-                    case 1:vContentWrap.batch = !vContentWrap.batch;break;
-                    case 2:vContentWrap.search = true;break;
+                    case 1:this.toggleBatch();break;
+                    case 2:this.toggleSearch();break;
                 }
-            }
-        }
+            },
+            ...mapActions(['toggleBatch','toggleSearch'])
+        },
     }
 </script>

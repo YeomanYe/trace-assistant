@@ -1,10 +1,10 @@
 <template>
-    <header id='search'>
+    <header v-show="isSearch" id='search'>
         <div class="hd">
             <i class="fa fa-search"/>
         </div>
         <div class="bd">
-            <input autofocus v-model.trim="searchText" @input="inputSearch" type="text">
+            <input v-input-focus="true" autofocus v-model.trim="searchText" @input="inputSearch" type="text">
         </div>
         <div class="fd">
             <a @click="cancelSearch" class="pointer">取消</a>
@@ -13,26 +13,37 @@
 </template>
 
 <script>
-    // var vSearchPanel = Vue.component('search-panel', )
-    import vContentWrap from '../App';
+    import {mapState,mapActions} from 'vuex';
+    import {mapModel} from '../utils/VueUtil';
 
     export default {
-        props: {
-        },
-        data: function () {
+        /*data: function () {
             return {
                 searchText:''
             }
-        },
+        },*/
         methods: {
-            cancelSearch:function () {
-                vContentWrap.search = false;
-                vContentWrap.searchText = '';
-                showFavs(vContentWrap.curShowFav);
-            },
             inputSearch:function () {
-                vContentWrap.searchText = this.searchText;
-                showFavs(vContentWrap.curShowFav);
+                /*vContentWrap.searchText = this.searchText;
+                showFavs(vContentWrap.curShowFav);*/
+            },
+            ...mapActions({
+                cancelSearch:(dispatch) => {
+                    dispatch('saveStatus',{isSearch:false,searchText:''})
+                }
+            })
+        },
+        computed:{
+            ...mapState({
+                isSearch:state => state.ui.isSearch
+            }),
+            ...mapModel([{ns:'ui',names:['searchText']}])
+        },
+        directives: {
+            'input-focus'(el, binding) {
+                if (binding.value) {
+                    el.focus();
+                }
             }
         }
     }

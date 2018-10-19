@@ -8,7 +8,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const NODE_ENV = process.env.NODE_ENV;
 module.exports = {
     entry: {
-        popup: './js/popup.js',
+        popup: './js/popup.js'
     },
     output: {
         path: path.resolve(__dirname, './build'),
@@ -19,7 +19,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(scss|css)$/,
-                use: [MiniCssExtractPlugin.loader,'vue-style-loader','css-loader', 'sass-loader'],
+                use: [/*MiniCssExtractPlugin.loader,*/'vue-style-loader', 'css-loader','sass-loader'],
                 exclude: /node_modules/
             },
             {
@@ -84,16 +84,16 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
-        new MiniCssExtractPlugin({
+        /*new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css'
-        }),
+        }),*/
         new HtmlWebpackPlugin({
             filename: 'popup.html',                           //目标文件
             template: './popup.html',                     //模板文件
             chunks: ['runtime', 'vendor', 'utils', 'popup']  //对应关系，index.js对应的是index.html
         }),
-        /*new CopyWebpackPlugin([
+        new CopyWebpackPlugin([
             {
                 from: path.resolve(__dirname, './images'),
                 to: path.resolve(__dirname, 'build/images'),
@@ -114,17 +114,17 @@ module.exports = {
                 to: path.resolve(__dirname, 'build/lib'),
                 ignore: ['.*']
             },
-            {
+           /* {
                 from: path.resolve(__dirname, './popup.html'),
                 to: path.resolve(__dirname, 'build/popup.html'),
                 ignore: ['.*']
-            },
+            },*/
             {
                 from: path.resolve(__dirname, './manifest.json'),
                 to: path.resolve(__dirname, 'build/manifest.json'),
                 ignore: ['.*']
             },
-        ])*/
+        ])
     ]
 };
 

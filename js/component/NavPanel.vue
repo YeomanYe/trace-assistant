@@ -1,6 +1,6 @@
 <template>
     <nav id="nav">
-        <span v-for="(text,index) in textArr" @click="showContentToggle(index)"  :class="{curTab:curShow == index}">{{text}}</span>
+        <span v-for="(text,index) in textArr" @click="setPanel(index)"  :class="{curTab:curShow == index}">{{text}}</span>
     </nav>
 </template>
 
@@ -14,6 +14,7 @@
     import vContentWrap from '../App';
     import Constant from '../constant';
     import LocalStore from '../utils/LocalStore';
+    import {mapActions} from 'vuex';
 
     let switchTipsElm;
     const {STOR_KEY_IS_CLOSE_TIPS} = Constant;
@@ -27,6 +28,11 @@
             };
         },
         methods: {
+            ...mapActions({
+                setPanel:(dispatch,curPanel) => {
+                    dispatch('saveStatus',{curPanel});
+                }
+            }),
             showContentToggle:async function (contentId) {
                 vContentWrap.curShow = contentId;
                 if(contentId === 1){
@@ -48,6 +54,6 @@
                     });*/
                 }
             },
-        }
+        },
     }
 </script>

@@ -1,7 +1,7 @@
 
 <template>
     <div id="favToggleWrap">
-        <span v-for="(text,index) in textArr" :class="{curFav:curShowFav == index}" @click="showFavs(index)" >{{text}}</span>
+        <span v-for="(text,index) in textArr" :class="{curFav:curFavType == index}" @click="setCurFav(index)" >{{text}}</span>
     </div>
 </template>
 
@@ -9,22 +9,31 @@
     // let vTogglePanel = Vue.component('toggle-fav-panel', );
     import vContentWrap from '../App';
     import Constant from '../constant';
+    import LocalStore from '../utils/LocalStore';
+    import {mapState,mapActions} from 'vuex';
     const {TYPE_COMIC,CUR_FAV,TYPE_FICTION,TYPE_VIDEO,STOR_KEY_FAVS} = Constant;
 
     export default {
-        props: {
-            curShowFav: Number
-        },
         data:function () {
             return {
                 textArr:['全部','漫画','小说','视频']
             };
         },
         methods: {
-            showFavs: showFavs,
+            showFavs,
+            ...mapActions({
+                setCurFav:(dispatch,curFavType) => {
+                    dispatch('saveStatus',{curFavType});
+                }
+            })
+        },
+        computed:{
+            ...mapState({
+                curFavType:state => state.ui.curFavType
+            })
         }
     }
-    function showFavs(curShowFav) {
+    async function showFavs(curShowFav) {
         let type = undefined;
         switch (curShowFav) {
             case CUR_FAV.COMIC:
@@ -37,39 +46,39 @@
                 type = TYPE_VIDEO;
                 break;
         }
-        getStoreLocal(STOR_KEY_FAVS, function (allFavs) {
-            let cols = [];
-            log('allFavs', allFavs);
-            allFavs = allFavs ? allFavs : [];
-            for (let i = 0, len = allFavs.length; i < len; i++) {
-                let favItem = allFavs[i],
-                    colItems = favItem.cols ? favItem.cols : [],
-                    baseChapter = favItem.baseChapter,
-                    baseIndex = favItem.baseIndex,
-                    baseImg = favItem.baseImg;
-                let tmpArr = [];
+        let allFavs = await LocalStore.load(STOR_KEY_FAVS);
+        let cols = [];
+        allFavs = allFavs ? allFavs : [];
+        for (let i = 0, len = allFavs.length; i < len; i++) {
+            let favItem = allFavs[i],
+                colItems = favItem.cols ? favItem.cols : [],
+                baseChapter = favItem.baseChapter,
+                baseIndex = favItem.baseIndex,
+                baseImg = favItem.baseImg;
+            let tmpArr = [];
 
-                if (type && type !== favItem.type) continue;
-                let searchText = vContentWrap.searchText;
-                for (let j = 0, len2 = colItems.length; j < len2; j++) {
-                    let item = colItems[j],obj = Object.assign({},item);
-                    obj.indexUrl = formatHref(item.indexUrl, baseIndex);
-                    obj.imgUrl = formatHref(item.imgUrl, baseImg);
-                    obj.curUrl = formatHref(item.curUrl, baseChapter);
-                    obj.newUrl = formatHref(item.newUrl, baseChapter);
-                    obj.type = favItem.type;
-                    obj.siteName = favItem.siteName;
-                    obj.origin = favItem.origin;
-                    if(searchText && item.title.indexOf(searchText) < 0) continue;
-                    tmpArr.push(obj);
-                }
-                cols = cols.concat(tmpArr);
+            if (type && type !== favItem.type) continue;
+            let searchText = vContentWrap.searchText;
+            for (let j = 0, len2 = colItems.length; j < len2; j++) {
+                let item = colItems[j],obj = Object.assign({},item);
+                obj.indexUrl = formatHref(item.indexUrl, baseIndex);
+                obj.imgUrl = formatHref(item.imgUrl, baseImg);
+                obj.curUrl = formatHref(item.curUrl, baseChapter);
+                obj.newUrl = formatHref(item.newUrl, baseChapter);
+                obj.type = favItem.type;
+                obj.siteName = favItem.siteName;
+                obj.origin = favItem.origin;
+                if(searchText && item.title.indexOf(searchText) < 0) continue;
+                tmpArr.push(obj);
             }
-            log('all-cols', cols);
-            vContentWrap.curShowFav = curShowFav;
-            vContentWrap.items = cols;
-            sortFavItems();
-        });
+            cols = cols.concat(tmpArr);
+        }
+        vContentWrap.curShowFav = curShowFav;
+        vContentWrap.items = cols;
+        sortFavItems();
+        /*getStoreLocal(STOR_KEY_FAVS, function (allFavs) {
+
+        });*/
     }
 
     /**

@@ -1,5 +1,5 @@
 <template>
-    <div id="batchPanel" v-show="!hide">
+    <div id="batchPanel" v-show="isBatch">
         <!-- checkbox -->
         <div class="pretty p-svg p-curve">
             <input @click="invertSelection()" type="checkbox" />
@@ -23,6 +23,7 @@
     import Constant from '../constant';
     import eventHub from '../utils/EventHub';
     import vContentWrap from '../App';
+    import {mapActions,mapState} from 'vuex';
 
     const {EVT_BATCH_DEL,EVT_BATCH_MARK_READ} = Constant;
     export default {
@@ -52,6 +53,11 @@
             batchDel:function () {
                 eventHub.$emit(EVT_BATCH_DEL);
             }
+        },
+        computed:{
+            ...mapState({
+                isBatch:state => state.ui.isBatch
+            })
         }
     }
 // let vBatchPanel = Vue.component('batch-panel', );
