@@ -17,7 +17,7 @@
     import * as FileSaver from 'file-saver';
     import {sendMsg} from '../utils/ExtUtil';
 
-    const {STOR_KEY_UPDATE_NUM,STOR_KEY_FAVS,TYPE_COMIC,BG_CMD_UPDATE_NUM} = Constant;
+    const {STOR_KEY_FAVS,TYPE_COMIC,BG_CMD_UPDATE_NUM} = Constant;
     export default {
         data:() => ({enabled:false}),
         methods: {

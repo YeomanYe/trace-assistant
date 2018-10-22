@@ -2,7 +2,7 @@
     <ul id="favList" class="list">
         <li v-for="(item,index) in displayFavs"   :key="item.indexUrl">
             <!-- checkbox -->
-            <div v-show="batch" class="wrapCheckbox pretty p-svg p-curve">
+            <div v-show="isBatch" class="wrapCheckbox pretty p-svg p-curve">
                 <input v-model="item.checkState" @click="checkboxHandler(index,item)" type="checkbox" />
                 <div class="state p-success">
                     <!-- svg path -->
@@ -38,13 +38,10 @@ import Constant from '../constant';
 import vContentWrap from '../App';
 import eventHub from '../utils/EventHub';
 import LocalStore from '../utils/LocalStore';
-import { mapGetters,mapActions } from 'vuex'
+import { mapGetters,mapActions,mapState } from 'vuex'
 
 const {STOR_KEY_FAVS,STOR_KEY_IS_CLOSE_TIPS,STOR_KEY_UPDATE_NUM,CNT_CMD_EXOPORT_FAV,CNT_CMD_UPDATE_CUR_FAV,BG_CMD_EXPORT,BG_CMD_UPDATE_NUM,EVT_BATCH_MARK_READ,EVT_BATCH_DEL} = Constant;
 export default {
-    props: {
-        batch: Boolean
-    },
     created(){
         console.log('favlist',this);
         this.queryFav();
@@ -72,7 +69,10 @@ export default {
         ...mapActions(['queryFav'])
     },
     computed:{
-        ...mapGetters(['displayFavs'])
+        ...mapGetters(['displayFavs']),
+        ...mapState({
+            isBatch: state => state.ui.isBatch
+        })
     }
 }
 

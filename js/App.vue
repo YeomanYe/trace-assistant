@@ -20,14 +20,14 @@
 </template>
 
 <script>
-    import BatchPanel from './component/BatchPanel';
-    import EmptyResult from './component/EmptyResult';
-    import FavList from './component/FavList';
-    import Toolbar from './component/Toolbar';
-    import SearchPanel from './component/SearchPanel';
-    import ToggleFavPanel from './component/ToggleFavPanel';
-    import SettingPanel from './component/SettingPanel';
-    import NavPanel from './component/NavPanel';
+    import BatchPanel from './components/BatchPanel';
+    import EmptyResult from './components/EmptyResult';
+    import FavList from './components/FavList';
+    import Toolbar from './components/Toolbar';
+    import SearchPanel from './components/SearchPanel';
+    import ToggleFavPanel from './components/ToggleFavPanel';
+    import SettingPanel from './components/SettingPanel';
+    import NavPanel from './components/NavPanel';
     import Constant from './constant';
     import {mapState} from 'vuex';
     // import '../css/popup.scss';

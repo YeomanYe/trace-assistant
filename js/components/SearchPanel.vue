@@ -4,7 +4,7 @@
             <i class="fa fa-search"/>
         </div>
         <div class="bd">
-            <input v-input-focus="true" autofocus v-model.trim="searchText" @input="inputSearch" type="text">
+            <input v-input-focus="true" autofocus v-model.trim="searchText" type="text">
         </div>
         <div class="fd">
             <a @click="cancelSearch" class="pointer">取消</a>
@@ -17,16 +17,7 @@
     import {mapModel} from '../utils/VueUtil';
 
     export default {
-        /*data: function () {
-            return {
-                searchText:''
-            }
-        },*/
         methods: {
-            inputSearch:function () {
-                /*vContentWrap.searchText = this.searchText;
-                showFavs(vContentWrap.curShowFav);*/
-            },
             ...mapActions({
                 cancelSearch:(dispatch) => {
                     dispatch('saveStatus',{isSearch:false,searchText:''})
