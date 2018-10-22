@@ -20,7 +20,7 @@
     "chrome-extension"
   ],
   "author": "Ming Ye",
-  "license": "GPL",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/YeomanYe/comic-assistant/issues"
   },
@@ -32,13 +32,6 @@
     "@babel/preset-stage-2": "^7.0.0",
     "@babel/runtime": "^7.1.2",
     "babel-loader": "^8.0.4",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "babel-runtime": "^6.26.0",
     "browserify": "^16.2.2",
     "colors": "^1.2.1",
     "copy-webpack-plugin": "^4.5.3",
@@ -63,8 +56,11 @@
   },
   "dependencies": {
     "bluebird": "^3.5.2",
+    "file-saver": "^2.0.0-rc.4",
     "iconv-lite": "^0.4.23",
     "vue": "^2.5.17",
+    "vue-js-toggle-button": "^1.3.0",
+    "vue-switches": "^2.0.1",
     "vuex": "^3.0.1"
   }
 }

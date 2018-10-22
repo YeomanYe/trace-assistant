@@ -3,7 +3,8 @@
         <!--<legend><img src="images/all-setting.png"/><span>全部设置</span></legend>-->
         <li><i class="fa fa-cloud-download font-icon"/><span @click="exportHandler" id="export">导出收藏</span></li>
         <li><i class="fa fa-cloud-download font-icon"/><span @click="importHandler" title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
-        <li><span>桌面提醒</span><input class="checkbox-switch" type="checkbox" id="switchTips"/></li>
+        <!--<li><span>桌面提醒</span><input class="checkbox-switch" type="checkbox" id="switchTips"/></li>-->
+        <li><span>桌面提醒</span><toggle-button v-model="enabled" color="black"/></li>
         <input @change="fileImportChangeHandler" type="file" hidden name="fileImport" id="fileImport">
     </ul>
 </template>
@@ -13,27 +14,22 @@
     import Constant from '../constant';
     import vContentWrap from '../App';
     import LocalStore from '../utils/LocalStore';
+    import * as FileSaver from 'file-saver';
+    import {sendMsg} from '../utils/ExtUtil';
 
     const {STOR_KEY_UPDATE_NUM,STOR_KEY_FAVS,TYPE_COMIC,BG_CMD_UPDATE_NUM} = Constant;
     export default {
+        data:() => ({enabled:false}),
         methods: {
             importHandler:function () {
                 document.getElementById('fileImport').click();
             },
             exportHandler:async function (e) {
-                // sendToCurTab([CNT_CMD_EXOPORT_FAV]);
-                /*storLocal.get([STOR_KEY_FAVS, STOR_KEY_UPDATE_NUM], function (resObj) {
-                    log('export obj', resObj);
-                    let blob = new Blob([JSON.stringify(resObj)], {
-                        type: 'text/plain;charset=utf-8'
-                    });
-                    saveAs(blob, '追综饭.json');
-                })*/
                 let allFavs = await LocalStore.load(STOR_KEY_FAVS);
                 let blob = new Blob([JSON.stringify({allFavs})], {
                     type: 'text/plain;charset=utf-8'
                 });
-                saveAs(blob, '追综饭.json');
+                FileSaver.saveAs(blob, '追综饭.json');
             },
             fileImportChangeHandler:function (e) {
                 let files = e.currentTarget.files;

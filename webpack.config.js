@@ -20,7 +20,6 @@ module.exports = {
             {
                 test: /\.(scss|css)$/,
                 use: [/*MiniCssExtractPlugin.loader,*/'vue-style-loader', 'css-loader','sass-loader'],
-                exclude: /node_modules/
             },
             {
                 test: /\.js$/,
@@ -33,8 +32,7 @@ module.exports = {
                 test: /\.vue$/,
                 use: {
                     loader: 'vue-loader',
-                },
-                exclude: /node_modules/
+                }
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -53,6 +51,7 @@ module.exports = {
         extensions: ['.js', '.vue']
     },
     devtool: NODE_ENV === 'production' ? false : '#eval-source-map',
+/*
     optimization: {
         splitChunks: {
             chunks: 'all',                              //'all'|'async'|'initial'(全部|按需加载|初始加载)的chunks
@@ -82,6 +81,7 @@ module.exports = {
             name: 'runtime'
         }
     },
+*/
     plugins: [
         new VueLoaderPlugin(),
         /*new MiniCssExtractPlugin({
@@ -91,7 +91,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'popup.html',                           //目标文件
             template: './popup.html',                     //模板文件
-            chunks: ['runtime', 'vendor', 'utils', 'popup']  //对应关系，index.js对应的是index.html
+            // chunks: ['runtime', 'vendor', 'utils', 'popup']  //对应关系，index.js对应的是index.html
         }),
         new CopyWebpackPlugin([
             {
@@ -129,11 +129,11 @@ module.exports = {
 };
 
 if (NODE_ENV !== 'production') {
-    module.exports.devServer = {
+    /*module.exports.devServer = {
         hot: true,
         hotOnly: true,
     };
     module.exports.plugins = (module.exports.plugins || []).concat([
         new webpack.HotModuleReplacementPlugin()
-    ])
+    ])*/
 }

@@ -40,7 +40,6 @@
         components: {BatchPanel,EmptyResult,Toolbar,FavList,SearchPanel,ToggleFavPanel,SettingPanel,NavPanel},
         data:()=>({
             curShow:CUR_FAV.ALL,//当前显示的tab内容
-            items: [],//收藏的集合
             batch:false, //是否显示批量处理
             search:false,//是否显示搜索面板
             searchText:'',
@@ -48,7 +47,8 @@
         }),
         computed:{
             ...mapState({
-                curPanel: state => state.ui.curPanel
+                curPanel: state => state.ui.curPanel,
+                items: state => state.favs
             })
         }
     }

@@ -1,6 +1,6 @@
 <template>
     <ul id="favList" class="list">
-        <li v-for="(item,index) in items"   :key="item.indexUrl">
+        <li v-for="(item,index) in displayFavs"   :key="item.indexUrl">
             <!-- checkbox -->
             <div v-show="batch" class="wrapCheckbox pretty p-svg p-curve">
                 <input v-model="item.checkState" @click="checkboxHandler(index,item)" type="checkbox" />
@@ -38,12 +38,16 @@ import Constant from '../constant';
 import vContentWrap from '../App';
 import eventHub from '../utils/EventHub';
 import LocalStore from '../utils/LocalStore';
+import { mapGetters,mapActions } from 'vuex'
 
 const {STOR_KEY_FAVS,STOR_KEY_IS_CLOSE_TIPS,STOR_KEY_UPDATE_NUM,CNT_CMD_EXOPORT_FAV,CNT_CMD_UPDATE_CUR_FAV,BG_CMD_EXPORT,BG_CMD_UPDATE_NUM,EVT_BATCH_MARK_READ,EVT_BATCH_DEL} = Constant;
 export default {
     props: {
-        items: Array,
         batch: Boolean
+    },
+    created(){
+        console.log('favlist',this);
+        this.queryFav();
     },
     methods: {
         imgLoseHandler: function (event) {
@@ -64,7 +68,11 @@ export default {
             // eventHub.$emit('test',{data:'test'});
         },
         delFavItem,
-        markReadSingle
+        markReadSingle,
+        ...mapActions(['queryFav'])
+    },
+    computed:{
+        ...mapGetters(['displayFavs'])
     }
 }
 
