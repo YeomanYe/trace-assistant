@@ -23,7 +23,7 @@
             </div>
             <div class="right">
                 <div><a :href="item.origin" target="_blank" class="source">{{item.siteName}}</a></div>
-                <div class="operBtn"><span @click.once="delCol(item)">删除</span><span @click="markRead(item)">已读</span></div>
+                <div class="operBtn"><span @click.once="delCol(item)">删除</span><span @click="markRead(item,index)">已读</span></div>
                 <div><a :href="item.curUrl" target="_blank" class="contBtn">{{item.type === 'video' ? '继续观看' : '继续阅读'}}</a></div>
             </div>
         </li>

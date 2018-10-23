@@ -16,22 +16,23 @@ const mutations = {
         console.log('state',state);
     },
     markRead(state,payload){
-        let {favs} = state;
-        let {type,siteName,origin,title} = payload;
-        let favItem = getItemByEqObj(favs,{type,siteName,origin});
-        let cols = favItem.cols;
-        //我认为同一个站点下的同一个类型不存在两个同名作品。
-        let col = getItemByEqObj(cols,{title});
-        col.isUpdate = false;
+        markReadSingle(state,payload);
     },
     delCol(state,payload){
-        let {favs} = state;
-        let {type,siteName,origin,title} = payload;
-        let favItem = getItemByEqObj(favs,{type,siteName,origin});
-        let cols = favItem.cols;
-        //我认为同一个站点下的同一个类型不存在两个同名作品。
-        let index = arrEqObj(cols,{title});
-        cols.splice(index,1);
+        delColSingle(state,payload);
+    },
+    batchMarkRead(state,payload){
+      payload.forEach((item) => {
+         markReadSingle(state,item);
+      });
+    },
+    batchDelCol(state,payload){
+        payload.forEach((item)=>{
+           delColSingle(state,item);
+        });
+    },
+    resetFavCheck(state){
+      state.favChecks = [];
     },
     toggleFavCheck(state,index){
         let {favChecks} = state;
@@ -46,7 +47,24 @@ const mutations = {
         state.favChecks = [...favChecks];
     }
 };
-
+function markReadSingle(state,payload){
+    let {favs} = state;
+    let {type,siteName,origin,title} = payload;
+    let favItem = getItemByEqObj(favs,{type,siteName,origin});
+    let cols = favItem.cols;
+    //我认为同一个站点下的同一个类型不存在两个同名作品。
+    let col = getItemByEqObj(cols,{title});
+    col.isUpdate = false;
+}
+function delColSingle(state,payload){
+    let {favs} = state;
+    let {type,siteName,origin,title} = payload;
+    let favItem = getItemByEqObj(favs,{type,siteName,origin});
+    let cols = favItem.cols;
+    //我认为同一个站点下的同一个类型不存在两个同名作品。
+    let i = arrEqObj(cols,{title});
+    cols.splice(i,1);
+}
 const actions = {
     async queryFav({commit, state}) {
         let arr = await LocalStore.load(STOR_KEY_FAVS);
@@ -61,9 +79,36 @@ const actions = {
         await LocalStore.save(STOR_KEY_FAVS,state.favs);
     },
     async delCol({commit,state},payload){
+        console.log('delCol',payload);
         //先标为已读，再删除
-        commit('markRead',payload);
+        // commit('markRead',payload);
         commit('delCol',payload);
+        await LocalStore.save(STOR_KEY_FAVS,state.favs);
+    },
+    async delBatch({commit,state,getters}){
+        let {displayFavs} = getters;
+      let {favChecks} = state;
+      let items = [];
+      for(let len = favChecks.length;len--;){
+          if(favChecks[len]) {
+              items.push(displayFavs[len]);
+          }
+      }
+      commit('batchDelCol',items);
+      commit('resetFavCheck');
+      await LocalStore.save(STOR_KEY_FAVS,state.favs);
+    },
+    async markReadBatch({commit,state,getters}){
+        let {displayFavs} = getters;
+        let {favChecks} = state;
+        let items = [];
+        for(let len = favChecks.length;len--;){
+            if(favChecks[len]) {
+                items.push(displayFavs[len]);
+            }
+        }
+        commit('batchMarkRead',items);
+        commit('resetFavCheck');
         await LocalStore.save(STOR_KEY_FAVS,state.favs);
     },
     toggleFavCheck({commit},index){

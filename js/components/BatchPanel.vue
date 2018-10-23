@@ -2,7 +2,7 @@
     <div id="batchPanel" v-if="isBatch">
         <!-- checkbox -->
         <div class="pretty p-svg p-curve">
-            <input @click="invertFavCheck()" type="checkbox" />
+            <input @click="invertFavCheck" type="checkbox" />
             <div class="state p-success">
                 <!-- svg path -->
                 <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -13,8 +13,8 @@
         </div>
         <!-- 删除 -->
         <div class="inline-right">
-            <a class="pointer" @click="batchDel()">删除</a>
-            <a class="pointer" @click="batchMarkRead()">标为已读</a>
+            <a class="pointer" @click="delBatch">删除</a>
+            <a class="pointer" @click="markReadBatch">标为已读</a>
         </div>
     </div>
 </template>
@@ -25,40 +25,12 @@
     import vContentWrap from '../App';
     import {mapActions,mapState,mapGetters} from 'vuex';
 
-    const {EVT_BATCH_DEL,EVT_BATCH_MARK_READ} = Constant;
     export default {
         props: {
             hide:Boolean
         },
         methods: {
-            invertSelection:function(){
-                /*let allItems = vContentWrap.items;
-                for(let i=0,len=allItems.length;i<len;i++){
-                    let item = allItems[i];
-                    let index = arrEqObj(_selectedFavs,{index:i});
-                    if(index < 0){
-                        item.checkState = true;
-                        _selectedFavs.push({index:i,item:item})
-                    }else{
-                        item.checkState = false;
-                        _selectedFavs.splice(index,1);
-                    }
-                }
-                vContentWrap.items = Object.assign([],allItems);
-                console.log('invertSelection',_selectedFavs);*/
-                console.log('invertSelection',this.displayFavs);
-                /*for(let item of this.displayFavs){
-                    item.checkState = !item.checkState;
-                }*/
-                this.selectDisFav(null,true);
-            },
-            batchMarkRead:function(){
-                eventHub.$emit(EVT_BATCH_MARK_READ);
-            },
-            batchDel:function () {
-                eventHub.$emit(EVT_BATCH_DEL);
-            },
-            ...mapActions(['invertFavCheck'])
+            ...mapActions(['invertFavCheck','delBatch','markReadBatch'])
         },
         computed:{
             ...mapState({
