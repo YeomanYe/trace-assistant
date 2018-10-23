@@ -12,7 +12,7 @@
   }
 }
 
-$sumHeight: 500px;
+$sumHeight: 520px;
 //$themeColor: rgb(78, 144, 232);
 //$themeColorLight:rgb(139, 167, 227);
 $themeColor: black;
@@ -29,12 +29,12 @@ body {
 }
 
 .listWrap {
-  height: $sumHeight - 40;
+  height: $sumHeight - 30;
   padding-top: 10px;
 }
 
 .list {
-  height: $sumHeight - 90;
+  height: $sumHeight - 100;
   overflow: auto;
 }
 
@@ -203,11 +203,14 @@ nav {
 }
 
 #contentFavWrap{
+  overflow: hidden;
   position: relative;
+  padding-top: 0px;
 }
 
 #favToggleWrap {
   font-size: 0px; /* 出自http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/ 去除元素之间空隙 */
+  padding: 10px 0;
   transform: translate(25%, 0%);
   span {
     display: inline-block;
@@ -256,7 +259,6 @@ nav {
   }
 }
 #search{
-  position: absolute;
   background: $themeColor;
   padding: 8px;
   width: 100%;

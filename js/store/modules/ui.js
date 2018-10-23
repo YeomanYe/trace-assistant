@@ -16,7 +16,7 @@ const mutations = {
     },
     setSearchText(state,text){
         state.searchText = text;
-    },
+    }
 };
 
 const actions = {
@@ -28,7 +28,7 @@ const actions = {
     },
     toggleBatch({commit,state}){
         commit('save',{isBatch:!state.isBatch});
-    },
+    }
 };
 
 //getters

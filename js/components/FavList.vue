@@ -3,7 +3,7 @@
         <li v-for="(item,index) in displayFavs"   :key="item.indexUrl">
             <!-- checkbox -->
             <div v-show="isBatch" class="wrapCheckbox pretty p-svg p-curve">
-                <input v-model="item.checkState" @click="checkboxHandler(index,item)" type="checkbox" />
+                <input v-model="favChecks[index]" @click="toggleFavCheck(index)" type="checkbox" />
                 <div class="state p-success">
                     <!-- svg path -->
                     <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -23,7 +23,7 @@
             </div>
             <div class="right">
                 <div><a :href="item.origin" target="_blank" class="source">{{item.siteName}}</a></div>
-                <div class="operBtn"><span @click.once="delFavItem(index,item)">删除</span><span @click="markReadSingle(index,item)">已读</span></div>
+                <div class="operBtn"><span @click.once="delCol(item)">删除</span><span @click="markRead(item)">已读</span></div>
                 <div><a :href="item.curUrl" target="_blank" class="contBtn">{{item.type === 'video' ? '继续观看' : '继续阅读'}}</a></div>
             </div>
         </li>
@@ -31,28 +31,23 @@
 </template>
 
 <script>
-/*let vFavList = Vue.component('fav-list', {
-
-});*/
 import Constant from '../constant';
 import vContentWrap from '../App';
 import eventHub from '../utils/EventHub';
 import LocalStore from '../utils/LocalStore';
 import { mapGetters,mapActions,mapState } from 'vuex'
 
-const {STOR_KEY_FAVS,STOR_KEY_IS_CLOSE_TIPS,STOR_KEY_UPDATE_NUM,CNT_CMD_EXOPORT_FAV,CNT_CMD_UPDATE_CUR_FAV,BG_CMD_EXPORT,BG_CMD_UPDATE_NUM,EVT_BATCH_MARK_READ,EVT_BATCH_DEL} = Constant;
+const {STOR_KEY_FAVS,STOR_KEY_UPDATE_NUM,CNT_CMD_UPDATE_CUR_FAV,BG_CMD_UPDATE_NUM,EVT_BATCH_MARK_READ,EVT_BATCH_DEL} = Constant;
 export default {
-    created(){
-        console.log('favlist',this);
-        this.queryFav();
-    },
     methods: {
-        imgLoseHandler: function (event) {
+        imgLoseHandler(event) {
             event.target.src = 'images/lose.png'
         },
-        checkboxHandler:function(index,item){
-            let checkState = !item.checkState;
-            let i = arrEqStr(_selectedFavs,{index});
+        checkboxHandler(index,item){
+            /*console.log('checkboxHandler',index,item);
+            item.checkState = !item.checkState;
+            /!*let checkState = !item.checkState;
+            let i = arrEqObj(_selectedFavs,{index});
             if(checkState && i < 0){
                 _selectedFavs.push({index,item});
             }
@@ -60,18 +55,19 @@ export default {
                 _selectedFavs.splice(i,1);
             }
             console.log('checkboxHandler',_selectedFavs);
-            item.checkState = checkState;
+            item.checkState = checkState;*!/
             // console.log(item);
             // eventHub.$emit('test',{data:'test'});
+            this.displayFavs = this.selectDisFav(index);
+            console.log(this.displayFavs);*/
         },
-        delFavItem,
-        markReadSingle,
-        ...mapActions(['queryFav'])
+        ...mapActions(['queryFav','markRead','delCol','toggleFavCheck'])
     },
     computed:{
         ...mapGetters(['displayFavs']),
         ...mapState({
-            isBatch: state => state.ui.isBatch
+            isBatch: state => state.ui.isBatch,
+            favChecks: state => state.favs.favChecks,
         })
     }
 }
@@ -89,9 +85,9 @@ function _markRead(item, index, allFavs, updateNum){
     vItem.curChapter = vItem.newChapter;
     //更新存储
     let origin = item.origin, type = item.type, title = item.title;
-    let i = arrEqStr(allFavs, {origin: origin, type: type});
+    let i = arrEqObj(allFavs, {origin: origin, type: type});
     let cols = allFavs[i].cols;
-    i = arrEqStr(cols, {title: title});
+    i = arrEqObj(cols, {title: title});
     let col = cols[i];
     col.isUpdate = false;
     col.curUrl = col.newUrl;
@@ -181,9 +177,9 @@ eventHub.$on(EVT_BATCH_DEL,async function() {
         vContentWrap.items.splice(index, 1);
         //更新存储
         let origin = item.origin, type = item.type, title = item.title;
-        let i = arrEqStr(allFavs, {origin: origin, type: type});
+        let i = arrEqObj(allFavs, {origin: origin, type: type});
         let cols = allFavs[i].cols;
-        i = arrEqStr(cols, {title: title});
+        i = arrEqObj(cols, {title: title});
         cols.splice(i, 1);
 
         // sendMsg(null,[BG_CMD_UPDATE_FAV_BTN]);
@@ -231,9 +227,9 @@ async function delFavItem(index, item) {
     //更新存储
     let origin = item.origin, type = item.type, title = item.title;
     let allFavs = await LocalStore.load(STOR_KEY_FAVS);
-    index = arrEqStr(allFavs, {origin: origin, type: type});
+    index = arrEqObj(allFavs, {origin: origin, type: type});
     let cols = allFavs[index].cols;
-    index = arrEqStr(cols, {title: title});
+    index = arrEqObj(cols, {title: title});
     let delArr = cols.splice(index, 1);
     decUpdateNum(delArr[0]);
     await LocalStore.save(STOR_KEY_FAVS,allFavs);

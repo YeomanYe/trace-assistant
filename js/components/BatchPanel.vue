@@ -1,8 +1,8 @@
 <template>
-    <div id="batchPanel" v-show="isBatch">
+    <div id="batchPanel" v-if="isBatch">
         <!-- checkbox -->
         <div class="pretty p-svg p-curve">
-            <input @click="invertSelection()" type="checkbox" />
+            <input @click="invertFavCheck()" type="checkbox" />
             <div class="state p-success">
                 <!-- svg path -->
                 <svg class="svg svg-icon" viewBox="0 0 20 20">
@@ -23,7 +23,7 @@
     import Constant from '../constant';
     import eventHub from '../utils/EventHub';
     import vContentWrap from '../App';
-    import {mapActions,mapState} from 'vuex';
+    import {mapActions,mapState,mapGetters} from 'vuex';
 
     const {EVT_BATCH_DEL,EVT_BATCH_MARK_READ} = Constant;
     export default {
@@ -32,10 +32,10 @@
         },
         methods: {
             invertSelection:function(){
-                let allItems = vContentWrap.items;
+                /*let allItems = vContentWrap.items;
                 for(let i=0,len=allItems.length;i<len;i++){
                     let item = allItems[i];
-                    let index = arrEqStr(_selectedFavs,{index:i});
+                    let index = arrEqObj(_selectedFavs,{index:i});
                     if(index < 0){
                         item.checkState = true;
                         _selectedFavs.push({index:i,item:item})
@@ -45,19 +45,26 @@
                     }
                 }
                 vContentWrap.items = Object.assign([],allItems);
-                console.log('invertSelection',_selectedFavs);
+                console.log('invertSelection',_selectedFavs);*/
+                console.log('invertSelection',this.displayFavs);
+                /*for(let item of this.displayFavs){
+                    item.checkState = !item.checkState;
+                }*/
+                this.selectDisFav(null,true);
             },
             batchMarkRead:function(){
                 eventHub.$emit(EVT_BATCH_MARK_READ);
             },
             batchDel:function () {
                 eventHub.$emit(EVT_BATCH_DEL);
-            }
+            },
+            ...mapActions(['invertFavCheck'])
         },
         computed:{
             ...mapState({
                 isBatch:state => state.ui.isBatch
-            })
+            }),
+            ...mapGetters(['displayFavs','selectDisFav'])
         }
     }
 // let vBatchPanel = Vue.component('batch-panel', );

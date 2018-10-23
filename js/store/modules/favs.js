@@ -1,16 +1,50 @@
 import LocalStore from '../../utils/LocalStore';
 import Constant from '../../constant';
 import {formatHref} from '../../utils/ExtUtil';
+import {arrEqObj, getItemByEqObj} from '../../utils/ArrayUtil';
 
-const state = [];
+const state = {
+    favs:[],
+    favChecks:[], //放置收藏check的数组
+};
 
 const {STOR_KEY_FAVS,CUR_FAV,TYPE_VIDEO,TYPE_FICTION,TYPE_COMIC} = Constant;
 
 const mutations = {
     query(state,arr) {
-        state.splice(0,state.length,...arr);
+        state.favs.splice(0,state.length,...arr);
         console.log('state',state);
     },
+    markRead(state,payload){
+        let {favs} = state;
+        let {type,siteName,origin,title} = payload;
+        let favItem = getItemByEqObj(favs,{type,siteName,origin});
+        let cols = favItem.cols;
+        //我认为同一个站点下的同一个类型不存在两个同名作品。
+        let col = getItemByEqObj(cols,{title});
+        col.isUpdate = false;
+    },
+    delCol(state,payload){
+        let {favs} = state;
+        let {type,siteName,origin,title} = payload;
+        let favItem = getItemByEqObj(favs,{type,siteName,origin});
+        let cols = favItem.cols;
+        //我认为同一个站点下的同一个类型不存在两个同名作品。
+        let index = arrEqObj(cols,{title});
+        cols.splice(index,1);
+    },
+    toggleFavCheck(state,index){
+        let {favChecks} = state;
+        favChecks[index] = !favChecks[index];
+        state.favChecks = [...favChecks];
+    },
+    invertFavCheck(state,cnt){
+        let {favChecks} = state;
+        for(let i=0;i<cnt;i++){
+            favChecks[i] = !favChecks[i];
+        }
+        state.favChecks = [...favChecks];
+    }
 };
 
 const actions = {
@@ -22,13 +56,31 @@ const actions = {
         }
         commit('query', arr);
     },
+    async markRead({commit,state},payload){
+        commit('markRead',payload);
+        await LocalStore.save(STOR_KEY_FAVS,state.favs);
+    },
+    async delCol({commit,state},payload){
+        //先标为已读，再删除
+        commit('markRead',payload);
+        commit('delCol',payload);
+        await LocalStore.save(STOR_KEY_FAVS,state.favs);
+    },
+    toggleFavCheck({commit},index){
+        commit('toggleFavCheck',index);
+    },
+    invertFavCheck({commit,getters}){
+        let {displayFavs} = getters;
+        commit('invertFavCheck',displayFavs.length);
+    }
 };
 
 //getters
 const getters = {
     displayFavs(state,getters,rootState){
+        console.log('getters',getters);
         let type = undefined;
-        let allFavs = state;
+        let {favs:allFavs} = state;
         let {ui:{searchText,curFavType}} = rootState;
         switch (curFavType) {
             case CUR_FAV.COMIC:
@@ -41,8 +93,7 @@ const getters = {
                 type = TYPE_VIDEO;
                 break;
         }
-        let cols = [];
-        allFavs = allFavs ? allFavs : [];
+        let cols = [];//计算当前数目
         for (let i = 0, len = allFavs.length; i < len; i++) {
             let favItem = allFavs[i],
                 colItems = favItem.cols ? favItem.cols : [],
@@ -70,6 +121,7 @@ const getters = {
     }
 };
 
+
 /**
  * 排序显示收藏项
  * @returns {*[]}
@@ -91,7 +143,7 @@ function sortFavItems(cols) {
             tmpArr2.push(c);
         }
     }
-    return Object.assign([],tmpArr1.concat(tmpArr2));
+    return tmpArr1.concat(tmpArr2);
 }
 
 

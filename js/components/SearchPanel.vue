@@ -1,10 +1,10 @@
 <template>
-    <header v-show="isSearch" id='search'>
+    <header id='search'>
         <div class="hd">
             <i class="fa fa-search"/>
         </div>
         <div class="bd">
-            <input v-input-focus="true" autofocus v-model.trim="searchText" type="text">
+            <input v-input-focus="true" v-model.trim="searchText" type="text">
         </div>
         <div class="fd">
             <a @click="cancelSearch" class="pointer">取消</a>
@@ -25,13 +25,11 @@
             })
         },
         computed:{
-            ...mapState({
-                isSearch:state => state.ui.isSearch
-            }),
             ...mapModel([{ns:'ui',names:['searchText']}])
         },
         directives: {
             'input-focus'(el, binding) {
+                console.log('input-focus',binding,el);
                 if (binding.value) {
                     el.focus();
                 }
