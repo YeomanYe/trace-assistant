@@ -1,7 +1,8 @@
 import LocalStore from '../../utils/LocalStore';
 import Constant from '../../constant';
-import {formatHref, sendMsg, sendToAllTabs} from '../../utils/ExtUtil';
+import {sendMsg, sendToAllTabs} from '../../utils/ExtUtil';
 import {arrEqObj, getItemByEqObj} from '../../utils/ArrayUtil';
+import {formatHref} from '../../utils/ColUtil';
 
 const state = {
     favs:[],

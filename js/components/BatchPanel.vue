@@ -12,7 +12,6 @@
 
 <script>
     import Constant from '../constant';
-    import eventHub from '../utils/EventHub';
     import vContentWrap from '../App';
     import {mapActions,mapState,mapGetters} from 'vuex';
     import VCheckbox from './VCheckbox';
