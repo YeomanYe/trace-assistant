@@ -6,7 +6,6 @@
 </template>
 
 <script>
-    // var vEmptyResult
     export default {
 
     }

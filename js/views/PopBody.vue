@@ -26,9 +26,10 @@
     export default {
         created() {
             this.queryFav();
+            this.loadStatus();
         },
         methods: {
-            ...mapActions(['queryFav'])
+            ...mapActions(['queryFav','loadStatus'])
         },
         components: {BatchPanel, ToggleFavPanel, FavList, EmptyResult, SettingPanel},
         computed: {

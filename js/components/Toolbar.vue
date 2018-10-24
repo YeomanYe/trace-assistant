@@ -13,7 +13,6 @@
 </template>
 
 <script>
-    // var vToolbar = Vue.component('toolbar', )
     import {mapState,mapActions} from 'vuex';
 
     export default {
