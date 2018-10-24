@@ -44,3 +44,86 @@ export default {
     }
 }
 </script>
+
+<style type="stylesheet/scss" lang="scss">
+    @import "../../css/popup";
+    h3 {
+        a {
+            @include linkColor(black);
+        }
+    }
+    .operBtn {
+        font-weight: bold;
+        cursor: pointer;
+        span:first-child{
+            padding-right: 5px;
+            margin-right: 5px;
+            border-right: 1px solid rgb(128,128,128);
+        }
+    }
+
+    .contBtn {
+        color: white;
+        background: $themeColor;
+        border-radius: 5px;
+        display: inline-block;
+        padding: 5px 8px;
+        @include linkColor(white);
+    }
+
+    .source {
+        @include linkColor(grey);
+    }
+
+    .news-badge {
+        background: red;
+        margin-left: 10px;
+        border-radius: 5px;
+        font-weight: normal;
+        padding: 3px;
+        font-size: 12px;
+        @include linkColor(white);
+    }
+
+    #favList{
+        $coverImgH:92px;
+        li {
+            width: 100%;
+            overflow: hidden;
+            margin-top: 10px;
+            &:hover {
+                background-color: #eee;
+            }
+        }
+        .middle,.right{
+            vertical-align: top;
+            display: inline-block;
+            &,& div{
+                margin-top: 12px;
+                max-width: 100%;
+                overflow: hidden;
+            }
+        }
+        .wrapCheckbox{
+            float: left;
+            margin-top: $coverImgH / 2;
+            margin-left: 15px;
+            margin-right: 0px;
+        }
+        .left img {
+            float: left;
+            width: 67px;
+            height: $coverImgH;
+            object-fit: contain;
+            border-radius: 8px;
+            margin: 5px 20px;
+            background-color: rgb(211, 211, 211);
+        }
+        .middle{
+            width: 50%;
+        }
+        .right {
+            margin-top: 0px;
+        }
+    }
+</style>

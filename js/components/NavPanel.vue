@@ -33,3 +33,25 @@
         },
     }
 </script>
+
+<style lang="scss">
+    @import "../../css/popup";
+
+    .curTab {
+        background: $themeColor;
+        color: white;
+    }
+
+    nav {
+        font-size: 0px;
+        span {
+            display: inline-block;
+            margin: 0;
+            padding: 10px 89px;
+            font-size: 18px;
+            cursor: pointer;
+            color: black;
+            background: white;
+        }
+    }
+</style>

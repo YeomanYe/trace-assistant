@@ -15,7 +15,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-    @import "../../css/color.scss";
+    @import "../../css/popup";
 
     .segment {
         font-size: 0px; /* 出自http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/ 去除元素之间空隙 */

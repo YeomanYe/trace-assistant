@@ -58,3 +58,44 @@
         }
     }
 </script>
+
+<style lang="scss">
+    #settingList {
+        li {
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            &:first-child{
+                padding-top: 0;
+            }
+            span {
+                font-size: 18px;
+                vertical-align: middle;
+                cursor: pointer;
+                color: #999;
+                margin-right: 15px;
+            }
+            img {
+                width: 35px;
+                margin-bottom: -10px;
+                margin-right: 15px;
+            }
+        }
+        legend {
+            border-bottom: 2px solid #777;
+            font-size: 18px;
+            color: #123;
+            padding: 10px;
+            img {
+                width: 35px;
+                margin-bottom: -10px;
+                margin-right: 10px;
+            }
+        }
+        .font-icon{
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: bottom;
+        }
+    }
+</style>

@@ -32,3 +32,22 @@
         }
     }
 </script>
+
+<style lang="scss">
+    #batchPanel{
+        .inline-right{
+            display: inline-block;
+            float: right;
+        }
+        a{
+            color:rgb(78, 144, 232);
+            margin-right: 10px;
+            &:last-child{
+                margin-right: 0px;
+            }
+        }
+        padding: 8px 15px;
+        background: rgb(241,218,75);
+    }
+
+</style>

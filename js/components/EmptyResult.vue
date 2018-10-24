@@ -10,3 +10,20 @@
 
     }
 </script>
+
+<style lang="scss">
+    #emptyResult{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        p{
+            font-size: 40px;
+            text-align: center;
+            color: rgb(138,138,138);
+        }
+        img{
+            width: 300px;
+        }
+    }
+</style>

@@ -45,3 +45,39 @@
         },
     }
 </script>
+
+<style lang="scss">
+    @import "../../css/popup";
+
+    #toolbar {
+        padding: 8px;
+        background: $themeColor;
+        div {
+            display: inline-block;
+            color: white;
+            margin-top: 0;
+            vertical-align: middle;
+            h1 {
+                display: inline-block;
+                vertical-align: top;
+            }
+            img {
+                width: 32px;
+                margin-right: 10px;
+                margin-left: 5px;
+            }
+        }
+        a{
+            float: right;
+            cursor: pointer;
+            margin-top: 0;
+        }
+        i{
+            margin-right: 30px;
+            line-height: 30px;
+            font-size: 30px;
+            vertical-align: bottom;
+            color: white;
+        }
+    }
+</style>
