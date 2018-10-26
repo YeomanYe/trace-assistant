@@ -5,7 +5,7 @@ import {cGetUrl, sendBg} from '../utils/ExtUtil';
 import {arrEqObj} from '../utils/ArrayUtil';
 import LocalStore from '../utils/LocalStore';
 import {getChapterContentByIndex, getFavs} from '../utils/ColUtil';
-import {getBaseStructByCurHref} from '../data-struct';
+import {getBaseInfoByCurHref} from '../data-struct';
 import * as inspectFunObj from './modules';
 
 //设置全局变量
@@ -56,8 +56,6 @@ function createBtn(){
     _$imgExport = addImgToUL($ul,_src.exportCollect,null,'导出网站中收藏的漫画到插件中');
     _$imgToggle = addImgToUL($ul,_src.collectGrey,null,'收藏');
     _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu,'切换菜单');
-    _$imgExport.toggle();
-    _$imgToggle.toggle();
     _$imgExport.on('click',function () {
         if(window.exportCols)window.exportCols();
         else showTips('该网站暂不支持导出');
@@ -65,9 +63,8 @@ function createBtn(){
     _$imgToggle.on('click',function () {
        toggleFav();
     });
-    let left = $(window).width() - 120,top = $(window).height() - 150;
+    let left = $(window).width() - 120,top = $(window).height() - 220;
     $ul.drag();
-    // setDraggable($ul);
     $ul.css({top:top+'px',left:left+'px'});
     $('body').append($ul);
 }
@@ -102,7 +99,7 @@ function toggleMenu(){
 async function toggleFav() {
     let {getCurIndex,getChapterInfo,wayFlag} = window;
     if(!getCurIndex) return; //不匹配页面直接返回
-    let baseInfo = getBaseStructByCurHref();
+    let baseInfo = getBaseInfoByCurHref();
     let {cols,allFavs} = await getFavs(baseInfo);
     let indexInfo = await getCurIndex();
     let {title,indexUrl} = indexInfo;
@@ -136,7 +133,7 @@ async function toggleFav() {
  */
 async function updateColRecord() {
     let {getCurIndex} = window;
-    let baseInfo = getBaseStructByCurHref();
+    let baseInfo = getBaseInfoByCurHref();
     let {cols,allFavs} = await getFavs(baseInfo);
     //不匹配页面时，直接返回
     if(!getCurIndex) return;

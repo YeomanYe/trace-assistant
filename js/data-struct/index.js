@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash.clonedeep';
 import {getItemByEqObj} from '../utils/ArrayUtil';
 import Constant from '../Constant';
 
@@ -34,12 +35,17 @@ export function getTypeByCurHref() {
     }
 }
 
-export function getBaseStructByHref(href) {
+export function getTypeBySite(site) {
+    let baseInfo = getBaseInfoByCurHref();
+    if(baseInfo.site === site) return baseInfo.type;
+}
+
+export function getBaseInfoByHref(href) {
     let searchArr = allStructs.map(item => item.regExp);
     for (let regExp of searchArr) {
         if (href.search(regExp) >= 0) {
 
-            let baseStruct = getItemByEqObj(allStructs, {regExp});
+            let baseStruct = cloneDeep(getItemByEqObj(allStructs, {regExp}));
             delete baseStruct.regExp;
             return baseStruct;
         }
@@ -47,7 +53,7 @@ export function getBaseStructByHref(href) {
     return {};
 }
 
-export function getBaseStructByCurHref(){
+export function getBaseInfoByCurHref(){
     let href = window.location.href;
-    return getBaseStructByHref(href);
+    return getBaseInfoByHref(href);
 }

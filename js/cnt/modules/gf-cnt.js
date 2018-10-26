@@ -1,10 +1,10 @@
 import $ from 'jquery';
-import {getTypeByCurHref} from '../../data-struct';
+import {getTypeBySite} from '../../data-struct';
 import Constant from '../../Constant';
 
-const {TYPE_COMIC} = Constant;
+const {TYPE_COMIC,SITE_GF} = Constant;
 export default function () {
-    let type = getTypeByCurHref();
+    let type = getTypeBySite(SITE_GF);
     switch (type){
         case TYPE_COMIC:
             window.getCurIndex = getCurComicGf;
@@ -40,13 +40,6 @@ function getCurComicGf(){
     }
     return retObj;
 }
-/**
- * 更新收藏
- */
-function updateGf(){
-    getFavs(SITE_GF,TYPE_COMIC,updateColRecord(getCurComicGf));
-}
-
 /**
  * 切换收藏按钮点击处理函数
  */

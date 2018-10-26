@@ -50,7 +50,7 @@ export async function getFavs(baseInfo) {
  * @param sucCall
  */
 export async function getChapterContentByIndex(indexUrl, wayFlag, sucCall) {
-    return new Promise((resolve,reject)=>{
+    return new Promise(async (resolve,reject)=>{
         if (typeof wayFlag !== 'object') {
             $.ajax(indexUrl, {
                 async: true,
@@ -58,7 +58,12 @@ export async function getChapterContentByIndex(indexUrl, wayFlag, sucCall) {
                 error:reject
             });
         } else {
-            htmlDecode(indexUrl, wayFlag.originCode,resolve,reject);
+            try {
+                let data = await htmlDecode(indexUrl, wayFlag.originCode);
+                resolve(data);
+            }catch (e) {
+                reject(e);
+            }
         }
     });
 }
@@ -70,15 +75,14 @@ export async function getChapterContentByIndex(indexUrl, wayFlag, sucCall) {
  * @param sucCall
  */
 function htmlDecodeByFrame(url, sucCall) {
-    var $iframe = $('#indexInfoFrame'), frElm;
+    let $iframe = $('#indexInfoFrame'), frElm;
     if ($iframe.length === 0) {
         $iframe = $('<iframe id="indexInfoFrame" style="display:none;" hidden></iframe>');
     }
     $iframe.attr('src', url);
     frElm = $iframe.get(0);
     frElm.onload = function (e) {
-        var textHtml = frElm.contentWindow.document.body.innerHTML;
-        log('iframe', textHtml);
+        let textHtml = frElm.contentWindow.document.body.innerHTML;
         sucCall(textHtml);
     };
     $('body').append($iframe);
@@ -90,20 +94,22 @@ function htmlDecodeByFrame(url, sucCall) {
  * @param originCode
  * @returns {string}
  */
-function htmlDecode(url, originCode, resolve,reject) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'arraybuffer';
-    xhr.onload = function (oEvent) {
-        let arrayBuffer = xhr.response; // Note: not oReq.responseText
-        let text;
-        try {
-            text = iconv.decode(buffer.Buffer.from(arrayBuffer), originCode);
-            resolve(text);
-        } catch (e) {
-            console.warn(e);
-            reject(e);
-        }
-    };
-    xhr.send(null);
+export function htmlDecode(url, originCode) {
+    return new Promise((resolve,reject)=>{
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function (oEvent) {
+            let arrayBuffer = xhr.response; // Note: not oReq.responseText
+            let text;
+            try {
+                text = iconv.decode(buffer.Buffer.from(arrayBuffer), originCode);
+                resolve(text);
+            } catch (e) {
+                console.warn(e);
+                reject(e);
+            }
+        };
+        xhr.send(null);
+    });
 }
