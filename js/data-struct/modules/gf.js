@@ -1,4 +1,4 @@
-import Constant from '../../constant';
+import Constant from '../../Constant';
 
 const {SITE_GF,TYPE_COMIC} = Constant;
 const origin = 'http://www.gufengmh.com';
@@ -7,6 +7,6 @@ const baseIndex = origin + '/manhua/';
 const baseChapter = origin + '/manhua/';
 const baseImg = 'http://res.gufengmh.com/images/cover/';
 const siteName = '古风漫画';
-const struct = [{regExp:/https?:\/\/ask.csdn.net\/questions\/[\d]+/,origin,type:TYPE_COMIC,site,baseIndex,baseChapter,baseImg,siteName}];
+const struct = [{regExp:/gufengmh.com\/manhua\/.+/,origin,type:TYPE_COMIC,site,baseIndex,baseChapter,baseImg,siteName}];
 
 export default struct;

@@ -6,8 +6,8 @@
 
 <script>
     import vContentWrap from '../App';
-    import Constant from '../constant';
-    import LocalStore from '../utils/LocalStore';
+    import Constant from '../../Constant';
+    import LocalStore from '../../utils/LocalStore';
     import {mapActions,mapState} from 'vuex';
 
     export default {
@@ -35,7 +35,7 @@
 </script>
 
 <style lang="scss">
-    @import "../../css/popup";
+    @import "../../../css/popup";
 
     .curTab {
         background: $themeColor;

@@ -1,5 +1,5 @@
-import Constant from '../../constant';
-import LocalStore from '../../utils/LocalStore';
+import Constant from '../../../Constant';
+import LocalStore from '../../../utils/LocalStore';
 
 const {CUR_FAV,CUR_NAV,STOR_KEY_IS_CLOSE_TIPS} = Constant;
 const state = {

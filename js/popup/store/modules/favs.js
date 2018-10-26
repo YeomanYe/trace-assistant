@@ -1,8 +1,8 @@
-import LocalStore from '../../utils/LocalStore';
-import Constant from '../../constant';
-import {sendMsg, sendToAllTabs} from '../../utils/ExtUtil';
-import {arrEqObj, getItemByEqObj} from '../../utils/ArrayUtil';
-import {formatHref} from '../../utils/ColUtil';
+import LocalStore from '../../../utils/LocalStore';
+import Constant from '../../../Constant';
+import {sendBg, sendMsg, sendToAllTabs} from '../../../utils/ExtUtil';
+import {arrEqObj, getItemByEqObj} from '../../../utils/ArrayUtil';
+import {formatHref} from '../../../utils/ColUtil';
 
 const state = {
     favs:[],
@@ -78,7 +78,7 @@ const actions = {
     async markRead({commit,state},payload){
         commit('markRead',payload);
         await LocalStore.save(STOR_KEY_FAVS,state.favs);
-        sendMsg(null,[BG_CMD_UPDATE_NUM]);
+        await sendBg([BG_CMD_UPDATE_NUM]);
     },
     async delCol({commit,state},payload){
         //先标为已读，再删除
@@ -86,7 +86,7 @@ const actions = {
         commit('delCol',payload);
         await LocalStore.save(STOR_KEY_FAVS,state.favs);
         sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
-        sendMsg(null,[BG_CMD_UPDATE_NUM]);
+        await sendBg([BG_CMD_UPDATE_NUM]);
     },
     async delBatch({commit,state,getters}){
         let {displayFavs} = getters;
@@ -101,7 +101,7 @@ const actions = {
       commit('resetFavCheck');
       await LocalStore.save(STOR_KEY_FAVS,state.favs);
       sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
-      sendMsg(null,[BG_CMD_UPDATE_NUM]);
+        await sendBg([BG_CMD_UPDATE_NUM]);
     },
     async markReadBatch({commit,state,getters}){
         let {displayFavs} = getters;
@@ -115,7 +115,7 @@ const actions = {
         commit('batchMarkRead',items);
         commit('resetFavCheck');
         await LocalStore.save(STOR_KEY_FAVS,state.favs);
-        sendMsg(null,[BG_CMD_UPDATE_NUM]);
+        await sendBg([BG_CMD_UPDATE_NUM]);
     },
     toggleFavCheck({commit},index){
         commit('toggleFavCheck',index);

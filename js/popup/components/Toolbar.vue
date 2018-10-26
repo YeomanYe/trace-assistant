@@ -1,7 +1,7 @@
 <template>
     <header id='toolbar'>
         <div class="hd">
-            <img src="../../images/icon/logo-white32.png" alt=""/>
+            <img src="../../../images/icon/logo-white32.png" alt=""/>
             <h1>追综饭</h1>
         </div>
         <template v-for="(bdObj,index) in bdArr" >
@@ -47,7 +47,7 @@
 </script>
 
 <style lang="scss">
-    @import "../../css/popup";
+    @import "../../../css/popup";
 
     #toolbar {
         padding: 8px;

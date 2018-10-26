@@ -14,7 +14,7 @@
 
 <script>
     import {mapState,mapActions} from 'vuex';
-    import {mapModel} from '../utils/VueUtil';
+    import {mapModel} from '../../utils/VueUtil';
 
     export default {
         methods: {
@@ -39,7 +39,7 @@
 </script>
 
 <style lang="scss">
-    @import "../../css/popup";
+    @import "../../../css/popup";
     #search{
         background: $themeColor;
         padding: 8px;

@@ -18,7 +18,7 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-    @import "../css/popup";
+    @import "../../css/popup";
     /*元素样式设置*/
     * {
         margin: 0;

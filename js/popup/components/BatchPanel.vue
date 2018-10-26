@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import Constant from '../constant';
+    import Constant from '../../Constant';
     import vContentWrap from '../App';
     import {mapActions,mapState,mapGetters} from 'vuex';
     import VCheckbox from './VCheckbox';

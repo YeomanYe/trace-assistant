@@ -8,7 +8,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const NODE_ENV = process.env.NODE_ENV;
 module.exports = {
     entry: {
-        popup: './js/popup.js'
+        popup: './js/popup/index.js',
+        cnt:'./js/cnt/index.js',
     },
     output: {
         path: path.resolve(__dirname, './build'),
@@ -107,7 +108,7 @@ module.exports = {
             {
                 from: path.resolve(__dirname, './css'),
                 to: path.resolve(__dirname, 'build/css'),
-                ignore: ['popup.scss']
+                ignore: ['color.scss','popup.scss']
             },
             {
                 from: path.resolve(__dirname, './lib'),

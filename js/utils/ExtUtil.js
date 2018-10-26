@@ -1,8 +1,12 @@
 export const sendMsg = chrome.runtime.sendMessage;
 
+export const cGetUrl = chrome.runtime.getURL;
+
+
 export async function sendBg(datas) {
     return new Promise((resolve,reject) => {
         chrome.runtime.sendMessage(null,datas,function (data) {
+            console.log('sendBg rec data',data);
             resolve(data);
         })
     });

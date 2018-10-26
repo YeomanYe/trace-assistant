@@ -132,36 +132,6 @@ function decUpdateNum(item) {
 }
 
 /**
- * 更新阅读记录
- * async 是否异步获取的信息
- */
-function updateColRecord(getCurIndex, async) {
-    return function (favs, allFavs) {
-
-        var updateCurInfo = function (curIndex) {
-            //解析当前页面并更新阅读记录
-            var index = arrEqStr(favs, {title: curIndex.title});
-            _$imgToggle.get(0).src = _src.collectGrey;
-            if (index < 0) return;
-            //更新图标
-            _$imgToggle.get(0).src = _src.collect;
-            var curItem = favs[index];
-            curItem.timestamp = Date.now();
-            if (!curIndex.curChapter) return;
-            curItem.curChapter = curIndex.curChapter;
-            curItem.curUrl = curIndex.curUrl.replace(baseChapterUrl, '');
-            //更新，当前更新的漫画数量
-            decUpdateNum(curItem);
-            storLocal.set({
-                allFavs: allFavs
-            });
-        };
-        if (async) getCurIndex(updateCurInfo);
-        else updateCurInfo(getCurIndex());
-    }
-}
-
-/**
  * 查询是否有更新的通用函数
  */
 function queryUpdate(baseObj, callback, wayFlag) {

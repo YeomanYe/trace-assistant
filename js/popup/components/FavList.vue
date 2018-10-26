@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Constant from '../constant';
-import LocalStore from '../utils/LocalStore';
+import Constant from '../../Constant';
+import LocalStore from '../../utils/LocalStore';
 import { mapGetters,mapActions,mapState } from 'vuex'
 import VCheckbox from './VCheckbox';
 
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style type="stylesheet/scss" lang="scss">
-    @import "../../css/popup";
+    @import "../../../css/popup";
     h3 {
         a {
             @include linkColor(black);

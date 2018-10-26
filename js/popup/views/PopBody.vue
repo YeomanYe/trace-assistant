@@ -49,24 +49,19 @@
 </script>
 
 <style lang="scss">
-    @import "../../css/popup";
+    @import "../../../css/popup";
 
     .listWrap {
         height: $sumHeight - 30;
-        padding-top: 10px;
     }
 
     .list {
         height: $sumHeight - 100;
         overflow: auto;
     }
-    #contentSettingWrap {
-        margin-top: 0;
-    }
 
     #contentFavWrap{
         overflow: hidden;
         position: relative;
-        padding-top: 0px;
     }
 </style>

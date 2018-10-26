@@ -9,12 +9,12 @@
 </template>
 
 <script>
-    import Constant from '../constant';
-    import LocalStore from '../utils/LocalStore';
+    import Constant from '../../Constant';
+    import LocalStore from '../../utils/LocalStore';
     import * as FileSaver from 'file-saver';
-    import {sendMsg} from '../utils/ExtUtil';
+    import {sendMsg} from '../../utils/ExtUtil';
     import {mapActions} from 'vuex';
-    import {mapModel} from '../utils/VueUtil';
+    import {mapModel} from '../../utils/VueUtil';
 
     const {STOR_KEY_FAVS,STOR_KEY_IS_CLOSE_TIPS,TYPE_COMIC,BG_CMD_UPDATE_NUM} = Constant;
     export default {
@@ -61,6 +61,7 @@
 
 <style lang="scss">
     #settingList {
+        margin-top:10px;
         li {
             text-align: center;
             border-bottom: 1px solid #ccc;
