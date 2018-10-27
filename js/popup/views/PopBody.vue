@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="curPanel === 0" id="contentFavWrap" class="listWrap">
+        <div v-if="curPanel === 0" id="contentFavWrap">
             <batch-panel/>
             <!--切换收藏类型的按钮-->
             <v-segment :cur="curFavType" :datas="segmentDatas" :onClick="setCurFav"/>
@@ -8,7 +8,7 @@
             <fav-list/>
             <empty-result v-show="displayFavs.length === 0"/>
         </div>
-        <div v-else-if="curPanel === 1" id="contentSettingWrap" class="listWrap">
+        <div v-else-if="curPanel === 1" id="contentSettingWrap">
             <!-- 设置列表 -->
             <setting-panel/>
         </div>
@@ -51,10 +51,6 @@
 <style lang="scss">
     @import "../../../css/popup";
 
-    .listWrap {
-        height: $sumHeight - 30;
-    }
-
     .list {
         height: $sumHeight - 100;
         overflow: auto;
@@ -63,5 +59,9 @@
     #contentFavWrap{
         overflow: hidden;
         position: relative;
+        height: $sumHeight - 30;
+    }
+    #contentSettingWrap{
+        height: $sumHeight - 40;
     }
 </style>
