@@ -1,84 +1,58 @@
-$(function() {
-    if (curHref.search(/book.qidian.com\/info\/.+/) >=0 || curHref.search(/read.qidian.com\/chapter\/.+/) >= 0 || curHref.search(/vipreader.qidian.com\/chapter\/.+/) >= 0 ){
-        createBtn();
-        _$imgExport.on('click', function() {
-            showTips('该网站导出功能只能在 https://my.qidian.com/bookcase 网页上使用');
-        });
-        _$imgToggle.on('click', toggleHandlerQidian);
-        _updateCurFavFun = updateQidian;
-        updateQidian();
-    }else if(curHref === 'https://my.qidian.com/bookcase'){
-        createBtn();
-        _$imgExport.on('click', exportQidian);
+import $ from 'jquery-ajax';
+import {getTypeBySite} from '../../data-struct';
+import Constant from '../../Constant';
+
+const {TYPE_FICTION,SITE_QIDIAN,BG_CMD_EXPORT} = Constant;
+export default function () {
+    let type = getTypeBySite(SITE_QIDIAN);
+    switch (type){
+        case TYPE_FICTION:
+            window.getCurIndex = getCuIndexQidian;
+            window.getChapterInfo = getChapterInfo;
+            window.exportCols = null;
+            break;
     }
-});
+    if(curHref.indexOf('https://my.qidian.com/bookcase')>=0){
+        window.exportCols = exportQidian;
+        type = 'export';
+    }
+    return type;
+}
 
 /**
  * 导出起点收藏的小说
  */
 function exportQidian() {
-    var $as = $('#shelfTable .shelf-table-name b a').not('.fen-category');
-    var arr = [];
-    for(var i=0,len=$as.length;i<len;i++){
-        var aElm = $as.get(i);
+    let $as = $('#shelfTable .shelf-table-name b a').not('.fen-category');
+    let arr = [];
+    for(let i=0,len=$as.length;i<len;i++){
+        let aElm = $as.get(i);
         arr.push({
             title:aElm.innerText,
             indexUrl:aElm.href.replace(baseIndexUrl,'')
         });
     }
-    var extra = {
+    let extra = {
         datas:arr,
         site:SITE_QIDIAN,
         type:TYPE_FICTION
     };
-    var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_FICTION,extra];
-    sendMsg(null, msgArr, handleResData);
-}
-/**
- * 更新
- */
-function updateQidian() {
-    getFavs(SITE_QIDIAN, TYPE_FICTION, updateColRecord(getCuIndexQidian));
-}
-/**
- * 收藏或取消收藏
- */
-function toggleHandlerQidian() {
-    var getChapterInfo = function(text){
-        var $html = $(text);
-        var imgUrl = $html.find('#bookImg img').attr('src');
-        var $as = $html.find('#j-catalogWrap .cf a');
-        var newA = $as.get($as.length - 1),curA = $as.get(0);
-        var newChapter,newUrl,curChapter,curUrl;
-        newChapter = newA.innerText;
-        newUrl = newA.href;
-        curChapter = curA.innerText;
-        curUrl = curA.href;
-        var retObj = {
-            curUrl:curUrl,
-            curChapter:curChapter,
-            newUrl:newUrl,
-            newChapter:newChapter,
-            imgUrl:imgUrl
-        };
-        return retObj;
-    };
-
-    getFavs(SITE_QIDIAN,TYPE_FICTION,toggleFav(storObj,getCuIndexQidian,getChapterInfo));
+    let msgArr = [BG_CMD_EXPORT,location.origin,TYPE_FICTION,extra];
+    return msgArr;
 }
 
 function getCuIndexQidian(){
-    var title = $('.book-info h1 em').text();
-    var retObj;
+    let title = $('.book-info h1 em').text();
+    let retObj;
     if (curHref.indexOf('book.qidian') >= 0) {
         retObj = {
             title: title,
             indexUrl: curHref,
         };
     } else {
-        var aElm = $('.crumbs-nav .act').get(0);
-        var curUrl = curHref;
-        var curChapter = $('#j_chapterBox .j_chapterName').text();
+        let aElm = $('.crumbs-nav .act').get(0);
+        let curUrl = curHref;
+        let curChapter = $('#j_chapterBox .j_chapterName').text();
         if (aElm)
             retObj = {
                 title: aElm.innerText,
@@ -88,4 +62,24 @@ function getCuIndexQidian(){
             };
     }
     return retObj
+}
+
+function getChapterInfo(text){
+    let $html = $(text);
+    let imgUrl = $html.find('#bookImg img').attr('src');
+    let $as = $html.find('#j-catalogWrap .cf a');
+    let newA = $as.get($as.length - 1),curA = $as.get(0);
+    let newChapter,newUrl,curChapter,curUrl;
+    newChapter = newA.innerText;
+    newUrl = newA.href;
+    curChapter = curA.innerText;
+    curUrl = curA.href;
+    let retObj = {
+        curUrl:curUrl,
+        curChapter:curChapter,
+        newUrl:newUrl,
+        newChapter:newChapter,
+        imgUrl:imgUrl
+    };
+    return retObj;
 }

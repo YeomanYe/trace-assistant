@@ -1,8 +1,8 @@
 import Constant from '../../Constant';
 
-const {SITE_GF,TYPE_COMIC} = Constant;
+const {SITE_BUKA,TYPE_COMIC} = Constant;
 const origin = 'http://www.buka.cn';
-const site = SITE_GF;
+const site = SITE_BUKA;
 const baseIndex = origin + '/detail/';
 const baseChapter = origin + '/view/';
 const baseImg = 'http://i-r7.ibuka.cn/logo/';

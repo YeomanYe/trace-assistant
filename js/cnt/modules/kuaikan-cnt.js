@@ -1,55 +1,23 @@
-$(function() {
-    if (curHref.indexOf('kuaikanmanhua.com/web') < 0) return;
-    createBtn();
-    _$imgExport.on('click', function() {
-        var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC];
-        sendMsg(null, msgArr, handleResData);
-    });
-    _$imgToggle.on('click', toggleHandlerKk);
-    _updateCurFavFun = updateKk;
-    updateKk();
-});
+import $ from 'jquery-ajax';
+import {getTypeBySite} from '../../data-struct';
+import Constant from '../../Constant';
 
-/**
- * 更新
- */
-function updateKk() {
-    getFavs(SITE_KUAIKAN, TYPE_COMIC, updateColRecord(getCurComicKk));
+const {TYPE_COMIC,SITE_KUAIKAN,BG_CMD_EXPORT} = Constant;
+export default function () {
+    let type = getTypeBySite(SITE_KUAIKAN);
+    switch (type){
+        case TYPE_COMIC:
+            window.getCurIndex = getCurComicKk;
+            window.getChapterInfo = getChapterInfo;
+            window.exportCols = exportCols;
+            break;
+    }
+    return type;
 }
-/**
- * 收藏或取消收藏
- */
-function toggleHandlerKk() {
-    var getChapterInfo = function(text) {
-        var $html = $(text);
-        var $as = $html.find('table .tit a');
-        var title = $html.find('.comic-name').text();
-        var newA = $as.get(0);
-        var curA = $as.get($as.length - 1);
-        var retObj = {
-            newUrl: newA.href,
-            curUrl: curA.href,
-            newChapter: newA.title,
-            curChapter: curA.title,
-        };
-        var imgQuerySuccess = function(text) {
-            var $html = $(text);
-            var $img = $html.find('.search-result .clearfix .comic-img .kk-img');
-            var imgUrl = $img.get(0).src
-            retObj.imgUrl = imgUrl;
-        };
-        $.ajax('http://www.kuaikanmanhua.com/', {
-            async: false,
-            success: imgQuerySuccess,
-            type: 'POST',
-            data: {
-                keyword: title,
-                button: '搜索'
-            },
-        });
-        return retObj;
-    };
-    getFavs(SITE_KUAIKAN, TYPE_COMIC, toggleFav(storObj, getCurComicKk, getChapterInfo));
+
+function exportCols() {
+    let msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC];
+    return msgArr
 }
 
 /**
@@ -57,18 +25,18 @@ function toggleHandlerKk() {
  * 如果是漫画页，获取当前章节和URL
  */
 function getCurComicKk() {
-    var title = $('body .article-detail-info .comic-name').text();
-    var href = location.origin + location.pathname;
-    var retObj;
+    let title = $('body .article-detail-info .comic-name').text();
+    let href = location.origin + location.pathname;
+    let retObj;
     if (href.indexOf('topic') >= 0) {
         retObj = {
             title: title,
             indexUrl: href,
         };
     } else {
-        var aElm = $('#main h2 .ico a').get(1);
-        var curUrl = href;
-        var curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/, '').trim();
+        let aElm = $('#main h2 .ico a').get(1);
+        let curUrl = href;
+        let curChapter = $('#main h2 .ico').html().replace(/.*\<\/span>/, '').trim();
         if (aElm)
             retObj = {
                 title: aElm.title,
@@ -78,4 +46,33 @@ function getCurComicKk() {
             };
     }
     return retObj
+}
+
+function getChapterInfo(text) {
+    let $html = $(text);
+    let $as = $html.find('table .tit a');
+    let title = $html.find('.comic-name').text();
+    let newA = $as.get(0);
+    let curA = $as.get($as.length - 1);
+    let retObj = {
+        newUrl: newA.href,
+        curUrl: curA.href,
+        newChapter: newA.title,
+        curChapter: curA.title,
+    };
+    let imgQuerySuccess = function(data) {
+        retObj.imgUrl = data.data.hit[0].vertical_image_url;
+    };
+    $.ajax('http://www.kuaikanmanhua.com/v1/search/topic', {
+        async: false,
+        success: imgQuerySuccess,
+        type: 'GET',
+        data: {
+            q: title,
+            since:0,
+            size:5,
+            f:3
+        },
+    });
+    return retObj;
 }

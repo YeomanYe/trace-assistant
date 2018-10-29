@@ -2,9 +2,6 @@
 import $ from 'jquery';
 
 $.fn.extend({
-    /**
-     *   Autor: 博客园华子yjh 2014/02/21
-     */
     drag: function(options) {
         let dragStart, dragMove, dragEnd,
             $boundaryElem, limitObj;
@@ -75,6 +72,7 @@ $.fn.extend({
             .each(function(){
                 $(this).bind('mousedown', function(e){
                     _drag.apply(this, [e]);
+                    $(this).css({bottom:'auto',right:'auto'});
                     // 阻止区域文字被选中 for chrome firefox ie9
                     e.preventDefault();
                     // for firefox ie9 || less than ie9

@@ -12,7 +12,7 @@ import * as inspectFunObj from './modules';
 window.$ = window.jQuery = $;
 window.curHref = location.origin + location.pathname;
 
-const {CNT_CMD_UPDATE_CUR_FAV,BG_CMD_UPDATE_FAV_BTN,STOR_KEY_FAVS} = Constant;
+const {CNT_CMD_UPDATE_CUR_FAV,BG_CMD_UPDATE_FAV_BTN,STOR_KEY_FAVS,STATUS_OK,STATUS_UNAUTH,STATUS_EXPORT_FAIL,TIME_LONG} = Constant;
 
 let _$imgAss,_$imgExport,_$imgToggle;
 
@@ -26,10 +26,9 @@ let _src = {
 
 //获取基本信息
 chrome.runtime.onMessage.addListener(function(msgArr,msgSenderObj,resSend) {
-    let {_updateCurFavFun} = window;
     switch (msgArr[0]) {
         case CNT_CMD_UPDATE_CUR_FAV:
-            if(_updateCurFavFun) _updateCurFavFun();
+            updateColRecord();
             break;
     }
     return true;
@@ -55,17 +54,22 @@ function createBtn(){
     $ul.attr({draggable:true});
     _$imgExport = addImgToUL($ul,_src.exportCollect,null,'导出网站中收藏的漫画到插件中');
     _$imgToggle = addImgToUL($ul,_src.collectGrey,null,'收藏');
-    _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu,'切换菜单');
-    _$imgExport.on('click',function () {
-        if(window.exportCols)window.exportCols();
+    _$imgAss = addImgToUL($ul,_src.comic,toggleMenu,'切换菜单');
+    _$imgExport.on('click',async function () {
+        let {exportCols} = window;
+        if(exportCols){
+            let datas = await exportCols();
+            datas = await sendBg(datas);
+            handleBgResData(datas);
+        }
         else showTips('该网站暂不支持导出');
     });
     _$imgToggle.on('click',function () {
        toggleFav();
     });
-    let left = $(window).width() - 120,top = $(window).height() - 220;
+    // let left = $(window).width() - 120,top = $(window).height() - 220;
     $ul.drag();
-    $ul.css({top:top+'px',left:left+'px'});
+    // $ul.css({top:top+'px',left:left+'px'});
     $('body').append($ul);
 }
 //给ul列表中加入一个图片
@@ -86,8 +90,12 @@ function toggleMenu(){
     let imgElm = _$imgAss.get(0);
     if(imgElm.src === _src.comicGrey){
         imgElm.src = _src.comic;
+        /*_$imgExport.css('visibility','visible');
+        _$imgToggle.css('visibility','visible');*/
     }else{
         imgElm.src = _src.comicGrey;
+        /*_$imgExport.css('visibility','hidden');
+        _$imgToggle.css('visibility','hidden');*/
     }
     _$imgExport.toggle();
     _$imgToggle.toggle();
@@ -133,10 +141,10 @@ async function toggleFav() {
  */
 async function updateColRecord() {
     let {getCurIndex} = window;
-    let baseInfo = getBaseInfoByCurHref();
-    let {cols,allFavs} = await getFavs(baseInfo);
     //不匹配页面时，直接返回
     if(!getCurIndex) return;
+    let baseInfo = getBaseInfoByCurHref();
+    let {cols,allFavs} = await getFavs(baseInfo);
     let indexInfo = await getCurIndex();
     //解析当前页面并更新阅读记录
     let index = arrEqObj(cols, {title: indexInfo.title});
@@ -180,4 +188,28 @@ function createCol(indexInfo,chapterInfo,baseInfo) {
         title: title,
         isUpdate: false
     };
+}
+
+/**
+ * 处理响应数据
+ */
+function handleBgResData(data) {
+    console.log('handleBgResData', data);
+    let status = data.status;
+    if (status === STATUS_OK) {
+        //更新当前页面收藏的图标
+        updateColRecord();
+        showTips('操作成功');
+        return;
+    } else if (status === STATUS_UNAUTH) {
+        showTips('请先登录');
+    } else if (status === STATUS_EXPORT_FAIL) {
+        let str = '';
+        for (let i = 0, len = data.msg.length; i < len; i++) {
+            str += ' 《' + data.msg[i] + '》 ';
+        }
+        showTips('导出失败,请手动添加：' + str, TIME_LONG);
+        //更新当前页面收藏的图标
+        updateColRecord();
+    }
 }

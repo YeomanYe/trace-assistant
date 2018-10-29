@@ -110,11 +110,6 @@ module.exports = {
                 to: path.resolve(__dirname, 'build/css'),
                 ignore: ['color.scss','popup.scss']
             },
-            {
-                from: path.resolve(__dirname, './lib'),
-                to: path.resolve(__dirname, 'build/lib'),
-                ignore: ['.*']
-            },
            /* {
                 from: path.resolve(__dirname, './popup.html'),
                 to: path.resolve(__dirname, 'build/popup.html'),

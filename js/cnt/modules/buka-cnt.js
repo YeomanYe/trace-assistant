@@ -1,22 +1,27 @@
-$(function () {
-    if (curHref.indexOf('http://www.buka.cn/detail') < 0 && curHref.indexOf('http://www.buka.cn/view') < 0) return;
-    log(SITE_BUKA);
-    createBtn();
-    _$imgExport.on('click', function () {
-        showTips('该网站暂不支持导出功能');
-    });
-    _$imgToggle.on('click', toggleFavHandlerBuka);
-    _updateCurFavFun = updateBuka;
-    updateBuka();
-});
+import $ from 'jquery';
+import {getTypeBySite} from '../../data-struct';
+import Constant from '../../Constant';
+
+const {TYPE_COMIC,SITE_BUKA} = Constant;
+export default function () {
+    let type = getTypeBySite(SITE_BUKA);
+    switch (type){
+        case TYPE_COMIC:
+            window.getCurIndex = getCurIndexBuka;
+            window.getChapterInfo = getChapterInfo;
+            window.exportCols = null;
+            break;
+    }
+    return type;
+}
 
 /**
  * 获取章节信息
  */
 function getCurIndexBuka() {
-    var retObj;
-    var title;
-    var indexUrl = curHref;
+    let retObj;
+    let title;
+    let indexUrl = curHref;
     if (curHref.search(/buka.cn\/view/) < 0) {
         title = $('.title-font').text().trim()
         //获取漫画名
@@ -25,11 +30,11 @@ function getCurIndexBuka() {
             title:title
         };
     } else {
-        var curUrl = curHref;
-        var titleElm = $('.manga-name').get(0);
+        let curUrl = curHref;
+        let titleElm = $('.manga-name').get(0);
         title = titleElm.innerText.trim();
         indexUrl = titleElm.href;
-        var curChapter = $('#gotoEpisode option:selected').text().trim();
+        let curChapter = $('#gotoEpisode option:selected').text().trim();
 
         retObj = {
             indexUrl: indexUrl,
@@ -41,48 +46,34 @@ function getCurIndexBuka() {
     return retObj;
 }
 
-/**
- * 更新收藏
- */
-function updateBuka() {
-    getFavs(SITE_BUKA, TYPE_COMIC, updateColRecord(getCurIndexBuka));
-}
+function getChapterInfo(text) {
+    let $html = $(text);
+    let imgUrl = $html.find('.manga-img img').attr('src');
+    let $as = $html.find('#episodes .epsbox-eplink');
 
-/**
- * 切换收藏按钮点击处理函数
- */
-function toggleFavHandlerBuka() {
-    var getChapterInfo = function (text) {
-        var $html = $(text);
-        var imgUrl = $html.find('.manga-img img').attr('src');;
-        var $as = $html.find('#episodes .epsbox-eplink');
+    let newA = $as.get($as.length - 1) , curA = $as.get(0);
 
-        var newA = $as.get($as.length - 1) , curA = $as.get(0);
+    let tmpArr1,tmpArr2;
+    tmpArr1 = newA.href.split('/');
+    tmpArr2 = curA.href.split('/');
 
-        var tmpArr1,tmpArr2;
-        tmpArr1 = newA.href.split('/');
-        tmpArr2 = curA.href.split('/');
+    if(parseInt(tmpArr1[tmpArr1.length - 1]) < parseInt(tmpArr2[tmpArr1.length - 1])){
+        let tmp = newA;
+        newA = curA;
+        curA = tmp;
+    }
 
-        if(parseInt(tmpArr1[tmpArr1.length - 1]) < parseInt(tmpArr2[tmpArr1.length - 1])){
-            var tmp = newA;
-            newA = curA;
-            curA = tmp;
-        }
-
-        var newChapter, newUrl, curChapter, curUrl;
-        newChapter = newA.title.split(':')[1];
-        newUrl = newA.href;
-        curChapter = curA.title.split(':')[1];
-        curUrl = curA.href;
-        var retObj = {
-            curUrl: curUrl,
-            curChapter: curChapter,
-            newUrl: newUrl,
-            newChapter: newChapter,
-            imgUrl: imgUrl
-        };
-        return retObj;
+    let newChapter, newUrl, curChapter, curUrl;
+    newChapter = newA.title.split(':')[1];
+    newUrl = newA.href;
+    curChapter = curA.title.split(':')[1];
+    curUrl = curA.href;
+    let retObj = {
+        curUrl: curUrl,
+        curChapter: curChapter,
+        newUrl: newUrl,
+        newChapter: newChapter,
+        imgUrl: imgUrl
     };
-
-    getFavs(SITE_BUKA, TYPE_COMIC, toggleFav(storObj, getCurIndexBuka, getChapterInfo));
+    return retObj;
 }

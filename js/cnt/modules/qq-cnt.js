@@ -1,40 +1,55 @@
 
-$(function(){
-    if(curHref.indexOf('ac.qq.com/Comic') < 0)return;
-    log(SITE_QQ);
-    createBtn();
-    _$imgExport.on('click',exportUserColQq);
-    _$imgToggle.on('click',toggleFavHandlerQq);
-    _updateCurFavFun = updateQq;
-    updateQq();
-});
+import $ from 'jquery-ajax';
+import {getTypeBySite} from '../../data-struct';
+import Constant from '../../Constant';
+
+const {TYPE_COMIC,SITE_QQ,BG_CMD_EXPORT} = Constant;
+export default function () {
+    let type = getTypeBySite(SITE_QQ);
+    switch (type){
+        case TYPE_COMIC:
+            window.getCurIndex = getCurComicQq;
+            window.getChapterInfo = getChapterInfo;
+            window.exportCols = exportUserColQq;
+            break;
+    }
+    return type;
+}
+
+
 /**
  * 导出腾讯动漫用户配置
  */
-function exportUserColQq(){
-    $.ajax('http://ac.qq.com/MyPersonalCenter/getUserCollection',{success:function(text){
-        var msgArr = [BG_CMD_EXPORT,location.origin,TYPE_COMIC,text];
-        sendMsg(null, msgArr,handleResData);
-    }});
+async function exportUserColQq(){
+    return new Promise((resolve,reject) => {
+        $.ajax('http://ac.qq.com/MyPersonalCenter/getUserCollection', {
+            success: function (text) {
+                let msgArr = [BG_CMD_EXPORT, location.origin, TYPE_COMIC, text];
+                resolve(msgArr);
+                // sendMsg(null, msgArr, handleResData);
+            },
+            error:reject
+        });
+    });
 }
 /**
  * 获取章节信息
  */
 function getCurComicQq(){
-    var $as = $('.chapter-page-all a');
-    var retObj;
+    let $as = $('.chapter-page-all a');
+    let retObj,title;
     if($as.length){
-        var title = $('.works-intro-title').text();
+        title = $('.works-intro-title').text();
         retObj = {
             indexUrl:curHref,
-            title:title
+            title
         };
     }else{
-        var curUrl = curHref;
-        var aElm = $('#chapter')[0];
+        let curUrl = curHref;
+        let aElm = $('#chapter')[0];
         if(aElm){
-            var indexUrl = aElm.href;
-            var curChapter = $('#comicTitle .title-comicHeading').text();
+            let indexUrl = aElm.href;
+            let curChapter = $('#comicTitle .title-comicHeading').text();
             title = aElm.title;
             retObj = {
                 indexUrl:indexUrl,
@@ -46,37 +61,25 @@ function getCurComicQq(){
     }
     return retObj;
 }
-/**
- * 更新收藏
- */
-function updateQq(){
-    getFavs(SITE_QQ,TYPE_COMIC,updateColRecord(getCurComicQq));
-}
-/**
- * 切换收藏按钮点击处理函数
- */
-function toggleFavHandlerQq(){
-    var getChapterInfo = function(text){
-        var $html = $(text);
-        var imgUrl = $html.find('.works-cover img').get(0).src;
-        var $as = $html.find('.chapter-page-all a');
-        var newA = $as.get($as.length - 1),curA = $as.get(0);
-        var tmpArr = newA.title.split('：');
-        var newChapter,newUrl,curChapter,curUrl;
-        newChapter = tmpArr[1];
-        newUrl = newA.href;
-        tmpArr = curA.title.split('：');
-        curChapter = tmpArr[1];
-        curUrl = curA.href;
-        var retObj = {
-            curUrl:curUrl,
-            curChapter:curChapter,
-            newUrl:newUrl,
-            newChapter:newChapter,
-            imgUrl:imgUrl
-        };
-        return retObj;
-    };
 
-    getFavs(SITE_QQ,TYPE_COMIC,toggleFav(storObj,getCurComicQq,getChapterInfo));
+function getChapterInfo(text){
+    let $html = $(text);
+    let imgUrl = $html.find('.works-cover img').get(0).src;
+    let $as = $html.find('.chapter-page-all a');
+    let newA = $as.get($as.length - 1),curA = $as.get(0);
+    let tmpArr = newA.title.split('：');
+    let newChapter,newUrl,curChapter,curUrl;
+    newChapter = tmpArr[1];
+    newUrl = newA.href;
+    tmpArr = curA.title.split('：');
+    curChapter = tmpArr[1];
+    curUrl = curA.href;
+    let retObj = {
+        curUrl:curUrl,
+        curChapter:curChapter,
+        newUrl:newUrl,
+        newChapter:newChapter,
+        imgUrl:imgUrl
+    };
+    return retObj;
 }

@@ -14,6 +14,8 @@
     padding: 10px;
     border-radius: 10px;
     list-style-type: none;
+    bottom: 20px;
+    right: 20px;
 }
 
 .img-list li{
