@@ -130,9 +130,9 @@ async function toggleFav() {
     cols.unshift(col);
     await LocalStore.save(STOR_KEY_FAVS,allFavs);
     //通知全部tab页面更新图标
-    // await sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
     _$imgToggle.attr('src',_src.collect);
     showTips('收藏成功');
+    await sendBg([BG_CMD_UPDATE_FAV_BTN]);
 }
 
 /**
