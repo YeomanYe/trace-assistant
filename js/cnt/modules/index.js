@@ -6,3 +6,4 @@ export {default as cartoonmad} from './cartoonmad-cnt';
 export {default as qidian} from './qidian-cnt';
 export {default as qq} from './qq-cnt';
 export {default as buka} from './buka-cnt';
+export {default as dmzj} from './dmzj-cnt';

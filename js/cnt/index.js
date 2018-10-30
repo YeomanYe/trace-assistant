@@ -1,7 +1,7 @@
 import $ from './ext-jquery';
 import {showTips} from '../utils/ViewUtil';
 import Constant from '../Constant';
-import {cGetUrl, sendBg} from '../utils/ExtUtil';
+import {cGetUrl, sendBg, sendToAllTabs} from '../utils/ExtUtil';
 import {arrEqObj} from '../utils/ArrayUtil';
 import LocalStore from '../utils/LocalStore';
 import {getChapterContentByIndex, getFavs} from '../utils/ColUtil';
@@ -130,7 +130,7 @@ async function toggleFav() {
     cols.unshift(col);
     await LocalStore.save(STOR_KEY_FAVS,allFavs);
     //通知全部tab页面更新图标
-    await sendBg([BG_CMD_UPDATE_FAV_BTN]);
+    // await sendToAllTabs([CNT_CMD_UPDATE_CUR_FAV]);
     _$imgToggle.attr('src',_src.collect);
     showTips('收藏成功');
 }

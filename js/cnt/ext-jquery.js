@@ -48,7 +48,9 @@ $.fn.extend({
 
                 $target.css({
                     left: Math.max( Math.min(x, limitObj._right),  limitObj._left) + 'px',
-                    top: Math.max( Math.min(y, limitObj._bottom),  limitObj._top) + 'px'
+                    top: Math.max( Math.min(y, limitObj._bottom),  limitObj._top) + 'px',
+                    bottom:'auto',
+                    right:'auto'
                 });
 
                 dragMove.apply(self, arguments);
@@ -72,7 +74,6 @@ $.fn.extend({
             .each(function(){
                 $(this).bind('mousedown', function(e){
                     _drag.apply(this, [e]);
-                    $(this).css({bottom:'auto',right:'auto'});
                     // 阻止区域文字被选中 for chrome firefox ie9
                     e.preventDefault();
                     // for firefox ie9 || less than ie9
