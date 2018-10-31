@@ -1,6 +1,6 @@
 const Promise = require('bluebird');
 let storLocal = chrome.storage.local;
-
+let cache = {};
 export default class LocalStore{
     static save(key,val){
         return new Promise((resolve,reject) => {
@@ -10,6 +10,10 @@ export default class LocalStore{
             } else{
                 storObj = key;
             }
+            cache = {
+                ...cache,
+                ...storObj
+            };
             storLocal.set(storObj,()=>{
                 resolve();
             });
@@ -17,12 +21,28 @@ export default class LocalStore{
     }
     static load(keys) {
         return new Promise((resolve,reject) => {
+            //如果存在缓存，说明保存过可以直接使用
+            let flag = true;
+            let ret;
+            if(typeof keys === 'string'){
+                ret = cache[keys];
+            } else {
+                ret = keys.map(key => {
+                    if(cache[key] === undefined) flag = false;
+                        return cache[key];
+                });
+            }
+            if(flag) return resolve(ret);
+
+            //缓存不存在时，从本地存储查找
             storLocal.get(keys,(resObj) => {
-                let ret;
                 if(typeof keys === 'string'){
                     ret = resObj[keys];
+                    cache[keys] = ret;
                 } else {
-                    ret = keys.map(key => resObj[key]);
+                    ret = keys.map(key => {
+                        cache[key] = resObj[key];
+                    });
                 }
                 resolve(ret);
             });

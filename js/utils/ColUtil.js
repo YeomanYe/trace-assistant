@@ -44,6 +44,22 @@ export async function getFavs(baseInfo) {
 }
 
 /**
+ * 获取更新的数量
+ * @returns {Promise<void>}
+ */
+export async function getUpdateNum() {
+    let allFavs = await LocalStore.load(STOR_KEY_FAVS);
+    let updateNum = 0;
+    allFavs.map(fav => {
+        let cols = fav.cols;
+        cols.map(col => {
+            if(col.isUpdate) updateNum++;
+        });
+    });
+    return updateNum;
+}
+
+/**
  * 获取index内容通过iframe的形式
  * @param indexUrl
  * @param wayFlag
