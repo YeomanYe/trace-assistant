@@ -24,7 +24,7 @@ function query(text) {
 
     let resObj = {
         newUrl: replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, ''),
-        newChapter
+        newChapter:newChapter
     };
     return resObj;
 }

@@ -1,5 +1,5 @@
 import Constant from '../Constant';
-import {sendToAllTabs} from '../utils/ExtUtil';
+import {cGetUrl, sendToAllTabs} from '../utils/ExtUtil';
 import {formatHref, getChapterContentByIndex, getFavs, getUpdateNum} from '../utils/ColUtil';
 import LocalStore from '../utils/LocalStore';
 import {getBaseStoreObj} from '../data-struct';
@@ -124,16 +124,17 @@ async function queryUpdate(site,type,callback, wayFlag) {
     let baseInfo = getBaseStoreObj(site,type);
     let {baseIndex,baseImg,baseChapter} = baseInfo;
     let {cols,allFavs} = await getFavs(baseInfo);
+    let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
 
     for(let col of cols){
-        let data = await getChapterContentByIndex(formatHref(col.indexUrl, baseIndex),wayFlag);
         try {
+            let data = await getChapterContentByIndex(formatHref(col.indexUrl, baseIndex),wayFlag);
             let resObj = await callback(data);
             let {newUrl,newChapter} = resObj;
             if (col.newChapter !== newChapter) {
+                console.log('newChapter',newChapter);
                 col.newChapter = newChapter;
                 col.newUrl = newUrl;
-                let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
                 //生成提示
                 if (!isCloseTips)
                     createNotify(col.title, formatHref(col.imgUrl, baseImg), '更新到: ' + newChapter, baseChapter + newUrl);
@@ -141,12 +142,12 @@ async function queryUpdate(site,type,callback, wayFlag) {
                 if (!col.isUpdate) {
                     col.isUpdate = true;
                 }
-                await LocalStore.save({allFavs});
             }
         } catch (e) {
             console.log('bg query',e);
         }
     }
+    await LocalStore.save({allFavs});
 }
 
 
