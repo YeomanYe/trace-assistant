@@ -1,8 +1,9 @@
+import {queryObjArr as buka} from './buka-bg';
 
-export const queryFunArr = [].concat(
-
+export const queryObjArr = [].concat(
+    buka
 );
 
-export const exportFunArr = [].concat(
+export const exportObjArr = [].concat(
 
 );

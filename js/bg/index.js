@@ -1,21 +1,26 @@
 import Constant from '../Constant';
 import {sendToAllTabs} from '../utils/ExtUtil';
-import {formatHref, getUpdateNum} from '../utils/ColUtil';
+import {formatHref, getChapterContentByIndex, getFavs, getUpdateNum} from '../utils/ColUtil';
 import LocalStore from '../utils/LocalStore';
-import {exportFunArr, queryFunArr} from './modules';
+import {getBaseStoreObj} from '../data-struct';
+import {exportObjArr, queryObjArr} from './modules';
 
-const {BG_CMD_EXPORT,BG_CMD_UPDATE_NUM,BG_CMD_UPDATE_FAV_BTN,CNT_CMD_UPDATE_CUR_FAV,STOR_KEY_FAVS} = Constant;
+const {BG_CMD_EXPORT,BG_CMD_UPDATE_NUM,BG_CMD_UPDATE_FAV_BTN,CNT_CMD_UPDATE_CUR_FAV,STOR_KEY_FAVS,STOR_KEY_IS_CLOSE_TIPS} = Constant;
 /**
  * 查询是否有更新
  */
-let allQuery = function() {
+async function allQuery() {
     setBadge('....','blue'); //提示正在查询中
     //执行查询
-    for(let query of queryFunArr){
-        query();
+    for(let queryObj of queryObjArr){
+        let {site,type,wayFlag,resolve} = queryObj;
+        await queryUpdate(site,type,resolve,wayFlag);
     }
+    await updateBadge();
     setTimeout(allQuery, 1000 * 60 * 45);
-};
+}
+
+allQuery();
 
 // updateBadge(allQuery);
 
@@ -87,9 +92,6 @@ function setBadge(num,color) {
         chrome.browserAction.setBadgeBackgroundColor({
             color: color
         });
-/*        storLocal.set({
-            [STOR_KEY_UPDATE_NUM]: 0
-        });*/
         return;
     }
     chrome.browserAction.setBadgeText({
@@ -98,6 +100,53 @@ function setBadge(num,color) {
     chrome.browserAction.setBadgeBackgroundColor({
         color: color
     })
+}
+/**
+ * 创建提醒
+ */
+function createNotify(title, iconUrl, message, newUrl) {
+    let options = {
+        type: chrome.notifications.TemplateType.BASIC,
+        title: title,
+        iconUrl: iconUrl,
+        isClickable: true,
+        buttons: [
+            {title: '打开', iconUrl: cGetUrl('images/notification-buttons/ic_flash_auto_black_48dp.png')},
+            {title: '已读', iconUrl: cGetUrl('images/notification-buttons/ic_exposure_plus_1_black_48dp.png')}],
+        message: message
+    };
+    chrome.notifications.create(newUrl, options);
+}
+/**
+ * 查询是否有更新的通用函数
+ */
+async function queryUpdate(site,type,callback, wayFlag) {
+    let baseInfo = getBaseStoreObj(site,type);
+    let {baseIndex,baseImg,baseChapter} = baseInfo;
+    let {cols,allFavs} = await getFavs(baseInfo);
+
+    for(let col of cols){
+        let data = await getChapterContentByIndex(formatHref(col.indexUrl, baseIndex),wayFlag);
+        try {
+            let resObj = await callback(data);
+            let {newUrl,newChapter} = resObj;
+            if (col.newChapter !== newChapter) {
+                col.newChapter = newChapter;
+                col.newUrl = newUrl;
+                let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
+                //生成提示
+                if (!isCloseTips)
+                    createNotify(col.title, formatHref(col.imgUrl, baseImg), '更新到: ' + newChapter, baseChapter + newUrl);
+
+                if (!col.isUpdate) {
+                    col.isUpdate = true;
+                }
+                await LocalStore.save({allFavs});
+            }
+        } catch (e) {
+            console.log('bg query',e);
+        }
+    }
 }
 
 
@@ -115,7 +164,7 @@ async function exportCollect(args,resSend) {
     }
     let index = arrInStr(siteArr,origin);
     exportFunArr[siteArr[index]+'-'+type](args,resSend);*/
-    for(let exportFun of exportFunArr){
+    for(let exportFun of exportObjArr){
         await exportFun(args,resSend);
     }
 }

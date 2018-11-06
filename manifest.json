@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": ["cnt.js"]
+      "scripts": ["bg.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",

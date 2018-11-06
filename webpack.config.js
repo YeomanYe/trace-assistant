@@ -10,6 +10,7 @@ module.exports = {
     entry: {
         popup: './js/popup/index.js',
         cnt:'./js/cnt/index.js',
+        bg:'./js/bg/index.js'
     },
     output: {
         path: path.resolve(__dirname, './build'),

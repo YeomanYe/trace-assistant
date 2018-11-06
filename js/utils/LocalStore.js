@@ -25,7 +25,9 @@ export default class LocalStore{
             let flag = true;
             let ret;
             if(typeof keys === 'string'){
-                ret = cache[keys];
+                if(cache[keys] === undefined){
+                    flag = false;
+                }else ret = cache[keys];
             } else {
                 ret = keys.map(key => {
                     if(cache[key] === undefined) flag = false;

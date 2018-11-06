@@ -49,6 +49,7 @@ export async function getFavs(baseInfo) {
  */
 export async function getUpdateNum() {
     let allFavs = await LocalStore.load(STOR_KEY_FAVS);
+    if(!allFavs) return 0;
     let updateNum = 0;
     allFavs.map(fav => {
         let cols = fav.cols;
@@ -63,9 +64,8 @@ export async function getUpdateNum() {
  * 获取index内容通过iframe的形式
  * @param indexUrl
  * @param wayFlag
- * @param sucCall
  */
-export async function getChapterContentByIndex(indexUrl, wayFlag, sucCall) {
+export async function getChapterContentByIndex(indexUrl, wayFlag) {
     return new Promise(async (resolve,reject)=>{
         if (typeof wayFlag !== 'object') {
             $.ajax(indexUrl, {
@@ -128,4 +128,14 @@ export function htmlDecode(url, originCode) {
         };
         xhr.send(null);
     });
+}
+/**
+ * 替换origin
+ */
+export function replaceOrigin(url, newOrigin) {
+    let restArgs = newOrigin.split('/');
+    let urlArr = url.split('/');
+    restArgs.unshift(0, 3);
+    [].splice.apply(urlArr, restArgs);
+    return urlArr.join('/');
 }
