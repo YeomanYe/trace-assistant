@@ -12,7 +12,7 @@ import * as inspectFunObj from './modules';
 window.$ = window.jQuery = $;
 window.curHref = location.origin + location.pathname;
 
-const {CNT_CMD_UPDATE_CUR_FAV,BG_CMD_UPDATE_FAV_BTN,STOR_KEY_FAVS,STATUS_OK,STATUS_UNAUTH,STATUS_EXPORT_FAIL,TIME_LONG} = Constant;
+const {CNT_CMD_UPDATE_CUR_FAV,BG_CMD_UPDATE_FAV_BTN,STOR_KEY_FAVS,STATUS_OK,STATUS_UNAUTH,STATUS_EXPORT_FAIL,TIME_LONG,BG_CMD_UPDATE_NUM} = Constant;
 
 let _$imgAss,_$imgExport,_$imgToggle;
 
@@ -52,9 +52,9 @@ function createBtn(){
     let $ul = $('<ul>');
     $ul.addClass('img-list');
     $ul.attr({draggable:true});
+    _$imgAss = addImgToUL($ul,_src.comicGrey,toggleMenu,'切换菜单');
     _$imgExport = addImgToUL($ul,_src.exportCollect,null,'导出网站中收藏的漫画到插件中');
     _$imgToggle = addImgToUL($ul,_src.collectGrey,null,'收藏');
-    _$imgAss = addImgToUL($ul,_src.comic,toggleMenu,'切换菜单');
     _$imgExport.on('click',async function () {
         let {exportCols} = window;
         if(exportCols){
@@ -69,6 +69,8 @@ function createBtn(){
     });
     // let left = $(window).width() - 120,top = $(window).height() - 220;
     $ul.drag();
+    _$imgToggle.toggle();
+    _$imgExport.toggle();
     // $ul.css({top:top+'px',left:left+'px'});
     $('body').append($ul);
 }
@@ -158,10 +160,11 @@ async function updateColRecord() {
     let {baseChapter} = baseInfo;
     curItem.curChapter = indexInfo.curChapter;
     curItem.curUrl = indexInfo.curUrl.replace(baseChapter, '');
+    curItem.isUpdate = false;
     //更新，当前更新的漫画数量
     await LocalStore.save(STOR_KEY_FAVS,allFavs);
     //更新未读数
-    await sendBg([BG_CMD_UPDATE_FAV_BTN]);
+    await sendBg([BG_CMD_UPDATE_NUM]);
 }
 
 /**

@@ -48,7 +48,7 @@ export async function getFavs(baseInfo) {
  * @returns {Promise<void>}
  */
 export async function getUpdateNum() {
-    let allFavs = await LocalStore.load(STOR_KEY_FAVS);
+    let allFavs = await LocalStore.load(STOR_KEY_FAVS,true);
     if(!allFavs) return 0;
     let updateNum = 0;
     allFavs.map(fav => {
@@ -132,10 +132,14 @@ export function htmlDecode(url, originCode) {
 /**
  * 替换origin
  */
-export function replaceOrigin(url, newOrigin) {
-    let restArgs = newOrigin.split('/');
-    let urlArr = url.split('/');
+export function replaceOrigin(url1, url2) {
+    /*let restArgs = url2.split('/');
+    let urlArr = url1.split('/');
     restArgs.unshift(0, 3);
     [].splice.apply(urlArr, restArgs);
-    return urlArr.join('/');
+    return urlArr.join('/');*/
+    let originReg = /[\S]+?:\/\/[\S]+?\//;
+    let origin1 = url1.match(originReg)[0],
+        origin2 = url2.match(originReg)[0];
+    return url1.replace(origin1,origin2);
 }

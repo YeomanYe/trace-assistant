@@ -93,7 +93,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'popup.html',                           //目标文件
             template: './popup.html',                     //模板文件
-            // chunks: ['runtime', 'vendor', 'utils', 'popup']  //对应关系，index.js对应的是index.html
+            chunks: ['popup']  //对应关系，index.js对应的是index.html
         }),
         new CopyWebpackPlugin([
             {

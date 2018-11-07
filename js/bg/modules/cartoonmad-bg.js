@@ -1,25 +1,22 @@
-_createQueryObj.createCartoonmadQuery = function() {
-    var baseObj = getBaseStoreObj(SITE_CARTOONMAD);
-    var ajaxCall = function(data) {
-        var $html = $(data);
-        var $as = $html.find('fieldset#info legend + table a');
-        var newA = $as.get($as.length - 1);
-        var newChapter,newUrl;
-        newChapter = newA.innerText;
-        newUrl = newA.href;
+import Constant from '../../Constant';
+import $ from 'jquery';
 
-        newUrl = replaceOrigin(newUrl, baseObj.origin).replace(baseObj.baseChapter, '');
-        var resObj = {
-            newUrl: newUrl,
-            newChapter: newChapter
-        };
-        return resObj;
+const {SITE_CARTOONMAD,TYPE_COMIC} = Constant;
+let site = SITE_CARTOONMAD,
+    type = TYPE_COMIC;
+function query(data) {
+    let $html = $(data);
+    let $as = $html.find('fieldset#info legend + table a');
+    let newA = $as.get($as.length - 1);
+    let newChapter,newUrl;
+    newChapter = newA.innerText;
+    newUrl = newA.href;
+
+    let resObj = {
+        newUrl: newUrl,
+        newChapter: newChapter
     };
+    return resObj;
+}
 
-    var cartoonmadQuery = function() {
-        getFavs(SITE_CARTOONMAD, TYPE_COMIC, queryUpdate(baseObj, ajaxCall,{originCode:'big5'}));
-    };
-
-    this.addAfterStore(cartoonmadQuery, ajaxCall);
-    return cartoonmadQuery;
-};
+export const queryObjArr = [{site,type,resolve:query}];

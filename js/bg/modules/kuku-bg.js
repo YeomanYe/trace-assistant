@@ -1,29 +1,20 @@
-/**
- * 查询收藏的kuku漫画是否有更新
- */
-_createQueryObj.createKukuQuery = function() {
-    var baseObj = getBaseStoreObj(SITE_KUKU);
-    var ajaxCall = function(data) {
-        var $html = $(data);
-        var baseChapter = baseObj.baseChapter;
-        var $as = $html.find('table table:eq(3)').find('tr td a');
-        var newA = $as.get($as.length - 4);
-        var newChapter,newUrl;
-        newChapter = newA.innerText;
-        newUrl = newA.href;
+import Constant from '../../Constant';
+import $ from 'jquery';
 
-        newUrl = replaceOrigin(newUrl, baseObj.origin).replace(baseChapter, '');
-        var resObj = {
-            newUrl: newUrl,
-            newChapter: newChapter
-        };
-        return resObj;
+const {SITE_KUKU,TYPE_COMIC} = Constant;
+function query(data) {
+    let $html = $(data);
+    let $as = $html.find('table table:eq(3)').find('tr td a');
+    let newA = $as.get($as.length - 4);
+    let newChapter,newUrl;
+    newChapter = newA.innerText;
+    newUrl = newA.href;
+
+    let resObj = {
+        newUrl: newUrl,
+        newChapter: newChapter
     };
+    return resObj;
+}
 
-    var kukuQuery = function() {
-        getFavs(SITE_KUKU, TYPE_COMIC, queryUpdate(baseObj, ajaxCall,{originCode:'gbk'}));
-    };
-
-    this.addAfterStore(kukuQuery, ajaxCall);
-    return kukuQuery;
-};
+export const queryObjArr = [{site:SITE_KUKU,type:TYPE_COMIC,resolve:query}];

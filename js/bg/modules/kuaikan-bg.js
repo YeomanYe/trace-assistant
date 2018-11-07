@@ -1,68 +1,60 @@
-/**
- * 查询收藏的快看漫画是否有更新
- */
-_createQueryObj.createKuaikanQuery = function() {
-    var baseObj = getBaseStoreObj('kuaikan');
-    var ajaxCall = function(data) {
-        var $html = $(data);
-        var aElm = $html.find('table .tit a').get(0);
-        var newChapter = aElm.title;
-        var tmpArr = aElm.href.split('/');
-        var newUrl = tmpArr[tmpArr.length - 2];
-        var resObj = {
-            newUrl: newUrl,
-            newChapter: newChapter
-        };
-        return resObj;
-    };
+import Constant from '../../Constant';
+import $ from 'jquery';
 
-    var kuaikanQuery = function(){
-        getFavs(SITE_KUAIKAN, TYPE_COMIC, queryUpdate(baseObj, ajaxCall));
+const {SITE_KUAIKAN:site,TYPE_COMIC:type} = Constant;
+
+function query(data) {
+    let $html = $(data);
+    let aElm = $html.find('table .tit a').get(0);
+    let newChapter = aElm.title;
+    let tmpArr = aElm.href.split('/');
+    let newUrl = tmpArr[tmpArr.length - 2];
+    let resObj = {
+        newUrl: newUrl,
+        newChapter: newChapter
     };
-    
-    this.addAfterStore(kuaikanQuery,ajaxCall);
-    return kuaikanQuery;
-};
+    return resObj;
+}
+export const queryObjArr = [{site,type,resolve:query}];
 
 /**
  * 快看漫画导出用户的收藏
- */
 _exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
-    var origin = args[1];
-    var kuaikanStorObj = getBaseStoreObj(SITE_KUAIKAN),
+    let origin = args[1];
+    let kuaikanStorObj = getBaseStoreObj(SITE_KUAIKAN),
         baseImgUrl = kuaikanStorObj.baseImg,
         baseIndexUrl = kuaikanStorObj.baseIndex;
-    var pageNum = 1,
+    let pageNum = 1,
         baseUrl = origin + '/web/fav/topics',
         size = 16;
     getFavs(SITE_KUAIKAN, TYPE_COMIC, function(cols, allFavs) {
         //递归遍历，获取所有的收藏结果
-        var successCallback = function(resData) {
+        let successCallback = function(resData) {
             log('resData', resData);
-            var status = resData.status_code;
+            let status = resData.status_code;
             if(status === 401){
                 resSend({status:STATUS_UNAUTH});//未登录
                 return;
             }
-            var datas = resData.data.topics;
-            var storDatas = [];
-            
+            let datas = resData.data.topics;
+            let storDatas = [];
+
             datas.forEach(function(data) {
-                var indexCompleteUrl = baseIndexUrl + '/' + data.id;
-                var resText = $.ajax(indexCompleteUrl, {
+                let indexCompleteUrl = baseIndexUrl + '/' + data.id;
+                let resText = $.ajax(indexCompleteUrl, {
                     async: false
                 }).responseText;
                 // log('resText',resText);
-                var $html = $(resText);
-                var $as = $html.find('.tit a');
+                let $html = $(resText);
+                let $as = $html.find('.tit a');
                 log('$as', $as);
-                var newA = $as.get(0),
+                let newA = $as.get(0),
                     curA = $as.get($as.length - 1);
                 //如果数组中有标题和目录链接则说明已经存在该漫画了
-                var title = data.title,
+                let title = data.title,
                     indexUrl = '/' + data.id;
                 if (arrEqStr(cols, {title:title}) >= 0) return;
-                var tmpArr, newUrl, curUrl;
+                let tmpArr, newUrl, curUrl;
                 tmpArr = newA.href.split('/');
                 newUrl = tmpArr[tmpArr.length - 2] + '/';
                 tmpArr = curA.href.split('/');
@@ -82,7 +74,7 @@ _exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
             log('storDatas', storDatas);
             if (datas.length === size) {
                 ++pageNum;
-                var url = baseUrl + '?page=' + pageNum + '&size=' + size;
+                let url = baseUrl + '?page=' + pageNum + '&size=' + size;
                 log('url', url);
                 $.ajax(url, {
                     success: successCallback
@@ -101,4 +93,4 @@ _exportFunObj[SITE_KUAIKAN+'-'+TYPE_COMIC] = function(args,resSend) {
             success: successCallback
         });
     });
-};
+};*/

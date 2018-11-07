@@ -1,6 +1,6 @@
 import Constant from '../Constant';
 import {cGetUrl, sendToAllTabs} from '../utils/ExtUtil';
-import {formatHref, getChapterContentByIndex, getFavs, getUpdateNum} from '../utils/ColUtil';
+import {formatHref, getChapterContentByIndex, getFavs, getUpdateNum, replaceOrigin} from '../utils/ColUtil';
 import LocalStore from '../utils/LocalStore';
 import {getBaseStoreObj} from '../data-struct';
 import {exportObjArr, queryObjArr} from './modules';
@@ -124,8 +124,7 @@ async function queryUpdate(site,type,callback, wayFlag) {
     let baseInfo = getBaseStoreObj(site,type);
     let {baseIndex,baseImg,baseChapter} = baseInfo;
     let {cols,allFavs} = await getFavs(baseInfo);
-    let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
-
+    let updateColArr = []; //保存有更新的col数组，统一处理
     for(let col of cols){
         try {
             let data = await getChapterContentByIndex(formatHref(col.indexUrl, baseIndex),wayFlag);
@@ -134,10 +133,8 @@ async function queryUpdate(site,type,callback, wayFlag) {
             if (col.newChapter !== newChapter) {
                 console.log('newChapter',newChapter);
                 col.newChapter = newChapter;
-                col.newUrl = newUrl;
-                //生成提示
-                if (!isCloseTips)
-                    createNotify(col.title, formatHref(col.imgUrl, baseImg), '更新到: ' + newChapter, baseChapter + newUrl);
+                col.newUrl = replaceOrigin(newUrl, baseChapter).replace(baseChapter, '');
+                updateColArr.push(col);
 
                 if (!col.isUpdate) {
                     col.isUpdate = true;
@@ -148,6 +145,15 @@ async function queryUpdate(site,type,callback, wayFlag) {
         }
     }
     await LocalStore.save({allFavs});
+    let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
+
+    //生成提示
+    if (!isCloseTips){
+        for(let col of cols){
+            let {title,imgUrl,newChapter,newUrl} = col;
+            createNotify(title, formatHref(imgUrl, baseImg), '更新到: ' + newChapter, baseChapter + newUrl);
+        }
+    }
 }
 
 
@@ -155,16 +161,6 @@ async function queryUpdate(site,type,callback, wayFlag) {
  * 导出收藏到插件中。
  */
 async function exportCollect(args,resSend) {
-    /*let origin = args[1];
-    let type = args[2];
-    let keys = Object.keys(exportFunArr);
-    let siteArr = [];
-    for(let i=0,len=keys.length;i<len;i++){
-        let tmpArr = keys[i].split('-');
-        siteArr.push(tmpArr[0]);
-    }
-    let index = arrInStr(siteArr,origin);
-    exportFunArr[siteArr[index]+'-'+type](args,resSend);*/
     for(let exportFun of exportObjArr){
         await exportFun(args,resSend);
     }

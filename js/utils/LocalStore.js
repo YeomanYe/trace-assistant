@@ -19,22 +19,24 @@ export default class LocalStore{
             });
         });
     }
-    static load(keys) {
+    static load(keys,unCache) {
         return new Promise((resolve,reject) => {
             //如果存在缓存，说明保存过可以直接使用
             let flag = true;
             let ret;
-            if(typeof keys === 'string'){
-                if(cache[keys] === undefined){
-                    flag = false;
-                }else ret = cache[keys];
-            } else {
-                ret = keys.map(key => {
-                    if(cache[key] === undefined) flag = false;
+            if(!unCache){
+                if(typeof keys === 'string'){
+                    if(cache[keys] === undefined){
+                        flag = false;
+                    }else ret = cache[keys];
+                } else {
+                    ret = keys.map(key => {
+                        if(cache[key] === undefined) flag = false;
                         return cache[key];
-                });
+                    });
+                }
+                if(flag) return resolve(ret);
             }
-            if(flag) return resolve(ret);
 
             //缓存不存在时，从本地存储查找
             storLocal.get(keys,(resObj) => {
