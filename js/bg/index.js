@@ -16,6 +16,18 @@ async function allQuery() {
         let {site,type,wayFlag,resolve} = queryObj;
         await queryUpdate(site,type,resolve,wayFlag);
     }
+    //显示提示
+    let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
+    let notify = () => {
+        let {col,baseChapter,baseImg} = updateColArr.shift();
+        let {title, imgUrl, newChapter, newUrl} = col;
+        createNotify(title, formatHref(imgUrl, baseImg), '更新到: ' + newChapter, baseChapter + newUrl);
+        setTimeout(notify,1000);
+    };
+    //生成提示
+    if (!isCloseTips){
+        notify();
+    }
     await updateBadge();
     setTimeout(allQuery, 1000 * 60 * 45);
 }
@@ -120,11 +132,11 @@ function createNotify(title, iconUrl, message, newUrl) {
 /**
  * 查询是否有更新的通用函数
  */
+let updateColArr = []; //保存有更新的col数组，统一处理
 async function queryUpdate(site,type,callback, wayFlag) {
     let baseInfo = getBaseStoreObj(site,type);
     let {baseIndex,baseImg,baseChapter} = baseInfo;
     let {cols,allFavs} = await getFavs(baseInfo);
-    let updateColArr = []; //保存有更新的col数组，统一处理
     for(let col of cols){
         try {
             let data = await getChapterContentByIndex(formatHref(col.indexUrl, baseIndex),wayFlag);
@@ -134,7 +146,7 @@ async function queryUpdate(site,type,callback, wayFlag) {
                 console.log('newChapter',newChapter);
                 col.newChapter = newChapter;
                 col.newUrl = replaceOrigin(newUrl, baseChapter).replace(baseChapter, '');
-                updateColArr.push(col);
+                updateColArr.push({col,baseChapter,baseImg});
 
                 if (!col.isUpdate) {
                     col.isUpdate = true;
@@ -145,15 +157,6 @@ async function queryUpdate(site,type,callback, wayFlag) {
         }
     }
     await LocalStore.save({allFavs});
-    let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
-
-    //生成提示
-    if (!isCloseTips){
-        for(let col of cols){
-            let {title,imgUrl,newChapter,newUrl} = col;
-            createNotify(title, formatHref(imgUrl, baseImg), '更新到: ' + newChapter, baseChapter + newUrl);
-        }
-    }
 }
 
 

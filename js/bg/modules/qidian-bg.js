@@ -1,44 +1,39 @@
-/**
- * 查询收藏的起点小说是否有更新
- */
-_createQueryObj.createQidianQuery = function() {
-    var baseObj = getBaseStoreObj(SITE_QIDIAN,TYPE_FICTION);
-    var ajaxCall = function(data) {
-        var $html = $(data);
-        var $as = $html.find('#j-catalogWrap .cf a');
-        var newA = $as.get($as.length - 1);
-        var newChapter,newUrl;
-        newChapter = newA.innerText;
-        newUrl = newA.href;
-        var resObj = {
-            newUrl: newUrl,
-            newChapter: newChapter
-        };
-        return resObj;
+import Constant from '../../Constant';
+import $ from 'jquery';
+
+const {TYPE_FICTION:type,SITE_QIDIAN:site} = Constant;
+
+function query(data) {
+    let $html = $(data);
+    let $as = $html.find('#j-catalogWrap .cf a');
+    let newA = $as.get($as.length - 1);
+    let newChapter,newUrl;
+    newChapter = newA.innerText;
+    newUrl = newA.href;
+    let resObj = {
+        newUrl: newUrl,
+        newChapter: newChapter
     };
-
-    var qidianQuery = function() {
-        getFavs(SITE_QIDIAN, TYPE_FICTION, queryUpdate(baseObj, ajaxCall));
-    };
-
-    this.addAfterStore(qidianQuery, ajaxCall);
-    return qidianQuery;
-};
-
+    return resObj;
+}
+export const queryObjArr = [
+    {site,type,resolve:query}
+];
 /**
  * 起点导出用户的收藏
  */
+/*
 _exportFunObj[SITE_QIDIAN+'-'+TYPE_FICTION] = function(args, resSend) {
-    var dataArg = args[3];
+    let dataArg = args[3];
     log('dataArg',dataArg);
-    var handleData = function(text, resSend,data) {
-        var retObj;
+    let handleData = function(text, resSend,data) {
+        let retObj;
         try {
-            var $html = $(text);
-            var imgUrl = $html.find('#bookImg img').attr('src');
-            var $as = $html.find('#j-catalogWrap .cf a');
-            var newA = $as.get($as.length - 1),curA = $as.get(0);
-            var newChapter,newUrl,curChapter,curUrl;
+            let $html = $(text);
+            let imgUrl = $html.find('#bookImg img').attr('src');
+            let $as = $html.find('#j-catalogWrap .cf a');
+            let newA = $as.get($as.length - 1),curA = $as.get(0);
+            let newChapter,newUrl,curChapter,curUrl;
             newChapter = newA.innerText;
             newUrl = newA.href.replace('chrome-extension','https');
             curChapter = curA.innerText;
@@ -60,4 +55,4 @@ _exportFunObj[SITE_QIDIAN+'-'+TYPE_FICTION] = function(args, resSend) {
         return retObj;
     };
     pipeExport(dataArg, handleData, resSend);
-};
+};*/

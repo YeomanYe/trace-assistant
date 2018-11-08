@@ -53,7 +53,6 @@ module.exports = {
         extensions: ['.js', '.vue']
     },
     devtool: NODE_ENV === 'production' ? false : '#eval-source-map',
-/*
     optimization: {
         splitChunks: {
             chunks: 'all',                              //'all'|'async'|'initial'(全部|按需加载|初始加载)的chunks
@@ -83,7 +82,6 @@ module.exports = {
             name: 'runtime'
         }
     },
-*/
     plugins: [
         new VueLoaderPlugin(),
         /*new MiniCssExtractPlugin({
@@ -93,7 +91,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'popup.html',                           //目标文件
             template: './popup.html',                     //模板文件
-            chunks: ['popup']  //对应关系，index.js对应的是index.html
+            chunks: ['runtime','vendor','utils','popup']  //对应关系，index.js对应的是index.html
         }),
         new CopyWebpackPlugin([
             {

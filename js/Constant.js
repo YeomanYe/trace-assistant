@@ -2,6 +2,7 @@ const Constant = {
     TYPE_COMIC: 'comic',//漫画
     TYPE_VIDEO: 'video',//视频
     TYPE_FICTION: 'fiction',//小说
+    TYPE_ALL:'all', //综合类型
 
     BG_CMD_EXPORT: 'exportCollect', //background页 执行的命令
     BG_CMD_UPDATE_NUM: 'updateNumChange',

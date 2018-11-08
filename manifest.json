@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": ["bg.js"]
+      "scripts": ["runtime.js","vendor.js","utils.js","bg.js"]
    },
    "browser_action": {
       "default_icon": "images/icon/logo16.png",
@@ -8,7 +8,7 @@
       "default_title": "追综饭"
    },
    "content_scripts": [{
-      "js": ["cnt.js"],
+      "js": ["runtime.js","vendor.js","utils.js","cnt.js"],
       "css": ["css/content.css"],
       "matches": ["http://*/*", "https://*/*"],
       "run_at": "document_end"

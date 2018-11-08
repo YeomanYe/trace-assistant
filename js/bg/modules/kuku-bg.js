@@ -17,4 +17,4 @@ function query(data) {
     return resObj;
 }
 
-export const queryObjArr = [{site:SITE_KUKU,type:TYPE_COMIC,resolve:query}];
+export const queryObjArr = [{site:SITE_KUKU,type:TYPE_COMIC,resolve:query,wayFlag:{originCode:'gbk'}}];

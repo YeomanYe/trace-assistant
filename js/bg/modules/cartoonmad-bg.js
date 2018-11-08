@@ -19,4 +19,4 @@ function query(data) {
     return resObj;
 }
 
-export const queryObjArr = [{site,type,resolve:query}];
+export const queryObjArr = [{site,type,resolve:query,wayFlag:{originCode:'gbk'}}];

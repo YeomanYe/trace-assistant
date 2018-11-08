@@ -1,6 +1,6 @@
 import {getBaseStoreObj} from '../../data-struct';
 import Constant from '../../Constant';
-import $ from 'jquery';
+import $ from 'jquery-ajax';
 
 const {SITE_BILIBILI,TYPE_VIDEO} = Constant;
 let site = SITE_BILIBILI,
@@ -22,7 +22,7 @@ function query(data) {
     return resObj;
 }
 
-export const queryArrObj = [{site,type,resolve:query}];
+export const queryObjArr = [{site,type,resolve:query}];
 
 /**
  * 腾讯动漫导出用户的收藏
