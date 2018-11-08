@@ -30,6 +30,9 @@ const actions = {
         let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
       commit('save',{isCloseTips});
     },
+    async setIsCloseTips({commit},b){
+        commit('setIsCloseTips',b);
+    },
     saveStatus({commit, state}, newState) {
         commit('save',newState);
     },

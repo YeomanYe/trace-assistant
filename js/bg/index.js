@@ -19,6 +19,7 @@ async function allQuery() {
     //显示提示
     let isCloseTips = await LocalStore.load(STOR_KEY_IS_CLOSE_TIPS);
     let notify = () => {
+        if(updateColArr.length === 0) return;
         let {col,baseChapter,baseImg} = updateColArr.shift();
         let {title, imgUrl, newChapter, newUrl} = col;
         createNotify(title, formatHref(imgUrl, baseImg), '更新到: ' + newChapter, baseChapter + newUrl);

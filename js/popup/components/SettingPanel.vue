@@ -3,7 +3,7 @@
         <!--<legend><img src="images/all-setting.png"/><span>全部设置</span></legend>-->
         <li><i class="fa fa-cloud-download font-icon"/><span @click="exportHandler" id="export">导出收藏</span></li>
         <li><i class="fa fa-cloud-download font-icon"/><span @click="importHandler" title="注意：导入收藏会覆盖当前所有的收藏" id="import">导入收藏</span></li>
-        <li><span>桌面提醒</span><toggle-button v-model="isCloseTips" color="black"/></li>
+        <li><span>桌面提醒</span><toggle-button :value="!isCloseTips" @change="setIsCloseTips" color="black"/></li>
         <input @change="fileImportChangeHandler" type="file" hidden name="fileImport" id="fileImport">
     </ul>
 </template>
@@ -51,7 +51,7 @@
                 }
                 e.currentTarget.value = '';
             },
-            ...mapActions(['queryFav'])
+            ...mapActions(['queryFav','setIsCloseTips'])
         },
         computed:{
             ...mapModel([{ns:'ui',names:['isCloseTips']}])

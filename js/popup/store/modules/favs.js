@@ -13,7 +13,7 @@ const {STOR_KEY_FAVS,CUR_FAV,TYPE_VIDEO,TYPE_FICTION,TYPE_COMIC,CNT_CMD_UPDATE_C
 
 const mutations = {
     query(state,arr) {
-        state.favs.splice(0,state.length,...arr);
+        state.favs.splice(0,state.favs.length,...arr);
         console.log('state',state);
     },
     markRead(state,payload){
