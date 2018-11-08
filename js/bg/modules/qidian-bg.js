@@ -16,16 +16,22 @@ function query(data) {
     };
     return resObj;
 }
+
 export const queryObjArr = [
     {site,type,resolve:query}
 ];
+
+/*==========================*/
+
+
+
 /**
  * 起点导出用户的收藏
  */
 /*
 _exportFunObj[SITE_QIDIAN+'-'+TYPE_FICTION] = function(args, resSend) {
     let dataArg = args[3];
-    log('dataArg',dataArg);
+    console.log('dataArg',dataArg);
     let handleData = function(text, resSend,data) {
         let retObj;
         try {
@@ -49,10 +55,10 @@ _exportFunObj[SITE_QIDIAN+'-'+TYPE_FICTION] = function(args, resSend) {
             };
             return retObj;
         }catch(e){
-            log(e);
             retObj = {status:STATUS_EXPORT_FAIL,msg:data.title};
         }
         return retObj;
     };
     pipeExport(dataArg, handleData, resSend);
-};*/
+};
+*/

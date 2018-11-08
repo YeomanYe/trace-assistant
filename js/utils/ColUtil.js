@@ -133,13 +133,13 @@ export function htmlDecode(url, originCode) {
  * 替换origin
  */
 export function replaceOrigin(url1, url2) {
-    /*let restArgs = url2.split('/');
-    let urlArr = url1.split('/');
-    restArgs.unshift(0, 3);
-    [].splice.apply(urlArr, restArgs);
-    return urlArr.join('/');*/
-    let originReg = /[\S]+?:\/\/[\S]+?\//;
-    let origin1 = url1.match(originReg)[0],
-        origin2 = url2.match(originReg)[0];
-    return url1.replace(origin1,origin2);
+    let originReg = /[\S]+?:\/\/[^/]+/;
+    let matches1 = url1.match(originReg),
+        matches2 = url2.match(originReg);
+    if(matches1){
+        let origin1 = matches1[0],
+            origin2 = matches2[0];
+        url1 = url1.replace(origin1,origin2);
+    }
+    return url1;
 }

@@ -14,7 +14,7 @@ function query(data) {
     let tmp;
     tmp = episodes[episodes.length - 1];
     newUrl = base + tmp.ep_id;
-    newChapter = '第'+ tmp.index + '话 ' + tmp.index_title;
+    newChapter = tmp.index + ' ' + tmp.index_title;
     let resObj = {
         newUrl: newUrl,
         newChapter: newChapter
