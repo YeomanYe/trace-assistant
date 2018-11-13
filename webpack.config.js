@@ -1,8 +1,8 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -21,7 +21,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(scss|css)$/,
-                use: [/*MiniCssExtractPlugin.loader,*/'vue-style-loader', 'css-loader','sass-loader'],
+                use: ['vue-style-loader', 'css-loader','sass-loader'],
             },
             {
                 test: /\.js$/,
@@ -83,11 +83,8 @@ module.exports = {
         }
     },
     plugins: [
+        new BundleAnalyzerPlugin(),
         new VueLoaderPlugin(),
-        /*new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css'
-        }),*/
         new HtmlWebpackPlugin({
             filename: 'popup.html',                           //目标文件
             template: './popup.html',                     //模板文件
@@ -122,13 +119,3 @@ module.exports = {
         ])
     ]
 };
-
-if (NODE_ENV !== 'production') {
-    /*module.exports.devServer = {
-        hot: true,
-        hotOnly: true,
-    };
-    module.exports.plugins = (module.exports.plugins || []).concat([
-        new webpack.HotModuleReplacementPlugin()
-    ])*/
-}
